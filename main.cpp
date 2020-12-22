@@ -50,7 +50,7 @@ std::mt19937 rng(1235);
 const double lambda = 3.0;
 const double migration_rate = 0.5;
 std::poisson_distribution<size_t> poisson(lambda);
-std::bernoulli_distribution bernoulli(0.5);
+std::bernoulli_distribution bernoulli50(0.5);
 std::bernoulli_distribution bernoulli_migration(migration_rate);
 
 class Population
@@ -59,8 +59,6 @@ private:
   std::vector<Individual> fathers;
   std::vector<Individual> mothers;
   std::vector<Individual> children;
-  std::vector<size_t> migrant_indices;
-  std::vector<Individual> migrant_fathers;
   const size_t sampled_number = 2;
   bool debug = true; //false;
 public:
@@ -113,6 +111,7 @@ public:
     }
   }
   std::vector<Individual> remove_migrant_fathers() {
+    std::vector<Individual> migrant_fathers;
     std::vector<Individual> next_fathers;
     std::cout << "before: fathers.size() =  " << fathers.size() << std::endl;
     for (size_t i = 0; i < fathers.size(); ++i) {
@@ -132,42 +131,8 @@ public:
     for (size_t i = 0; i < migrant_fathers.size(); ++i) {
       fathers.push_back(migrant_fathers[i]);
     }
-    //fathers.swap(next_fathers);
-    //next_fathers.clear();
   }
-  /*
-  std::vector<size_t> get_migrant_indices() const {
-    return migrant_indices;
-  }
-  std::vector<Individual> get_migratnt() const {
-    return migrant_fathers;
-  }*/
 };
-
-//tmp_fathers.push_back(pop1.fathers);
-// select imigrant ID
-/*
-for (size_t i = 0; i < pop0.fathers.size(); ++i) {
-if (bernoulli_migration(rng)) {
-next_fathers.push_back(fathers[i]);
-} else {
-migrant_fathers.push_back(fathers[i]);
-std::cout << "migrant_id: " << fathers[i].get_id() << std::endl;
-migrant_indices.push_back(fathers[i].get_id());
-}
-}
-fathers.swap(next_fathers);
-
-pop0.print_family_size();
-pop0.remove_migrants();
-size_t migrant_number = (pop0.get_migratnt_indices()).size();
-for (size_t i = 0; i < migrant_number; ++i) {
-std::cout << "tmp_migrants_id: " << pop0.get_migratnt_indices()[i] << std::endl;
-}
-pop0.print_family_size();
-return pop0.get_migratnt_indices();
-*/
-
 
 int Individual::LATEST_ID = 0;
 
@@ -192,18 +157,11 @@ int main()
   pop0.print_family_size();
   pop1.add_migrant_fathers(tmp_migrant_01_fathers);
   pop1.print_family_size();
-    //std::vector<size_t> migratnt_indices = migration(pop0);
-
-  //Population pop12(migratnt_indices);
-  //pop12.print_family_ids();
 
   std::cerr << "-----------------------" << std::endl;
   pop0.print_family_ids();
   std::cerr << "-----------------------" << std::endl;
   pop1.print_family_ids();
-  //pop1.print_samples();
-
-  //migration(pop0, pop1);
 
   end = std::chrono::system_clock::now();
   double elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end-start).count();
