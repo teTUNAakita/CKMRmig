@@ -60,7 +60,7 @@ private:
   std::vector<Individual> mothers;
   std::vector<Individual> children;
   const size_t sampled_number = 2;
-  bool debug = true; //false;
+  bool debug = false;
 public:
   Population(size_t init_parent_number) :
   fathers(init_parent_number), mothers(init_parent_number) {
@@ -86,12 +86,12 @@ public:
   void print_family_size() {
     if (debug) std::cerr << "fathers.size() = " << fathers.size() << ", mothers.size() = " << mothers.size() << ", children.size() = " << children.size() << std::endl;
   }
-  void print_family_ids() const {
+  void print_parent_ids() const {
     for (size_t i = 0; i < fathers.size(); i++) {
-      std::cerr << "father_id: " << (fathers[i]).get_id() << std::endl;
+      if (debug) std::cerr << "father_id: " << (fathers[i]).get_id() << std::endl;
     }
     for (size_t i = 0; i < mothers.size(); i++) {
-      std::cerr << "mother_id: " << (mothers[i]).get_id() << std::endl;
+      if (debug) std::cerr << "mother_id: " << (mothers[i]).get_id() << std::endl;
     }
   }
   bool check_size() {
@@ -113,23 +113,45 @@ public:
   std::vector<Individual> remove_migrant_fathers() {
     std::vector<Individual> migrant_fathers;
     std::vector<Individual> next_fathers;
-    std::cout << "before: fathers.size() =  " << fathers.size() << std::endl;
+    if (debug) std::cout << "before: fathers.size() =  " << fathers.size() << std::endl;
     for (size_t i = 0; i < fathers.size(); ++i) {
       if (bernoulli_migration(rng)) {
         next_fathers.push_back(fathers[i]);
       } else {
         migrant_fathers.push_back(fathers[i]);
-        std::cout << "migrant_id: " << fathers[i].get_id() << std::endl;
+        if (debug) std::cout << "migrant_id: " << fathers[i].get_id() << std::endl;
       }
     }
     fathers.swap(next_fathers);
     next_fathers.clear();
-    std::cout << "remained: fathers.size() =  " << fathers.size() << std::endl;
+    if (debug) std::cout << "remained: fathers.size() =  " << fathers.size() << std::endl;
     return migrant_fathers;
+  }
+  std::vector<Individual> remove_migrant_mothers() {
+    std::vector<Individual> migrant_mothers;
+    std::vector<Individual> next_mothers;
+    if (debug) std::cout << "before: mothers.size() =  " << mothers.size() << std::endl;
+    for (size_t i = 0; i < mothers.size(); ++i) {
+      if (bernoulli_migration(rng)) {
+        next_mothers.push_back(mothers[i]);
+      } else {
+        migrant_mothers.push_back(mothers[i]);
+        if (debug) std::cout << "migrant_id: " << mothers[i].get_id() << std::endl;
+      }
+    }
+    mothers.swap(next_mothers);
+    next_mothers.clear();
+    if (debug) std::cout << "remained: mothers.size() =  " << mothers.size() << std::endl;
+    return migrant_mothers;
   }
   void add_migrant_fathers(std::vector<Individual> migrant_fathers) {
     for (size_t i = 0; i < migrant_fathers.size(); ++i) {
       fathers.push_back(migrant_fathers[i]);
+    }
+  }
+  void add_migrant_mothers(std::vector<Individual> migrant_mothers) {
+    for (size_t i = 0; i < migrant_mothers.size(); ++i) {
+      mothers.push_back(migrant_mothers[i]);
     }
   }
 };
@@ -145,23 +167,32 @@ int main()
 
   Population pop0(init_parent_number);
   pop0.reproduction();
-  //pop0.print_samples();
+  pop0.print_samples();
 
   Population pop1(init_parent_number);
   pop1.reproduction();
 
   std::vector<Individual> tmp_migrant_01_fathers = pop0.remove_migrant_fathers();
+  std::vector<Individual> tmp_migrant_01_mothers = pop0.remove_migrant_mothers();
   std::vector<Individual> tmp_migrant_10_fathers = pop1.remove_migrant_fathers();
+  std::vector<Individual> tmp_migrant_10_mothers = pop1.remove_migrant_mothers();
 
   pop0.add_migrant_fathers(tmp_migrant_10_fathers);
+  pop0.add_migrant_mothers(tmp_migrant_10_mothers);
   pop0.print_family_size();
   pop1.add_migrant_fathers(tmp_migrant_01_fathers);
+  pop1.add_migrant_mothers(tmp_migrant_01_mothers);
   pop1.print_family_size();
 
+  pop0.reproduction();
+  pop1.reproduction();
+
+  pop1.print_samples();
+
   std::cerr << "-----------------------" << std::endl;
-  pop0.print_family_ids();
+  pop0.print_parent_ids();
   std::cerr << "-----------------------" << std::endl;
-  pop1.print_family_ids();
+  pop1.print_parent_ids();
 
   end = std::chrono::system_clock::now();
   double elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end-start).count();
