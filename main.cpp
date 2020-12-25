@@ -97,18 +97,20 @@ public:
   bool check_size() {
     return fathers.empty() || mothers.empty();
   }
-  void print_samples() {
+  /*void print_samples() {
     print_samples(children, sampled_number);
-  }
-  void print_samples(const std::vector<Individual>& individuals, const size_t sampled_number) {
-    std::vector<int> sampled_indices;
-    std::vector<int> all_indices(individuals.size());
+  }*/
+  std::vector<size_t> get_sampled_ids() {
+    std::vector<size_t> sampled_ids;
+    std::vector<size_t> all_indices(children.size());
     std::iota(all_indices.begin(), all_indices.end(), 0);
-    std::sample(all_indices.begin(), all_indices.end(), std::back_inserter(sampled_indices), sampled_number, rng);
+    std::sample(all_indices.begin(), all_indices.end(), std::back_inserter(sampled_ids), sampled_number, rng);
     std::cout << "sampled_child_id: " << std::endl;
-    for (const auto& i: sampled_indices) {
-      std::cout << individuals[i].get_id() << std::endl;
+    for (const auto& i: sampled_ids) {
+      std::cout << children[i].get_id() << std::endl;
+      sampled_ids.push_back(children[i].get_id());
     }
+    return sampled_ids;
   }
   std::vector<Individual> remove_migrant_fathers() {
     std::vector<Individual> migrant_fathers;
@@ -167,7 +169,7 @@ int main()
 
   Population pop0(init_parent_number);
   pop0.reproduction();
-  pop0.print_samples();
+  std::vector<size_t> sampled_0_ids = pop0.get_sampled_ids();
 
   Population pop1(init_parent_number);
   pop1.reproduction();
@@ -187,7 +189,7 @@ int main()
   pop0.reproduction();
   pop1.reproduction();
 
-  pop1.print_samples();
+  //pop1.get_sampled_ids();
 
   std::cerr << "-----------------------" << std::endl;
   pop0.print_parent_ids();
