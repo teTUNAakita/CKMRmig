@@ -1,3 +1,7 @@
+/*
+make
+./a.out init_parent_pair_number sampled_number
+*/
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -14,7 +18,6 @@ private:
   static int LATEST_ID;
   const int id;
   const std::pair<int, int> parents_ids;
-  //unsigned int location;
 public:
   Individual() : id(LATEST_ID++) {
   };
@@ -53,11 +56,11 @@ private:
   std::vector<Individual> fathers;
   std::vector<Individual> mothers;
   std::vector<Individual> children;
-  const size_t sampled_number = 2;
+  //const size_t sampled_number = 2;
   bool debug = false;
   bool print_samples_flag = false;
 public:
-  Population(size_t init_parent_number) :
+  Population(const size_t init_parent_number) :
   fathers(init_parent_number), mothers(init_parent_number) {
   };
   Population(std::vector<size_t> migratnt_indices) :
@@ -84,13 +87,12 @@ public:
   bool check_size() {
     return fathers.empty() || mothers.empty();
   }
-  void sampling(size_t rep) {
+  void sampling(const size_t sampled_number, size_t rep) {
     std::vector<size_t> sampled_ids;
     std::vector<size_t> all_indices(children.size());
     std::iota(all_indices.begin(), all_indices.end(), 0);
     std::sample(all_indices.begin(), all_indices.end(), std::back_inserter(sampled_ids), sampled_number, rng);
     std::cout << "sampled_child & its parents_id: " << std::endl;
-
     std::string filename = "sample.txt";
     filename = std::to_string(rep) + filename;
     std::ofstream writing_sample;
@@ -153,16 +155,21 @@ public:
 
 int Individual::LATEST_ID = 0;
 
-int main()
+int main(int argc, char *argv[])
 {
   std::chrono::system_clock::time_point start, end;
   start = std::chrono::system_clock::now();
-
-  size_t init_parent_number = 3;
+  if ( argc != 3 ) {
+    fprintf(stderr,"Command line arguments are incorrect\n");
+    return 0;
+  }
+  const size_t init_parent_number = atoi(argv[1]); //1
+  const size_t sampled_number = atoi(argv[2]); //1
+  //size_t init_parent_number = 3;
 
   Population pop0(init_parent_number);
   pop0.reproduction();
-  pop0.sampling(0);
+  pop0.sampling(sampled_number, 0);
 
   Population pop1(init_parent_number);
   pop1.reproduction();
@@ -181,7 +188,7 @@ int main()
 
   pop0.reproduction();
   pop1.reproduction();
-  pop1.sampling(1);
+  pop1.sampling(sampled_number, 1);
 
 
   std::cerr << "-----------------------" << std::endl;
