@@ -44,11 +44,11 @@ std::random_device rd;
 const auto seed = rd();
 //std::mt19937 rng(seed);
 std::mt19937 rng(1235);
-const double lambda = 3.0;
-const double migration_rate = 0.5;
-std::poisson_distribution<size_t> poisson(lambda);
+//const double lambda = 3.0;
+//const double migration_rate = 0.5;
+//std::poisson_distribution<size_t> poisson(lambda);
 std::bernoulli_distribution bernoulli50(0.5);
-std::bernoulli_distribution bernoulli_migration(migration_rate);
+//std::bernoulli_distribution bernoulli_migration(migration_rate);
 
 class Population
 {
@@ -56,7 +56,6 @@ private:
   std::vector<Individual> fathers;
   std::vector<Individual> mothers;
   std::vector<Individual> children;
-  //const size_t sampled_number = 2;
   bool debug = false;
   bool print_samples_flag = false;
 public:
@@ -66,10 +65,11 @@ public:
   Population(std::vector<size_t> migratnt_indices) :
   fathers(migratnt_indices.size()) {
   };
-  void reproduction() {
+  void reproduction(const double lambda) {
     const size_t father_number = fathers.size();
     const size_t mother_number = mothers.size();
     std::uniform_int_distribution<size_t> uniform_int(0, father_number - 1);
+    std::poisson_distribution<size_t> poisson(lambda);
     if (debug) std::cerr << "fathers.size() = " << fathers.size() << ", mothers.size() = " << mothers.size() << std::endl;
     for (size_t i = 0; i < mother_number; ++i) {
       const size_t child_number = poisson(rng);
@@ -107,9 +107,10 @@ public:
       writing_sample << children[i] << "\n";
     }
   }
-  std::vector<Individual> remove_migrant_fathers() {
+  std::vector<Individual> remove_migrant_fathers(const double migration_rate) {
     std::vector<Individual> migrant_fathers;
     std::vector<Individual> next_fathers;
+    std::bernoulli_distribution bernoulli_migration(migration_rate);
     if (debug) std::cout << "before: fathers.size() =  " << fathers.size() << std::endl;
     for (size_t i = 0; i < fathers.size(); ++i) {
       if (bernoulli_migration(rng)) {
@@ -124,9 +125,10 @@ public:
     if (debug) std::cout << "remained: fathers.size() =  " << fathers.size() << std::endl;
     return migrant_fathers;
   }
-  std::vector<Individual> remove_migrant_mothers() {
+  std::vector<Individual> remove_migrant_mothers(const double migration_rate) {
     std::vector<Individual> migrant_mothers;
     std::vector<Individual> next_mothers;
+    std::bernoulli_distribution bernoulli_migration(migration_rate);
     if (debug) std::cout << "before: mothers.size() =  " << mothers.size() << std::endl;
     for (size_t i = 0; i < mothers.size(); ++i) {
       if (bernoulli_migration(rng)) {
@@ -159,25 +161,26 @@ int main(int argc, char *argv[])
 {
   std::chrono::system_clock::time_point start, end;
   start = std::chrono::system_clock::now();
-  if ( argc != 3 ) {
+  if ( argc != 5 ) {
     fprintf(stderr,"Command line arguments are incorrect\n");
     return 0;
   }
   const size_t init_parent_number = atoi(argv[1]); //1
-  const size_t sampled_number = atoi(argv[2]); //1
-  //size_t init_parent_number = 3;
+  const size_t sampled_number = atoi(argv[2]); //2
+  const double migration_rate = atoi(argv[3]); //3
+  const double lambda = atoi(argv[4]);//4
 
   Population pop0(init_parent_number);
-  pop0.reproduction();
+  pop0.reproduction(lambda);
   pop0.sampling(sampled_number, 0);
 
   Population pop1(init_parent_number);
-  pop1.reproduction();
+  pop1.reproduction(lambda);
 
-  std::vector<Individual> tmp_migrant_01_fathers = pop0.remove_migrant_fathers();
-  std::vector<Individual> tmp_migrant_01_mothers = pop0.remove_migrant_mothers();
-  std::vector<Individual> tmp_migrant_10_fathers = pop1.remove_migrant_fathers();
-  std::vector<Individual> tmp_migrant_10_mothers = pop1.remove_migrant_mothers();
+  std::vector<Individual> tmp_migrant_01_fathers = pop0.remove_migrant_fathers(migration_rate);
+  std::vector<Individual> tmp_migrant_01_mothers = pop0.remove_migrant_mothers(migration_rate);
+  std::vector<Individual> tmp_migrant_10_fathers = pop1.remove_migrant_fathers(migration_rate);
+  std::vector<Individual> tmp_migrant_10_mothers = pop1.remove_migrant_mothers(migration_rate);
 
   pop0.add_migrant_fathers(tmp_migrant_10_fathers);
   pop0.add_migrant_mothers(tmp_migrant_10_mothers);
@@ -186,8 +189,8 @@ int main(int argc, char *argv[])
   pop1.add_migrant_mothers(tmp_migrant_01_mothers);
   pop1.print_family_size();
 
-  pop0.reproduction();
-  pop1.reproduction();
+  pop0.reproduction(lambda);
+  pop1.reproduction(lambda);
   pop1.sampling(sampled_number, 1);
 
 
