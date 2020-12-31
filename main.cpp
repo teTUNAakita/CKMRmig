@@ -79,38 +79,26 @@ public:
       for (size_t j = 0; j < child_number; ++j) {
         const size_t father_index = uniform_int(rng);
         children.push_back( Individual( fathers[father_index].get_id(), mothers[i].get_id() ) );
-        children.back().print_parents_id();
+        if (debug) children.back().print_parents_id();
       }
     }
   }
   void print_family_size() {
     if (debug) std::cerr << "fathers.size() = " << fathers.size() << ", mothers.size() = " << mothers.size() << ", children.size() = " << children.size() << std::endl;
   }
-  void print_parent_ids() const {
-    for (size_t i = 0; i < fathers.size(); i++) {
-      if (debug) std::cerr << "father_id: " << (fathers[i]).get_id() << std::endl;
-    }
-    for (size_t i = 0; i < mothers.size(); i++) {
-      if (debug) std::cerr << "mother_id: " << (mothers[i]).get_id() << std::endl;
-    }
-  }
   bool check_size() {
     return fathers.empty() || mothers.empty();
   }
-  /*void print_samples() {
-    print_samples(children, sampled_number);
-  }*/
-  std::vector<size_t> get_sampled_ids() {
+  void get_sampled_ids() {
     std::vector<size_t> sampled_ids;
     std::vector<size_t> all_indices(children.size());
     std::iota(all_indices.begin(), all_indices.end(), 0);
     std::sample(all_indices.begin(), all_indices.end(), std::back_inserter(sampled_ids), sampled_number, rng);
-    std::cout << "sampled_child_id: " << std::endl;
+    std::cout << "sampled_child & its parents_id: " << std::endl;
     for (const auto& i: sampled_ids) {
-      std::cout << children[i].get_id() << std::endl;
+      children[i].print_parents_id();
       sampled_ids.push_back(children[i].get_id());
     }
-    return sampled_ids;
   }
   std::vector<Individual> remove_migrant_fathers() {
     std::vector<Individual> migrant_fathers;
@@ -169,7 +157,7 @@ int main()
 
   Population pop0(init_parent_number);
   pop0.reproduction();
-  std::vector<size_t> sampled_0_ids = pop0.get_sampled_ids();
+  pop0.get_sampled_ids();
 
   Population pop1(init_parent_number);
   pop1.reproduction();
@@ -188,13 +176,10 @@ int main()
 
   pop0.reproduction();
   pop1.reproduction();
+  pop1.get_sampled_ids();
 
-  //pop1.get_sampled_ids();
 
   std::cerr << "-----------------------" << std::endl;
-  pop0.print_parent_ids();
-  std::cerr << "-----------------------" << std::endl;
-  pop1.print_parent_ids();
 
   end = std::chrono::system_clock::now();
   double elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end-start).count();
