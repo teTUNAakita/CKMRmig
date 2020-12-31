@@ -1,17 +1,5 @@
-/*
-２つの集団を定義して，それぞれでIDを生成する
-親の数を与えて、１つの集団で子供作る！
-・移動なし
-・雌雄あり
-・メスがポアソンで残す、父はまずはランダム
-Age structure #15-3
-ランダム交配で子孫を残す。
-メスがポアソンで子を残し、その子達の父親はランダムに決まる
-齢に関係なく、個体は死亡率50%で死ぬ
-死んだ個体の祖先関係も出力する
-*/
-
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <utility>
 #include <random>
@@ -41,7 +29,13 @@ public:
   void print_parents_id() const {
     std::cout << id << "\t" << parents_ids.first  << "\t" << parents_ids.second << std::endl;
   }
+  std::ostream& write(std::ostream& ost) const {
+      return ost << id << "\t" << parents_ids.first << "\t" << parents_ids.second;
+  }
 };
+std::ostream& operator<<(std::ostream& ost, const Individual& x) {
+    return x.write(ost);
+}
 
 std::random_device rd;
 const auto seed = rd();
@@ -61,6 +55,7 @@ private:
   std::vector<Individual> children;
   const size_t sampled_number = 2;
   bool debug = false;
+  bool print_samples_flag = false;
 public:
   Population(size_t init_parent_number) :
   fathers(init_parent_number), mothers(init_parent_number) {
@@ -89,15 +84,25 @@ public:
   bool check_size() {
     return fathers.empty() || mothers.empty();
   }
-  void get_sampled_ids() {
+  void sampling(size_t rep) {
     std::vector<size_t> sampled_ids;
     std::vector<size_t> all_indices(children.size());
     std::iota(all_indices.begin(), all_indices.end(), 0);
     std::sample(all_indices.begin(), all_indices.end(), std::back_inserter(sampled_ids), sampled_number, rng);
     std::cout << "sampled_child & its parents_id: " << std::endl;
+
+    std::string filename = "sample.txt";
+    filename = std::to_string(rep) + filename;
+    std::ofstream writing_sample;
+    if (print_samples_flag) {
+        writing_sample.open(filename, std::ios::app);
+    } else {
+        writing_sample.open(filename, std::ios::out);
+        print_samples_flag = true;
+    }
     for (const auto& i: sampled_ids) {
       children[i].print_parents_id();
-      sampled_ids.push_back(children[i].get_id());
+      writing_sample << children[i] << "\n";
     }
   }
   std::vector<Individual> remove_migrant_fathers() {
@@ -157,7 +162,7 @@ int main()
 
   Population pop0(init_parent_number);
   pop0.reproduction();
-  pop0.get_sampled_ids();
+  pop0.sampling(0);
 
   Population pop1(init_parent_number);
   pop1.reproduction();
@@ -176,7 +181,7 @@ int main()
 
   pop0.reproduction();
   pop1.reproduction();
-  pop1.get_sampled_ids();
+  pop1.sampling(1);
 
 
   std::cerr << "-----------------------" << std::endl;
