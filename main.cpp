@@ -1,6 +1,7 @@
 /*
 make
-./a.out init_parent_pair_number sampled_number
+./a.out init_parent_pair_number sampled_number migration_rate lambda_1 lambda_2
+./a.out 100 20 0.2 3 10
 */
 #include <iostream>
 #include <fstream>
@@ -44,11 +45,7 @@ std::random_device rd;
 const auto seed = rd();
 //std::mt19937 rng(seed);
 std::mt19937 rng(1235);
-//const double lambda = 3.0;
-//const double migration_rate = 0.5;
-//std::poisson_distribution<size_t> poisson(lambda);
-std::bernoulli_distribution bernoulli50(0.5);
-//std::bernoulli_distribution bernoulli_migration(migration_rate);
+//std::bernoulli_distribution bernoulli50(0.5);
 
 class Population
 {
@@ -56,7 +53,7 @@ private:
   std::vector<Individual> fathers;
   std::vector<Individual> mothers;
   std::vector<Individual> children;
-  bool debug = false;
+  bool debug = true;//false;
   bool print_samples_flag = false;
 public:
   Population(const size_t init_parent_number) :
@@ -117,7 +114,7 @@ public:
         next_fathers.push_back(fathers[i]);
       } else {
         migrant_fathers.push_back(fathers[i]);
-        if (debug) std::cout << "migrant_id: " << fathers[i].get_id() << std::endl;
+        if (debug) std::cout << "migrant_father_id: " << fathers[i].get_id() << std::endl;
       }
     }
     fathers.swap(next_fathers);
@@ -135,7 +132,7 @@ public:
         next_mothers.push_back(mothers[i]);
       } else {
         migrant_mothers.push_back(mothers[i]);
-        if (debug) std::cout << "migrant_id: " << mothers[i].get_id() << std::endl;
+        if (debug) std::cout << "migrant_mother_id: " << mothers[i].get_id() << std::endl;
       }
     }
     mothers.swap(next_mothers);
@@ -161,21 +158,22 @@ int main(int argc, char *argv[])
 {
   std::chrono::system_clock::time_point start, end;
   start = std::chrono::system_clock::now();
-  if ( argc != 5 ) {
+  if ( argc != 6 ) {
     fprintf(stderr,"Command line arguments are incorrect\n");
     return 0;
   }
   const size_t init_parent_number = atoi(argv[1]); //1
   const size_t sampled_number = atoi(argv[2]); //2
   const double migration_rate = atoi(argv[3]); //3
-  const double lambda = atoi(argv[4]);//4
+  const double lambda_0 = atoi(argv[4]);//4
+  const double lambda_1 = atoi(argv[5]);//5
 
   Population pop0(init_parent_number);
-  pop0.reproduction(lambda);
+  pop0.reproduction(lambda_0);
   pop0.sampling(sampled_number, 0);
 
   Population pop1(init_parent_number);
-  pop1.reproduction(lambda);
+  pop1.reproduction(lambda_1);
 
   std::vector<Individual> tmp_migrant_01_fathers = pop0.remove_migrant_fathers(migration_rate);
   std::vector<Individual> tmp_migrant_01_mothers = pop0.remove_migrant_mothers(migration_rate);
@@ -189,8 +187,8 @@ int main(int argc, char *argv[])
   pop1.add_migrant_mothers(tmp_migrant_01_mothers);
   pop1.print_family_size();
 
-  pop0.reproduction(lambda);
-  pop1.reproduction(lambda);
+  pop0.reproduction(lambda_0);
+  pop1.reproduction(lambda_1);
   pop1.sampling(sampled_number, 1);
 
 
