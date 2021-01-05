@@ -79,7 +79,7 @@ public:
     }
   }
   void print_family_size() {
-    if (debug) std::cerr << "fathers.size() = " << fathers.size() << ", mothers.size() = " << mothers.size() << ", children.size() = " << children.size() << std::endl;
+    std::cerr << "fathers.size() = " << fathers.size() << ", mothers.size() = " << mothers.size() << ", children.size() = " << children.size() << std::endl;
   }
   bool check_size() {
     return fathers.empty() || mothers.empty();
@@ -89,7 +89,7 @@ public:
     std::vector<size_t> all_indices(children.size());
     std::iota(all_indices.begin(), all_indices.end(), 0);
     std::sample(all_indices.begin(), all_indices.end(), std::back_inserter(sampled_ids), sampled_number, rng);
-    std::cout << "sampled_child & its parents_id: " << std::endl;
+    if (debug) std::cout << "sampled_child & its parents_id: " << std::endl;
     std::string filename = "sample.txt";
     filename = std::to_string(rep) + filename;
     std::ofstream writing_sample;
@@ -100,7 +100,7 @@ public:
         print_samples_flag = true;
     }
     for (const auto& i: sampled_ids) {
-      children[i].print_parents_id();
+      if (debug) children[i].print_parents_id();
       writing_sample << children[i] << "\n";
     }
   }
@@ -170,7 +170,7 @@ int main(int argc, char *argv[])
   const double lambda_0 = atof(argv[4]);//4
   const double lambda_1 = atof(argv[5]);//5
 
-  if (debug) std::cout << "INPUT: parent_pair_size = " << init_parent_number << ", migration_rate = " << migration_rate << ", lambda_0 = " << lambda_0 << ", and lambda_1 = " << lambda_1 << std::endl;
+  std::cout << "INPUT: parent_pair_size = " << init_parent_number << ", sampled_number = " << sampled_number << ", migration_rate = " << migration_rate << ", lambda_0 = " << lambda_0 << ", and lambda_1 = " << lambda_1 << std::endl;
 
   Population pop0(init_parent_number);
   pop0.reproduction(lambda_0);
@@ -184,12 +184,17 @@ int main(int argc, char *argv[])
   std::vector<Individual> tmp_migrant_10_fathers = pop1.remove_migrant_fathers(migration_rate);
   std::vector<Individual> tmp_migrant_10_mothers = pop1.remove_migrant_mothers(migration_rate);
 
+  //std::cout << "tmp_migrant_01_fathers.size() = " << tmp_migrant_01_fathers.size() << std::endl;
+  //std::cout << "tmp_migrant_01_mothers.size() = " << tmp_migrant_01_mothers.size() << std::endl;
+  //std::cout << "tmp_migrant_10_fathers.size() = " << tmp_migrant_10_fathers.size() << std::endl;
+  //std::cout << "tmp_migrant_10_mothers.size() = " << tmp_migrant_10_mothers.size() << std::endl;
+
   pop0.add_migrant_fathers(tmp_migrant_10_fathers);
   pop0.add_migrant_mothers(tmp_migrant_10_mothers);
-  pop0.print_family_size();
+  //pop0.print_family_size();
   pop1.add_migrant_fathers(tmp_migrant_01_fathers);
   pop1.add_migrant_mothers(tmp_migrant_01_mothers);
-  pop1.print_family_size();
+  //pop1.print_family_size();
 
   pop0.reproduction(lambda_0);
   pop1.reproduction(lambda_1);
