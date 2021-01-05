@@ -81,6 +81,11 @@ public:
   void print_family_size() {
     std::cerr << "fathers.size() = " << fathers.size() << ", mothers.size() = " << mothers.size() << ", children.size() = " << children.size() << std::endl;
   }
+  void print_family_id() {
+    for (size_t i = 0; i < children.size(); ++i) {
+      children[i].print_parents_id();
+    }
+  }
   bool check_size() {
     return fathers.empty() || mothers.empty();
   }
@@ -177,7 +182,7 @@ int main(int argc, char *argv[])
   pop0.sampling(sampled_number, 0);
 
   Population pop1(init_parent_number);
-  pop1.reproduction(lambda_1);
+  ////pop1.reproduction(lambda_1); // must exclude these offspring from sampling
 
   std::vector<Individual> tmp_migrant_01_fathers = pop0.remove_migrant_fathers(migration_rate);
   std::vector<Individual> tmp_migrant_01_mothers = pop0.remove_migrant_mothers(migration_rate);
@@ -196,10 +201,11 @@ int main(int argc, char *argv[])
   pop1.add_migrant_mothers(tmp_migrant_01_mothers);
   //pop1.print_family_size();
 
-  pop0.reproduction(lambda_0);
+  ////pop0.reproduction(lambda_0);
   pop1.reproduction(lambda_1);
   pop1.sampling(sampled_number, 1);
 
+  //pop1.print_family_id();
 
   std::cerr << "-----------------------" << std::endl;
 
