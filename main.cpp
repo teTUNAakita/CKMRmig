@@ -102,6 +102,7 @@ public:
         writing_sample.open(filename, std::ios::app);
     } else {
         writing_sample.open(filename, std::ios::out);
+        writing_sample << "id\tfather\tmother" << "\n";
         print_samples_flag = true;
     }
     for (const auto& i: sampled_ids) {
@@ -163,8 +164,8 @@ int Individual::LATEST_ID = 0;
 
 int main(int argc, char *argv[])
 {
-  std::chrono::system_clock::time_point start, end;
-  start = std::chrono::system_clock::now();
+  // std::chrono::system_clock::time_point start, end;
+  // start = std::chrono::system_clock::now();
   if ( argc != 6 ) {
     fprintf(stderr,"Command line arguments are incorrect\n");
     return 0;
@@ -175,7 +176,7 @@ int main(int argc, char *argv[])
   const double lambda_0 = atof(argv[4]);//4
   const double lambda_1 = atof(argv[5]);//5
 
-  std::cout << "INPUT: parent_pair_size = " << init_parent_number << ", sampled_number = " << sampled_number << ", migration_rate = " << migration_rate << ", lambda_0 = " << lambda_0 << ", and lambda_1 = " << lambda_1 << std::endl;
+  // if (debug) std::cout << "INPUT: parent_pair_size = " << init_parent_number << ", sampled_number = " << sampled_number << ", migration_rate = " << migration_rate << ", lambda_0 = " << lambda_0 << ", and lambda_1 = " << lambda_1 << std::endl;
 
   Population pop0(init_parent_number);
   pop0.reproduction(lambda_0);
@@ -207,13 +208,13 @@ int main(int argc, char *argv[])
 
   //pop1.print_family_id();
 
-  std::cerr << "-----------------------" << std::endl;
+  // std::cerr << "-----------------------" << std::endl;
 
   //std::bernoulli_distribution dist(0.5);
   //std::cout << dist(rng) << std::endl;
   //std::cout << "migration_rate = " << migration_rate << std::endl;
 
-  end = std::chrono::system_clock::now();
-  double elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end-start).count();
-  std::cerr << "elapsed_time = " << elapsed_time/1000/1000 << " seconds" << std::endl;
+  // end = std::chrono::system_clock::now();
+  // double elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end-start).count();
+  // std::cerr << "elapsed_time = " << elapsed_time/1000/1000 << " seconds" << std::endl;
 }
