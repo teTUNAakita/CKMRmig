@@ -6,8 +6,8 @@ options(readr.show_progress = FALSE)
 init_parent_pair_number = 500
 sampled_number = 30
 migration_rate = 0.3
-lambda_1 = 5
-lambda_2 = 5
+lambda_1 = 3
+lambda_2 = 10
 REP = 1000
 m = M = PHS = MHS = rep(NA, REP)
 INLINE = paste("./a.out",
@@ -29,7 +29,7 @@ for (rep in 1:REP) {
   MHS[rep] = MHS_tmp
   m[rep] = 2 * init_parent_pair_number * (PHS_tmp + MHS_tmp) / 4 / sampled_number / sampled_number
 }
-
+cat("Estimated mig rate: ",mean(m), ", True mig rate: ", migration_rate)
 end.time = proc.time()
 (end.time-start.time)
 

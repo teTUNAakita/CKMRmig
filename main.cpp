@@ -13,19 +13,30 @@ make
 #include <algorithm>
 #include <numeric>
 
+std::random_device rd;
+const auto seed = rd();
+std::mt19937 rng(seed);
+std::poisson_distribution<size_t> poipoi(3);
+//std::mt19937 rng(1235);
+//std::bernoulli_distribution bernoulli50(0.5);
+
 class Individual
 {
 private:
   static int LATEST_ID;
   const int id;
+  const int lambda;
   const std::pair<int, int> parents_ids;
 public:
-  Individual() : id(LATEST_ID++) {
+  Individual() : id(LATEST_ID++), lambda(poipoi(rng)) {
   };
-  Individual(const int father_id, const int mother_id) : id(LATEST_ID++), parents_ids(father_id, mother_id) {
+  Individual(const int father_id, const int mother_id) : id(LATEST_ID++), lambda(0), parents_ids(father_id, mother_id) {
   };
   int get_id() const {
     return id;
+  }
+  int get_lambda() const {
+    return lambda;
   }
   const std::pair<int, int> get_parent_ids() const {
     return parents_ids;
@@ -41,11 +52,7 @@ std::ostream& operator<<(std::ostream& ost, const Individual& x) {
     return x.write(ost);
 }
 
-std::random_device rd;
-const auto seed = rd();
-std::mt19937 rng(seed);
-//std::mt19937 rng(1235);
-//std::bernoulli_distribution bernoulli50(0.5);
+
 
 class Population
 {
@@ -53,14 +60,11 @@ private:
   std::vector<Individual> fathers;
   std::vector<Individual> mothers;
   std::vector<Individual> children;
-  bool debug = false;
+  bool debug = true;
   bool print_samples_flag = false;
 public:
   Population(const size_t init_parent_number) :
   fathers(init_parent_number), mothers(init_parent_number) {
-  };
-  Population(std::vector<size_t> migratnt_indices) :
-  fathers(migratnt_indices.size()) {
   };
   void reproduction(const double lambda) {
     const size_t father_number = fathers.size();
@@ -70,7 +74,7 @@ public:
     if (debug) std::cerr << "fathers.size() = " << fathers.size() << ", mothers.size() = " << mothers.size() << std::endl;
     for (size_t i = 0; i < mother_number; ++i) {
       const size_t child_number = poisson(rng);
-      if (debug) std::cerr << "child_number = " << child_number << std::endl;
+      if (debug) std::cerr << "child_number = " << child_number << ", lambda = " << mothers[i].get_lambda() << std::endl;
       for (size_t j = 0; j < child_number; ++j) {
         const size_t father_index = uniform_int(rng);
         children.push_back( Individual( fathers[father_index].get_id(), mothers[i].get_id() ) );
