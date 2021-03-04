@@ -13,16 +13,31 @@ make
 #include <algorithm>
 #include <numeric>
 
+std::random_device rd;
+const auto seed = rd();
+std::mt19937 rng(seed);
+
 class Individual
 {
 private:
   static int LATEST_ID;
   const int id;
   const std::pair<int, int> parents_ids;
+  std::exponential_distribution<> exp_dist; // exponentioal is desired.
+  const double lambda;
 public:
-  Individual() : id(LATEST_ID++) {
+  Individual(const double lambda_mean) :
+  id(LATEST_ID++),
+  exp_dist(1/lambda_mean),
+  lambda(exp_dist(rng)) {
+    std::cout << lambda_mean  << "\t" << lambda << std::endl;
+    //std::cout << parents_ids.first << "\t" << parents_ids.second << std::endl; // parents_ids = (0,0)
   };
-  Individual(const int father_id, const int mother_id) : id(LATEST_ID++), parents_ids(father_id, mother_id) {
+  Individual(const int father_id, const int mother_id) :
+  id(LATEST_ID++),
+  parents_ids(father_id, mother_id),
+  lambda(0) {
+    //std::cout << lambda << std::endl;
   };
   int get_id() const {
     return id;
@@ -34,16 +49,16 @@ public:
     std::cout << id << "\t" << parents_ids.first  << "\t" << parents_ids.second << std::endl;
   }
   std::ostream& write(std::ostream& ost) const {
-      return ost << id << "\t" << parents_ids.first << "\t" << parents_ids.second;
+    return ost << id << "\t" << parents_ids.first << "\t" << parents_ids.second;
   }
 };
 std::ostream& operator<<(std::ostream& ost, const Individual& x) {
-    return x.write(ost);
+  return x.write(ost);
 }
 
-std::random_device rd;
-const auto seed = rd();
-std::mt19937 rng(seed);
+//std::random_device rd;
+//const auto seed = rd();
+//std::mt19937 rng(seed);
 //std::mt19937 rng(1235);
 //std::bernoulli_distribution bernoulli50(0.5);
 
@@ -56,12 +71,14 @@ private:
   bool debug = false;
   bool print_samples_flag = false;
 public:
-  Population(const size_t init_parent_number) :
-  fathers(init_parent_number), mothers(init_parent_number) {
-  };
-  Population(std::vector<size_t> migratnt_indices) :
-  fathers(migratnt_indices.size()) {
-  };
+  Population(const size_t init_parent_number, const double lambda_mean) {
+    for(size_t i = 0; i < init_parent_number; i++) {
+      fathers.push_back(Individual(lambda_mean));
+      mothers.push_back(Individual(lambda_mean));
+    }
+  }
+  //fathers(init_parent_number), mothers(init_parent_number) {
+  //};
   void reproduction(const double lambda) {
     const size_t father_number = fathers.size();
     const size_t mother_number = mothers.size();
@@ -99,10 +116,10 @@ public:
     filename = std::to_string(rep) + filename;
     std::ofstream writing_sample;
     if (print_samples_flag) {
-        writing_sample.open(filename, std::ios::app);
+      writing_sample.open(filename, std::ios::app);
     } else {
-        writing_sample.open(filename, std::ios::out);
-        print_samples_flag = true;
+      writing_sample.open(filename, std::ios::out);
+      print_samples_flag = true;
     }
     for (const auto& i: sampled_ids) {
       if (debug) children[i].print_parents_id();
@@ -172,16 +189,16 @@ int main(int argc, char *argv[])
   const size_t init_parent_number = atoi(argv[1]); //1
   const size_t sampled_number = atoi(argv[2]); //2
   const double migration_rate = atof(argv[3]); //3
-  const double lambda_0 = atof(argv[4]);//4
-  const double lambda_1 = atof(argv[5]);//5
+  const double lambda_mean_0 = atof(argv[4]);//4
+  const double lambda_mean_1 = atof(argv[5]);//5
 
-  std::cout << "INPUT: parent_pair_size = " << init_parent_number << ", sampled_number = " << sampled_number << ", migration_rate = " << migration_rate << ", lambda_0 = " << lambda_0 << ", and lambda_1 = " << lambda_1 << std::endl;
+  std::cout << "INPUT: parent_pair_size = " << init_parent_number << ", sampled_number = " << sampled_number << ", migration_rate = " << migration_rate << ", lambda_mean_0 = " << lambda_mean_0 << ", and lambda_mean_1 = " << lambda_mean_1 << std::endl;
 
-  Population pop0(init_parent_number);
-  pop0.reproduction(lambda_0);
+  Population pop0(init_parent_number, lambda_mean_0);
+  pop0.reproduction(lambda_mean_0);
   pop0.sampling(sampled_number, 0);
 
-  Population pop1(init_parent_number);
+  Population pop1(init_parent_number, lambda_mean_1);
   ////pop1.reproduction(lambda_1); // must exclude these offspring from sampling
 
   std::vector<Individual> tmp_migrant_01_fathers = pop0.remove_migrant_fathers(migration_rate);
@@ -202,7 +219,7 @@ int main(int argc, char *argv[])
   //pop1.print_family_size();
 
   ////pop0.reproduction(lambda_0);
-  pop1.reproduction(lambda_1);
+  pop1.reproduction(lambda_mean_1);
   pop1.sampling(sampled_number, 1);
 
   //pop1.print_family_id();
