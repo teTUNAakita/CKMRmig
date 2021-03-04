@@ -17,6 +17,13 @@ std::random_device rd;
 const auto seed = rd();
 std::mt19937 rng(seed);
 
+template <class T> inline
+T cumsum(const T& v) {
+  T result(v.size());
+  std::partial_sum(v.begin(), v.end(), result.begin());
+  return result;
+}
+
 class Individual
 {
 private:
@@ -74,9 +81,16 @@ public:
       mothers.push_back(Individual(lambda_mean));
     }
   }
+  size_t roulette_selection(const std::vector<double> cumsum_weight) const {
+      std::uniform_real_distribution<> uniform_real(0, cumsum_weight.back());
+      double r = uniform_real(rng);
+      auto it = std::upper_bound(cumsum_weight.begin(), cumsum_weight.end(), r);
+      return (it - cumsum_weight.begin());
+  }
   void reproduction() {
     const size_t father_number = fathers.size();
     const size_t mother_number = mothers.size();
+    std::vector<double> fathers_lambda(father_number);
     std::uniform_int_distribution<size_t> uniform_int(0, father_number - 1);
     //std::poisson_distribution<size_t> poisson(lambda);
     if (debug) std::cerr << "fathers.size() = " << fathers.size() << ", mothers.size() = " << mothers.size() << std::endl;
@@ -85,8 +99,25 @@ public:
       const size_t child_number = poi_dist(rng);
       //std::cout << mothers[i].get_lambda() << std::endl;
       if (debug) std::cerr << "child_number = " << child_number << std::endl;
-      for (size_t j = 0; j < child_number; ++j) {
-        const size_t father_index = uniform_int(rng);
+      for (size_t i = 0; i < father_number; ++i) {
+        fathers_lambda[i] = fathers[i].get_lambda();
+      }
+      const std::vector<double> cumsum_fathers_lambda = cumsum(fathers_lambda);
+      for (size_t i = 0; i < fathers.size(); ++i) {
+        if (debug) std::cout << "cumsum_fathers_lambda[i] = " << cumsum_fathers_lambda[i] << std::endl;
+      }
+      for (size_t i = 0; i < child_number; ++i) {
+        std::uniform_real_distribution<> uniform_real(0, cumsum_fathers_lambda.back());
+        double r = uniform_real(rng);
+        if (debug) std::cout << "r = " << r << std::endl;
+        size_t father_index = 0;
+        while (father_index < cumsum_fathers_lambda.size()) {
+          if(r < cumsum_fathers_lambda[father_index]) {
+            if (debug) std::cout << "father_id: " << father_index << std::endl;
+            break ;
+          }
+          father_index++;
+        }
         children.push_back( Individual( fathers[father_index].get_id(), mothers[i].get_id() ) );
         if (debug) children.back().print_parents_id();
       }
