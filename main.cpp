@@ -23,14 +23,14 @@ private:
   static int LATEST_ID;
   const int id;
   const std::pair<int, int> parents_ids;
-  std::exponential_distribution<> exp_dist; // exponentioal is desired.
+  std::exponential_distribution<> exp_dist;
   const double lambda;
 public:
   Individual(const double lambda_mean) :
   id(LATEST_ID++),
   exp_dist(1/lambda_mean),
   lambda(exp_dist(rng)) {
-    std::cout << lambda_mean  << "\t" << lambda << std::endl;
+    //std::cout << lambda_mean  << "\t" << lambda << std::endl;
     //std::cout << parents_ids.first << "\t" << parents_ids.second << std::endl; // parents_ids = (0,0)
   };
   Individual(const int father_id, const int mother_id) :
@@ -41,6 +41,9 @@ public:
   };
   int get_id() const {
     return id;
+  }
+  double get_lambda() const {
+    return lambda;
   }
   const std::pair<int, int> get_parent_ids() const {
     return parents_ids;
@@ -55,12 +58,6 @@ public:
 std::ostream& operator<<(std::ostream& ost, const Individual& x) {
   return x.write(ost);
 }
-
-//std::random_device rd;
-//const auto seed = rd();
-//std::mt19937 rng(seed);
-//std::mt19937 rng(1235);
-//std::bernoulli_distribution bernoulli50(0.5);
 
 class Population
 {
@@ -77,16 +74,16 @@ public:
       mothers.push_back(Individual(lambda_mean));
     }
   }
-  //fathers(init_parent_number), mothers(init_parent_number) {
-  //};
-  void reproduction(const double lambda) {
+  void reproduction() {
     const size_t father_number = fathers.size();
     const size_t mother_number = mothers.size();
     std::uniform_int_distribution<size_t> uniform_int(0, father_number - 1);
-    std::poisson_distribution<size_t> poisson(lambda);
+    //std::poisson_distribution<size_t> poisson(lambda);
     if (debug) std::cerr << "fathers.size() = " << fathers.size() << ", mothers.size() = " << mothers.size() << std::endl;
     for (size_t i = 0; i < mother_number; ++i) {
-      const size_t child_number = poisson(rng);
+      std::poisson_distribution<> poi_dist(mothers[i].get_lambda());
+      const size_t child_number = poi_dist(rng);
+      //std::cout << mothers[i].get_lambda() << std::endl;
       if (debug) std::cerr << "child_number = " << child_number << std::endl;
       for (size_t j = 0; j < child_number; ++j) {
         const size_t father_index = uniform_int(rng);
@@ -195,7 +192,7 @@ int main(int argc, char *argv[])
   std::cout << "INPUT: parent_pair_size = " << init_parent_number << ", sampled_number = " << sampled_number << ", migration_rate = " << migration_rate << ", lambda_mean_0 = " << lambda_mean_0 << ", and lambda_mean_1 = " << lambda_mean_1 << std::endl;
 
   Population pop0(init_parent_number, lambda_mean_0);
-  pop0.reproduction(lambda_mean_0);
+  pop0.reproduction();
   pop0.sampling(sampled_number, 0);
 
   Population pop1(init_parent_number, lambda_mean_1);
@@ -219,7 +216,7 @@ int main(int argc, char *argv[])
   //pop1.print_family_size();
 
   ////pop0.reproduction(lambda_0);
-  pop1.reproduction(lambda_mean_1);
+  pop1.reproduction();
   pop1.sampling(sampled_number, 1);
 
   //pop1.print_family_id();
