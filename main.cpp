@@ -2,6 +2,7 @@
 make
 ./a.out init_parent_pair_number sampled_number migration_rate lambda_1 lambda_2
 ./a.out 100 20 0.2 3 10
+./a.out 10 3 0.2 3 10
 */
 #include <iostream>
 #include <fstream>
@@ -29,7 +30,6 @@ class Individual
 private:
   static int LATEST_ID;
   const int id;
-  const int lambda;
   const std::pair<int, int> parents_ids;
   std::exponential_distribution<> exp_dist;
   const double lambda;
@@ -38,6 +38,7 @@ public:
   id(LATEST_ID++),
   exp_dist(1/lambda_mean),
   lambda(exp_dist(rng)) {
+    std::cout << "id: "  << id << std::endl;
     //std::cout << lambda_mean  << "\t" << lambda << std::endl;
     //std::cout << parents_ids.first << "\t" << parents_ids.second << std::endl; // parents_ids = (0,0)
   };
@@ -100,21 +101,32 @@ public:
       const size_t child_number = poi_dist(rng);
       //std::cout << mothers[i].get_lambda() << std::endl;
       if (debug) std::cerr << "child_number = " << child_number << std::endl;
-      for (size_t i = 0; i < father_number; ++i) {
-        fathers_lambda[i] = fathers[i].get_lambda();
+      for (size_t j = 0; j < father_number; ++j) {
+        fathers_lambda[j] = fathers[j].get_lambda();
       }
       const std::vector<double> cumsum_fathers_lambda = cumsum(fathers_lambda);
-      for (size_t i = 0; i < fathers.size(); ++i) {
-        if (debug) std::cout << "cumsum_fathers_lambda[i] = " << cumsum_fathers_lambda[i] << std::endl;
+      for (size_t j = 0; j < fathers.size(); ++j) {
+        //if (debug) std::cout << "cumsum_fathers_lambda[j] = " << cumsum_fathers_lambda[j] << std::endl;
       }
-      for (size_t i = 0; i < child_number; ++i) {
+
+
+
+
+
+
+
+
+
+      for (size_t j = 0; j < child_number; ++i) {
         std::uniform_real_distribution<> uniform_real(0, cumsum_fathers_lambda.back());
         double r = uniform_real(rng);
-        if (debug) std::cout << "r = " << r << std::endl;
+        //if (debug) std::cout << "r = " << r << std::endl;
         size_t father_index = 0;
         while (father_index < cumsum_fathers_lambda.size()) {
           if(r < cumsum_fathers_lambda[father_index]) {
-            if (debug) std::cout << "father_id: " << father_index << std::endl;
+            if (debug) {
+              std::cout << "father_id: " << father_index << "\tfathers[father_index].get_id(): " << fathers[father_index].get_id() << std::endl;
+            }
             break ;
           }
           father_index++;
@@ -123,6 +135,7 @@ public:
         if (debug) children.back().print_parents_id();
       }
     }
+    if (debug) std::cerr << "fathers.size() = " << fathers.size() << ", mothers.size() = " << mothers.size() << std::endl;
   }
   void print_family_size() {
     std::cerr << "fathers.size() = " << fathers.size() << ", mothers.size() = " << mothers.size() << ", children.size() = " << children.size() << std::endl;
@@ -209,8 +222,8 @@ int Individual::LATEST_ID = 0;
 
 int main(int argc, char *argv[])
 {
-  // std::chrono::system_clock::time_point start, end;
-  // start = std::chrono::system_clock::now();
+  std::chrono::system_clock::time_point start, end;
+  start = std::chrono::system_clock::now();
   if ( argc != 6 ) {
     fprintf(stderr,"Command line arguments are incorrect\n");
     return 0;
@@ -253,13 +266,13 @@ int main(int argc, char *argv[])
 
   //pop1.print_family_id();
 
-  // std::cerr << "-----------------------" << std::endl;
+  std::cerr << "-----------------------" << std::endl;
 
   //std::bernoulli_distribution dist(0.5);
   //std::cout << dist(rng) << std::endl;
   //std::cout << "migration_rate = " << migration_rate << std::endl;
 
-  // end = std::chrono::system_clock::now();
-  // double elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end-start).count();
-  // std::cerr << "elapsed_time = " << elapsed_time/1000/1000 << " seconds" << std::endl;
+  end = std::chrono::system_clock::now();
+  double elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end-start).count();
+  std::cerr << "elapsed_time = " << elapsed_time/1000/1000 << " seconds" << std::endl;
 }
