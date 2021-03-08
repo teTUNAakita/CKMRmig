@@ -38,7 +38,7 @@ public:
   id(LATEST_ID++),
   exp_dist(1/lambda_mean),
   lambda(exp_dist(rng)) {
-    std::cout << "id: "  << id << std::endl;
+    //std::cout << "id: "  << id << std::endl;
     //std::cout << lambda_mean  << "\t" << lambda << std::endl;
     //std::cout << parents_ids.first << "\t" << parents_ids.second << std::endl; // parents_ids = (0,0)
   };
@@ -74,7 +74,7 @@ private:
   std::vector<Individual> fathers;
   std::vector<Individual> mothers;
   std::vector<Individual> children;
-  bool debug = true;
+  bool debug = false;
   bool print_samples_flag = false;
 public:
   Population(const size_t init_parent_number, const double lambda_mean) {
@@ -96,28 +96,24 @@ public:
     std::uniform_int_distribution<size_t> uniform_int(0, father_number - 1);
     //std::poisson_distribution<size_t> poisson(lambda);
     if (debug) std::cerr << "fathers.size() = " << fathers.size() << ", mothers.size() = " << mothers.size() << std::endl;
+
+    for (size_t i = 0; i < father_number; ++i) {
+      fathers_lambda[i] = fathers[i].get_lambda();
+    }
+    const std::vector<double> cumsum_fathers_lambda = cumsum(fathers_lambda);
+    for (size_t i = 0; i < fathers.size(); ++i) {
+      //if (debug) std::cout << "cumsum_fathers_lambda[i] = " << cumsum_fathers_lambda[i] << std::endl;
+    }
+
     for (size_t i = 0; i < mother_number; ++i) {
+      if (debug) std::cout << "mother_id: " << i << "\tmothers[i].get_id(): " << mothers[i].get_id() << std::endl;
       std::poisson_distribution<> poi_dist(mothers[i].get_lambda());
       const size_t child_number = poi_dist(rng);
       //std::cout << mothers[i].get_lambda() << std::endl;
       if (debug) std::cerr << "child_number = " << child_number << std::endl;
-      for (size_t j = 0; j < father_number; ++j) {
-        fathers_lambda[j] = fathers[j].get_lambda();
-      }
-      const std::vector<double> cumsum_fathers_lambda = cumsum(fathers_lambda);
-      for (size_t j = 0; j < fathers.size(); ++j) {
-        //if (debug) std::cout << "cumsum_fathers_lambda[j] = " << cumsum_fathers_lambda[j] << std::endl;
-      }
 
 
-
-
-
-
-
-
-
-      for (size_t j = 0; j < child_number; ++i) {
+      for (size_t j = 0; j < child_number; ++j) {
         std::uniform_real_distribution<> uniform_real(0, cumsum_fathers_lambda.back());
         double r = uniform_real(rng);
         //if (debug) std::cout << "r = " << r << std::endl;
@@ -134,8 +130,9 @@ public:
         children.push_back( Individual( fathers[father_index].get_id(), mothers[i].get_id() ) );
         if (debug) children.back().print_parents_id();
       }
+
     }
-    if (debug) std::cerr << "fathers.size() = " << fathers.size() << ", mothers.size() = " << mothers.size() << std::endl;
+    //if (debug) std::cerr << "fathers.size() = " << fathers.size() << ", mothers.size() = " << mothers.size() << std::endl;
   }
   void print_family_size() {
     std::cerr << "fathers.size() = " << fathers.size() << ", mothers.size() = " << mothers.size() << ", children.size() = " << children.size() << std::endl;
@@ -238,6 +235,9 @@ int main(int argc, char *argv[])
 
   Population pop0(init_parent_number, lambda_mean_0);
   pop0.reproduction();
+
+  //return 0;
+
   pop0.sampling(sampled_number, 0);
 
   Population pop1(init_parent_number, lambda_mean_1);
