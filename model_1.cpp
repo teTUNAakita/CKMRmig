@@ -1,7 +1,7 @@
 /*
 g++ model_1.cpp -Wall -Wextra -o3 -std=c++17 -o model_1
-./model_1 init_parent_pair_number sampled_number migration_number lambda_1 lambda_2
-./model_1 10 3 2 3 10
+./model_1 init_parent_pair_number sampled_number migration_number lambda_1 lambda_2 flag_constant
+./model_1 10 3 2 3 5 0
 */
 #include <iostream>
 #include <fstream>
@@ -73,6 +73,22 @@ public:
       double r = uniform_real(rng);
       auto it = std::upper_bound(cumsum_weight.begin(), cumsum_weight.end(), r);
       return (it - cumsum_weight.begin());
+  }
+  void reproduction_constant(const double lambda) {
+    const size_t father_number = fathers.size();
+    const size_t mother_number = mothers.size();
+    std::uniform_int_distribution<size_t> uniform_int(0, father_number - 1);
+    std::poisson_distribution<size_t> poisson(lambda);
+    if (debug) std::cerr << "fathers.size() = " << fathers.size() << ", mothers.size() = " << mothers.size() << std::endl;
+    for (size_t i = 0; i < mother_number; ++i) {
+      const size_t child_number = poisson(rng);
+      if (debug) std::cerr << "child_number = " << child_number << std::endl;
+      for (size_t j = 0; j < child_number; ++j) {
+        const size_t father_index = uniform_int(rng);
+        children.push_back( Individual( fathers[father_index].get_id(), mothers[i].get_id() ) );
+        if (debug) children.back().print_parents_id();
+      }
+    }
   }
   void reproduction(const double lambda_mean) {
     const size_t father_number = fathers.size();
@@ -171,7 +187,7 @@ int main(int argc, char *argv[])
 {
   std::chrono::system_clock::time_point start, end;
   start = std::chrono::system_clock::now();
-  if ( argc != 6 ) {
+  if ( argc != 7 ) {
     fprintf(stderr,"Command line arguments are incorrect\n");
     return 0;
   }
@@ -180,6 +196,7 @@ int main(int argc, char *argv[])
   const size_t migrant_number = atof(argv[3]); //3
   const double lambda_mean_0 = atof(argv[4]);//4
   const double lambda_mean_1 = atof(argv[5]);//5
+  const int flag_constant = atof(argv[6]);//6
   if ( migrant_number > init_parent_number ) {
     fprintf(stderr,"migrant_number must be smaller than init_parent_number\n");
     return 0;
@@ -187,16 +204,22 @@ int main(int argc, char *argv[])
   if (debug) std::cout << "INPUT: parent_pair_size = " << init_parent_number << ", sampled_number = " << sampled_number << ", migrant_number = " << migrant_number << ", lambda_mean_0 = " << lambda_mean_0 << ", and lambda_mean_1 = " << lambda_mean_1 << std::endl;
 
   Population pop0(init_parent_number);
-  pop0.reproduction(lambda_mean_0);
+  if (flag_constant) {
+    pop0.reproduction_constant(lambda_mean_0);
+  } else{
+    pop0.reproduction(lambda_mean_0);
+  }
   pop0.sampling(sampled_number, 0);
 
   Population pop1(init_parent_number - migrant_number);
   pop1.migration(pop0, migrant_number);
-  pop1.reproduction(lambda_mean_1);
+  if (flag_constant) {
+    pop1.reproduction_constant(lambda_mean_1);
+  } else{
+    pop1.reproduction(lambda_mean_1);
+  }
   pop1.sampling(sampled_number, 1);
-
   //pop1.print_family_id();
-
   if (debug) std::cerr << "-----------------------" << std::endl;
   end = std::chrono::system_clock::now();
   double elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end-start).count();
