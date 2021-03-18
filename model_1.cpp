@@ -1,8 +1,7 @@
 /*
-make
-./a.out init_parent_pair_number sampled_number migration_rate lambda_1 lambda_2
-./a.out 100 20 0.2 3 10
-./a.out 10 3 0.2 3 10
+g++ model_1.cpp -Wall -Wextra -o3 -std=c++17 -o model_1
+./model_1 init_parent_pair_number sampled_number migration_rate lambda_1 lambda_2
+./model_1 10 3 0.2 3 10
 */
 #include <iostream>
 #include <fstream>
@@ -31,28 +30,16 @@ private:
   static int LATEST_ID;
   const int id;
   const std::pair<int, int> parents_ids;
-  std::exponential_distribution<> exp_dist;
-  const double lambda;
 public:
-  Individual(const double lambda_mean) :
-  id(LATEST_ID++),
-  exp_dist(1/lambda_mean),
-  lambda(exp_dist(rng)) {
-    //std::cout << "id: "  << id << std::endl;
-    //std::cout << lambda_mean  << "\t" << lambda << std::endl;
-    //std::cout << parents_ids.first << "\t" << parents_ids.second << std::endl; // parents_ids = (0,0)
+  Individual() :
+  id(LATEST_ID++){
   };
   Individual(const int father_id, const int mother_id) :
   id(LATEST_ID++),
-  parents_ids(father_id, mother_id),
-  lambda(0) {
-    //std::cout << lambda << std::endl;
+  parents_ids(father_id, mother_id) {
   };
   int get_id() const {
     return id;
-  }
-  double get_lambda() const {
-    return lambda;
   }
   const std::pair<int, int> get_parent_ids() const {
     return parents_ids;
@@ -77,37 +64,34 @@ private:
   bool debug = false;
   bool print_samples_flag = false;
 public:
-  Population(const size_t init_parent_number, const double lambda_mean) {
-    for(size_t i = 0; i < init_parent_number; i++) { // father id and mother id appear alternatively.
-      fathers.push_back(Individual(lambda_mean));
-      mothers.push_back(Individual(lambda_mean));
-    }
-  }
+  Population(const size_t init_parent_number) :
+  fathers(init_parent_number),
+  mothers(init_parent_number) {
+  };
   size_t roulette_selection(const std::vector<double> cumsum_weight) const {
       std::uniform_real_distribution<> uniform_real(0, cumsum_weight.back());
       double r = uniform_real(rng);
       auto it = std::upper_bound(cumsum_weight.begin(), cumsum_weight.end(), r);
       return (it - cumsum_weight.begin());
   }
-  void reproduction() {
+  void reproduction(const double lambda_mean) {
     const size_t father_number = fathers.size();
     const size_t mother_number = mothers.size();
     std::vector<double> fathers_lambda(father_number);
-    std::uniform_int_distribution<size_t> uniform_int(0, father_number - 1);
-    //std::poisson_distribution<size_t> poisson(lambda);
+    //std::uniform_int_distribution<size_t> uniform_int(0, father_number - 1);
+    std::exponential_distribution<> exponential(1/lambda_mean);
+    std::geometric_distribution<size_t> geometric(1/(1+lambda_mean)); // Poisson reproduction with pramater lambda following exponential (including 0)
     if (debug) std::cerr << "fathers.size() = " << fathers.size() << ", mothers.size() = " << mothers.size() << std::endl;
     for (size_t i = 0; i < father_number; ++i) {
-      fathers_lambda[i] = fathers[i].get_lambda();
+      fathers_lambda[i] = exponential(rng);
     }
     const std::vector<double> cumsum_fathers_lambda = cumsum(fathers_lambda);
-    for (size_t i = 0; i < fathers.size(); ++i) {
+    for (size_t i = 0; i < father_number; ++i) {
       //if (debug) std::cout << "cumsum_fathers_lambda[i] = " << cumsum_fathers_lambda[i] << std::endl;
     }
     for (size_t i = 0; i < mother_number; ++i) {
       if (debug) std::cout << "mother_id: " << i << "\tmothers[i].get_id(): " << mothers[i].get_id() << std::endl;
-      std::poisson_distribution<> poi_dist(mothers[i].get_lambda());
-      const size_t child_number = poi_dist(rng);
-      //std::cout << mothers[i].get_lambda() << std::endl;
+      const size_t child_number = geometric(rng);
       if (debug) std::cerr << "child_number = " << child_number << std::endl;
       for (size_t j = 0; j < child_number; ++j) {
         std::uniform_real_distribution<> uniform_real(0, cumsum_fathers_lambda.back());
@@ -153,6 +137,7 @@ public:
       writing_sample.open(filename, std::ios::app);
     } else {
       writing_sample.open(filename, std::ios::out);
+      writing_sample << "id\tfather\tmother" << "\n";
       print_samples_flag = true;
     }
     for (const auto& i: sampled_ids) {
@@ -211,7 +196,7 @@ public:
 };
 
 int Individual::LATEST_ID = 0;
-
+bool debug = false;
 int main(int argc, char *argv[])
 {
   std::chrono::system_clock::time_point start, end;
@@ -225,17 +210,22 @@ int main(int argc, char *argv[])
   const double migration_rate = atof(argv[3]); //3
   const double lambda_mean_0 = atof(argv[4]);//4
   const double lambda_mean_1 = atof(argv[5]);//5
+  /*
+  if ( migrant_numer > init_parent_number ) {
+    fprintf(stderr,"migrant_number must be smaller than init_parent_number\n");
+    return 0;
+  }
+  */
+  if (debug) std::cout << "INPUT: parent_pair_size = " << init_parent_number << ", sampled_number = " << sampled_number << ", migration_rate = " << migration_rate << ", lambda_mean_0 = " << lambda_mean_0 << ", and lambda_mean_1 = " << lambda_mean_1 << std::endl;
 
-  std::cout << "INPUT: parent_pair_size = " << init_parent_number << ", sampled_number = " << sampled_number << ", migration_rate = " << migration_rate << ", lambda_mean_0 = " << lambda_mean_0 << ", and lambda_mean_1 = " << lambda_mean_1 << std::endl;
-
-  Population pop0(init_parent_number, lambda_mean_0);
-  pop0.reproduction();
+  Population pop0(init_parent_number);
+  pop0.reproduction(lambda_mean_0);
 
   //return 0;
 
   pop0.sampling(sampled_number, 0);
 
-  Population pop1(init_parent_number, lambda_mean_1);
+  Population pop1(init_parent_number);
   ////pop1.reproduction(lambda_1); // must exclude these offspring from sampling
 
   std::vector<Individual> tmp_migrant_01_fathers = pop0.remove_migrant_fathers(migration_rate);
@@ -256,12 +246,12 @@ int main(int argc, char *argv[])
   //pop1.print_family_size();
 
   ////pop0.reproduction(lambda_0);
-  pop1.reproduction();
+  pop1.reproduction(lambda_mean_1);
   pop1.sampling(sampled_number, 1);
 
   //pop1.print_family_id();
 
-  std::cerr << "-----------------------" << std::endl;
+  if (debug) std::cerr << "-----------------------" << std::endl;
 
   //std::bernoulli_distribution dist(0.5);
   //std::cout << dist(rng) << std::endl;
@@ -269,5 +259,5 @@ int main(int argc, char *argv[])
 
   end = std::chrono::system_clock::now();
   double elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end-start).count();
-  std::cerr << "elapsed_time = " << elapsed_time/1000/1000 << " seconds" << std::endl;
+  if (debug) std::cerr << "elapsed_time = " << elapsed_time/1000/1000 << " seconds" << std::endl;
 }

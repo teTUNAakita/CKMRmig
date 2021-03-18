@@ -1,6 +1,6 @@
 setwd("~/git/CKMRmig/")
 rm(list=ls())
-library(tidyverse)
+#library(tidyverse)
 start.time = proc.time()
 options(readr.show_progress = FALSE)
 init_parent_pair_number = 500
@@ -8,15 +8,15 @@ sampled_number = 30
 migration_rate = 0.3
 lambda_1 = 3
 lambda_2 = 10
-REP = 1000
+REP = 100
 m = M = PHS = MHS = rep(NA, REP)
-INLINE = paste("./a.out",
+INLINE = paste("./model_1",
                init_parent_pair_number, 
                sampled_number,
                migration_rate,
                lambda_1,
                lambda_2, collapse = " ")
-system("make")
+system("g++ model_1.cpp -Wall -Wextra -o3 -std=c++17 -o model_1")
 for (rep in 1:REP) {
   system(INLINE)
   sample_0 = read.table("0sample.txt",sep = "\t",header = TRUE)
@@ -32,13 +32,3 @@ for (rep in 1:REP) {
 cat("Estimated mig rate: ",mean(m), ", True mig rate: ", migration_rate)
 end.time = proc.time()
 (end.time-start.time)
-
-if(0){
-  tmp1 = c(1,2,3,4,5)
-  tmp2 = c(2,3,6,7,3)
-  sum = 0
-  for (i in 1:5){
-    sum = sum + sum(tmp2 %in% tmp1[i])
-  }
-  sum
-}
