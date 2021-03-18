@@ -1,7 +1,7 @@
 /*
 g++ model_1.cpp -Wall -Wextra -o3 -std=c++17 -o model_1
-./model_1 init_parent_pair_number sampled_number migration_rate lambda_1 lambda_2
-./model_1 10 3 0.2 3 10
+./model_1 init_parent_pair_number sampled_number migration_number lambda_1 lambda_2
+./model_1 10 3 2 3 10
 */
 #include <iostream>
 #include <fstream>
@@ -61,7 +61,7 @@ private:
   std::vector<Individual> fathers;
   std::vector<Individual> mothers;
   std::vector<Individual> children;
-  bool debug = false;
+  bool debug = true;
   bool print_samples_flag = false;
 public:
   Population(const size_t init_parent_number) :
@@ -90,7 +90,7 @@ public:
       //if (debug) std::cout << "cumsum_fathers_lambda[i] = " << cumsum_fathers_lambda[i] << std::endl;
     }
     for (size_t i = 0; i < mother_number; ++i) {
-      if (debug) std::cout << "mother_id: " << i << "\tmothers[i].get_id(): " << mothers[i].get_id() << std::endl;
+      //if (debug) std::cout << "mother_id: " << i << "\tmothers[i].get_id(): " << mothers[i].get_id() << std::endl;
       const size_t child_number = geometric(rng);
       if (debug) std::cerr << "child_number = " << child_number << std::endl;
       for (size_t j = 0; j < child_number; ++j) {
@@ -101,7 +101,7 @@ public:
         while (father_index < cumsum_fathers_lambda.size()) {
           if(r < cumsum_fathers_lambda[father_index]) {
             if (debug) {
-              std::cout << "father_id: " << father_index << "\tfathers[father_index].get_id(): " << fathers[father_index].get_id() << std::endl;
+              //std::cout << "father_id: " << father_index << "\tfathers[father_index].get_id(): " << fathers[father_index].get_id() << std::endl;
             }
             break ;
           }
@@ -193,6 +193,25 @@ public:
       mothers.push_back(migrant_mothers[i]);
     }
   }
+  std::vector<size_t> return_migrant_ids(std::vector<Individual> migrant_parents, const size_t migrant_number) {
+    std::vector<size_t> migrant_ids;
+    std::vector<size_t> all_indices(migrant_parents.size());
+    std::iota(all_indices.begin(), all_indices.end(), 0);
+    std::sample(all_indices.begin(), all_indices.end(), std::back_inserter(migrant_ids), migrant_number, rng);
+    return migrant_ids;
+  }
+  void migration(Population pop, const size_t migrant_number) {
+    std::vector<size_t> migrant_father_ids = return_migrant_ids(pop.fathers, migrant_number);
+    std::vector<size_t> migrant_mother_ids = return_migrant_ids(pop.mothers, migrant_number);
+    for (const auto& i: migrant_father_ids) {
+      if (debug) std::cout << "migrant_father_ids: " << pop.fathers[i].get_id() << std::endl;
+      fathers.push_back(pop.fathers[i]);
+    }
+    for (const auto& i: migrant_mother_ids) {
+      if (debug) std::cout << "migrant_mother_ids: " << pop.mothers[i].get_id() << std::endl;
+      mothers.push_back(pop.mothers[i]);
+    }
+  }
 };
 
 int Individual::LATEST_ID = 0;
@@ -207,55 +226,27 @@ int main(int argc, char *argv[])
   }
   const size_t init_parent_number = atoi(argv[1]); //1
   const size_t sampled_number = atoi(argv[2]); //2
-  const double migration_rate = atof(argv[3]); //3
+  const size_t migrant_number = atof(argv[3]); //3
   const double lambda_mean_0 = atof(argv[4]);//4
   const double lambda_mean_1 = atof(argv[5]);//5
-  /*
   if ( migrant_numer > init_parent_number ) {
     fprintf(stderr,"migrant_number must be smaller than init_parent_number\n");
     return 0;
   }
-  */
-  if (debug) std::cout << "INPUT: parent_pair_size = " << init_parent_number << ", sampled_number = " << sampled_number << ", migration_rate = " << migration_rate << ", lambda_mean_0 = " << lambda_mean_0 << ", and lambda_mean_1 = " << lambda_mean_1 << std::endl;
+  if (debug) std::cout << "INPUT: parent_pair_size = " << init_parent_number << ", sampled_number = " << sampled_number << ", migrant_number = " << migrant_number << ", lambda_mean_0 = " << lambda_mean_0 << ", and lambda_mean_1 = " << lambda_mean_1 << std::endl;
 
   Population pop0(init_parent_number);
   pop0.reproduction(lambda_mean_0);
-
-  //return 0;
-
   pop0.sampling(sampled_number, 0);
 
-  Population pop1(init_parent_number);
-  ////pop1.reproduction(lambda_1); // must exclude these offspring from sampling
-
-  std::vector<Individual> tmp_migrant_01_fathers = pop0.remove_migrant_fathers(migration_rate);
-  std::vector<Individual> tmp_migrant_01_mothers = pop0.remove_migrant_mothers(migration_rate);
-  std::vector<Individual> tmp_migrant_10_fathers = pop1.remove_migrant_fathers(migration_rate);
-  std::vector<Individual> tmp_migrant_10_mothers = pop1.remove_migrant_mothers(migration_rate);
-
-  //std::cout << "tmp_migrant_01_fathers.size() = " << tmp_migrant_01_fathers.size() << std::endl;
-  //std::cout << "tmp_migrant_01_mothers.size() = " << tmp_migrant_01_mothers.size() << std::endl;
-  //std::cout << "tmp_migrant_10_fathers.size() = " << tmp_migrant_10_fathers.size() << std::endl;
-  //std::cout << "tmp_migrant_10_mothers.size() = " << tmp_migrant_10_mothers.size() << std::endl;
-
-  pop0.add_migrant_fathers(tmp_migrant_10_fathers);
-  pop0.add_migrant_mothers(tmp_migrant_10_mothers);
-  //pop0.print_family_size();
-  pop1.add_migrant_fathers(tmp_migrant_01_fathers);
-  pop1.add_migrant_mothers(tmp_migrant_01_mothers);
-  //pop1.print_family_size();
-
-  ////pop0.reproduction(lambda_0);
+  Population pop1(init_parent_number - migrant_number);
+  pop1.migration(pop0, migrant_number);
   pop1.reproduction(lambda_mean_1);
   pop1.sampling(sampled_number, 1);
 
   //pop1.print_family_id();
 
   if (debug) std::cerr << "-----------------------" << std::endl;
-
-  //std::bernoulli_distribution dist(0.5);
-  //std::cout << dist(rng) << std::endl;
-  //std::cout << "migration_rate = " << migration_rate << std::endl;
 
   end = std::chrono::system_clock::now();
   double elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end-start).count();
