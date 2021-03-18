@@ -5,15 +5,15 @@ start.time = proc.time()
 options(readr.show_progress = FALSE)
 init_parent_pair_number = 500
 sampled_number = 30
-migration_rate = 0.3
+migration_number = 100
 lambda_1 = 3
 lambda_2 = 10
 REP = 100
-m = M = PHS = MHS = rep(NA, REP)
+M = PHS = MHS = rep(NA, REP)
 INLINE = paste("./model_1",
                init_parent_pair_number, 
                sampled_number,
-               migration_rate,
+               migration_number,
                lambda_1,
                lambda_2, collapse = " ")
 system("g++ model_1.cpp -Wall -Wextra -o3 -std=c++17 -o model_1")
@@ -27,8 +27,8 @@ for (rep in 1:REP) {
     MHS_tmp = MHS_tmp + sum(sample_1$mother %in% sample_0$mother[i])
   }
   MHS[rep] = MHS_tmp
-  m[rep] = 2 * init_parent_pair_number * (PHS_tmp + MHS_tmp) / 4 / sampled_number / sampled_number
+  M[rep] = (2 * init_parent_pair_number)^2 * (PHS_tmp + MHS_tmp) / 4 / sampled_number / sampled_number
 }
-cat("Estimated mig rate: ",mean(m), ", True mig rate: ", migration_rate)
+cat("Estimated migrant_number: ",mean(M), ", True migrant_number: ", migration_number*2, "\n")
 end.time = proc.time()
 (end.time-start.time)

@@ -61,7 +61,7 @@ private:
   std::vector<Individual> fathers;
   std::vector<Individual> mothers;
   std::vector<Individual> children;
-  bool debug = true;
+  bool debug = false;
   bool print_samples_flag = false;
 public:
   Population(const size_t init_parent_number) :
@@ -110,7 +110,6 @@ public:
         children.push_back( Individual( fathers[father_index].get_id(), mothers[i].get_id() ) );
         if (debug) children.back().print_parents_id();
       }
-
     }
   }
   void print_family_size() {
@@ -143,54 +142,6 @@ public:
     for (const auto& i: sampled_ids) {
       if (debug) children[i].print_parents_id();
       writing_sample << children[i] << "\n";
-    }
-  }
-  std::vector<Individual> remove_migrant_fathers(const double migration_rate) {
-    std::vector<Individual> migrant_fathers;
-    std::vector<Individual> next_fathers;
-    std::bernoulli_distribution bernoulli_migration(migration_rate);
-    if (debug) std::cout << "before: fathers.size() =  " << fathers.size() << std::endl;
-    for (size_t i = 0; i < fathers.size(); ++i) {
-      //std::cout << "rng() = " << rng() << std::endl;
-      //std::cout << "bernoulli = " << bernoulli_migration(rng) << std::endl;
-      if (bernoulli_migration(rng)) {
-        migrant_fathers.push_back(fathers[i]);
-        if (debug) std::cout << "migrant_father_id: " << fathers[i].get_id() << std::endl;
-      } else {
-        next_fathers.push_back(fathers[i]);
-      }
-    }
-    fathers.swap(next_fathers);
-    next_fathers.clear();
-    if (debug) std::cout << "remained: fathers.size() =  " << fathers.size() << std::endl;
-    return migrant_fathers;
-  }
-  std::vector<Individual> remove_migrant_mothers(const double migration_rate) {
-    std::vector<Individual> migrant_mothers;
-    std::vector<Individual> next_mothers;
-    std::bernoulli_distribution bernoulli_migration(migration_rate);
-    if (debug) std::cout << "before: mothers.size() =  " << mothers.size() << std::endl;
-    for (size_t i = 0; i < mothers.size(); ++i) {
-      if (bernoulli_migration(rng)) {
-        migrant_mothers.push_back(mothers[i]);
-        if (debug) std::cout << "migrant_mother_id: " << mothers[i].get_id() << std::endl;
-      } else {
-        next_mothers.push_back(mothers[i]);
-      }
-    }
-    mothers.swap(next_mothers);
-    next_mothers.clear();
-    if (debug) std::cout << "remained: mothers.size() =  " << mothers.size() << std::endl;
-    return migrant_mothers;
-  }
-  void add_migrant_fathers(std::vector<Individual> migrant_fathers) {
-    for (size_t i = 0; i < migrant_fathers.size(); ++i) {
-      fathers.push_back(migrant_fathers[i]);
-    }
-  }
-  void add_migrant_mothers(std::vector<Individual> migrant_mothers) {
-    for (size_t i = 0; i < migrant_mothers.size(); ++i) {
-      mothers.push_back(migrant_mothers[i]);
     }
   }
   std::vector<size_t> return_migrant_ids(std::vector<Individual> migrant_parents, const size_t migrant_number) {
@@ -229,7 +180,7 @@ int main(int argc, char *argv[])
   const size_t migrant_number = atof(argv[3]); //3
   const double lambda_mean_0 = atof(argv[4]);//4
   const double lambda_mean_1 = atof(argv[5]);//5
-  if ( migrant_numer > init_parent_number ) {
+  if ( migrant_number > init_parent_number ) {
     fprintf(stderr,"migrant_number must be smaller than init_parent_number\n");
     return 0;
   }
@@ -247,7 +198,6 @@ int main(int argc, char *argv[])
   //pop1.print_family_id();
 
   if (debug) std::cerr << "-----------------------" << std::endl;
-
   end = std::chrono::system_clock::now();
   double elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end-start).count();
   if (debug) std::cerr << "elapsed_time = " << elapsed_time/1000/1000 << " seconds" << std::endl;
