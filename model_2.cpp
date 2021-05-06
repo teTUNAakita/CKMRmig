@@ -260,7 +260,7 @@ int main(int argc, char *argv[])
   pop1.sampling_child(sampled_child_number_1, 1);
   pop1.sampling_father(sampled_father_number_1, 1);
   pop1.sampling_mother(sampled_father_number_1, 1);
-  //pop1.print_family_id();
+  
   if (debug) std::cerr << "-----------------------" << std::endl;
   end = std::chrono::system_clock::now();
   double elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end-start).count();
