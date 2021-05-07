@@ -66,7 +66,7 @@ private:
   std::vector<Individual> fathers;
   std::vector<Individual> mothers;
   std::vector<Individual> children;
-  bool debug = true;
+  bool debug = false;
 public:
   Population(const size_t init_parent_number) :
   fathers(init_parent_number),
@@ -213,7 +213,7 @@ public:
 };
 
 int Individual::LATEST_ID = 0;
-bool debug = true;
+bool debug = false;
 int main(int argc, char *argv[])
 {
   std::chrono::system_clock::time_point start, end;
