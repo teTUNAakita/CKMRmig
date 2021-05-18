@@ -3,4 +3,4 @@
 .DS_Store
 /latex/*
 !/latex/ms.tex
-!/latex/.akita.bib
+!/latex/akita.bib
