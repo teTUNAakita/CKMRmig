@@ -2,4 +2,5 @@
 *.out
 .DS_Store
 /latex/*
-!/latex/.ms.tex
+!/latex/ms.tex
+!/latex/.akita.bib
