@@ -76,7 +76,7 @@ Estimating the number of migrants among the populations is essential for underst
 	$\pi_{\rm PO, bet}$					& Probability that a randomly selected pair (parent and offspring in the population 1 and 2, respectively) \\
 	                							& shares a parent-offspring relationship between the subpopulation 1 and 2\\
 									& \\
-	$\pi_{\rm HS, bet}$						& Probability that a randomly selected pair (two offspring in the population 1 and 2) \\
+	$\pi_{\rm HS, bet}$					& Probability that a randomly selected pair (two offspring in the population 1 and 2) \\
 	                							& shares a half-sibling relationship between the subpopulation 1 and 2\\
 					                			& \\
 	$\lambda_{i,1}, \lambda_{i,2}$			& Expected number of surviving offspring of parent $i$ at sampling in the subpopulation 1 and 2\\
@@ -98,6 +98,8 @@ Estimating the number of migrants among the populations is essential for underst
 \end{table}
 \renewcommand{\arraystretch}{1}
 
+\subsection{Assumptions}
+
 この章では，全てに共通するモデリングの仮定を述べた後，シンプルなモデルから徐々に複雑なモデルへと移行する。具体的には，最初にシンプルなモデルについて記述して，
 \begin{itemize}
   \item 移動が双方向
@@ -115,27 +117,95 @@ Estimating the number of migrants among the populations is essential for underst
 \end{enumerate}
 また，性成熟した個体を親と呼ぶことにする。
 
-\subsection{Basic model}
+\subsection{HSP-based model}
+
+{\bf \noindent Simple model: }
 
 \begin{align}
 \pi_{\rm HS,bet} &= \frac{2M}{N_{1}} \frac{2M}{N_{2}} \frac{1}{M} \nonumber\\
 &= \frac{4M}{N_{1}N_{2}}
-\label{B1}
+\label{HS-1}
 \end{align}
 
 \begin{align}
-\mathbb{E}[H_{\rm HS, bet}] &= \pi_{\rm HS,bet} n_{1} n_{2} \nonumber\\
-&= \frac{ 4n_{1} n_{2} M } { N_{1} N_{2} }
-\label{B2}
+\mathbb{E}[H_{\rm HS, bet}] &= \pi_{\rm HS,bet} n_{\rm O, 1} n_{\rm O, 2} \nonumber\\
+&= \frac{ 4 n_{\rm O, 1} n_{\rm O, 2} M } { N_{1} N_{2} }
+\label{HS-2}
 \end{align}
 
 \begin{align}
-\widehat{M} &= \frac{N_{2} H_{\rm obs} } {4n_{1}n_{2}}
-\label{B3}
+\widehat{M} &= \frac{N_{2} \widetilde{H}_{\rm HS, bet} } {4 n_{\rm O, 1} n_{\rm O, 2} }
+\label{HS-3}
+\end{align}
+
+{\bf \noindent Realistic model: }
+
+これまでは，母親による産卵数の偏りや，父親による放精成功の偏りは考慮していなかった。しかしながら，多回繁殖する魚類の場合，体サイズによって繁殖成功度は大きく変化すること，および体サイズの分布には偏りが存在することから，上記のシステマチックな偏りを考慮する必要があるだろう。例えば，集団に１個体の巨大魚（メス）がいて，その産卵数が他の個体よりも圧倒的に大きい場合，サンプルされる子供の母親はかなりの確率でその巨大魚になるだろう。
+
+サブ集団１（２）にいる親$i(j)$が残す子供の数を$k_{1,i}(k_{2,j})$としよう。$k_{1,i}(k_{2,j})$は期待値$\lambda_{1,i}(\lambda_{2,j})$の分布（例えば負の二項分布など）に従うとしよう。体サイズによる重み付けを考慮したランダム交配を仮定すれば，ペアがMHSである確率は
+\begin{align}
+\pi | _{\boldsymbol{k_1, k_2}} &= \frac{ 2\sum_{i=1}^M k_{1,i} } { \sum_{i=1}^{N_1} k_{1,i} } \frac{ 2\sum_{j=1}^M k_{2,j} } { \sum_{j=1}^{N_2} k_{2,j} } \frac{1}{M} 
+\end{align}
+と書くことができる。簡単のため，$\boldsymbol{k_1}=(k_{1,1}, \ldots, k_{1,M}, \ldots, k_{1,N_1})$および$\boldsymbol{k_2}=(k_{1,2}, \ldots, k_{1,M}, \ldots, k_{1,N_2})$と記載し，また親のidが$1$から$M$の個体が移動するとして，idを配置した。$k_{1,i}$は期待値$\lambda_{1,i}$に従う確率変数であることから，このMHSペア確率の平均をとると
+\begin{align}
+\pi | _{\boldsymbol{\lambda_1, \lambda_2}} &= \mathbb{E}[\pi | _{\boldsymbol{k_1, k_2}}] \nonumber\\
+&= \frac{4}{M} \mathbb{E}\left[\frac{ \sum_{i=1}^M k_{1,i} } { \sum_{i=1}^{N_1} k_{1,i} } \frac{ \sum_{j=1}^M k_{2,j} } { \sum_{j=1}^{N_2} k_{2,j} } \right]   \nonumber\\
+&\approx \frac{4}{M} \frac{ \mathbb{E}\left[ \sum_{i=1}^M k_{1,i} \sum_{j=1}^M k_{2,j} \right] } {\mathbb{E}\left[ \sum_{i=1}^{N_1} k_{1,i} \sum_{j=1}^{N_2} k_{2,j}\right]} \nonumber\\
+&= \frac{4}{M} \frac{ \sum_{i=1}^M \lambda_{1,i} \sum_{j=1}^M \lambda_{2,j} } {\sum_{i=1}^{N_1} \lambda_{1,i} \sum_{j=1}^{N_2} \lambda_{2,j}} 
+\end{align}
+と近似することができる。留意すべき点として，移動前の産卵数と移動後の産卵数は独立と仮定しているため，式中に$k_i^2$の項が出現せず，結果は期待値$\lambda_i$(産卵ポテンシャルと呼ぶことにしよう)だけに依存する。最初に述べたように，この個体ごとの産卵ポテンシャルはある分布に従うとしよう。例えば，高齢個体ほど体サイズが大きい場合などが想定される。また，この分布はサブ集団１とサブ集団２で異なっていて良い。すなわち，$\lambda_{1,i}$および$\lambda_{2,j}$がそれぞれ独立な確率変数であると考えて，MHSペア確率についてさらに平均をとると
+\begin{align}
+\pi &= \mathbb{E}[\pi | _{\boldsymbol{\lambda_1, \lambda_2}}] \nonumber\\ 
+&\approx \frac{4}{M} \frac{M^2 \mathbb{E}[\lambda_1 \lambda_2]}{N_1 N_2 \mathbb{E}[\lambda_1 \lambda_2]}\nonumber\\
+&= \frac{4M}{N_{1}N_{2}}
+\label{4-1}
+\end{align}
+と近似される。結局，繁殖ポテンシャルの不均一性を考慮しない結果（式\ref{3-1}）と同様になる。なお，$\boldsymbol{\lambda_1}=(\lambda_{1,1}, \ldots, \lambda_{1,N_1})$および$\boldsymbol{\lambda_2}=(\lambda_{1,2}, \ldots, \lambda_{1,N_2})$。この近似は、独立に決まる確率変数$\lambda_1$と$\lambda_2$について、$\mathbb{E}[\lambda_1/\lambda_2]=\mathbb{E}[\lambda_1] \times \mathbb{E}[1/\lambda_2] \approx 1$となる場合に成立するので、集団中に$\lambda$が極端に低い個体が存在する場合は成立しない（サブ集団１とサブ集団２でセットにして相対的な繁殖ポテンシャルを考えれば良いので、問題ないだろう）。
+
+\subsection{POP-based model}
+
+{\bf \noindent Simple model: }
+
+\begin{align}
+\pi_{\rm PO,bet} &= \frac{2M}{N_{1}} \frac{M}{N_{2}} \frac{1}{M} \nonumber\\
+&= \frac{2M}{N_{1}N_{2}}
+\label{PO-1}
+\end{align}
+
+\begin{align}
+\mathbb{E}[H_{\rm PO, bet}] &= \pi_{\rm PO,bet} n_{\rm O, 1} n_{\rm P, 2} \nonumber\\
+&= \frac{ 2 n_{\rm O, 1} n_{\rm P, 2} M } { N_{1} N_{2} }
+\label{PO-2}
+\end{align}
+
+\begin{align}
+\widehat{M} &= \frac{N_{2} \widetilde{H}_{\rm PO,bet} } {2 n_{\rm O, 1} n_{\rm P, 2} }
+\label{PO-3}
 \end{align}
 
 
+{\bf \noindent Realistic model: }
 
+\begin{comment}
+
+
+
+
+
+\subsection{Covariation between migration and reproductive potential}
+
+上のモデルでは，サブ集団１とサブ集団２を構成する親魚の繁殖ポテンシャルの分布をそれぞれ考慮していたが，移動個体の繁殖ポテンシャルの不均一性については考慮していなかった。最後に，移動した親魚の繁殖ポテンシャルについてもある分布に従うと仮定しよう。すなわち，$\lambda_{1,i}, \lambda_{2,j}, \lambda_{M,l}$をそれぞれ独立な確率変数とみなして，MHSペア確率を計算すると，
+\begin{align}
+\pi | _{\boldsymbol{\lambda_1, \lambda_2, \lambda_M}} &\approx \frac{4}{M} \frac{ \sum_{i=1}^M \lambda_{M,i} \sum_{j=1}^M \lambda_{M,j} } {\left(\sum_{i=1}^{M} \lambda_{M,i} + \sum_{i=M+1}^{N_1} \lambda_{1,i}\right) \left(\sum_{j=1}^{M} \lambda_{M,j} + \sum_{j=M+1}^{N_2} \lambda_{2,j}\right) } 
+\end{align}
+のようになり，$N_1$, $N_2$が$M$より十分に大きいと仮定すると、この期待値は以下のようになる，
+\begin{align}
+\pi &\approx \frac{4M}{N_{1}N_{2}} \mathbb{E}\left[ \frac{ \lambda_M^2 }{\lambda_1\lambda_2} \right]
+\label{5-1}
+\end{align}
+すなわち，繁殖ポテンシャルの効果がMHSペア確率に影響するようになる。
+
+\section{Application}\label{sec3}
 
 
 
@@ -230,6 +300,8 @@ $n_{1,t}, n_{2,t+1}$は，それぞれサブ集団１（$t$年）でのサンプ
 \label{5-1}
 \end{align}
 すなわち，繁殖ポテンシャルの効果がMHSペア確率に影響するようになる。
+
+\end{comment}
 
 \section{Application}\label{sec3}
 
