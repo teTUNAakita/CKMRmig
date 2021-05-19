@@ -11,7 +11,7 @@
 \newcommand\BibTeX{{\rmfamily B\kern-.05em \textsc{i\kern-.025em b}\kern-.08em
 T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
-\articletype{Manuscript intended for \emph{Evolutionary Applications}, \today}%
+\articletype{Manuscript intended for \emph{Methods in Ecology and Evolution}, \today}%
 
 \received{<day> <Month>, <year>}
 \revised{<day> <Month>, <year>}
@@ -54,6 +54,64 @@ Estimating the number of migrants among the populations is essential for underst
 応用例として，３年間にわたって２つのサブ集団からサンプルされた当歳魚から見出される半兄弟ペアをもとに，個体数・移動率・生存率を推定する枠組みを提示する。そこでは，同じサブ集団から年を跨いで見つかる半兄弟ペアに基づく関係式と，今回新たに開発した関係式を組み合わせて用いる。
 
 \section{Theory}\label{sec2}
+
+\renewcommand{\arraystretch}{0.6}
+\begin{table}[tb]
+\begin{center}
+   \caption[]{Table 1: The list of mathematical symbols employed in the main text}
+    \textbf {}\\[-4mm]
+    \begin{tabular}{llc} \hline
+       & & \\
+	$n_{\rm M,1}, n_{\rm M, 2}$			& Sample number of parents in the subpopulation 1 and 2\\ 
+		                						& \\
+	$n_{\rm O, 1}, n_{\rm O, 2}$			& Sample number of offspring in the subpopulation 1 and 2\\ 
+		                						& \\
+	$N_{1}, N_{2}$						& Number of parents in the subpopulation 1 and 2 when sampled\\
+									& offspring are born\\
+		                						& \\
+	$M$								& Number of migrants of parents from the subpopulation 1 to the subpopulation 2\\
+		                						& \\
+	$\pi_{\rm PO,1}, \pi_{\rm PO,2}$		& Probability that a randomly selected pair (mother and offspring) \\
+	                							& shares a mother-offspring relationship within the subpopulation 1 and 2\\
+									& \\
+	$\pi_{\rm PO,1}, \pi_{\rm PO,2}$		& Probability that a randomly selected pair (mother and offspring) \\
+	                							& shares a mother-offspring relationship within the subpopulation 1 and 2\\
+									& \\
+	$\pi_{\rm MS}$			& Probability that a randomly selected pair (two offspring) \\
+	                				& shares a maternal-sibling relationship\\
+	$N_{\rm b,m}$			& Effective breeding number of mothers in the population\\
+		                			& \\
+	$\phi$		 		& Overdispersion parameter under negative binomial \\
+						&reproduction\\
+		                			& \\
+	$\lambda_i$			& Expected number of surviving offspring of mother $i$\\
+						& at sampling\\
+		                			& \\	
+	$f(\lambda)$			& Frequency of $\lambda$ for all mothers.\\
+		                			& \\	
+	$c$					& Combined effect of deviation from the Poisson \\
+						&($=(1+\phi^{-1})\mathbb{E}[\lambda^2] / \mathbb{E}[\lambda]^2$)\\
+						& \\	
+	$k_i$				& Number of surviving offspring born to mother $i$\\ 
+	                				& \\
+	$H_{\rm MO}$			& Number of mother--offspring pairs observed in samples\\ 
+	                				& \\
+	$H_{\rm MS}$			& Number of maternal-sibling pairs observed in samples\\ 
+	                				& \\
+	$\pi_{\rm MO}$			& Probability that a randomly selected pair (mother and offspring) \\
+	                				& shares a mother-offspring relationship\\
+						& \\
+	$\pi_{\rm MS}$			& Probability that a randomly selected pair (two offspring) \\
+	                				& shares a maternal-sibling relationship\\
+						& \\
+	$b$					& Bias of $\widehat{N_{\rm e,m}/N_{\rm m} }$\\
+					        & & \\	                		
+	\hline
+    \end{tabular}
+    \label{symbols} 
+\end{center} 
+\end{table}
+\renewcommand{\arraystretch}{1}
 
 この章では，全てに共通するモデリングの仮定を述べた後，シンプルなモデルから徐々に複雑なモデルへと移行する。具体的には，最初にシンプルなモデルについて記述して，
 \begin{itemize}
