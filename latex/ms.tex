@@ -220,31 +220,30 @@ migration rateを推定すると考えると、
 \renewcommand{\arraystretch}{0.6}
 \begin{table}[tb]
 \begin{center}
-   \caption[]{Table 1: Summary of proposed estimators for input parameters}
+   \caption[]{Table 1: Summary of proposed estimators for required parameters and kinship types}
     \textbf {}\\[-0mm]
-    \begin{tabular}{cccccccc} \hline
+    \begin{tabular}{ccccccccc} \hline
        	\\
-	Estimator			& $N_1$ 		& $N_2$ 		& $n_{\rm O, 1}$	& $n_{\rm O, 2}$	& $n_{\rm P, 1}$	& $n_{\rm P, 2}$\\
+	Estimator			& $N_1$ 		& $N_2$ 		& $n_{\rm O, 1}$	& $n_{\rm O, 2}$	& $n_{\rm P, 1}$	& $n_{\rm P, 2}$	& Required kinship type\\
 	\\
 	\hline
 	\\
-	$\widehat{M_1}$	& given 		& given 		& \checkmark		& \checkmark \\ 
+	$\widehat{M_1}$	& given 		& given 		& \checkmark		& \checkmark 		&				&				& HSP\\ 
 		                						& \\
-	$\widehat{M_2}$	& given		& given		& \checkmark		& 				&				& \checkmark \\
+	$\widehat{M_2}$	& given		& given		& \checkmark		& 				&				& \checkmark 		& POP\\
 		                						& \\
-	$\widehat{M_3}$	& given		& given		& \checkmark		&  \checkmark		&				& \checkmark \\
+	$\widehat{M_3}$	& given		& given		& \checkmark		&  \checkmark		&				& \checkmark 		& HSP \& POP\\
 		                						& \\
-	$\widehat{M_4}$	& given		& estimated	& \checkmark		&  \checkmark		&				& \checkmark \\
+	$\widehat{M_4}$	& given		& estimated	& \checkmark		&  \checkmark		&				& \checkmark 		& HSP \& POP\\
 		                						& \\
-	$\widehat{M_5}$	& estimated	& estimated	& \checkmark		&  \checkmark		& \checkmark		& \checkmark \\
+	$\widehat{M_5}$	& estimated	& estimated	& \checkmark		&  \checkmark		& \checkmark		& \checkmark 		& HSP \& POP\\
 									& \\
-	$\widehat{m_1}$	& ---			& given		& \checkmark		& \checkmark \\ 
+	$\widehat{m_1}$	& ---			& given		& \checkmark		& \checkmark 		&				&				& HSP\\ 
 									& \\
-	$\widehat{m_2}$	& ---			& given		& \checkmark		& 				&				& \checkmark \\
-					                			& \\
-	$\widehat{m_3}$	& ---			& given 		& \checkmark		&  \checkmark		&				& \checkmark \\
+	$\widehat{m_2}$	& ---			& given		& \checkmark		& 				&				& \checkmark 		& POP\\					                			& \\
+	$\widehat{m_3}$	& ---			& given 		& \checkmark		&  \checkmark		&				& \checkmark 		& HSP \& POP\\
 		                						& \\
-	$\widehat{m_4}$	& ---			& estimated	& \checkmark		&  \checkmark		& 				& \checkmark \\
+	$\widehat{m_4}$	& ---			& estimated	& \checkmark		&  \checkmark		& 				& \checkmark 		& HSP \& POP\\
 		                						& \\
 	\hline
     \end{tabular}
