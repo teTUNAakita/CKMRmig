@@ -119,8 +119,6 @@ Estimating the number of migrants among the populations is essential for underst
 
 \subsection{HSP-based model}
 
-{\bf \noindent Simple model: }
-
 \begin{align}
 \pi_{\rm HS,bet} &= \frac{2M}{N_{1}} \frac{2M}{N_{2}} \frac{1}{M} \nonumber\\
 &= \frac{4M}{N_{1}N_{2}}
@@ -129,42 +127,24 @@ Estimating the number of migrants among the populations is essential for underst
 
 \begin{align}
 \mathbb{E}[H_{\rm HS, bet}] &= \pi_{\rm HS,bet} n_{\rm O, 1} n_{\rm O, 2} \nonumber\\
-&= \frac{ 4 n_{\rm O, 1} n_{\rm O, 2} M } { N_{1} N_{2} }
+&= \frac{ 4 n_{\rm O, 1} n_{\rm O, 2} M } { N_{1} N_{2} } \\
+&= \frac{ 4 n_{\rm O, 1} n_{\rm O, 2} m } { N_{2} }
 \label{HS-2}
 \end{align}
 
 \begin{align}
-\widehat{M} &= \frac{N_{2} \widetilde{H}_{\rm HS, bet} } {4 n_{\rm O, 1} n_{\rm O, 2} }
+\widehat{M_1} &= \frac{N_{1} N_{2} \widetilde{H}_{\rm HS, bet} } {4 n_{\rm O, 1} n_{\rm O, 2} }
 \label{HS-3}
 \end{align}
 
-{\bf \noindent Realistic model: }
+\begin{align}
+\widehat{m_1} &= \frac{N_{2} \widetilde{H}_{\rm HS, bet} } {4 n_{\rm O, 1} n_{\rm O, 2} }
+\label{HS-3}
+\end{align}
 
-これまでは，母親による産卵数の偏りや，父親による放精成功の偏りは考慮していなかった。しかしながら，多回繁殖する魚類の場合，体サイズによって繁殖成功度は大きく変化すること，および体サイズの分布には偏りが存在することから，上記のシステマチックな偏りを考慮する必要があるだろう。例えば，集団に１個体の巨大魚（メス）がいて，その産卵数が他の個体よりも圧倒的に大きい場合，サンプルされる子供の母親はかなりの確率でその巨大魚になるだろう。
-
-サブ集団１（２）にいる親$i(j)$が残す子供の数を$k_{1,i}(k_{2,j})$としよう。$k_{1,i}(k_{2,j})$は期待値$\lambda_{1,i}(\lambda_{2,j})$の分布（例えば負の二項分布など）に従うとしよう。体サイズによる重み付けを考慮したランダム交配を仮定すれば，ペアがMHSである確率は
-\begin{align}
-\pi | _{\boldsymbol{k_1, k_2}} &= \frac{ 2\sum_{i=1}^M k_{1,i} } { \sum_{i=1}^{N_1} k_{1,i} } \frac{ 2\sum_{j=1}^M k_{2,j} } { \sum_{j=1}^{N_2} k_{2,j} } \frac{1}{M} 
-\end{align}
-と書くことができる。簡単のため，$\boldsymbol{k_1}=(k_{1,1}, \ldots, k_{1,M}, \ldots, k_{1,N_1})$および$\boldsymbol{k_2}=(k_{1,2}, \ldots, k_{1,M}, \ldots, k_{1,N_2})$と記載し，また親のidが$1$から$M$の個体が移動するとして，idを配置した。$k_{1,i}$は期待値$\lambda_{1,i}$に従う確率変数であることから，このMHSペア確率の平均をとると
-\begin{align}
-\pi | _{\boldsymbol{\lambda_1, \lambda_2}} &= \mathbb{E}[\pi | _{\boldsymbol{k_1, k_2}}] \nonumber\\
-&= \frac{4}{M} \mathbb{E}\left[\frac{ \sum_{i=1}^M k_{1,i} } { \sum_{i=1}^{N_1} k_{1,i} } \frac{ \sum_{j=1}^M k_{2,j} } { \sum_{j=1}^{N_2} k_{2,j} } \right]   \nonumber\\
-&\approx \frac{4}{M} \frac{ \mathbb{E}\left[ \sum_{i=1}^M k_{1,i} \sum_{j=1}^M k_{2,j} \right] } {\mathbb{E}\left[ \sum_{i=1}^{N_1} k_{1,i} \sum_{j=1}^{N_2} k_{2,j}\right]} \nonumber\\
-&= \frac{4}{M} \frac{ \sum_{i=1}^M \lambda_{1,i} \sum_{j=1}^M \lambda_{2,j} } {\sum_{i=1}^{N_1} \lambda_{1,i} \sum_{j=1}^{N_2} \lambda_{2,j}} 
-\end{align}
-と近似することができる。留意すべき点として，移動前の産卵数と移動後の産卵数は独立と仮定しているため，式中に$k_i^2$の項が出現せず，結果は期待値$\lambda_i$(産卵ポテンシャルと呼ぶことにしよう)だけに依存する。最初に述べたように，この個体ごとの産卵ポテンシャルはある分布に従うとしよう。例えば，高齢個体ほど体サイズが大きい場合などが想定される。また，この分布はサブ集団１とサブ集団２で異なっていて良い。すなわち，$\lambda_{1,i}$および$\lambda_{2,j}$がそれぞれ独立な確率変数であると考えて，MHSペア確率についてさらに平均をとると
-\begin{align}
-\pi &= \mathbb{E}[\pi | _{\boldsymbol{\lambda_1, \lambda_2}}] \nonumber\\ 
-&\approx \frac{4}{M} \frac{M^2 \mathbb{E}[\lambda_1 \lambda_2]}{N_1 N_2 \mathbb{E}[\lambda_1 \lambda_2]}\nonumber\\
-&= \frac{4M}{N_{1}N_{2}}
-\label{4-1}
-\end{align}
-と近似される。結局，繁殖ポテンシャルの不均一性を考慮しない結果（式\ref{3-1}）と同様になる。なお，$\boldsymbol{\lambda_1}=(\lambda_{1,1}, \ldots, \lambda_{1,N_1})$および$\boldsymbol{\lambda_2}=(\lambda_{1,2}, \ldots, \lambda_{1,N_2})$。この近似は、独立に決まる確率変数$\lambda_1$と$\lambda_2$について、$\mathbb{E}[\lambda_1/\lambda_2]=\mathbb{E}[\lambda_1] \times \mathbb{E}[1/\lambda_2] \approx 1$となる場合に成立するので、集団中に$\lambda$が極端に低い個体が存在する場合は成立しない（サブ集団１とサブ集団２でセットにして相対的な繁殖ポテンシャルを考えれば良いので、問題ないだろう）。
+より一般的な説明は付録に載せた。
 
 \subsection{POP-based model}
-
-{\bf \noindent Simple model: }
 
 \begin{align}
 \pi_{\rm PO,bet} &= \frac{2M}{N_{1}} \frac{M}{N_{2}} \frac{1}{M} \nonumber\\
@@ -179,37 +159,49 @@ Estimating the number of migrants among the populations is essential for underst
 \end{align}
 
 \begin{align}
-\widehat{M} &= \frac{N_{2} \widetilde{H}_{\rm PO,bet} } {2 n_{\rm O, 1} n_{\rm P, 2} }
+\widehat{M_2} &= \frac{N_{1} N_{2} \widetilde{H}_{\rm PO,bet} } {2 n_{\rm O, 1} n_{\rm P, 2} }
 \label{PO-3}
 \end{align}
 
+\section{Applications}\label{sec3}
 
-{\bf \noindent Realistic model: }
+\subsection{Parent number can be estimated by PO pairs found within a subpopulation}
 
-\begin{comment}
-
-
-
-
-
-\subsection{Covariation between migration and reproductive potential}
-
-上のモデルでは，サブ集団１とサブ集団２を構成する親魚の繁殖ポテンシャルの分布をそれぞれ考慮していたが，移動個体の繁殖ポテンシャルの不均一性については考慮していなかった。最後に，移動した親魚の繁殖ポテンシャルについてもある分布に従うと仮定しよう。すなわち，$\lambda_{1,i}, \lambda_{2,j}, \lambda_{M,l}$をそれぞれ独立な確率変数とみなして，MHSペア確率を計算すると，
 \begin{align}
-\pi | _{\boldsymbol{\lambda_1, \lambda_2, \lambda_M}} &\approx \frac{4}{M} \frac{ \sum_{i=1}^M \lambda_{M,i} \sum_{j=1}^M \lambda_{M,j} } {\left(\sum_{i=1}^{M} \lambda_{M,i} + \sum_{i=M+1}^{N_1} \lambda_{1,i}\right) \left(\sum_{j=1}^{M} \lambda_{M,j} + \sum_{j=M+1}^{N_2} \lambda_{2,j}\right) } 
+\widehat{M_3} &= \frac{ N_{1} N_{2} \left(\widetilde{H}_{\rm HS,bet} + \widetilde{H}_{\rm PO,bet}\right) } {2n_{\rm O, 1} \left(2 n_{\rm O, 2} + n_{\rm P, 2}\right) }
+\label{AP-1}
 \end{align}
-のようになり，$N_1$, $N_2$が$M$より十分に大きいと仮定すると、この期待値は以下のようになる，
+
 \begin{align}
-\pi &\approx \frac{4M}{N_{1}N_{2}} \mathbb{E}\left[ \frac{ \lambda_M^2 }{\lambda_1\lambda_2} \right]
-\label{5-1}
+\widehat{m_3} &= \frac{ N_{2} \left(\widetilde{H}_{\rm HS,bet} + \widetilde{H}_{\rm PO,bet}\right) } {2n_{\rm O, 1} \left(2 n_{\rm O, 2} + n_{\rm P, 2}\right) }
+\label{AP-2}
 \end{align}
-すなわち，繁殖ポテンシャルの効果がMHSペア確率に影響するようになる。
 
-\section{Application}\label{sec3}
+サンプル数の少なさを補えるかも。
+
+\begin{align}
+\widehat{N_2} &= \frac{ 2 n_{\rm O, 2} n_{\rm P, 2} + 1 }{\widetilde{H}_{\rm PO, 2} + 1} 
+\label{AP-3}
+\end{align}
+subpop2の親子もわかるはず。migration rateを推定すると考えると、$N_2$を推定値で置き換えて
+
+\begin{align}
+\widehat{m_3} &=  \frac{ \left(\widetilde{H}_{\rm HS,bet} + \widetilde{H}_{\rm PO,bet}\right) \left(2 n_{\rm O, 2} n_{\rm P, 2} + 1\right)} {2n_{\rm O, 1} \left(2 n_{\rm O, 2} + n_{\rm P, 2}\right) \left(\widetilde{H}_{\rm PO, 2} + 1\right)}
+\label{AP-4}
+\end{align}
+
+\begin{align}
+\widehat{N_1} &= \frac{ 2 n_{\rm O, 1} n_{\rm P, 1} + 1 }{\widetilde{H}_{\rm PO, 1} + 1} 
+\label{AP-5}
+\end{align}
+
+\begin{align}
+\widehat{M_5} &=  \frac{ \left(\widetilde{H}_{\rm HS,bet} + \widetilde{H}_{\rm PO,bet}\right) \left(2 n_{\rm O, 1} n_{\rm P, 1} + 1\right) \left(2 n_{\rm O, 2} n_{\rm P, 2} + 1\right)} {2n_{\rm O, 1} \left(2 n_{\rm O, 2} + n_{\rm P, 2}\right) \left(\widetilde{H}_{\rm PO, 1} + 1\right) \left(\widetilde{H}_{\rm PO, 2} + 1\right)}
+\label{AP-6}
+\end{align}
 
 
-
-
+\begin{comment}%%%%%%%%%%%%%%%
 まず最初に，最もシンプルなモデルを考える。$t$年にサブ集団１にいる$N_{1,t}$個体の母親を考えよう。$t$年に子供を産んだ後，$N_{1,t}$個体のうち$M_{1\to2}$個体がサブ集団２に移動し，$t+1$年にサブ集団２にいる母個体$N_{2,t+1}$の一部として子供を産むとする。この時，サブ集団１から$t$年に産まれた子供とサブ集団２から$t+1$年に産まれた子供が，母を共有する兄弟(Maternal half Sibling, MHS)である確率$\pi_{\rm b,1\to2}$を考える。どの母親も同じような繁殖ポテンシャルを持つと仮定すると，移動する母親の子供をサブ集団１でサンプルする確率は$M_{1\to2}/N_{1,t}$となる。同様に，移動する母親の子供をサブ集団２においてサンプルする確率は$M_{1\to2}/N_{2,t+1}$である。それぞれでサンプルした子供の母親が同一である確率は$1/M_{1\to2}$であることより，サンプルした２個体がMHSペアとなる確率が以下のように得られる。
 \begin{align}
 \pi_{\rm b,1\to2} &= \frac{M_{1\to2}}{N_{1,t}} \frac{M_{1\to2}}{N_{2,t+1}} \frac{1}{M_{1\to2}} \nonumber\\
@@ -264,6 +256,59 @@ $n_{1,t}, n_{2,t+1}$は，それぞれサブ集団１（$t$年）でのサンプ
 \end{align}
 となる。
 
+ここでは応用例として，３年間にわたって２つのサブ集団からサンプルされた当歳魚から見出される半兄弟ペアをもとに，個体数($N$)・移動率($m$)・生存率($s$)を推定する理論的な枠組みを提示する。サブ集団１に生息する親魚数を、$N_1(t), N_1(t+1), N_1(t+2)$のように表記し、他のパラメータについても同様とする。個体数については６つのパラメータ、移動率および生存率は４つのパラメータとなり、合計１４のパラメータが考えられる（$t+2$年の移動率および生存率は含まれない点に注意）。まずは、これら１４個のパラメータは独立に決まるとしよう（すなわち、$N_1(t)$と$N_1(t+1)$は無関係で、$s_1(t)$と$s_1(t+1)$は独立に決める、など）。なお、この応用例では、移動する親魚は繁殖ポテンシャルによらずに決まると仮定して、式\ref{4-1}を用いることにしよう。また、全ての親魚は、年をまたぐごとに、1)サブ集団を移動して産卵するか（確率：$m$）、2)同じサブ集団に留まって産卵するか（確率：$s$）、3)死亡するか（確率：$1-m-s$）、のいずれかのイベントを経験するとする。
+
+今回新たに開発した移動に関する関係式について、以下の６種類の親魚に関するその子供（当歳魚）ペアがありえる：
+\begin{enumerate}
+  \item $N_1(t)\to N_2(t+1)$
+  \item $N_1(t)\to N_2(t+2)$
+  \item $N_1(t+1)\to N_2(t+2)$
+  \item $N_2(t)\to N_1(t+1)$
+  \item $N_2(t)\to N_1(t+2)$
+  \item $N_2(t+1)\to N_1(t+2)$
+\end{enumerate}
+右向きの矢印$\to$は、興味ある親魚が年を跨いだ後どのサブ集団に属しているかを表している。１番目を例にとると、$t$年にサブ集団１から、$t+1$年にサブ集団２からそれぞれ当歳魚をサンプルすることを意味する。加えて、同じサブ集団から年を跨いで見つかる半兄弟ペアに基づく関係式についても、以下の６種類が考えられる：
+\begin{enumerate}
+\setcounter{enumi}{6}
+  \item $N_1(t)\to N_1(t+1)$
+  \item $N_1(t)\to N_1(t+2)$
+  \item $N_1(t+1)\to N_1(t+2)$
+  \item $N_2(t)\to N_2(t+1)$
+  \item $N_2(t)\to N_2(t+2)$
+  \item $N_2(t+1)\to N_2(t+2)$
+\end{enumerate}
+以上の、合計１２種類の式を連立できることを示した。最大１４個のパラメータが必要となるのであったが、パラメータ数を応用先に応じて適宜減少させることができる場合、興味あるパラメータを推定することができる。
+
+ちなみに、同一年内に同じサブ集団内で見つかるMHSペアについては、有効集団サイズの情報（正確には有効繁殖サイズ、Effective breeding size）は持っているが、センサスサイズに関するダイレクトな情報は持っていない点に注意。
+\end{comment}%%%%%%%%%%%%%%%
+
+\section{Results and Discussion}\label{sec4}
+
+\begin{enumerate}
+  \item $M$ではなく$m$の推定であれば、N2だけ分かれば良い
+  \item 
+  \item サンプルされる当歳魚（０歳）は，必ずサンプルされたサブ集団で産まれる
+  \item 当歳魚かどうかの判断は１００％可能
+  \item サンプル間の近親判別では，１００％の成功率で半兄弟ペアか否かがなされる
+\end{enumerate}
+
+
+
+\section{ACKNOWLEDGEMENTS} 
+
+The author thanks MV Bravington for motivating me to pursue this research topic. This work was supported by JSPS KAKENHI Grant Number 19K06862 and 20H03012.
+
+
+\clearpage
+
+\section*{APPENDIX A}
+\setcounter{equation}{0}
+
+\section*{Distribution of the number of surviving offspring per mother and its variance}
+
+\renewcommand{\theequation}{A\arabic{equation}}
+
+
 \subsection{Reproductive variation}
 
 これまでは，母親による産卵数の偏りや，父親による放精成功の偏りは考慮していなかった。しかしながら，多回繁殖する魚類の場合，体サイズによって繁殖成功度は大きく変化すること，および体サイズの分布には偏りが存在することから，上記のシステマチックな偏りを考慮する必要があるだろう。例えば，集団に１個体の巨大魚（メス）がいて，その産卵数が他の個体よりも圧倒的に大きい場合，サンプルされる子供の母親はかなりの確率でその巨大魚になるだろう。
@@ -301,41 +346,20 @@ $n_{1,t}, n_{2,t+1}$は，それぞれサブ集団１（$t$年）でのサンプ
 \end{align}
 すなわち，繁殖ポテンシャルの効果がMHSペア確率に影響するようになる。
 
-\end{comment}
+Let $k_i$ denote the total number of surviving offspring from a mother  $i$ ($i= 1, 2, \dots, N_{\rm m}$) at time of sampling. Following \cite{Akita_2019} and giving the expected number of the surviving offspring per mother at time of sampling, $\lambda_i$ ($>0$), $k_i$ is assumed to follow a negative binomial distribution through a conventional parametrization:
+\begin{equation}
+{\rm Pr}[ k_i | \lambda_i ] = \frac{\Gamma[k_i+\phi]}{k_i! \Gamma[\phi]} \left( \frac{\lambda_i}{\phi+\lambda_i} \right)^{k_i} \left( \frac{\phi}{\phi+\lambda_i} \right)^{\phi}, 
+\label{NB}
+\end{equation}
+where $\phi$ ($>0$) denotes the overdispersion parameter describing the degree of nonparental variation. In the current work, $\phi$ is assumed to be constant across mothers, whereas the expected number of surviving offspring ($\lambda_i$) varies across mothers. The mean and variance of this distribution are denoted by $\lambda_i$ and $\lambda_i + \lambda_i^2/\phi$, respectively. In the limit of infinite $\phi$, this distribution becomes a Poisson distribution, which is given by ${\rm Pr}[ k_i | \lambda_i ]=\lambda_i^{k_i} \mathrm{e}^{-\lambda_i}/(k_i!)$. We assume $\lambda_i$ to be independent and identically distributed with the density function $f(\lambda)$, producing a parental variation. The shape of the density function is often complex, but may be described by information from the population, for example, the mother's weight composition in the population. The specific form of $f(\lambda)$ is given in {\bf Appendix B} and is used for running an individual-based model.  
 
-\section{Application}\label{sec3}
+The variance of the offspring number can be given by 
+\begin{eqnarray}
+\mathbb{V}[k] &=& \mathbb{E}[ \mathbb{V}[k|\lambda] ] + \mathbb{V}[ \mathbb{E}[k|\lambda] ] \nonumber\\
+&=& \mathbb{E}[ \lambda + \lambda^2 / \phi ] + \mathbb{V}[ \lambda ].
+\label{V_k}
+\end{eqnarray}
 
-ここでは応用例として，３年間にわたって２つのサブ集団からサンプルされた当歳魚から見出される半兄弟ペアをもとに，個体数($N$)・移動率($m$)・生存率($s$)を推定する理論的な枠組みを提示する。サブ集団１に生息する親魚数を、$N_1(t), N_1(t+1), N_1(t+2)$のように表記し、他のパラメータについても同様とする。個体数については６つのパラメータ、移動率および生存率は４つのパラメータとなり、合計１４のパラメータが考えられる（$t+2$年の移動率および生存率は含まれない点に注意）。まずは、これら１４個のパラメータは独立に決まるとしよう（すなわち、$N_1(t)$と$N_1(t+1)$は無関係で、$s_1(t)$と$s_1(t+1)$は独立に決める、など）。なお、この応用例では、移動する親魚は繁殖ポテンシャルによらずに決まると仮定して、式\ref{4-1}を用いることにしよう。また、全ての親魚は、年をまたぐごとに、1)サブ集団を移動して産卵するか（確率：$m$）、2)同じサブ集団に留まって産卵するか（確率：$s$）、3)死亡するか（確率：$1-m-s$）、のいずれかのイベントを経験するとする。
-
-今回新たに開発した移動に関する関係式について、以下の６種類の親魚に関するその子供（当歳魚）ペアがありえる：
-\begin{enumerate}
-  \item $N_1(t)\to N_2(t+1)$
-  \item $N_1(t)\to N_2(t+2)$
-  \item $N_1(t+1)\to N_2(t+2)$
-  \item $N_2(t)\to N_1(t+1)$
-  \item $N_2(t)\to N_1(t+2)$
-  \item $N_2(t+1)\to N_1(t+2)$
-\end{enumerate}
-右向きの矢印$\to$は、興味ある親魚が年を跨いだ後どのサブ集団に属しているかを表している。１番目を例にとると、$t$年にサブ集団１から、$t+1$年にサブ集団２からそれぞれ当歳魚をサンプルすることを意味する。加えて、同じサブ集団から年を跨いで見つかる半兄弟ペアに基づく関係式についても、以下の６種類が考えられる：
-\begin{enumerate}
-\setcounter{enumi}{6}
-  \item $N_1(t)\to N_1(t+1)$
-  \item $N_1(t)\to N_1(t+2)$
-  \item $N_1(t+1)\to N_1(t+2)$
-  \item $N_2(t)\to N_2(t+1)$
-  \item $N_2(t)\to N_2(t+2)$
-  \item $N_2(t+1)\to N_2(t+2)$
-\end{enumerate}
-以上の、合計１２種類の式を連立できることを示した。最大１４個のパラメータが必要となるのであったが、パラメータ数を応用先に応じて適宜減少させることができる場合、興味あるパラメータを推定することができる。
-
-ちなみに、同一年内に同じサブ集団内で見つかるMHSペアについては、有効集団サイズの情報（正確には有効繁殖サイズ、Effective breeding size）は持っているが、センサスサイズに関するダイレクトな情報は持っていない点に注意。
-
-
-\section{Discussion}\label{sec4}
-
-\section{ACKNOWLEDGEMENTS} 
-
-The author thanks MV Bravington for motivating me to pursue this research topic. This work was supported by JSPS KAKENHI Grant Number 19K06862 and 20H03012.
 
 
 \begin{comment}
