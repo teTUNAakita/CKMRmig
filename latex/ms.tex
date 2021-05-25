@@ -2,6 +2,7 @@
 \usepackage{moreverb}
 \usepackage{lineno}
 \linenumbers
+\usepackage[doublespacing]{setspace}
 
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -21,7 +22,7 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 \begin{document}
 
-\title{Estimating the number of migrants based on kinship relationships}%\protect\thanks{This is an example for title footnote.}}
+\title{Estimating the migrant number and rate based on kinship relationships}%\protect\thanks{This is an example for title footnote.}}
 
 \author[1]{Tetsuya Akita*}
 
@@ -54,11 +55,12 @@ Estimating the number of migrants among the populations is essential for underst
 応用例として，３年間にわたって２つのサブ集団からサンプルされた当歳魚から見出される半兄弟ペアをもとに，個体数・移動率・生存率を推定する枠組みを提示する。そこでは，同じサブ集団から年を跨いで見つかる半兄弟ペアに基づく関係式と，今回新たに開発した関係式を組み合わせて用いる。
 
 \section{Theory}\label{sec2}
+The main symbols used in the current paper are summarized in Table \ref{symbols}.
 
 \renewcommand{\arraystretch}{0.6}
 \begin{table}[tb]
 \begin{center}
-   \caption[]{Table 1: The list of mathematical symbols employed in the main text}
+   \caption[]{The list of mathematical symbols employed in the main text}
     \textbf {}\\[-4mm]
     \begin{tabular}{llc} \hline
        & & \\
@@ -168,6 +170,18 @@ Estimating the number of migrants among the populations is essential for underst
 \label{PO-4}
 \end{align}
 
+\subsection{Required sample size}
+
+\begin{align}
+n_{\rm O, 1} n_{\rm O, 2} &> \frac{ N_{2} } { 4m }
+\label{RS-1}
+\end{align}
+
+\begin{align}
+n_{\rm O, 1} n_{\rm P, 2} &> \frac{ N_{2} } { 2m }
+\label{RS-2}
+\end{align}
+
 \section{Applications}\label{sec3}
 
 \subsection{Efficient use of kinship pairs between subploulations}
@@ -220,7 +234,7 @@ migration rateを推定すると考えると、
 \renewcommand{\arraystretch}{0.6}
 \begin{table}[tb]
 \begin{center}
-   \caption[]{Table 1: Summary of proposed estimators for required parameters and kinship types}
+   \caption[]{Summary of proposed estimators for required parameters and kinship types}
     \textbf {}\\[-0mm]
     \begin{tabular}{ccccccccc} \hline
        	\\
@@ -247,7 +261,7 @@ migration rateを推定すると考えると、
 		                						& \\
 	\hline
     \end{tabular}
-    \label{symbols} 
+    \label{parameter} 
 \end{center} 
 \end{table}
 \renewcommand{\arraystretch}{1}
@@ -335,6 +349,7 @@ $n_{1,t}, n_{2,t+1}$は，それぞれサブ集団１（$t$年）でのサンプ
 
 \section{Results and Discussion}\label{sec4}
 
+オーダーは$m\approx0.1$程度を想定。これよりもずっと小さければ、遺伝的に異なる系群と考えられFstも大きく出るので、ベイズアスなどから推定できるだろう。一方、その場合はサンプル数が大量になり、今回提案した方法は向かない。
 
 \section{ACKNOWLEDGEMENTS} 
 
