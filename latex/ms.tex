@@ -12,7 +12,7 @@
 \newcommand\BibTeX{{\rmfamily B\kern-.05em \textsc{i\kern-.025em b}\kern-.08em
 T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
-\articletype{Manuscript intended for \emph{Methods in Ecology and Evolution}, \today}%
+\articletype{Research article, \today}%
 
 \received{<day> <Month>, <year>}
 \revised{<day> <Month>, <year>}
@@ -22,10 +22,9 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 \begin{document}
 
-\title{Estimating the migrant number and rate based on kinship relationships}%\protect\thanks{This is an example for title footnote.}}
+\title{Estimating migrant rates using kinship pairs \protect\thanks{Running head line: Estimating migrant rates using kinship pairs}}
 
-\author[1]{Tetsuya Akita*}
-
+\author[1]{Tetsuya Akita}
 \authormark{Akita}
 
 
@@ -35,7 +34,20 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 %\presentaddress{Present address}
 
-\abstract[Abstract]{本ノートでは，多回繁殖(iteroparity)する種を対象として，半兄弟ペア数から親魚による２つのサブ集団間の移動率を推定する理論($\hat{M}=N_1N_2H_{\rm obs}/(4n_1n_2)$)を紹介する。この推定式は、親をサンプルする通常の標識放流と同じである。もし、繁殖ポテンシャルの分布が集団間で異なっていても上記の式で問題ないことを示した。一方，サンプル数としては$\sqrt {N}$以上のオーダーが求められる。}
+\abstract[Abstract]{The Abstract must not exceed 350 words and should list the main results and conclusions, using simple, factual, numbered statements:
+
+Point 1: set the context for and purpose of the work;
+
+Point 2: indicate the approach and methods;
+
+Point 3: outline the main results;
+
+Point 4: identify the conclusions and the wider implications.
+
+1. aaa\\
+2. bbb
+
+本ノートでは，多回繁殖(iteroparity)する種を対象として，半兄弟ペア数から親魚による２つのサブ集団間の移動率を推定する理論($\hat{M}=N_1N_2H_{\rm obs}/(4n_1n_2)$)を紹介する。この推定式は、親をサンプルする通常の標識放流と同じである。もし、繁殖ポテンシャルの分布が集団間で異なっていても上記の式で問題ないことを示した。一方，サンプル数としては$\sqrt {N}$以上のオーダーが求められる。}
 
 \keywords{Close-kin mark recapture; Half-sibling; Population structure}
 
@@ -118,6 +130,16 @@ The main symbols used in the current paper are summarized in Table \ref{symbols}
   \item サンプル間の近親判別では，１００％の成功率で半兄弟ペアか否かがなされる
 \end{enumerate}
 また，性成熟した個体を親と呼ぶことにする。
+
+%%%FIGURE 1%%%
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=0.3\textwidth]{/Users/akita/Dropbox/research/close_kin/Mig/Figs/cartoon.eps}
+		\caption{Example of relationships between mothers and their offspring number. The open, gray, and filled circles represent mothers, their eggs, and their offspring, respectively. The area of an open circle indicates the degree of reproductive potential of each mother (i.e., $\lambda_i$). The dotted and thin arrows denote mother--egg and egg--offspring relationships, respectively. The symbol x denotes a failure to survive at sampling. Sampled individuals are denoted with squares. In this example, $M=6$, }
+		\label{cartoon}
+	\end{center}
+\end{figure}
+%%%%%%%%%%%
 
 \subsection{HSP-based model}
 
