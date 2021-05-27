@@ -22,7 +22,7 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 \begin{document}
 
-\title{Estimating migrantation rates using kinship pairs \protect\thanks{Running head line: Estimating migrantation rates using kinship pairs}}
+\title{Estimating migration rates for iteroparous species using kinship pairs found between populations\protect\thanks{Running head line: Estimating migration rates using kinship pairs}}
 
 \author[1]{Tetsuya Akita}
 \authormark{Akita}
@@ -67,7 +67,8 @@ Estimating the number of migrants among the populations is essential for underst
 応用例として，３年間にわたって２つのサブ集団からサンプルされた当歳魚から見出される半兄弟ペアをもとに，個体数・移動率・生存率を推定する枠組みを提示する。そこでは，同じサブ集団から年を跨いで見つかる半兄弟ペアに基づく関係式と，今回新たに開発した関係式を組み合わせて用いる。
 
 \section{Theory}\label{sec2}
-The main symbols used in the current paper are summarized in Table \ref{symbols}.
+In this section, we derivate the estimators of migrant number and migration rates using HS pairs or PO pairs found between two populations. While the estimators can hold under complex assumptions for reproduction theoretical foundation for estimating
+このセクションでは、migrantやmigration rateの推定量を導出する。導出された推定量は、付録にある通りフレキシブルな仮定のもとでも成立するが、ここではシンプルな状況を例に出して説明する。The main symbols used in the current paper are summarized in Table \ref{symbols}.
 
 \renewcommand{\arraystretch}{0.6}
 \begin{table}[tb]
@@ -112,10 +113,16 @@ The main symbols used in the current paper are summarized in Table \ref{symbols}
 \end{table}
 \renewcommand{\arraystretch}{1}
 
-\subsection{Hypothetical population and sampling scheme}
+\subsection{Hypothetical population}
 
-Suppose that we have a set of two populations labelled 1 and 2. 
+Suppose that we have a set of two populations labelled 1 and 2. Mating occurs within each population and parents can move to the other population after the end of the reproductive season. Hereafter, without loss of generality, we consider the parents that move from population 1 to population 2. In this study, a mature individual is called a parent even if it does not produce offspring. 
 
+
+ある年に集団１ではN1のおやがいるとする。親とは〜。交配はN1の集団内だけで行われ、産卵シーズン終了後に一部の親が集団２に移動する。翌年に、集団２ではN2個体の親がいて、そのうちの一部は集団１から移動してきた親であるとする。移動親のうち、集団２における産卵期まで生存した数をMとする。
+
+
+
+\subsection{Sampling}
 
 and there are migrant individuals between the two subpopulations. also no population subdivision or spatial struc- ture. In this study, a mature female is called a mother even if she does not produce offspring. For mathematical tractability, we assume that only one spawning ground exists in which the mothers remain for the entire spawning season. Following (Akita, 2020), our modeling frame- work employs two types of overdispersed reproduction: parental and nonparental variations. Thus, the former indicates a variation caused by the mother's covariates, such as age, weight, and residence time on the spawning ground, while the latter indicates a variation caused by nonrandom stochastic events during a series of reproductive episodes, which are independent of the mother's covariates, such as family-correlated survivorship or the mating behavior effects (e.g., competition for males/females and correlation between mating op- portunities of the mother and the number of her offspring). Figure 1 illustrates a schematic diagram of the effects of parental and non- parental variations exemplified by age-dependent reproduction and family-correlated survival on kinship relationships in a population. Detailed definitions of parental and nonparental variations are stated in (Akita, 2020). Appendix 1 provides the theoretical foundation of both parental and nonparental variations in reproduction.
 
