@@ -77,34 +77,34 @@ In this section, we derivate the estimators of migrant number and migration rate
     \textbf {}\\[-4mm]
     \begin{tabular}{llc} \hline
        & & \\
-	$n_{\rm P,1}, n_{\rm P, 2}$			& Sample number of parents in the subpopulation 1 and 2\\ 
+	$n_{\rm P,1}, n_{\rm P, 2}$			& Sample number of parents in the population 1 and 2\\ 
 		                						& \\
-	$n_{\rm O, 1}, n_{\rm O, 2}$			& Sample number of offspring in the subpopulation 1 and 2\\ 
+	$n_{\rm O, 1}, n_{\rm O, 2}$			& Sample number of offspring in the population 1 and 2\\ 
 		                						& \\
-	$N_{1}, N_{2}$						& Number of parents in the subpopulation 1 and 2 when sampled offspring are born\\
+	$N_{1}, N_{2}$						& Number of parents in the population 1 and 2 when sampled offspring are born\\
 		                						& \\
-	$M$								& Number of migrants of parents from the subpopulation 1 to the subpopulation 2\\
+	$M$								& Number of survived migrants of parents from the population 1 to population 2\\
 		                						& \\
 	$\pi_{\rm PO,1}, \pi_{\rm PO,2}$		& Probability that a randomly selected pair (mother and offspring) \\
-	                							& shares a parent-offspring relationship within the subpopulation 1 and 2\\
+	                							& shares a parent-offspring relationship within the population 1 and 2\\
 									& \\
 	$\pi_{\rm PO, bet}$					& Probability that a randomly selected pair (parent and offspring in the population 1 and 2, respectively) \\
-	                							& shares a parent-offspring relationship between the subpopulation 1 and 2\\
+	                							& shares a parent-offspring relationship between the population 1 and 2\\
 									& \\
 	$\pi_{\rm HS, bet}$					& Probability that a randomly selected pair (two offspring in the population 1 and 2) \\
-	                							& shares a half-sibling relationship between the subpopulation 1 and 2\\
+	                							& shares a half-sibling relationship between the population 1 and 2\\
 					                			& \\
-	$\lambda_{i,1}, \lambda_{j,2}$			& Expected number of surviving offspring of parent $i$ and $j$ at sampling in the subpopulation 1 and 2\\
+	$\lambda_{i,1}, \lambda_{j,2}$			& Expected number of surviving offspring of parent $i$ and $j$ at sampling in the population 1 and 2\\
 		                						& \\
 	$\lambda_{i, M}$					& Expected number of surviving offspring of migrant $i$ at sampling\\
 		                						& \\
-	$k_{i,1}, k_{j,2}$					& Number of surviving offspring born to parent $i$ and $j$ in the subpopulation 1 and 2\\ 
+	$k_{i,1}, k_{j,2}$					& Number of surviving offspring born to parent $i$ and $j$ in the population 1 and 2\\ 
 	                							& \\
-	$H_{\rm PO, 1}, H_{\rm PO, 2}$		& Number of parent-offspring pairs observed in samples within the subpopulation 1 and 2\\ 
+	$H_{\rm PO, 1}, H_{\rm PO, 2}$		& Number of parent-offspring pairs observed in samples within the population 1 and 2\\ 
 	                							& \\
-	$H_{\rm PO, bet}$					& Number of parent-offspring pairs observed in samples between the subpopulation 1 and 2\\ 
+	$H_{\rm PO, bet}$					& Number of parent-offspring pairs observed in samples between the population 1 and 2\\ 
 	                							& \\
-	$H_{\rm HS, bet}$					& Number of half-sibling pairs observed in samples between the subpopulation 1 and 2\\ 
+	$H_{\rm HS, bet}$					& Number of half-sibling pairs observed in samples between the population 1 and 2\\ 
 	                							& \\              		
 	\hline
     \end{tabular}
@@ -115,16 +115,23 @@ In this section, we derivate the estimators of migrant number and migration rate
 
 \subsection{Hypothetical population}
 
-Suppose that we have a set of two populations labelled 1 and 2. Mating occurs within each population and parents can move to the other population after the end of the reproductive season. Hereafter, without loss of generality, we consider the parents that move from population 1 to population 2. In this study, a mature individual is called a parent even if it does not produce offspring. 
+Suppose that we have a set of two populations labelled 1 and 2 where random mating occurs within each population and that parents can move to the other population after the end of the reproductive season. Hereafter, without loss of generality, we consider the movement of parents in the direction from population 1 to population 2 once a year. In this study, a mature individual is called a parent even if it does not produce offspring. 
+
+Suppose there are $N_1$ parents in the population 1 at the beginning of year and there are $N_2$ parents in the population 2 at the beginning of the next year. There are $M$ survived parents at the beginning of the next year that are moved from population 1 to population 2. 各親は繁殖ポテンシャルに従って、子供を残すとしよう。For the explanation purpose, lambdaは全ての親で一定とするが、この仮定をゆるくしても多くの場合我々の議論は成立する。
 
 
-ある年に集団１ではN1のおやがいるとする。親とは〜。交配はN1の集団内だけで行われ、産卵シーズン終了後に一部の親が集団２に移動する。翌年に、集団２ではN2個体の親がいて、そのうちの一部は集団１から移動してきた親であるとする。移動親のうち、集団２における産卵期まで生存した数をMとする。
+
+どのように子供を産むのか。我々のモデルは、フレキシブルな仮定に対応できるが詳細は付録に
+
+
+Figure \ref{cartoon} illustrates an example of kinship relationships and movements of parents between populations. 
+
 
 
 
 \subsection{Sampling}
 
-and there are migrant individuals between the two subpopulations. also no population subdivision or spatial struc- ture. In this study, a mature female is called a mother even if she does not produce offspring. For mathematical tractability, we assume that only one spawning ground exists in which the mothers remain for the entire spawning season. Following (Akita, 2020), our modeling frame- work employs two types of overdispersed reproduction: parental and nonparental variations. Thus, the former indicates a variation caused by the mother's covariates, such as age, weight, and residence time on the spawning ground, while the latter indicates a variation caused by nonrandom stochastic events during a series of reproductive episodes, which are independent of the mother's covariates, such as family-correlated survivorship or the mating behavior effects (e.g., competition for males/females and correlation between mating op- portunities of the mother and the number of her offspring). Figure 1 illustrates a schematic diagram of the effects of parental and non- parental variations exemplified by age-dependent reproduction and family-correlated survival on kinship relationships in a population. Detailed definitions of parental and nonparental variations are stated in (Akita, 2020). Appendix 1 provides the theoretical foundation of both parental and nonparental variations in reproduction.
+and there are migrant individuals between the two populations. also no population subdivision or spatial struc- ture. In this study, a mature female is called a mother even if she does not produce offspring. For mathematical tractability, we assume that only one spawning ground exists in which the mothers remain for the entire spawning season. Following (Akita, 2020), our modeling frame- work employs two types of overdispersed reproduction: parental and nonparental variations. Thus, the former indicates a variation caused by the mother's covariates, such as age, weight, and residence time on the spawning ground, while the latter indicates a variation caused by nonrandom stochastic events during a series of reproductive episodes, which are independent of the mother's covariates, such as family-correlated survivorship or the mating behavior effects (e.g., competition for males/females and correlation between mating op- portunities of the mother and the number of her offspring). Figure 1 illustrates a schematic diagram of the effects of parental and non- parental variations exemplified by age-dependent reproduction and family-correlated survival on kinship relationships in a population. Detailed definitions of parental and nonparental variations are stated in (Akita, 2020). Appendix 1 provides the theoretical foundation of both parental and nonparental variations in reproduction.
 
 \begin{itemize}
   \item 移動が双方向
@@ -217,7 +224,7 @@ n_{\rm O, 1} n_{\rm P, 2} &> \frac{ N_{2} } { 2m }
 
 \section{Applications}\label{sec3}
 
-\subsection{Efficient use of kinship pairs found between subpopulations}
+\subsection{Efficient use of kinship pairs found between populations}
 
 \begin{align}
 \widehat{M_3} &= \frac{ N_{1} N_{2} \left(\widetilde{H}_{\rm HS,bet} + \widetilde{H}_{\rm PO,bet}\right) } {2n_{\rm O, 1} \left(2 n_{\rm O, 2} + n_{\rm P, 2}\right) }
@@ -231,7 +238,7 @@ n_{\rm O, 1} n_{\rm P, 2} &> \frac{ N_{2} } { 2m }
 
 サンプル数の少なさを補えるかも。
 
-\subsection{Parent number can be estimated by PO pairs found within a subpopulation}
+\subsection{Parent number can be estimated by PO pairs found within a population}
 
 \begin{align}
 \widehat{N_2} &= \frac{ 2 n_{\rm O, 2} n_{\rm P, 2} + 1 }{\widetilde{H}_{\rm PO, 2} + 1} 
