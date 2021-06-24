@@ -94,13 +94,36 @@ Estimating the number of migrants among the populations is essential for underst
 応用例として，３年間にわたって２つのサブ集団からサンプルされた当歳魚から見出される半兄弟ペアをもとに，個体数・移動率・生存率を推定する枠組みを提示する。そこでは，同じサブ集団から年を跨いで見つかる半兄弟ペアに基づく関係式と，今回新たに開発した関係式を組み合わせて用いる。
 
 \section{Theory}\label{sec2}
-In this section, we present the theoretical foundation for estimating a migrant number and a migration rate using HS or PO pairs, which are found between two populations with a different sample timing. While the estimators can hold under flexible assumptions for reproduction (see {\bf Appendix}), here we assume a relatively simple situation for explanation purposes. It should be noted that the formulation of the estimators, presented in Equations 4-5 and 7-8, is a function with parent numbers in the two populations; in the next section, we provide the treatment for estimating the unknown parent numbers from genetic dataset which is used for obtaining HS or PO pairs. The main symbols used in the current paper are summarized in Table \ref{symbols}. 
+In this section, we present the theoretical foundation for estimating a migrant number and a migration rate using HS or PO pairs, which are found between two populations with a different sample timing. While the estimators can hold under flexible assumptions for reproduction (see {\bf Appendix}), here we assume a relatively simple situation for explanation purposes. It should be noted that the formulation of the estimators, presented in Equations 4-5 and 7-8, is a function with parent numbers for each population; in the next section, we provide the treatment for estimating the unknown parent numbers from genetic dataset which is used for obtaining HS and/or PO pairs. The main symbols used in the current paper are summarized in Table \ref{symbols}. 
+
+%%%%%%%%%%%%%%
+\begin{center}
+Table \ref{symbols} is here. 
+\end{center}
+%%%%%%%%%%%%%%
 
 \subsection{Hypothetical population}
 
-Suppose that we have a set of two populations labelled 1 and 2 where random mating occurs within each population and that parents can move to the other population after the end of the reproductive season. Hereafter, without loss of generality, we consider the movement of parents in the direction from population 1 to population 2 and focus on the migration number or rate, and that is what we attempt to estimate. In this framework, two reproductive seasons (hereafter, we call them "the first year" and "the second year") are enough to estimate it. 
+Suppose that we have a set of two populations labelled 1 and 2 where random mating occurs within each population and that parents can move to the other population after the end of the reproductive season. Hereafter, without loss of generality, we consider the movement of parents in the direction from population 1 to population 2 and focus on the migration number or rate, and that is what we attempt to estimate. In this framework, considering two reproductive seasons (hereafter, we call them "the first year" and "the second year") is enough to estimate it. 
 
-Suppose there are $N_1$ parents in the population 1 at the beginning of the first year. Each parent produces offspring in which the number is determined by the parent's reproductive potential, denoted by $\lambda_{i,1}$ ($i=1,2,\ldots,N_1$). After the reproductive season, part of the parents would start to moving towards the population 2; $M$ survived migrants arrive in the population 2 so that there are $N_2$ parents in the population 2 at the beginning of the second year ($M<N_2$). Similar to the population, $N_2$ parents produce offspring in which the number is determined by $\lambda_{j,2}$ ($j=1,2,\ldots,N_2$).
+Suppose there are $N_1$ parents in the population 1 at the beginning of the first year. Each parent produces offspring in which the number is determined by the parent's reproductive potential, denoted by $\lambda_{i,1}$ ($i=1,2,\ldots,N_1$). After the reproductive season, part of the parents would start to moving towards the population 2; $M$ survived migrants arrive in the population 2 so that there are $N_2$ parents in the population 2 at the beginning of the second year ($M<N_2$). Similar to the population 1, $N_2$ parents produce offspring in which the number is determined by $\lambda_{j,2}$ ($j=1,2,\ldots,N_2$). 
+
+\subsection{Sampling}
+
+To estimate the migration number or rate, we utilize the number of HS and/or PO pairs observed in a sample. In the both populations, $n_{\rm P, 1}$ and $n_{\rm P, 2}$ parents are randomly sampled immediately after the end of the reproductive season in the first and second year, respectively. Additionally, $n_{\rm O, 1}$ and $n_{\rm O, 2}$ offspring are also randomly sampled. It should be noted that the four kinds of a sample are not always required for estimating migration number or rate; what kinds of samples are needed depends on the situation, as explained later. 
+
+
+ The numbers of MS and MO pairs are determined by pairwise comparison of all the sample individuals (${}_{n_{\rm O}}\mathrm{C}_2$ and $n_{\rm M}n_{\rm O}$ comparisons, respectively). As depicted in {\bf Fig~\ref{example}}, six offspring and three mothers are sampled and two MS and three MO pairs are observed. In our modeling framework, if an MS pair also shares a paternal-sibling (PS) relationship, we count it as an MS pair and ignore the existing full-sibling (FS) relationship. 
+
+\textcolor{red}{kokomade!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}
+
+
+Figure \ref{cartoon} illustrates an example of kinship relationships and movements of parents between populations. 
+
+
+
+
+Although the theoretical framework allows a flexible setting of the reproductive potential, 
 
 
 
@@ -109,12 +132,16 @@ Suppose there are $N_1$ parents in the population 1 at the beginning of the firs
 どのように子供を産むのか。我々のモデルは、フレキシブルな仮定に対応できるが詳細は付録に
 In this study, a mature individual is called a parent even if it does not produce offspring. 
 
-Figure \ref{cartoon} illustrates an example of kinship relationships and movements of parents between populations. 
+
+
+%%%%%%%%%%%%%%
+\begin{center}
+Figure \ref{cartoon} is here. 
+\end{center}
+%%%%%%%%%%%%%%
 
 
 
-
-\subsection{Sampling}
 
 and there are migrant individuals between the two populations. also no population subdivision or spatial struc- ture. In this study, a mature female is called a mother even if she does not produce offspring. For mathematical tractability, we assume that only one spawning ground exists in which the mothers remain for the entire spawning season. Following (Akita, 2020), our modeling frame- work employs two types of overdispersed reproduction: parental and nonparental variations. Thus, the former indicates a variation caused by the mother's covariates, such as age, weight, and residence time on the spawning ground, while the latter indicates a variation caused by nonrandom stochastic events during a series of reproductive episodes, which are independent of the mother's covariates, such as family-correlated survivorship or the mating behavior effects (e.g., competition for males/females and correlation between mating op- portunities of the mother and the number of her offspring). Figure 1 illustrates a schematic diagram of the effects of parental and non- parental variations exemplified by age-dependent reproduction and family-correlated survival on kinship relationships in a population. Detailed definitions of parental and nonparental variations are stated in (Akita, 2020). Appendix 1 provides the theoretical foundation of both parental and nonparental variations in reproduction.
 
@@ -511,7 +538,7 @@ No datasets were generated or analyzed in this study.
 	\begin{center}
 		\includegraphics[width=0.3\textwidth]{/Users/akita/Dropbox/research/close_kin/Mig/Figs/cartoon.eps}
 		\caption{{\bf FIGURE 1} \figcapa{}}
-		\label{example}
+		\label{cartoon}
 	\end{center}
 \end{figure}
 %%%%%%%%%%%
