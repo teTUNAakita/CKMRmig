@@ -94,7 +94,7 @@ Estimating the number of migrants among the populations is essential for underst
 応用例として，３年間にわたって２つのサブ集団からサンプルされた当歳魚から見出される半兄弟ペアをもとに，個体数・移動率・生存率を推定する枠組みを提示する。そこでは，同じサブ集団から年を跨いで見つかる半兄弟ペアに基づく関係式と，今回新たに開発した関係式を組み合わせて用いる。
 
 \section{Theory}\label{sec2}
-In this section, we present the theoretical foundation for estimating a migrant number and a migration rate using HS or PO pairs, which are found between two populations with a different sample timing. While the estimators can hold under flexible assumptions for reproduction (see {\bf Appendix}), here we assume a relatively simple situation for explanation purposes. It should be noted that the formulation of the estimators, presented in Equations 4-5 and 7-8, is a function with parent numbers for each population; in the next section, we provide the treatment for estimating the unknown parent numbers from genetic dataset which is used for obtaining HS and/or PO pairs. The main symbols used in the current paper are summarized in Table \ref{symbols}. 
+In this section, we present the theoretical foundation for estimating a migrant number and a migration rate using HS or PO pairs, which are found between two populations with a different sample timing. While the estimators can hold under flexible assumptions for reproduction (see {\bf Appendix}), here we assume a relatively simple situation for explanation purposes. It should be noted that the formulation of the estimators, presented in Equations 4-5 and 7-8, is a function with parent numbers for each population; in the next section, we provide the treatment for estimating the unknown parent numbers by additional usage of HS and/or PO pairs. The main symbols used in the current paper are summarized in {\bf Table \ref{symbols}}. 
 
 %%%%%%%%%%%%%%
 \begin{center}
@@ -104,21 +104,20 @@ Table \ref{symbols} is here.
 
 \subsection{Hypothetical population}
 
-Suppose that we have a set of two populations labelled 1 and 2 where random mating occurs within each population and that parents can move to the other population after the end of the reproductive season. Hereafter, without loss of generality, we consider the movement of parents in the direction from population 1 to population 2 and focus on the migration number or rate, and that is what we attempt to estimate. In this framework, considering two reproductive seasons (hereafter, we call them "the first year" and "the second year") is enough to estimate it. 
+Suppose that we have a set of two populations labelled 1 and 2 where random mating occurs within each population and that parents can move to the other population after the end of the reproductive season. Hereafter, without loss of generality, we consider the movement of parents in the direction from population 1 to population 2 and focus on the migration number or rate, and that is what we attempt to estimate. In this framework, considering two reproductive seasons (hereafter, we call them "the first year" and "the second year") is enough to estimate it. {\bf Figure \ref{cartoon}} presents a schematic representation of the kinship relationships and movements of parents. 
 
-Suppose there are $N_1$ parents in the population 1 at the beginning of the first year. Each parent produces offspring in which the number is determined by the parent's reproductive potential, denoted by $\lambda_{i,1}$ ($i=1,2,\ldots,N_1$). After the reproductive season, part of the parents would start to moving towards the population 2; $M$ survived migrants arrive in the population 2 so that there are $N_2$ parents in the population 2 at the beginning of the second year ($M<N_2$). Similar to the population 1, $N_2$ parents produce offspring in which the number is determined by $\lambda_{j,2}$ ($j=1,2,\ldots,N_2$). 
+Suppose there are $N_1$ parents in the population 1 at the beginning of the first year. Each parent produces offspring in which the number is governed by the parent's reproductive potential, denoted by $\lambda_{i,1}$ ($i=1,2,\ldots,N_1$). After the reproductive season, part of the parents would start to moving towards the population 2; $M$ survived migrants arrive in the population 2 so that there are $N_2$ parents in the population 2 at the beginning of the second year ($M < N_2$). Similar to the population 1, $N_2$ parents produce offspring in which the number is determined by $\lambda_{j,2}$ ($j=1,2,\ldots,N_2$). Theoretically speaking, the number of offspring for each parent is a random variable with mean $\lambda_{i,1}$ or $\lambda_{j,2}$. 
 
 \subsection{Sampling}
 
-To estimate the migration number or rate, we utilize the number of HS and/or PO pairs observed in a sample. In the both populations, $n_{\rm P, 1}$ and $n_{\rm P, 2}$ parents are randomly sampled immediately after the end of the reproductive season in the first and second year, respectively. Additionally, $n_{\rm O, 1}$ and $n_{\rm O, 2}$ offspring are also randomly sampled. It should be noted that the four kinds of a sample are not always required for estimating migration number or rate; what kinds of samples are needed depends on the situation, as explained later. 
-
+To estimate the migration number or rate, we utilize the number of HS and/or PO pairs observed in a sample. In the both populations, $n_{\rm O, 1}$ and $n_{\rm O, 2}$ offspring are randomly sampled. Additionally, $n_{\rm P, 1}$ and $n_{\rm P, 2}$ parents are randomly sampled immediately after the end of the reproductive season in the first and second year, respectively. For mathematical tractability, parents have to survive during the reproductive season; therefore, both mother and father of a certain offspring have a potential to be sampled. Assuming invasive sampling, sampled parents in the population 1 are never sampled in the population 2. It should be noted that al the four kinds of a sample (i.e., $n_{\rm P, 1}$, $n_{\rm P, 2}$, $n_{\rm O, 1}$ and $n_{\rm O, 2}$) are not always required for estimating migration number or rate; what kinds of a sample are needed depends on the situation, as explained later. 
 
  The numbers of MS and MO pairs are determined by pairwise comparison of all the sample individuals (${}_{n_{\rm O}}\mathrm{C}_2$ and $n_{\rm M}n_{\rm O}$ comparisons, respectively). As depicted in {\bf Fig~\ref{example}}, six offspring and three mothers are sampled and two MS and three MO pairs are observed. In our modeling framework, if an MS pair also shares a paternal-sibling (PS) relationship, we count it as an MS pair and ignore the existing full-sibling (FS) relationship. 
 
 \textcolor{red}{kokomade!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}
 
 
-Figure \ref{cartoon} illustrates an example of kinship relationships and movements of parents between populations. 
+
 
 
 
@@ -284,40 +283,7 @@ migration rateを推定すると考えると、
 
 \subsection{Individual-based model}
 
-\renewcommand{\arraystretch}{0.6}
-\begin{table}[tb]
-\begin{center}
-   \caption[]{Summary of proposed estimators for required parameters and kinship types}
-    \textbf {}\\[-0mm]
-    \begin{tabular}{ccccccccc} \hline
-       	\\
-	Estimator			& $N_1$ 		& $N_2$ 		& $n_{\rm O, 1}$	& $n_{\rm O, 2}$	& $n_{\rm P, 1}$	& $n_{\rm P, 2}$	& Required kinship type\\
-	\\
-	\hline
-	\\
-	$\widehat{M_1}$	& given 		& given 		& \checkmark		& \checkmark 		&				&				& HSP\\ 
-		                						& \\
-	$\widehat{M_2}$	& given		& given		& \checkmark		& 				&				& \checkmark 		& POP\\
-		                						& \\
-	$\widehat{M_3}$	& given		& given		& \checkmark		&  \checkmark		&				& \checkmark 		& HSP \& POP\\
-		                						& \\
-	$\widehat{M_4}$	& given		& estimated	& \checkmark		&  \checkmark		&				& \checkmark 		& HSP \& POP\\
-		                						& \\
-	$\widehat{M_5}$	& estimated	& estimated	& \checkmark		&  \checkmark		& \checkmark		& \checkmark 		& HSP \& POP\\
-									& \\
-	$\widehat{m_1}$	& ---			& given		& \checkmark		& \checkmark 		&				&				& HSP\\ 
-									& \\
-	$\widehat{m_2}$	& ---			& given		& \checkmark		& 				&				& \checkmark 		& POP\\					                			& \\
-	$\widehat{m_3}$	& ---			& given 		& \checkmark		&  \checkmark		&				& \checkmark 		& HSP \& POP\\
-		                						& \\
-	$\widehat{m_4}$	& ---			& estimated	& \checkmark		&  \checkmark		& 				& \checkmark 		& HSP \& POP\\
-		                						& \\
-	\hline
-    \end{tabular}
-    \label{parameter} 
-\end{center} 
-\end{table}
-\renewcommand{\arraystretch}{1}
+
 
 
 
@@ -483,7 +449,7 @@ No datasets were generated or analyzed in this study.
 \renewcommand{\arraystretch}{0.6}
 \begin{table}[tb]
 \begin{center}
-   \caption[]{The list of mathematical symbols employed in the main text}
+   \caption[]{Table 1: The list of mathematical symbols employed in the main text}
     \textbf {}\\[-4mm]
     \begin{tabular}{llc} \hline
        & & \\
@@ -500,8 +466,8 @@ No datasets were generated or analyzed in this study.
 	$\pi_{\rm PO,1}, \pi_{\rm PO,2}$		& Probability that a randomly selected pair (mother and offspring) \\
 	                							& shares a parent-offspring relationship within the population 1 and 2\\
 									& \\
-	$\pi_{\rm PO, bet}$					& Probability that a randomly selected pair (parent and offspring in the population 1 and 2, respectively) \\
-	                							& shares a parent-offspring relationship between the population 1 and 2\\
+	$\pi_{\rm PO, bet}$					& Probability that a randomly selected pair (parent and offspring in the population 1 and 2, \\
+	                							& respectively) shares a parent-offspring relationship between the population 1 and 2\\
 									& \\
 	$\pi_{\rm HS, bet}$					& Probability that a randomly selected pair (two offspring in the population 1 and 2) \\
 	                							& shares a half-sibling relationship between the population 1 and 2\\
@@ -521,6 +487,43 @@ No datasets were generated or analyzed in this study.
 	\hline
     \end{tabular}
     \label{symbols} 
+\end{center} 
+\end{table}
+\renewcommand{\arraystretch}{1}
+
+\clearpage
+
+\renewcommand{\arraystretch}{0.6}
+\begin{table}[tb]
+\begin{center}
+   \caption[]{Table 2: Summary of proposed estimators for required parameters and kinship types}
+    \textbf {}\\[-0mm]
+    \begin{tabular}{ccccccccc} \hline
+       	\\
+	Estimator			& $N_1$ 		& $N_2$ 		& $n_{\rm O, 1}$	& $n_{\rm O, 2}$	& $n_{\rm P, 1}$	& $n_{\rm P, 2}$	& Required kinship type\\
+	\\
+	\hline
+	\\
+	$\widehat{M_1}$	& given 		& given 		& \checkmark		& \checkmark 		&				&				& HSP\\ 
+		                						& \\
+	$\widehat{M_2}$	& given		& given		& \checkmark		& 				&				& \checkmark 		& POP\\
+		                						& \\
+	$\widehat{M_3}$	& given		& given		& \checkmark		&  \checkmark		&				& \checkmark 		& HSP \& POP\\
+		                						& \\
+	$\widehat{M_4}$	& given		& estimated	& \checkmark		&  \checkmark		&				& \checkmark 		& HSP \& POP\\
+		                						& \\
+	$\widehat{M_5}$	& estimated	& estimated	& \checkmark		&  \checkmark		& \checkmark		& \checkmark 		& HSP \& POP\\
+									& \\
+	$\widehat{m_1}$	& ---			& given		& \checkmark		& \checkmark 		&				&				& HSP\\ 
+									& \\
+	$\widehat{m_2}$	& ---			& given		& \checkmark		& 				&				& \checkmark 		& POP\\					                			& \\
+	$\widehat{m_3}$	& ---			& given 		& \checkmark		&  \checkmark		&				& \checkmark 		& HSP \& POP\\
+		                						& \\
+	$\widehat{m_4}$	& ---			& estimated	& \checkmark		&  \checkmark		& 				& \checkmark 		& HSP \& POP\\
+		                						& \\
+	\hline
+    \end{tabular}
+    \label{parameter} 
 \end{center} 
 \end{table}
 \renewcommand{\arraystretch}{1}
@@ -549,9 +552,19 @@ No datasets were generated or analyzed in this study.
 \section*{APPENDIX X}
 \setcounter{equation}{0}
 
-\section*{Equation X holds under flexible assumptions for the distribution of surviving offspring number per parent}
+
+\section*{Reproductive potential}
 
 \renewcommand{\theequation}{A\arabic{equation}}
+Here, we introduce the concept of the reproductive potential of parent $i$ or $j$, which is defined as the expected number of surviving offspring at sampling time, denoted by $\lambda_{i,1}$ or $\lambda_{j,2}$. The reproductive potential is determined by several factors, including the parent’s age, weight, residence time on the spawning ground. It should be noted that the magnitude of this parameter ($\lambda_{i,1}$ or $\lambda_{i,2}$) includes information about the survival rate of the offspring, the number of days after egg hatching, and the egg number; this implies that the parameter reflects the sample timing. It should also be noted that the modeling framework does not depend on whether the reproductive potential is heritable or not.
+
+
+
+
+
+\section*{Equation X holds under flexible assumptions for the distribution of surviving offspring number per parent}
+
+\renewcommand{\theequation}{B\arabic{equation}}
 
 これまでは，母親による産卵数の偏りや，父親による放精成功の偏りは考慮していなかった。しかしながら，多回繁殖する魚類の場合，体サイズによって繁殖成功度は大きく変化すること，および体サイズの分布には偏りが存在することから，上記のシステマチックな偏りを考慮する必要があるだろう。例えば，集団に１個体の巨大魚（メス）がいて，その産卵数が他の個体よりも圧倒的に大きい場合，サンプルされる子供の母親はかなりの確率でその巨大魚になるだろう。
 
