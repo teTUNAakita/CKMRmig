@@ -116,48 +116,54 @@ Suppose there are $N_1$ parents in the population 1 at the beginning of the firs
 
 \subsection{Sampling}
 
-To estimate the migration number or rate, we utilize the number of HS and/or PO pairs observed in a sample. In the both populations, $n_{\rm O, 1}$ and $n_{\rm O, 2}$ offspring are randomly sampled, which are identified as young-of-year individuals without errors. Additionally, $n_{\rm P, 1}$ and $n_{\rm P, 2}$ parents are randomly sampled immediately after the end of the reproductive season in the first and second year, respectively. For mathematical tractability, parents have to survive during the reproductive season; therefore, both mother and father of a certain offspring have a potential to be sampled even in the same year. It should be noted that al the four kinds of a sample (i.e., $n_{\rm P, 1}$, $n_{\rm P, 2}$, $n_{\rm O, 1}$ and $n_{\rm O, 2}$) are not always required for estimating migration number or rate; what kinds of a sample are needed depends on the situation. In this section, we only focus HS pairs and PO pairs found between the two populations. For the applicability of fishery management, we assume invatsive sampling procedure, preventing the finding of a parent-offspring pair such that a parent and offspring is sampled in the population 1 and 2, respectively. 
+To estimate the migration number or rate, we utilize the number of HS and/or PO pairs observed in a sample. In the both populations, $n_{\rm O, 1}$ and $n_{\rm O, 2}$ offspring are randomly sampled, which are identified as young-of-year individuals without errors. Additionally, $n_{\rm P, 1}$ and $n_{\rm P, 2}$ parents are randomly sampled immediately after the end of the reproductive season in the first and second year, respectively. For mathematical tractability, parents have to survive during the reproductive season; therefore, both mother and father of a certain offspring have a potential to be sampled even in the same year. It should be noted that al the four kinds of a sample (i.e., $n_{\rm P, 1}$, $n_{\rm P, 2}$, $n_{\rm O, 1}$, and $n_{\rm O, 2}$) are not always required for estimating migration number or rate; what kinds of a sample are needed depends on the situation. In this section, we only focus HS pairs and PO pairs found between the two populations. For the applicability of fishery management, we assume invasive sampling procedure, preventing the finding of a parent-offspring pair such that a parent and offspring is sampled in the population 1 and 2, respectively. 
 
 In the example depicted in {\bf Fig~\ref{cartoon}}, five offspring and four parents are sampled in the population 1 and four offspring and six parents are sampled in the population 2, and two HS and one PO pairs found between the two populations are observed. In addition, there are several PO pairs observed within the same population, which are available to estimate parent numbers, as explain the next section. In our modeling framework, if full-sibling (FS) relationship is found, we count it as two HS pairs. The numbers of HS and PO pairs found between the two populations are determined by pairwise comparison of all the sample individuals ($n_{\rm O,1}\times n_{\rm O,2}$ and $n_{\rm O,1}\times n_{\rm P,2}$ comparisons, respectively). 
 
-\textcolor{red}{kokomade!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}
+\subsection{HS pair-based model}
 
-\subsection{HSP-based model}
+Here we consider the probability that two offspring sampled in the population 1 and 2 share an HS relationship with an arbitrary mother or father, denoted by $\pi_{\rm HS, bet}$. For the explanation purpose, we assume equal reproductive potential among parents, although this assumption can be relaxed for most of the case (see details in {\bf Appendix}). $\pi_{\rm HS, bet}$ can be partitioned into the three probabilities: (i) the probability that sampled offspring in the population 1 born to a parent that safely arrives in the population 2 (hereafter, called "migrant"); (ii) the probability that sampled offspring in the population 2 born to a migrant; and (iii) the probability that randomly selected two migrants are identical. 
 
-Here we consider the probability that two offspring sampled in the population 1 and 2 share an HS relationship with an arbitrary mother or father, denoted by $\pi_{\rm HS, bet}$. 
-
-For the explanation purpose, 
-
-lambdaは全ての親で一定とするが、この仮定をゆるくしても多くの場合我々の議論は成立する。
-
-Assuming that every fathers in the population 1 has a same reproductive potential, どの母親も同じような繁殖ポテンシャルを持つと仮定 すると，移動する母親の子供をサブ集団1でサンプルする確率は$rM/rN$...となる。
-
+To assess these probabilities, recall there must be two parents of arbitral offspring; the first probability is the sum of father-offspring and mother-offspring relationship, which can be written by $r_{\rm M}M/(r_{\rm S,1}N_{1}) + (1 - r_{\rm M})M/((1-r_{\rm S,1})N_{1})$, where $r_{\rm M}$ and $r_{\rm S,1}$ indicates sex ratio of parents in the migrants and in the whole of the population 1, respectively. Assuming $r_{\rm M} = r_{\rm S,1}$, the probability is simplified as $2M/N_{1}$. Similarly, the second probability is simplified as $2M/N_{2}$, implying the assumption of equal sex ratio in the migrants and the others. Taken together, we obtain
 \begin{align}
 \pi_{\rm HS,bet} &= \frac{2M}{N_{1}} \frac{2M}{N_{2}} \frac{1}{M} \nonumber\\
-&= \frac{4M}{N_{1}N_{2}}
+&= \frac{4M}{N_{1}N_{2}}.
 \label{HS-1}
 \end{align}
+This form also holds under a flexible setting for the reproductive potential, such as a situation with random variable of $\lambda_{i,1}$ and $\lambda_{j,2}$, as noted in {\bf Appendix}. 
+
+Let $H_{\rm HS,bet}$ be the number of HS pairs found in offspring samples of size $n_{\rm O, 1}$ and $n_{\rm O, 2}$. Assuming that the total number of HS pairs in the population is much higher than $H_{\rm HS,bet}$, the distribution is approximated by a binomial form (i.e., $H_{\rm HS,bet} \sim {\rm Binom}[\pi_{\rm HS,bet}, n_{\rm O, 1} n_{\rm O, 2}]$); thus, the theoretical expectation of $H_{\rm HS,bet}$ is
 
 \begin{align}
 \mathbb{E}[H_{\rm HS, bet}] &= \pi_{\rm HS,bet} n_{\rm O, 1} n_{\rm O, 2} \nonumber\\
-&= \frac{ 4 n_{\rm O, 1} n_{\rm O, 2} M } { N_{1} N_{2} } \\
-&= \frac{ 4 n_{\rm O, 1} n_{\rm O, 2} m } { N_{2} }
-\label{HS-2}
+&= \frac{ 4 n_{\rm O, 1} n_{\rm O, 2} M } { N_{1} N_{2} } \label{HS-2-1}\\
+&= \frac{ 4 n_{\rm O, 1} n_{\rm O, 2} m } { N_{2} },
+\label{HS-2-2}
 \end{align}
+where $m$ indicates the migration rate satisfying $M = mN_{1}$. The observed number of HS pairs in a sample is defined by $\widetilde{H}_{\rm HS, bet}$, and $\mathbb{E}[H_{\rm HS, bet}]$ in Equation \ref{HS-2-1} is replaced by $\widetilde{H}_{\rm HS, bet}$, generating the linear estimator of $M$:
 
 \begin{align}
-\widehat{M_1} &= \frac{N_{1} N_{2} \widetilde{H}_{\rm HS, bet} } {4 n_{\rm O, 1} n_{\rm O, 2} }
+\widehat{M_1} &= \frac{N_{1} N_{2} \widetilde{H}_{\rm HS, bet} } {4 n_{\rm O, 1} n_{\rm O, 2} }.
 \label{HS-3}
 \end{align}
+In this paper, a ``tilde'' and ``hat'' indicates the observation and estimator of a variable, respectively. Similarly, $\mathbb{E}[H_{\rm HS, bet}]$ in Equation \ref{HS-2-2} is replaced by $\widetilde{H}_{\rm HS, bet}$, generating the linear estimator of $m$:
 
 \begin{align}
 \widehat{m_1} &= \frac{N_{2} \widetilde{H}_{\rm HS, bet} } {4 n_{\rm O, 1} n_{\rm O, 2} }
 \label{HS-3}
 \end{align}
+Subscription of these estimators indicates the numbering of proposed estimators appeared in this paper, which is summarized in Table \ref{parameter}. 
 
-より一般的な説明は付録に載せた。
+%%%%%%%%%%%%%%
+\begin{center}
+\fbox{Table \ref{parameter} is here. }
+\end{center}
+%%%%%%%%%%%%%%
 
-\subsection{POP-based model}
+
+\textcolor{red}{kokomade!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}
+
+\subsection{PO pair-based model}
 
 \begin{align}
 \pi_{\rm PO,bet} &= \frac{2M}{N_{1}} \frac{M}{N_{2}} \frac{1}{M} \nonumber\\
