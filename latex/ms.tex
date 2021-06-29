@@ -122,9 +122,9 @@ In the example depicted in {\bf Fig~\ref{cartoon}}, five offspring and four pare
 
 \subsection{HS pair-based model}
 
-Here we consider the probability that two offspring sampled in the population 1 and 2 share an HS relationship with an arbitrary mother or father, denoted by $\pi_{\rm HS, bet}$. For the explanation purpose, we assume equal reproductive potential among parents, although this assumption can be relaxed for most of the case (see details in {\bf Appendix}). $\pi_{\rm HS, bet}$ can be partitioned into the three probabilities: (i) the probability that sampled offspring in the population 1 born to a parent that safely arrives in the population 2 (hereafter, called "migrant"); (ii) the probability that sampled offspring in the population 2 born to a migrant; and (iii) the probability that randomly selected two migrants are identical. 
+Here, we consider the probability that two offspring sampled in the population 1 and 2 share an HS relationship with an arbitrary mother or father, denoted by $\pi_{\rm HS, bet}$. For the explanation purpose, we assume equal reproductive potential among parents in this section, although this assumption can be relaxed for most of the case (see details in {\bf Appendix}). $\pi_{\rm HS, bet}$ can be partitioned into the three probabilities: (i) the probability that sampled offspring in the population 1 born to a parent that safely arrives in the population 2 (hereafter, called "migrant"); (ii) the probability that sampled offspring in the population 2 born to a migrant; and (iii) the probability that the migrant of a sampled offspring in the population 1 and the migrant of a sampled offspring in the population 2 are identical. 
 
-To assess these probabilities, recall there must be two parents of arbitral offspring; the first probability is the sum of father-offspring and mother-offspring relationship, which can be written by $r_{\rm M}M/(r_{\rm S,1}N_{1}) + (1 - r_{\rm M})M/((1-r_{\rm S,1})N_{1})$, where $r_{\rm M}$ and $r_{\rm S,1}$ indicates sex ratio of parents in the migrants and in the whole of the population 1, respectively. Assuming $r_{\rm M} = r_{\rm S,1}$, the probability is simplified as $2M/N_{1}$. Similarly, the second probability is simplified as $2M/N_{2}$, implying the assumption of equal sex ratio in the migrants and the others. Taken together, we obtain
+To assess these probabilities, recall there must be two parents of arbitral offspring; the first probability is the sum of father-offspring and mother-offspring relationship, which can be written by $r_{\rm M}M/(r_{\rm S,1}N_{1}) + (1 - r_{\rm M})M/((1-r_{\rm S,1})N_{1})$, where $r_{\rm M}$ and $r_{\rm S,1}$ indicates sex ratio of parents in the migrants and in the whole of the population 1, respectively. Assuming $r_{\rm M} = r_{\rm S,1}$, the probability is simplified as $2M/N_{1}$. Similarly, the second probability is simplified as $2M/N_{2}$, implying the assumption of equal sex ratio in the migrants and the others. The third probability corresponds to the probability that randomly selected two migrants are identical, that is $1/M$. Taken together, we obtain
 \begin{align}
 \pi_{\rm HS,bet} &= \frac{2M}{N_{1}} \frac{2M}{N_{2}} \frac{1}{M} \nonumber\\
 &= \frac{4M}{N_{1}N_{2}}.
@@ -160,11 +160,13 @@ Subscription of these estimators indicates the numbering of proposed estimators 
 \end{center}
 %%%%%%%%%%%%%%
 
+\subsection{PO pair-based model}
+
+Next, we consider the probability that offspring sampled in the population 1 and a parent sampled in the population 2 share an PO relationship, denoted by $\pi_{\rm PO, bet}$. $\pi_{\rm PO, bet}$ can be partitioned into the three probabilities: (i) the probability that sampled offspring in the population 1 born to a migrant; (ii) the probability that a migrant is sampled; and (iii) the probability that the migrant of a sampled offspring in the population 1 and the migrant sampled in the population 2 are identical. 
 
 \textcolor{red}{kokomade!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}
 
-\subsection{PO pair-based model}
-
+To assess these probabilities, recall there must be two parents of arbitral offspring; the first probability is the sum of father-offspring and mother-offspring relationship, which can be written by $r_{\rm M}M/(r_{\rm S,1}N_{1}) + (1 - r_{\rm M})M/((1-r_{\rm S,1})N_{1})$, where $r_{\rm M}$ and $r_{\rm S,1}$ indicates sex ratio of parents in the migrants and in the whole of the population 1, respectively. Assuming $r_{\rm M} = r_{\rm S,1}$, the probability is simplified as $2M/N_{1}$. Similarly, the second probability is simplified as $2M/N_{2}$, implying the assumption of equal sex ratio in the migrants and the others. Taken together, we obtain
 \begin{align}
 \pi_{\rm PO,bet} &= \frac{2M}{N_{1}} \frac{M}{N_{2}} \frac{1}{M} \nonumber\\
 &= \frac{2M}{N_{1}N_{2}}
@@ -212,6 +214,8 @@ n_{\rm O, 1} n_{\rm P, 2} &> \frac{ N_{2} } { 2m }
 \end{align}
 
 サンプル数の少なさを補えるかも。
+
+
 
 \section{Applications}\label{sec3}
 
