@@ -140,7 +140,7 @@ Let $H_{\rm HS,bet}$ be the number of HS pairs found in offspring samples of siz
 &= \frac{ 4 n_{\rm O, 1} n_{\rm O, 2} m } { N_{2} },
 \label{HS-2-2}
 \end{align}
-where $m$ indicates the migration rate satisfying $M = mN_{1}$. The observed number of HS pairs in a sample is defined by $\widetilde{H}_{\rm HS, bet}$, and $\mathbb{E}[H_{\rm HS, bet}]$ in Equation \ref{HS-2-1} is replaced by $\widetilde{H}_{\rm HS, bet}$, generating the linear estimator of $M$:
+where $m$ indicates the migration rate satisfying $M = mN_{1}$. The observed number of HS pairs in a sample found between the two populations is defined by $\widetilde{H}_{\rm HS, bet}$, and $\mathbb{E}[H_{\rm HS, bet}]$ in Equation \ref{HS-2-1} is replaced by $\widetilde{H}_{\rm HS, bet}$, generating the linear estimator of $M$:
 
 \begin{align}
 \widehat{M_1} &= \frac{N_{1} N_{2} \widetilde{H}_{\rm HS, bet} } {4 n_{\rm O, 1} n_{\rm O, 2} }.
@@ -164,30 +164,32 @@ Subscription of these estimators indicates the numbering of proposed estimators 
 
 Next, we consider the probability that offspring sampled in the population 1 and a parent sampled in the population 2 share an PO relationship, denoted by $\pi_{\rm PO, bet}$. $\pi_{\rm PO, bet}$ can be partitioned into the three probabilities: (i) the probability that sampled offspring in the population 1 born to a migrant; (ii) the probability that a migrant is sampled; and (iii) the probability that the migrant of a sampled offspring in the population 1 and the migrant sampled in the population 2 are identical. 
 
-\textcolor{red}{kokomade!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}
-
-To assess these probabilities, recall there must be two parents of arbitral offspring; the first probability is the sum of father-offspring and mother-offspring relationship, which can be written by $r_{\rm M}M/(r_{\rm S,1}N_{1}) + (1 - r_{\rm M})M/((1-r_{\rm S,1})N_{1})$, where $r_{\rm M}$ and $r_{\rm S,1}$ indicates sex ratio of parents in the migrants and in the whole of the population 1, respectively. Assuming $r_{\rm M} = r_{\rm S,1}$, the probability is simplified as $2M/N_{1}$. Similarly, the second probability is simplified as $2M/N_{2}$, implying the assumption of equal sex ratio in the migrants and the others. Taken together, we obtain
+The first and second probabilities are the same as the one introduced in the previous subsection, that is, $2M/N_{1}$ and $1/M$. The second probability is $M/N_{2}$ by definition. Taken together, we obtain
 \begin{align}
 \pi_{\rm PO,bet} &= \frac{2M}{N_{1}} \frac{M}{N_{2}} \frac{1}{M} \nonumber\\
 &= \frac{2M}{N_{1}N_{2}}
 \label{PO-1}
 \end{align}
 
+Let $H_{\rm PO,bet}$ be the number of PO pairs found in offspring samples of size $n_{\rm O, 1}$ and parent samples of size $n_{\rm P, 2}$. Assuming that the total number of PO pairs in the two populations is much higher than $H_{\rm PO,bet}$, the distribution is approximated by a binomial form (i.e., $H_{\rm PO,bet} \sim {\rm Binom}[\pi_{\rm PO,bet}, n_{\rm O, 1} n_{\rm P, 2}]$); thus, the theoretical expectation of $H_{\rm PO,bet}$ is
 \begin{align}
 \mathbb{E}[H_{\rm PO, bet}] &= \pi_{\rm PO,bet} n_{\rm O, 1} n_{\rm P, 2} \nonumber\\
-&= \frac{ 2 n_{\rm O, 1} n_{\rm P, 2} M } { N_{1} N_{2} }
-\label{PO-2}
+&= \frac{ 2 n_{\rm O, 1} n_{\rm P, 2} M } { N_{1} N_{2} } \label{PO-2-1} \\
+&= \frac{ 2 n_{\rm O, 1} n_{\rm P, 2} m } { N_{2} }
+\label{PO-2-2}
 \end{align}
 
+The observed number of PO pairs in a sample is defined by $\widetilde{H}_{\rm PO, bet}$, and $\mathbb{E}[H_{\rm PO, bet}]$ in Equation \ref{HS-2-1} is replaced by $\widetilde{H}_{\rm HS, bet}$, generating the linear estimator of $M$ and $m$:
 \begin{align}
-\widehat{M_2} &= \frac{N_{1} N_{2} \widetilde{H}_{\rm PO,bet} } {2 n_{\rm O, 1} n_{\rm P, 2} }
+\widehat{M_2} &= \frac{N_{1} N_{2} \widetilde{H}_{\rm PO,bet} } {2 n_{\rm O, 1} n_{\rm P, 2} },
 \label{PO-3}
 \end{align}
-
+and
 \begin{align}
-\widehat{m_2} &= \frac{N_{2} \widetilde{H}_{\rm PO,bet} } {2 n_{\rm O, 1} n_{\rm P, 2} }
+\widehat{m_2} &= \frac{N_{2} \widetilde{H}_{\rm PO,bet} } {2 n_{\rm O, 1} n_{\rm P, 2} }.
 \label{PO-4}
 \end{align}
+
 
 \subsection{Required sample size}
 
@@ -200,6 +202,8 @@ n_{\rm O, 1} n_{\rm O, 2} &> \frac{ N_{2} } { 4m }
 n_{\rm O, 1} n_{\rm P, 2} &> \frac{ N_{2} } { 2m }
 \label{RS-2}
 \end{align}
+
+\textcolor{red}{kokomade!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}
 
 \subsection{Efficient use of kinship pairs found between populations}
 
