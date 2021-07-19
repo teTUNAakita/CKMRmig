@@ -33,7 +33,7 @@
 \usepackage[labelformat=empty,labelsep=none]{caption}
 \usepackage[singlelinecheck=false]{caption}
 \usepackage{color}
-\def\RED#1{\textcolor{black}{#1}} %% 
+\def\RED#1{\textcolor{red}{#1}} %% 
 \def\BLUE#1{\textcolor{blue}{#1}} %% 
 \begin{document}
 
@@ -106,7 +106,7 @@ In this section, we present the theoretical foundation for estimating a migrant 
 
 Suppose that we have a set of two populations labelled 1 and 2 where random mating occurs within each population and that parents can move to the other population after the end of the reproductive season. Hereafter, without loss of generality, we consider the movement of parents in the direction from population 1 to population 2 and focus on the migration number or rate, and that is what we attempt to estimate. In this framework, considering two reproductive seasons (hereafter, we call them "the first year" and "the second year") is enough to estimate it. {\bf Figure \ref{cartoon}} presents a schematic representation of the kinship relationships and movements of parents. 
 
-Suppose there are $N_1$ parents in the population 1 at the beginning of the first year. Each parent produces offspring in which the number is governed by the parent's reproductive potential, denoted by $\lambda_{i,1}$ ($i=1,2,\ldots,N_1$). After the reproductive season, part of the parents would start to moving towards the population 2; $M$ survived migrants arrive in the population 2 so that there are $N_2$ parents in the population 2 at the beginning of the second year ($M < N_2$). Similar to the population 1, $N_2$ parents produce offspring in which the number is determined by $\lambda_{j,2}$ ($j=1,2,\ldots,N_2$). The reproductive potential is determined by several factors and its details are summarized in {\bf Appendix}; theoretically speaking, the number of offspring for each parent is set as a random variable with mean $\lambda_{i,1}$ or $\lambda_{j,2}$. 
+Suppose there are $N_1$ parents in the population 1 at the beginning of the first year. Each parent produces offspring in which the number is governed by the parent's reproductive potential, denoted by $\lambda_{i,1}$ ($i=1,2,\ldots,N_1$). After the reproductive season, part of the parents would start to moving towards the population 2; $M$ survived migrants arrive in the population 2 so that there are $N_2$ parents in the population 2 at the beginning of the second year ($M < N_2$). Similar to the population 1, $N_2$ parents produce offspring in which the number is governed by $\lambda_{j,2}$ ($j=1,2,\ldots,N_2$). The reproductive potential is determined by several factors and its details are summarized in {\bf Appendix}; theoretically speaking, the number of offspring for each parent is set as a random variable with mean $\lambda_{i,1}$ or $\lambda_{j,2}$. 
 
 %%%%%%%%%%%%%%
 \begin{center}
@@ -116,7 +116,7 @@ Suppose there are $N_1$ parents in the population 1 at the beginning of the firs
 
 \subsection{Sampling}
 
-To estimate the migration number or rate, we utilize the number of HS and/or PO pairs observed in a sample. In the both populations, $n_{\rm O, 1}$ and $n_{\rm O, 2}$ offspring are randomly sampled, which are identified as young-of-year individuals without errors. Additionally, $n_{\rm P, 1}$ and $n_{\rm P, 2}$ parents are randomly sampled immediately after the end of the reproductive season in the first and second year, respectively. For mathematical tractability, parents have to survive during the reproductive season; therefore, both mother and father of a certain offspring have a potential to be sampled even in the same year. It should be noted that al the four kinds of a sample (i.e., $n_{\rm P, 1}$, $n_{\rm P, 2}$, $n_{\rm O, 1}$, and $n_{\rm O, 2}$) are not always required for estimating migration number or rate; what kinds of a sample are needed depends on the situation. In this section, we only focus HS pairs and PO pairs found between the two populations. For the applicability of fishery management, we assume invasive sampling procedure, preventing the finding of a parent-offspring pair such that a parent and offspring is sampled in the population 1 and 2, respectively. 
+To estimate the migration number or rate, we utilize the number of HS and/or PO pairs observed in a sample. In the both populations, $n_{\rm O, 1}$ and $n_{\rm O, 2}$ offspring are randomly sampled, which are identified as young-of-year individuals without errors. Additionally, $n_{\rm P, 1}$ and $n_{\rm P, 2}$ parents are randomly sampled immediately after the end of the reproductive season in the first and second year, respectively. For mathematical tractability, parents have to survive during the reproductive season; therefore, both mother and father of a certain offspring have a potential to be sampled even in the same year. It should be noted that all the four kinds of a sample (i.e., $n_{\rm P, 1}$, $n_{\rm P, 2}$, $n_{\rm O, 1}$, and $n_{\rm O, 2}$) are not always required for estimating migration number or rate; what kinds of a sample are needed depends on the situation \RED{(rewrite clearly)}. In this section, we only focus HS pairs and PO pairs found between the two populations. For the applicability of fishery management, we assume invasive sampling procedure, preventing the finding of a parent-offspring pair such that a parent and offspring is sampled in the population 1 and 2, respectively. 
 
 In the example depicted in {\bf Fig~\ref{cartoon}}, five offspring and four parents are sampled in the population 1 and four offspring and six parents are sampled in the population 2, and two HS and one PO pairs found between the two populations are observed. In addition, there are several PO pairs observed within the same population, which are available to estimate parent numbers, as explain the next section. In our modeling framework, if full-sibling (FS) relationship is found, we count it as two HS pairs. The numbers of HS and PO pairs found between the two populations are determined by pairwise comparison of all the sample individuals ($n_{\rm O,1}\times n_{\rm O,2}$ and $n_{\rm O,1}\times n_{\rm P,2}$ comparisons, respectively). 
 
@@ -205,24 +205,21 @@ n_{\rm O, 1} n_{\rm P, 2} &> \frac{ N_{2} } { 2m }.
 \end{align}
 Roughly speaking, required sample size to ensure above conditions is that $n>\sqrt{N_2}$, where $n = n_{\rm O, 1}=n_{\rm O, 2}=n_{\rm P, 2}$. It should be noted that very tiny $m$, which dramatically increases the required sample size, produces genetic differences between two populations. In such a case, there are several methods to estimate migration rate by population genetics technique; alternatively, we focus the situation of moderate/large migration rate, which leads little genetic differences between two populations. 
 
-\textcolor{red}{kokomade!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}
-
 \subsection{Efficient use of kinship pairs found between populations}
 
+So far, we only focus the usage of HS pairs or PO pairs found between populations. When the both kinship pairs are available, we can obtain efficient estimators by combined $\widehat{M_1}$ and $\widehat{M_2}$ for migration number: 
 \begin{align}
-\widehat{M_3} &= \frac{ N_{1} N_{2} \left(\widetilde{H}_{\rm HS,bet} + \widetilde{H}_{\rm PO,bet}\right) } {2n_{\rm O, 1} \left(2 n_{\rm O, 2} + n_{\rm P, 2}\right) }
+\widehat{M_3} &= \frac{ N_{1} N_{2} \left(\widetilde{H}_{\rm HS,bet} + \widetilde{H}_{\rm PO,bet}\right) } {2n_{\rm O, 1} \left(2 n_{\rm O, 2} + n_{\rm P, 2}\right), }
 \label{AP-1}
 \end{align}
-
+and by combining $\widehat{m_1}$ and $\widehat{m_2}$ for migration rate: 
 \begin{align}
-\widehat{m_3} &= \frac{ N_{2} \left(\widetilde{H}_{\rm HS,bet} + \widetilde{H}_{\rm PO,bet}\right) } {2n_{\rm O, 1} \left(2 n_{\rm O, 2} + n_{\rm P, 2}\right) }
+\widehat{m_3} &= \frac{ N_{2} \left(\widetilde{H}_{\rm HS,bet} + \widetilde{H}_{\rm PO,bet}\right) } {2n_{\rm O, 1} \left(2 n_{\rm O, 2} + n_{\rm P, 2}\right). }
 \label{AP-2}
 \end{align}
+For those estimators, $\widetilde{H}_{\rm HS,bet}$ and $\widetilde{H}_{\rm PO,bet}$ is weighted by a sample size $n_{\rm O, 2}$ and $n_{\rm P, 2}$, respectively. 
 
-サンプル数の少なさを補えるかも。
-
-
-
+\textcolor{red}{kokomade!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}
 \section{Applications}\label{sec3}
 
 
