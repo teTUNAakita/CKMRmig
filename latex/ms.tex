@@ -116,7 +116,7 @@ Suppose there are $N_1$ parents in the population 1 at the beginning of the firs
 
 \subsection{Sampling}
 
-To estimate the migration number or rate, we utilize the number of HS and/or PO pairs observed in a sample. In the both populations, $n_{\rm O, 1}$ and $n_{\rm O, 2}$ offspring are randomly sampled, which are identified as young-of-year individuals without errors. Additionally, $n_{\rm P, 1}$ and $n_{\rm P, 2}$ parents are randomly sampled immediately after the end of the reproductive season in the first and second year, respectively. For mathematical tractability, parents have to survive during the reproductive season; therefore, both mother and father of a certain offspring have a potential to be sampled even in the same year. It should be noted that all the four kinds of a sample (i.e., $n_{\rm P, 1}$, $n_{\rm P, 2}$, $n_{\rm O, 1}$, and $n_{\rm O, 2}$) are not always required for estimating migration number or rate; what kinds of a sample are needed depends on the situation \RED{(rewrite clearly)}. In this section, we only focus HS pairs and PO pairs found between the two populations. For the applicability of fishery management, we assume invasive sampling procedure, preventing the finding of a parent-offspring pair such that a parent and offspring is sampled in the population 1 and 2, respectively. 
+To estimate the migration number or rate, we utilize the number of HS and/or PO pairs observed in a sample. In the both populations, $n_{\rm O, 1}$ and $n_{\rm O, 2}$ offspring are randomly sampled, which are identified as young-of-year individuals without errors. Additionally, $n_{\rm P, 1}$ and $n_{\rm P, 2}$ parents are randomly sampled immediately after the end of the reproductive season in the first and second year, respectively. For mathematical tractability, parents have to survive during the reproductive season; therefore, both mother and father of a certain offspring have a potential to be sampled even in the same year. It should be noted that all the four kinds of a sample (i.e., $n_{\rm P, 1}$, $n_{\rm P, 2}$, $n_{\rm O, 1}$, and $n_{\rm O, 2}$) are not always required for estimating migration number or rate; what kinds of a sample are needed depends on the situation \RED{(rewrite clearly)}. Up to the subsection 2.6, we only focus HS pairs and PO pairs found between the two populations. For the applicability of fishery management, we assume invasive sampling procedure, preventing the finding of a parent-offspring pair such that a parent and offspring is sampled in the population 1 and 2, respectively. 
 
 In the example depicted in {\bf Fig~\ref{cartoon}}, five offspring and four parents are sampled in the population 1 and four offspring and six parents are sampled in the population 2, and two HS and one PO pairs found between the two populations are observed. In addition, there are several PO pairs observed within the same population, which are available to estimate parent numbers, as explain the next section. In our modeling framework, if full-sibling (FS) relationship is found, we count it as two HS pairs. The numbers of HS and PO pairs found between the two populations are determined by pairwise comparison of all the sample individuals ($n_{\rm O,1}\times n_{\rm O,2}$ and $n_{\rm O,1}\times n_{\rm P,2}$ comparisons, respectively). 
 
@@ -150,7 +150,7 @@ In this paper, a ``tilde'' and ``hat'' indicates the observation and estimator o
 
 \begin{align}
 \widehat{m_1} &= \frac{N_{2} \widetilde{H}_{\rm HS, bet} } {4 n_{\rm O, 1} n_{\rm O, 2} }
-\label{HS-3}
+\label{HS-4}
 \end{align}
 Subscription of these estimators indicates the numbering of proposed estimators appeared in this paper, which is summarized in Table \ref{parameter}. 
 
@@ -176,7 +176,7 @@ Let $H_{\rm PO,bet}$ be the number of PO pairs found in offspring samples of siz
 &= \frac{ 2 n_{\rm O, 1} n_{\rm P, 2} m } { N_{2} }.
 \label{PO-2-2}
 \end{align}
-The observed number of PO pairs in a sample is defined by $\widetilde{H}_{\rm PO, bet}$, and $\mathbb{E}[H_{\rm PO, bet}]$ in Equation \ref{HS-2-1} is replaced by $\widetilde{H}_{\rm HS, bet}$, generating the linear estimator of $M$ and $m$:
+The observed number of PO pairs in a sample is defined by $\widetilde{H}_{\rm PO, bet}$, and $\mathbb{E}[H_{\rm PO, bet}]$ in Equations \ref{PO-2-1} and \ref{PO-2-2} are replaced by $\widetilde{H}_{\rm PO, bet}$, generating the linear estimator of $M$ and $m$:
 \begin{align}
 \widehat{M_2} &= \frac{N_{1} N_{2} \widetilde{H}_{\rm PO,bet} } {2 n_{\rm O, 1} n_{\rm P, 2} },
 \label{PO-3}
@@ -217,42 +217,35 @@ For those estimators, $\widetilde{H}_{\rm HS,bet}$ and $\widetilde{H}_{\rm PO,be
 
 \subsection{Parent number can be estimated by PO pairs found within a population}
 
-So far, we provide the formulation of the estimators, presented in Equations 4-5 and 7-8, is a function with parent numbers for each population. 
+So far, we provide the formulation of the estimators, presented in Equations \ref{HS-3}-\ref{HS-4} and \ref{PO-3}-\ref{PO-4}, is a function with parent numbers for each population ($N_1$ and/or $N_2$); in other words, such estimators are available only when those parent number(s) are known. In this subsection, we provide the treatment for estimating the unknown parent numbers by additional usage of PO pairs, producing estimators for migrant number and migration rate that can be obtained only from the genetic data. 
 
-; in this subsection, we provide the treatment for estimating the unknown parent numbers by additional usage of HS and/or PO pairs. 
-
-\textcolor{red}{kokomade!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}
-
-これまでは、N1とN2は既知として推定量を導出してきた。もしこれらが未知であるのあらば、N1やN2は何かしらの方法で推定する必要がある。このセクションでは、CKMRの知見に基づきこれらについても近親関係から推定することで、移動率に関する推定を、近親関係からのみで完結させる。
-
-前のセクションでは、２年目に集団２から親と子を両方サンプルしていて、移動を推定していた。これらのサンプルを用いて、N2を推定することが可能である。
+When PO pairs found in offspring samples and parent samples both from the population 2 in the second year are available, standard estimator of parental number can be obtained \cite[]{bravington2016close}, given by
 
 \begin{align}
-\widehat{N_2} &= \frac{ 2 n_{\rm O, 2} n_{\rm P, 2} + 1 }{\widetilde{H}_{\rm PO, 2} + 1} 
+\widehat{N_2} &= \frac{ 2 n_{\rm O, 2} n_{\rm P, 2} + 1 }{\widetilde{H}_{\rm PO, 2} + 1} ,
 \label{AP-3}
 \end{align}
-subpop2の親子もわかるはず。$N_2$を推定値で置き換えて
+where $\widetilde{H}_{\rm PO, 2}$ be the observed number of PO pairs found in offspring samples of size $n_{\rm O, 2}$ and parent samples of size $n_{\rm P, 2}$. The term ``$+1$'' reduces the bias especially when $\widetilde{H}_{\rm PO, 2}$ is small \cite[e.g.,][]{ecolevol2021p}, where a similar derivation of this bias correction is provided in \cite{Akita_2019}. By replacing $N_2$ by $\widehat{N_2}$ in Eqs.~\ref{AP-1} and \ref{AP-2}, we can obtain the following estimators: 
 
 \begin{align}
-\widehat{M_4} &=  \frac{ N_{1} \left(\widetilde{H}_{\rm HS,bet} + \widetilde{H}_{\rm PO,bet}\right) \left(2 n_{\rm O, 2} n_{\rm P, 2} + 1\right)} {2n_{\rm O, 1} \left(2 n_{\rm O, 2} + n_{\rm P, 2}\right) \left(\widetilde{H}_{\rm PO, 2} + 1\right)}
+\widehat{M_4} &=  \frac{ N_{1} \left(\widetilde{H}_{\rm HS,bet} + \widetilde{H}_{\rm PO,bet}\right) \left(2 n_{\rm O, 2} n_{\rm P, 2} + 1\right)} {2n_{\rm O, 1} \left(2 n_{\rm O, 2} + n_{\rm P, 2}\right) \left(\widetilde{H}_{\rm PO, 2} + 1\right)},
 \label{AP-4}
 \end{align}
-
-migration rateを推定すると考えると、
-
+and
 \begin{align}
-\widehat{m_4} &=  \frac{ \left(\widetilde{H}_{\rm HS,bet} + \widetilde{H}_{\rm PO,bet}\right) \left(2 n_{\rm O, 2} n_{\rm P, 2} + 1\right)} {2n_{\rm O, 1} \left(2 n_{\rm O, 2} + n_{\rm P, 2}\right) \left(\widetilde{H}_{\rm PO, 2} + 1\right)}
+\widehat{m_4} &=  \frac{ \left(\widetilde{H}_{\rm HS,bet} + \widetilde{H}_{\rm PO,bet}\right) \left(2 n_{\rm O, 2} n_{\rm P, 2} + 1\right)} {2n_{\rm O, 1} \left(2 n_{\rm O, 2} + n_{\rm P, 2}\right) \left(\widetilde{H}_{\rm PO, 2} + 1\right)}.
 \label{AP-5}
 \end{align}
+While estimator of the migrate number (Eq.~\ref{AP-4}) requires the (unknown) parent number in the population 1 ($N_{1}$), estimator of the migration rate (Eq.~\ref{AP-5}) can be obtained only the observed kinship pairs. 
 
-同様に、$N_1$も推定値で置き換えて
+Similar to estimating $N_2$, when PO pairs found in offspring samples and parent samples both from the population 1 in the first year are also available, we can obtain the estimator of $N_1$, written by
 \begin{align}
-\widehat{N_1} &= \frac{ 2 n_{\rm O, 1} n_{\rm P, 1} + 1 }{\widetilde{H}_{\rm PO, 1} + 1} 
+\widehat{N_1} &= \frac{ 2 n_{\rm O, 1} n_{\rm P, 1} + 1 }{\widetilde{H}_{\rm PO, 1} + 1},
 \label{AP-6}
 \end{align}
-
+where $\widetilde{H}_{\rm PO, 1}$ be the observed number of PO pairs found in offspring samples of size $n_{\rm O, 1}$ and parent samples of size $n_{\rm P, 1}$. By replacing $N_1$ by $\widehat{N_1}$ in Eq.~\ref{AP-4}, we can obtain the estimator of migration number that can be calculated only from genetic data, given by
 \begin{align}
-\widehat{M_5} &=  \frac{ \left(\widetilde{H}_{\rm HS,bet} + \widetilde{H}_{\rm PO,bet}\right) \left(2 n_{\rm O, 1} n_{\rm P, 1} + 1\right) \left(2 n_{\rm O, 2} n_{\rm P, 2} + 1\right)} {2n_{\rm O, 1} \left(2 n_{\rm O, 2} + n_{\rm P, 2}\right) \left(\widetilde{H}_{\rm PO, 1} + 1\right) \left(\widetilde{H}_{\rm PO, 2} + 1\right)}
+\widehat{M_5} &=  \frac{ \left(\widetilde{H}_{\rm HS,bet} + \widetilde{H}_{\rm PO,bet}\right) \left(2 n_{\rm O, 1} n_{\rm P, 1} + 1\right) \left(2 n_{\rm O, 2} n_{\rm P, 2} + 1\right)} {2n_{\rm O, 1} \left(2 n_{\rm O, 2} + n_{\rm P, 2}\right) \left(\widetilde{H}_{\rm PO, 1} + 1\right) \left(\widetilde{H}_{\rm PO, 2} + 1\right)}.
 \label{AP-7}
 \end{align}
 
@@ -263,10 +256,7 @@ migration rateを推定すると考えると、
 \section{Results and Discussion}\label{sec3}
 
 
-
-
-
-
+\begin{comment}
 
 The estimation of the ratio of the contemporary effective population size to the census size ($N_{\rm e}/N$) has attracted much research attention for providing information about a current population, especially in the context of conservation biology and wildlife management \cite[]{Palstra_2012,FRANKHAM201456}. Small $N_{\rm e}/N$ demonstrates large variance in reproductive success \cite[]{Wang:2016aa, JFB:JFB13143, Akita_2019}, resulting from the variance of reproductive potential \cite[e.g., the big old fat fecund female fish hypothesis;][]{Hixon_2014} or from the situation in which only some families successfully reproduce \cite[referred to as the ``Sweepstakes reproductive success'' hypothesis,][]{hedgecock2011sweepstakes}. Moreover, if $N_{\rm e}/N$ is invariant across years, then $N_{\rm e}$ may behave like an index of $N$, and vice versa \cite[]{luikart2010estimation}. However, if $N_{\rm e}/N$ fluctuates across years, the trends can clarify the interpretation of environmental and/or anthropological factors, causing the variance of reproductive potential, family-correlated survivorship, or fluctuating population dynamics. Besides, low precision and/or large bias for estimating $N_{\rm e}/N$ may lead to a wrong interpretation of the population \cite[]{Tallmon:2012aa}.
 
@@ -402,6 +392,8 @@ c = ({\rm effect\ of\ nonparental\ variation}) \times ({\rm effect\ of\ parental
 \label{partition}
 \end{equation}
 Meanwhile, as denoted in Eq.~\ref{NeN}, the estimator of $N_{\rm e,m}/N_{\rm m}$ provides the information for the lefthand-side of Eq.~\ref{partition}. Thus, when we obtain parental variation information from the life-history table or from other species, the estimator of $N_{\rm e,m}/N_{\rm m}$ can also estimate the degree of nonparental variation. This procedure provides an insight into sweepstake reproduction or family-correlated sampling of offspring (i.e., nonrandom sampling), although the theoretical formulation and its evaluation remain a task for future research. Alternatively, Waples et al. (2018) developed a genetical method for estimating $N_{\rm e}/N$ and $N_{\rm b}/N$ via estimating the degree of nonparental variation from fecundity data in southern bluefin tuna. 
+
+\end{comment}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{ACKNOWLEDGMENTS}
