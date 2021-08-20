@@ -215,7 +215,7 @@ and by combining $\widehat{m_1}$ and $\widehat{m_2}$ for migration rate:
 \end{align}
 For those estimators, $\widetilde{H}_{\rm HS,bet}$ and $\widetilde{H}_{\rm PO,bet}$ is weighted by a sample size $n_{\rm O, 2}$ and $n_{\rm P, 2}$, respectively. 
 
-\subsection{Parent number can be estimated by PO pairs found within a population}
+\subsection{Estimation of parent number by PO pairs found within a population}
 
 So far, we provide the formulation of the estimators, presented in Equations \ref{HS-3}-\ref{HS-4} and \ref{PO-3}-\ref{PO-4}, is a function with parent numbers for each population ($N_1$ and/or $N_2$); in other words, such estimators are available only when those parent number(s) are known. In this subsection, we provide the treatment for estimating the unknown parent numbers by additional usage of PO pairs, producing estimators for migrant number and migration rate that can be obtained only from the genetic data. 
 
@@ -249,9 +249,19 @@ where $\widetilde{H}_{\rm PO, 1}$ be the observed number of PO pairs found in of
 \label{AP-7}
 \end{align}
 
+Table \ref{parameter} summarizes the conditions for estimators appeared in this paper as to whether $N_1$ and/or $N_2$ are known and which type of samples are needed for estimation, and provides required kinship type for calculating the estimator. 
+
+\subsection{Variation in reproductive potential among individuals and populations}
+
+
+\RED{kokomade!!!!!!!!!!!!!!!!!!!!}
+
+
 \subsection{Individual-based model}
 
+We developed an individual-based model that tracks kinship relationships to evaluate the estimator's performance (e.g., $\widehat{N_{\rm e,m}/N_{\rm m}}$). The population structure was assumed to be identical to that in the development of the estimators. In addition, the population comprised mothers and their offspring, and it was assumed to follow a Poisson or negative binomial reproduction (the degree of skewness due to the nonparental variation is controlled by a parameter $\phi$; see {\bf Appendix B} for detalis). The expected number of the surviving offspring of a mother (denoted by $\lambda$) followed the density distribution $f(\lambda)$ (which is involved to the parental variation; see {\bf Appendix B} for details). We calculated overdispersion parameter ($c$) from $\phi$ and $f(\lambda)$, as well as confirmed numerically that the value of $c$ gives the same statistics of the estimators even if the combination of $\phi$ and $f(\lambda)$ differs (results are not shown). Therefore, each offspring retained the mother's ID, making it possible to trace an MS and MO relationship.
 
+Let a parameter set ($n_{\rm O}$, $n_{\rm M}$, $N_{\rm m}$, $\phi$, and parameters that determine $f(\lambda)$) be given. We simulated a population history in which $N_{\rm m}$ mothers generated offspring; this process was repeated 100 times. The sampling process for each history was repeated 10{,}000 times, acquiring 1{,}000{,}000 data points that were utilized to construct the distribution of the estimators for each parameter set. Furthermore, true value of $N_{\rm e,m}$ was calculated from $N_{\rm m}$ and $c$ (Eqs.~\ref{Ne} and \ref{pi_MS}).
 
 \section{Results and Discussion}\label{sec3}
 
