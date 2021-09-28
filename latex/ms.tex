@@ -116,7 +116,7 @@ Suppose there are $N_1$ parents in the population 1 at the beginning of the firs
 
 \subsection{Sampling}
 
-To estimate the migration number or rate, we utilize the number of HS and/or PO pairs observed in a sample. In the both populations, $n_{\rm O, 1}$ and $n_{\rm O, 2}$ offspring are randomly sampled, which are identified as young-of-year individuals without errors. Additionally, $n_{\rm P, 1}$ and $n_{\rm P, 2}$ parents are randomly sampled immediately after the end of the reproductive season in the first and second year, respectively. For mathematical tractability, parents have to survive during the reproductive season; therefore, both mother and father of a certain offspring have a potential to be sampled even in the same year. It should be noted that all the four kinds of a sample (i.e., $n_{\rm P, 1}$, $n_{\rm P, 2}$, $n_{\rm O, 1}$, and $n_{\rm O, 2}$) are not always required for estimating migration number or rate; what kinds of a sample are needed depends on the situation, as explained later. Up to the subsection 2.6, we only focus HS pairs and PO pairs found between the two populations. For the applicability of fishery management, we assume invasive sampling procedure, preventing the finding of a parent-offspring pair such that a parent and offspring is sampled in the population 1 and 2, respectively. 
+To estimate the migration number or rate, we utilize the number of HS and/or PO pairs observed in a sample. In the both populations, $n_{\rm O, 1}$ and $n_{\rm O, 2}$ offspring are randomly sampled in the first and second year, respectively, which are identified as young-of-year individuals without errors. Additionally, $n_{\rm P, 1}$ and $n_{\rm P, 2}$ parents are randomly sampled immediately after the end of the reproductive season in the first and second year, respectively. For mathematical tractability, parents have to survive during the reproductive season; therefore, both mother and father of a certain offspring have a potential to be sampled even in the same year. It should be noted that all the four kinds of a sample (i.e., $n_{\rm P, 1}$, $n_{\rm P, 2}$, $n_{\rm O, 1}$, and $n_{\rm O, 2}$) are not always required for estimating migration number or rate; what kinds of a sample are needed depends on the situation, as explained later. Up to the subsection 2.6, we only focus HS pairs and PO pairs found between the two populations. For the applicability of fishery management, we assume invasive sampling procedure, preventing the finding of a parent-offspring pair such that a parent and offspring is sampled in the population 1 and 2, respectively. 
 
 In the example depicted in {\bf Fig~\ref{cartoon}}, five offspring and four parents are sampled in the population 1 and four offspring and six parents are sampled in the population 2, and two HS and one PO pairs found between the two populations are observed. In addition, there are several PO pairs observed within the same population, which are available to estimate parent numbers, as explain the next section. In our modeling framework, if full-sibling (FS) relationship is found, we count it as two HS pairs. The numbers of HS and PO pairs found between the two populations are determined by pairwise comparison of all the sample individuals ($n_{\rm O,1}\times n_{\rm O,2}$ and $n_{\rm O,1}\times n_{\rm P,2}$ comparisons, respectively). 
 
@@ -255,14 +255,13 @@ Table \ref{parameter} summarizes the conditions for estimators appeared in this 
 
 The proposed estimators are derived under the assumption that reproductive potential is the same among individuals. As noted in {\bf Appendix}, this assumption can be relaxed and the estimators still hold, which is exemplified in iteroparous species that may show significant variation in reproductive potential among individuals. Furthermore, the estimators even hold for most of the case where mean reproductive potential are different between population 1 and 2, which is exemplified in the situation that the environmental condition for reproductive success varies between populations. The necessary condition is that the migration event does not depends on the degree of reproductive potential (see details in  {\bf Appendix}). 
 
-\RED{kokomade!!!!!!!!!!!!!!!!!!!!}
-
-
 \subsection{Individual-based model}
 
-We developed an individual-based model that tracks kinship relationships to evaluate the estimator's performance (e.g., $\widehat{N_{\rm e,m}/N_{\rm m}}$). The population structure was assumed to be identical to that in the development of the estimators. In addition, the population comprised mothers and their offspring, and it was assumed to follow a Poisson or negative binomial reproduction (the degree of skewness due to the nonparental variation is controlled by a parameter $\phi$; see {\bf Appendix B} for detalis). The expected number of the surviving offspring of a mother (denoted by $\lambda$) followed the density distribution $f(\lambda)$ (which is involved to the parental variation; see {\bf Appendix B} for details). We calculated overdispersion parameter ($c$) from $\phi$ and $f(\lambda)$, as well as confirmed numerically that the value of $c$ gives the same statistics of the estimators even if the combination of $\phi$ and $f(\lambda)$ differs (results are not shown). Therefore, each offspring retained the mother's ID, making it possible to trace an MS and MO relationship.
+We developed an individual-based model that tracks kinship relationships to evaluate the estimator's performance. The population structure was assumed to be identical to that in the development of the estimators. The population 1 and 2 comprised $N_1$ and $N_2$ parents with an equal sex ratio, and their offspring number was assumed to follow the geometric distribution with mean $\lambda_1$ and $\lambda_2$ (i.e., Poisson reproduction with mean $\lambda_{i,1}$ and $\lambda_{j,2}$ which follows the exponential distribution with mean $\lambda_1$ and $\lambda_2$), respectively. Migrant parents were randomly chosen from the population 1 at the end of the first year. Each offspring retained the parent's ID, making it possible to trace an HS and PO relationship.
 
-Let a parameter set ($n_{\rm O}$, $n_{\rm M}$, $N_{\rm m}$, $\phi$, and parameters that determine $f(\lambda)$) be given. We simulated a population history in which $N_{\rm m}$ mothers generated offspring; this process was repeated 100 times. The sampling process for each history was repeated 10{,}000 times, acquiring 1{,}000{,}000 data points that were utilized to construct the distribution of the estimators for each parameter set. Furthermore, true value of $N_{\rm e,m}$ was calculated from $N_{\rm m}$ and $c$ (Eqs.~\ref{Ne} and \ref{pi_MS}).
+Let a parameter set ($N_1$, $N_2$, $M$, $\lambda_1$, $\lambda_2$, $n_{\rm O,1}$, $n_{\rm O,2}$, $n_{\rm P,1}$, $n_{\rm P,2}$) be given. We simulated a population history and a sampling process, which generates proposed estimators; this process was repeated 1000 times, making it possible to construct the distribution of the estimators for each parameter set. 
+
+\RED{kokomade!!!!!!!!!!!!!!!!!!!!}
 
 \section{Results and Discussion}\label{sec3}
 
@@ -427,14 +426,14 @@ No datasets were generated or analyzed in this study.
 
 \renewcommand{\arraystretch}{0.6}
 \begin{table}[tb]
-\begin{center}
+%\centering
    \caption[]{Table 1: The list of mathematical symbols employed in the main text}
     \textbf {}\\[-4mm]
     \begin{tabular}{llc} \hline
        & & \\
-	$n_{\rm P,1}, n_{\rm P, 2}$			& Sample number of parents in the population 1 and 2\\ 
+	$n_{\rm P,1}, n_{\rm P, 2}$			& Sampled number of parents from the population 1 and 2\\ 
 		                						& \\
-	$n_{\rm O, 1}, n_{\rm O, 2}$			& Sample number of offspring in the population 1 and 2\\ 
+	$n_{\rm O, 1}, n_{\rm O, 2}$			& Sampled number of offspring from the population 1 and 2\\ 
 		                						& \\
 	$N_{1}, N_{2}$						& Number of parents in the population 1 and 2 when sampled offspring are born\\
 		                						& \\
@@ -442,13 +441,13 @@ No datasets were generated or analyzed in this study.
 		                						& \\
 	$r$								& Sex ratio\\
 		                						& \\
-	$\pi_{\rm PO,1}, \pi_{\rm PO,2}$		& Probability that a randomly selected pair (mother and offspring) \\
+	$\pi_{\rm PO,1}, \pi_{\rm PO,2}$		& Probability that a randomly selected pair (parent and offspring) \\
 	                							& shares a parent-offspring relationship within the population 1 and 2\\
 									& \\
-	$\pi_{\rm PO, bet}$					& Probability that a randomly selected pair (parent and offspring in the population 1 and 2, \\
-	                							& respectively) shares a parent-offspring relationship between the population 1 and 2\\
+	$\pi_{\rm PO, bet}$					& Probability that a randomly selected pair (parent and offspring) \\
+	                							& shares a parent-offspring relationship between the population 1 and 2\\
 									& \\
-	$\pi_{\rm HS, bet}$					& Probability that a randomly selected pair (two offspring in the population 1 and 2) \\
+	$\pi_{\rm HS, bet}$					& Probability that a randomly selected pair (two offspring) \\
 	                							& shares a half-sibling relationship between the population 1 and 2\\
 					                			& \\
 	$\lambda_{i,1}, \lambda_{j,2}$			& Expected number of surviving offspring of parent $i$ and $j$ at sampling in the population 1 and 2\\
@@ -466,7 +465,7 @@ No datasets were generated or analyzed in this study.
 	\hline
     \end{tabular}
     \label{symbols} 
-\end{center} 
+\\Subscription ``1'' and ``2'' indicates the quantity in the population 1 during the first year and in the population 2 during the second year, respectively. 
 \end{table}
 \renewcommand{\arraystretch}{1}
 

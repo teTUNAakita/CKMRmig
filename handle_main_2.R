@@ -11,16 +11,17 @@ rm(list=ls())
 #library(tidyverse)
 start.time = proc.time()
 options(readr.show_progress = FALSE)
-init_parent_pair_number_0 = init_parent_pair_number_1 = 500
-sampled_child_number_0 = sampled_child_number_1 = 100
-sampled_father_number_0 = sampled_father_number_1 = 100
-sampled_mother_number_0 = sampled_mother_number_1 = 100
+options(scipen=1)
+init_parent_pair_number_0 = init_parent_pair_number_1 = 100000
+sampled_child_number_0 = sampled_child_number_1 = 2000
+sampled_father_number_0 = sampled_father_number_1 = 1000
+sampled_mother_number_0 = sampled_mother_number_1 = 1000
 migration_number = 100 # true migrant number is multiplied twice
 lambda_0 = 3
-lambda_1 = 10
-flag_constant = 0
-REP = 1000
-HS_01 = PO_0 = PO_1 = PO_01 = pi_est_PO = pi_est_HS = M_est0_PO = M_est0_HS = M_est0_both = M_est_PO = M_est_HS = M_est_both = N_0_est = N_1_est = rep(NA, REP)
+lambda_1 = 3
+flag_constant = 1
+REP = 100
+HS_01 = PO_0 = PO_1 = PO_01 = pi_est_PO = pi_est_HS = M_est0_PO = M_est0_HS = M_est0_both = M_est1_both= M_est2_both = N_0_est = N_1_est = rep(NA, REP)
 INLINE = paste("./model_2",
                init_parent_pair_number_0, 
                init_parent_pair_number_1,
@@ -84,19 +85,19 @@ for (rep in 1:REP) {
   M_est0_HS[rep] = pi_est_HS[rep] * (2*init_parent_pair_number_0) * (2*init_parent_pair_number_1) / 4
   M_est0_PO[rep] = pi_est_PO[rep] * (2*init_parent_pair_number_0) * (2*init_parent_pair_number_1) / 2
   M_est0_both[rep] = ( (2*init_parent_pair_number_0) * (2*init_parent_pair_number_1) / 2 / sampled_child_number_0 ) * ( (HS_01[rep]+PO_01[rep]) / (2*sampled_child_number_0 + (sampled_father_number_1+sampled_mother_number_1)) )
-  M_est_HS[rep] = pi_est_HS[rep] * N_0_est[rep] * N_1_est[rep] / 4
-  M_est_PO[rep] = pi_est_PO[rep] * N_0_est[rep] * N_1_est[rep] / 2
-  M_est_both[rep] = ( N_0_est[rep] * N_1_est[rep] / 2 / sampled_child_number_0 ) * ( (HS_01[rep]+PO_01[rep]) / (2*sampled_child_number_0 + (sampled_father_number_1+sampled_mother_number_1)) )
+  #M_est_HS[rep] = pi_est_HS[rep] * N_0_est[rep] * N_1_est[rep] / 4
+  #M_est_PO[rep] = pi_est_PO[rep] * N_0_est[rep] * N_1_est[rep] / 2
+  M_est1_both[rep] = ( N_0_est[rep] * (2*init_parent_pair_number_1) / 2 / sampled_child_number_0 ) * ( (HS_01[rep]+PO_01[rep]) / (2*sampled_child_number_0 + (sampled_father_number_1+sampled_mother_number_1)) )
+  M_est2_both[rep] = ( N_0_est[rep] * N_1_est[rep] / 2 / sampled_child_number_0 ) * ( (HS_01[rep]+PO_01[rep]) / (2*sampled_child_number_0 + (sampled_father_number_1+sampled_mother_number_1)) )
 }
-hist(M_est_both)
-hist(M_est_HS)
-hist(M_est_PO)
+#hist(M_est_both)
+#hist(M_est_HS)
+#hist(M_est_PO)
 cat("mean estimated migrant_number: ",mean(M_est0_both), ", True migrant_number: ", migration_number*2,", CV of estimated migrant_number: ",(var(M_est0_both))^0.5/mean(M_est0_both), "\n")
 cat("mean estimated migrant_number: ",mean(M_est0_HS), ", True migrant_number: ", migration_number*2,", CV of estimated migrant_number: ",(var(M_est0_HS))^0.5/mean(M_est0_HS), "\n")
 cat("mean estimated migrant_number: ",mean(M_est0_PO), ", True migrant_number: ", migration_number*2,", CV of estimated migrant_number: ",(var(M_est0_PO))^0.5/mean(M_est0_PO), "\n")
-cat("mean estimated migrant_number: ",mean(M_est_both), ", True migrant_number: ", migration_number*2,", CV of estimated migrant_number: ",(var(M_est_both))^0.5/mean(M_est_both), "\n")
-cat("mean estimated migrant_number: ",mean(M_est_HS), ", True migrant_number: ", migration_number*2,", CV of estimated migrant_number: ",(var(M_est_HS))^0.5/mean(M_est_HS), "\n")
-cat("mean estimated migrant_number: ",mean(M_est_PO), ", True migrant_number: ", migration_number*2,", CV of estimated migrant_number: ",(var(M_est_PO))^0.5/mean(M_est_PO), "\n")
+cat("mean estimated migrant_number: ",mean(M_est1_both), ", True migrant_number: ", migration_number*2,", CV of estimated migrant_number: ",(var(M_est1_both))^0.5/mean(M_est1_both), "\n")
+cat("mean estimated migrant_number: ",mean(M_est2_both), ", True migrant_number: ", migration_number*2,", CV of estimated migrant_number: ",(var(M_est2_both))^0.5/mean(M_est2_both), "\n")
 end.time = proc.time()
 (end.time-start.time)
 save(list=ls(), file="out/res.Rdata")
@@ -111,10 +112,9 @@ theme_set(theme_classic(base_size = 12, base_family = "Helvetica"))
 df = tibble("M1" = M_est0_HS, 
             "M2" = M_est0_PO, 
             "M3" = M_est0_both, 
-            "M4" = M_est_HS, 
-            "M5" = M_est_PO, 
-            "M6" = M_est_both) %>%
-  gather(M1, M2, M3, M4, M5, M6, key = "M", value = "value") %>%
+            "M4" = M_est1_both, 
+            "M5" = M_est2_both) %>%
+  gather(M1, M2, M3, M4, M5, key = "M", value = "value") %>%
   dplyr::mutate(relative_bias = (value - 2*migration_number) / (2*migration_number))
 
 gp <- ggplot(df, aes(x = M, y = relative_bias)) +
@@ -129,4 +129,8 @@ gp <- ggplot(df, aes(x = M, y = relative_bias)) +
         legend.title = element_text(size=12),
         legend.text = element_text(size=10))
 plot(gp)
+
+
+#----------------------------------------------------------------------------------------------------
+# 
 
