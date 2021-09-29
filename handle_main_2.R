@@ -12,16 +12,17 @@ rm(list=ls())
 start.time = proc.time()
 options(readr.show_progress = FALSE)
 options(scipen=1)
-init_parent_pair_number_0 = init_parent_pair_number_1 = 100000
-sampled_child_number_0 = sampled_child_number_1 = 2000
-sampled_father_number_0 = sampled_father_number_1 = 1000
-sampled_mother_number_0 = sampled_mother_number_1 = 1000
+init_parent_pair_number_0 = init_parent_pair_number_1 = 1000
+sampled_child_number_0 = sampled_child_number_1 = 100
+sampled_father_number_0 = sampled_father_number_1 = 50
+sampled_mother_number_0 = sampled_mother_number_1 = 50
 migration_number = 100 # true migrant number is multiplied twice
+migration_rate = migration_number/init_parent_pair_number_0
 lambda_0 = 3
 lambda_1 = 3
 flag_constant = 1
 REP = 100
-HS_01 = PO_0 = PO_1 = PO_01 = pi_est_PO = pi_est_HS = M_est0_PO = M_est0_HS = M_est0_both = M_est1_both= M_est2_both = N_0_est = N_1_est = rep(NA, REP)
+HS_01 = PO_0 = PO_1 = PO_01 = pi_est_PO = pi_est_HS = M_est0_PO = M_est0_HS = M_est0_both = M_est1_both= M_est2_both = N_0_est = N_1_est = m_est1 = m_est2 = m_est3 = m_est4 = rep(NA, REP)
 INLINE = paste("./model_2",
                init_parent_pair_number_0, 
                init_parent_pair_number_1,
@@ -89,15 +90,27 @@ for (rep in 1:REP) {
   #M_est_PO[rep] = pi_est_PO[rep] * N_0_est[rep] * N_1_est[rep] / 2
   M_est1_both[rep] = ( N_0_est[rep] * (2*init_parent_pair_number_1) / 2 / sampled_child_number_0 ) * ( (HS_01[rep]+PO_01[rep]) / (2*sampled_child_number_0 + (sampled_father_number_1+sampled_mother_number_1)) )
   M_est2_both[rep] = ( N_0_est[rep] * N_1_est[rep] / 2 / sampled_child_number_0 ) * ( (HS_01[rep]+PO_01[rep]) / (2*sampled_child_number_0 + (sampled_father_number_1+sampled_mother_number_1)) )
+  
+  m_est1[rep] = pi_est_HS[rep] * (2*init_parent_pair_number_1) / 4
+  m_est2[rep] = pi_est_PO[rep] * (2*init_parent_pair_number_1) / 2
+  m_est3[rep] = ( (2*init_parent_pair_number_1) / 2 / sampled_child_number_0 ) * ( (HS_01[rep]+PO_01[rep]) / (2*sampled_child_number_0 + (sampled_father_number_1+sampled_mother_number_1)) )
+  m_est4[rep] = ( N_0_est[rep] / 2 / sampled_child_number_0 ) * ( (HS_01[rep]+PO_01[rep]) / (2*sampled_child_number_0 + (sampled_father_number_1+sampled_mother_number_1)) )
+  
 }
 #hist(M_est_both)
 #hist(M_est_HS)
 #hist(M_est_PO)
-cat("mean estimated migrant_number: ",mean(M_est0_both), ", True migrant_number: ", migration_number*2,", CV of estimated migrant_number: ",(var(M_est0_both))^0.5/mean(M_est0_both), "\n")
 cat("mean estimated migrant_number: ",mean(M_est0_HS), ", True migrant_number: ", migration_number*2,", CV of estimated migrant_number: ",(var(M_est0_HS))^0.5/mean(M_est0_HS), "\n")
 cat("mean estimated migrant_number: ",mean(M_est0_PO), ", True migrant_number: ", migration_number*2,", CV of estimated migrant_number: ",(var(M_est0_PO))^0.5/mean(M_est0_PO), "\n")
+cat("mean estimated migrant_number: ",mean(M_est0_both), ", True migrant_number: ", migration_number*2,", CV of estimated migrant_number: ",(var(M_est0_both))^0.5/mean(M_est0_both), "\n")
 cat("mean estimated migrant_number: ",mean(M_est1_both), ", True migrant_number: ", migration_number*2,", CV of estimated migrant_number: ",(var(M_est1_both))^0.5/mean(M_est1_both), "\n")
 cat("mean estimated migrant_number: ",mean(M_est2_both), ", True migrant_number: ", migration_number*2,", CV of estimated migrant_number: ",(var(M_est2_both))^0.5/mean(M_est2_both), "\n")
+
+cat("mean estimated migrant_rate: ",mean(m_est1), ", True migrant_rate: ", migration_rate,", CV of estimated migrant_rate: ",(var(m_est1))^0.5/mean(m_est1), "\n")
+cat("mean estimated migrant_rate: ",mean(m_est2), ", True migrant_rate: ", migration_rate,", CV of estimated migrant_rate: ",(var(m_est2))^0.5/mean(m_est2), "\n")
+cat("mean estimated migrant_rate: ",mean(m_est3), ", True migrant_rate: ", migration_rate,", CV of estimated migrant_rate: ",(var(m_est3))^0.5/mean(m_est3), "\n")
+cat("mean estimated migrant_rate: ",mean(m_est4), ", True migrant_rate: ", migration_rate,", CV of estimated migrant_rate: ",(var(m_est4))^0.5/mean(m_est4), "\n")
+
 end.time = proc.time()
 (end.time-start.time)
 save(list=ls(), file="out/res.Rdata")
@@ -130,6 +143,25 @@ gp <- ggplot(df, aes(x = M, y = relative_bias)) +
         legend.text = element_text(size=10))
 plot(gp)
 
+df = tibble("m1" = m_est1, 
+            "m2" = m_est2, 
+            "m3" = m_est3, 
+            "m4" = m_est4) %>%
+  gather(m1, m2, m3, m4, key = "m", value = "value") %>%
+  dplyr::mutate(relative_bias = (value - migration_rate) / (migration_rate))
+
+gp <- ggplot(df, aes(x = m, y = relative_bias)) +
+  geom_violin(adjust=1,trim=T) +
+  geom_hline(yintercept=0,size=0.5,alpha=.5,linetype=1) +
+  stat_summary(fun = "mean", size=2, geom="point",colour ="black",
+               position=position_dodge(width = 0.9))+
+  ylab("Relative bias") +
+  coord_cartesian(ylim=c(-1,3)) +
+  theme(axis.title = element_text(size=16), 
+        axis.text = element_text(size=12),
+        legend.title = element_text(size=12),
+        legend.text = element_text(size=10))
+plot(gp)
 
 #----------------------------------------------------------------------------------------------------
 # 
