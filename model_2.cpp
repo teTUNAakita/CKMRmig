@@ -234,7 +234,7 @@ int main(int argc, char *argv[])
   const double lambda_mean_0 = atof(argv[10]);//10
   const double lambda_mean_1 = atof(argv[11]);//11
   const int flag_constant = atof(argv[12]);//12
-  if ( migrant_number > init_parent_number_0 || migrant_number > init_parent_number_1 ) {
+  if ( migrant_number > init_parent_number_0 ) {
     fprintf(stderr,"migrant_number must be smaller than init_parent_number\n");
     return 0;
   }
