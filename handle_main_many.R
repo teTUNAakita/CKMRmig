@@ -45,7 +45,7 @@ result_grid = tidyr::crossing(
   dplyr::filter((nP_0==nO_0) & (nP_1==nO_1)) %>%
   dplyr::filter(N_0>=N_1)
 para_len <- nrow(result_grid)
-REP = 1
+REP = 1000
 system("g++ model_2.cpp -Wall -Wextra -o3 -std=c++17 -o model_2")
 HS_01 = PO_0 = PO_1 = PO_01 = pi_est_PO = pi_est_HS = M_est1 = M_est2 = M_est3 = M_est4 = M_est5 = N_0_est = N_1_est = m_est1 = m_est2 = m_est3 = m_est4 = matrix(NA,nrow = para_len, ncol = REP)
 
@@ -137,3 +137,4 @@ for (p in 1:para_len) {
 }
 end.time = proc.time()
 (end.time-start.time)
+save(list=ls(), file="out/res.Rdata")
