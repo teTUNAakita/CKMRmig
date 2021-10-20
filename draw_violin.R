@@ -204,7 +204,8 @@ for (j in 1:9) {
           axis.text = element_text(size=10),
           legend.title = element_text(size=10),
           legend.text = element_text(size=8),
-          legend.position="top")
+          legend.position="top"
+          )
   assign(paste0("gp", j), gp)
 }
 

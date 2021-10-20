@@ -259,11 +259,18 @@ The proposed estimators are derived under the assumption that reproductive poten
 
 We developed an individual-based model that tracks kinship relationships to evaluate the estimator's performance. The population structure was assumed to be identical to that in the development of the estimators. The population 1 and 2 comprised $N_1$ and $N_2$ parents with an equal sex ratio, and their offspring number was assumed to follow the geometric distribution with mean $\lambda_1$ and $\lambda_2$ (i.e., Poisson reproduction with mean $\lambda_{i,1}$ and $\lambda_{j,2}$ which follows the exponential distribution with mean $\lambda_1$ and $\lambda_2$), respectively. Migrant parents were randomly chosen from the population 1 at the end of the first year. Each offspring retained the parent's ID, making it possible to trace an HS and PO relationship.
 
-Let a parameter set ($N_1$, $N_2$, $M$, $\lambda_1$, $\lambda_2$, $n_{\rm O,1}$, $n_{\rm O,2}$, $n_{\rm P,1}$, $n_{\rm P,2}$) be given. We simulated a population history and a sampling process, which generates proposed estimators; this process was repeated 1000 times, making it possible to construct the distribution of the estimators for each parameter set. 
+Let a parameter set ($N_1$, $N_2$, $M$, $\lambda_1$, $\lambda_2$, $n_{\rm O,1}$, $n_{\rm O,2}$, $n_{\rm P,1}$, $n_{\rm P,2}$) be given. We simulated a population history and a sampling process, which generates proposed estimators; this process was repeated 1000 times, making it possible to construct the distribution of the estimators for each parameter set. All scripts and documentation for these analyses are available at \\https://github.com/teTUNAakita/CKMRmig.
 
 \RED{kokomade!!!!!!!!!!!!!!!!!!!!}
 
 \section{Results and Discussion}\label{sec3}
+
+
+%%%%%%%%%%%%%%
+\begin{center}
+\fbox{Figure \ref{violins} is here. }
+\end{center}
+%%%%%%%%%%%%%%
 
 
 \begin{comment}
@@ -407,7 +414,7 @@ Meanwhile, as denoted in Eq.~\ref{NeN}, the estimator of $N_{\rm e,m}/N_{\rm m}$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{ACKNOWLEDGMENTS}
-The author thanks R. Nakamichi for fruitful discussions. The author also thanks Robin Waples and an anonymous reviewer for constructive feedback that substantially improved the quality of this manuscript. This work was supported by JSPS KAKENHI Grant Number 19K06862.
+The author thanks Y. Tsukahara and N. Suzuki for fruitful discussions. This work was supported by JSPS KAKENHI Grant Number 19K06862 and 20H03012.
 
 \section*{CONFLICT OF INTEREST}
 The author declares no conflict of interest.
@@ -438,6 +445,8 @@ No datasets were generated or analyzed in this study.
 	$N_{1}, N_{2}$						& Number of parents in the population 1 and 2 when sampled offspring are born\\
 		                						& \\
 	$M$								& Number of survived migrants of parents from the population 1 to population 2\\
+		                						& \\
+	$m$								& Migration rate of parents from the population 1 to population 2, defined by $M/N_1$.\\
 		                						& \\
 	$r$								& Sex ratio\\
 		                						& \\
@@ -523,6 +532,17 @@ No datasets were generated or analyzed in this study.
 	\end{center}
 \end{figure}
 %%%%%%%%%%%
+
+%%%FIGURE 2%%%
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=1\textwidth]{/Users/akita/Dropbox/research/close_kin/Mig/Figs/violins.eps}
+		\caption{{\bf FIGURE 2} \figcapb{}}
+		\label{violins}
+	\end{center}
+\end{figure}
+%%%%%%%%%%%
+
 
 
 \clearpage
