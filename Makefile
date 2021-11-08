@@ -8,7 +8,7 @@ CPPFLAGS = -I/usr/local/include -I${HOME}/local/include
 all: a.out
 	@:
 
-a.out: main.cpp
+a.out: main_2.cpp
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $< -o $@
 
 clean:
