@@ -175,6 +175,12 @@ public:
       if (debug) fathers[i].print_id();
       writing_sample << fathers[i].get_id() << "\n";
     }
+    if (flag_invasive) {
+      for (size_t i = 0; i < fathers.size(); ++i) {
+        if (fathers[i].get_id() )
+        next_fathers.push_back(fathers[i]);
+      }
+    }
   }
   void sampling_mother(const size_t sampled_number, size_t rep, size_t flag_invasive) {
     std::vector<size_t> sampled_ids;
