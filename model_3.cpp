@@ -1,9 +1,9 @@
 /*
 g++ model_3.cpp -Wall -Wextra -o3 -std=c++17 -o model_3
-./model_2 init_parent_pair_number_0 1 sampled_child_number_0 1
+./model_3 init_parent_pair_number_0 1 sampled_child_number_0 1
 sampled_father_number_0 1  sampled_mother_number_0 1
 migration_number lambda_0 lambda_1 flag_constant  flag_invasive-sampling (total 13 parameters)
-./model_2 10 10 3 3 2 2 2 2 3 3 5 0 1
+./model_3 10 10 3 3 2 2 2 2 3 3 5 0 1
 */
 #include <iostream>
 #include <fstream>
@@ -66,17 +66,17 @@ private:
   std::vector<Individual> fathers;
   std::vector<Individual> mothers;
   std::vector<Individual> children;
-  bool debug = true;
+  bool debug = false;
 public:
   Population(const size_t init_parent_number) :
   fathers(init_parent_number),
   mothers(init_parent_number) {
   };
   size_t roulette_selection(const std::vector<double> cumsum_weight) const {
-      std::uniform_real_distribution<> uniform_real(0, cumsum_weight.back());
-      double r = uniform_real(rng);
-      auto it = std::upper_bound(cumsum_weight.begin(), cumsum_weight.end(), r);
-      return (it - cumsum_weight.begin());
+    std::uniform_real_distribution<> uniform_real(0, cumsum_weight.back());
+    double r = uniform_real(rng);
+    auto it = std::upper_bound(cumsum_weight.begin(), cumsum_weight.end(), r);
+    return (it - cumsum_weight.begin());
   }
   void reproduction_constant(const double lambda) {
     const size_t father_number = fathers.size();
@@ -175,16 +175,24 @@ public:
       if (debug) fathers[i].print_id();
       writing_sample << fathers[i].get_id() << "\n";
     }
+    //fathers.erase(fathers.begin()+i)
     if (flag_invasive) {
-      for (size_t i = 0; i < fathers.size(); ++i) {
-        if (fathers[i].get_id() )
-        next_fathers.push_back(fathers[i]);
+      size_t invasive_index = 0;
+      for (size_t j = 0; j < fathers.size(); ++j) {
+        for (const auto& i: sampled_ids) {
+          if (i==j) invasive_index = 1;
+        }
+        if (!invasive_index) next_fathers.push_back(fathers[j]);
+        invasive_index = 0;
       }
+      fathers.swap(next_fathers);
     }
+    if (debug) std::cerr << "fathers.size() = " << fathers.size() << std::endl;
   }
   void sampling_mother(const size_t sampled_number, size_t rep, size_t flag_invasive) {
     std::vector<size_t> sampled_ids;
     std::vector<size_t> all_indices(mothers.size());
+    std::vector<Individual> next_mothers;
     std::iota(all_indices.begin(), all_indices.end(), 0);
     std::sample(all_indices.begin(), all_indices.end(), std::back_inserter(sampled_ids), sampled_number, rng);
     if (debug) std::cout << "sampled_mother_id: " << std::endl;
@@ -197,6 +205,18 @@ public:
       if (debug) mothers[i].print_id();
       writing_sample << mothers[i].get_id() << "\n";
     }
+    if (flag_invasive) {
+      size_t invasive_index = 0;
+      for (size_t j = 0; j < mothers.size(); ++j) {
+        for (const auto& i: sampled_ids) {
+          if (i==j) invasive_index = 1;
+        }
+        if (!invasive_index) next_mothers.push_back(mothers[j]);
+        invasive_index = 0;
+      }
+      mothers.swap(next_mothers);
+    }
+    if (debug) std::cerr << "mothers.size() = " << mothers.size() << std::endl;
   }
   std::vector<size_t> return_migrant_ids(std::vector<Individual> migrant_parents, const size_t migrant_number) {
     std::vector<size_t> migrant_ids;
