@@ -16,7 +16,7 @@ result_grid = tidyr::crossing(
   m = c(0.05, 0.1, 0.2),
   lambda_0 = 2,
   lambda_1 = 5,
-  flag_constant = c(0, 1),
+  flag_constant = 0,
   flag_invasive = c(0, 1),
   nP_0 = c(50,100,200,400,800,1600),
   nP_1 = c(50,100,200,400,800,1600),
@@ -55,8 +55,7 @@ for (p in 1:para_len) {
                  result_grid$nP_1[p]/2,#sampled_mother_number_1,
                  result_grid$N_0[p]/2 * result_grid$m[p], #migration_number
                  result_grid$lambda_0[p],
-                 result_grid$lambda_1[p], 
-                 result_grid$flag_constant[p], 
+                 result_grid$lambda_1[p],  
                  result_grid$flag_invasive[p], collapse = " ")
   for (rep in 1:REP) {
     system(INLINE)
