@@ -279,13 +279,22 @@ int main(int argc, char *argv[])
   pop0.sampling_father(sampled_father_number_0, 0, flag_invasive);
   pop0.sampling_mother(sampled_father_number_0, 0, flag_invasive);
 
-  Population pop1(init_parent_number_1 - migrant_number);
+  size_t native_parent_number_1;
+  //std::cout << (int)init_parent_number_1 - (int)migrant_number << std::endl;
+  if ( ((int)init_parent_number_1 - (int)migrant_number) > 0 ) {
+    native_parent_number_1 = (int)init_parent_number_1 - (int)migrant_number;
+  } else {
+    native_parent_number_1 = 0;
+  }
+  Population pop1(native_parent_number_1);
+
   pop1.migration(pop0, migrant_number);
   if (flag_constant) {
     pop1.reproduction_constant(lambda_mean_1);
   } else{
     pop1.reproduction(lambda_mean_1);
   }
+
   pop1.sampling_child(sampled_child_number_1, 1);
   pop1.sampling_father(sampled_father_number_1, 1, flag_invasive);
   pop1.sampling_mother(sampled_father_number_1, 1, flag_invasive);

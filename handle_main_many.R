@@ -1,14 +1,7 @@
 # ---
-# many-run and drawing result
-# 1: simulation 6 estimators with various sets of fixed parameters
-# 2: draw
-# 
-# pop1>>pop2: error!! like following case...
-# ./model_2 50000 5000 1600 400 800 200 800 200 5000 2 5 1 
-# migrant_number must be smaller than init_parent_number
+# simulation 11 estimators with various sets of fixed parameters
 # ---
 
-# 1: simulation 6 estimators with various sets of fixed parameters
 
 library(tidyverse)
 setwd("~/git/CKMRmig/")
@@ -24,6 +17,7 @@ result_grid = tidyr::crossing(
   lambda_0 = 2,
   lambda_1 = 5,
   flag_constant = c(0, 1),
+  flag_invasive = c(0, 1),
   nP_0 = c(50,100,200,400,800,1600),
   nP_1 = c(50,100,200,400,800,1600),
   nO_0 = c(50,100,200,400,800,1600),
@@ -45,12 +39,12 @@ result_grid = tidyr::crossing(
   dplyr::filter((nP_0==nO_0) & (nP_1==nO_1)) %>%
   dplyr::filter(N_0>=N_1)
 para_len <- nrow(result_grid)
-REP = 1000
-system("g++ model_2.cpp -Wall -Wextra -o3 -std=c++17 -o model_2")
+REP = 1
+system("g++ model_3.cpp -Wall -Wextra -o3 -std=c++17 -o model_3")
 HS_01 = PO_0 = PO_1 = PO_01 = pi_est_PO = pi_est_HS = M_est1 = M_est2 = M_est3 = M_est4 = M_est5 = N_0_est = N_1_est = m_est1 = m_est2 = m_est3 = m_est4 = matrix(NA,nrow = para_len, ncol = REP)
 
 for (p in 1:para_len) {
-  INLINE = paste("./model_2",
+  INLINE = paste("./model_3",
                  result_grid$N_0[p]/2, #init_parent_pair_number_0, 
                  result_grid$N_1[p]/2, #init_parent_pair_number_1, 
                  result_grid$nO_0[p],#sampled_child_number_0,
@@ -62,7 +56,8 @@ for (p in 1:para_len) {
                  result_grid$N_0[p]/2 * result_grid$m[p], #migration_number
                  result_grid$lambda_0[p],
                  result_grid$lambda_1[p], 
-                 result_grid$flag_constant[p], collapse = " ")
+                 result_grid$flag_constant[p], 
+                 result_grid$flag_invasive[p], collapse = " ")
   for (rep in 1:REP) {
     system(INLINE)
     
