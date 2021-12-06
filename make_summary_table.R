@@ -48,5 +48,5 @@ summary_table = result_grid %>%
   dplyr::mutate(m_cv4 = sqrt(m_var4) / m_mean4)
 
 summary_table_final = summary_table %>%
-  dplyr::select(N_0,N_1,m,migration_number,flag_constant,nP_0,nP_1,nO_0,nO_1,M_bias1,M_cv1,M_bias2,M_cv2,M_bias3,M_cv3,M_bias4,M_cv4,M_bias5,M_cv5)
+  dplyr::select(N_0,N_1,m,migration_number,flag_invasive,nP_0,nP_1,nO_0,nO_1,M_bias1,M_cv1,M_bias2,M_cv2,M_bias3,M_cv3,M_bias4,M_cv4,M_bias5,M_cv5)
 write_csv(summary_table_final, file="~/Dropbox/research/_output/CKMRmig/big_table.csv")
