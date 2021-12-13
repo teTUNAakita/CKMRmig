@@ -12,15 +12,19 @@ rm(list=ls())
 start.time = proc.time()
 options(readr.show_progress = FALSE)
 options(scipen=1)
-init_parent_pair_number_0 = init_parent_pair_number_1 = 1000
-sampled_child_number_0 = sampled_child_number_1 = 200
-sampled_father_number_0 = sampled_father_number_1 = 500
-sampled_mother_number_0 = sampled_mother_number_1 = 500
-migration_number = 50 # true migrant number is multiplied twice
+init_parent_pair_number_0 = 5000
+init_parent_pair_number_1 = 500
+sampled_child_number_0 = 100
+sampled_child_number_1 = 50
+sampled_father_number_0 = 50
+sampled_father_number_1 = 25
+sampled_mother_number_0 = 50
+sampled_mother_number_1 = 25
+migration_number = 250 # true migrant number is multiplied twice
 migration_rate = migration_number/init_parent_pair_number_0
 lambda_0 = 3
 lambda_1 = 7
-flag_constant = 1
+flag_constant = 0
 flag_invasive = 1
 REP = 1000
 HS_01 = PO_0 = PO_1 = PO_01 = pi_est_PO = pi_est_HS = M_est0_PO = M_est0_HS = M_est0_both = M_est1_both= M_est2_both = N_0_est = N_1_est = m_est1 = m_est2 = m_est3 = m_est4 = rep(NA, REP)
@@ -87,11 +91,11 @@ for (rep in 1:REP) {
   N_1_est[rep] = (2*sampled_child_number_1 * (sampled_father_number_1+sampled_mother_number_1) + 1) / (PO_1[rep] + 1)
   M_est0_HS[rep] = pi_est_HS[rep] * (2*init_parent_pair_number_0) * (2*init_parent_pair_number_1) / 4
   M_est0_PO[rep] = pi_est_PO[rep] * (2*init_parent_pair_number_0) * (2*init_parent_pair_number_1) / 2
-  M_est0_both[rep] = ( (2*init_parent_pair_number_0) * (2*init_parent_pair_number_1) / 2 / sampled_child_number_0 ) * ( (HS_01[rep]+PO_01[rep]) / (2*sampled_child_number_0 + (sampled_father_number_1+sampled_mother_number_1)) )
+  M_est0_both[rep] = ( (2*init_parent_pair_number_0) * (2*init_parent_pair_number_1) / 2 / sampled_child_number_0 ) * ( (HS_01[rep]+PO_01[rep]) / (2*sampled_child_number_1 + (sampled_father_number_1+sampled_mother_number_1)) )
   #M_est_HS[rep] = pi_est_HS[rep] * N_0_est[rep] * N_1_est[rep] / 4
   #M_est_PO[rep] = pi_est_PO[rep] * N_0_est[rep] * N_1_est[rep] / 2
-  M_est1_both[rep] = ( N_0_est[rep] * (2*init_parent_pair_number_1) / 2 / sampled_child_number_0 ) * ( (HS_01[rep]+PO_01[rep]) / (2*sampled_child_number_0 + (sampled_father_number_1+sampled_mother_number_1)) )
-  M_est2_both[rep] = ( N_0_est[rep] * N_1_est[rep] / 2 / sampled_child_number_0 ) * ( (HS_01[rep]+PO_01[rep]) / (2*sampled_child_number_0 + (sampled_father_number_1+sampled_mother_number_1)) )
+  M_est1_both[rep] = ( N_0_est[rep] * (2*init_parent_pair_number_1) / 2 / sampled_child_number_0 ) * ( (HS_01[rep]+PO_01[rep]) / (2*sampled_child_number_1 + (sampled_father_number_1+sampled_mother_number_1)) )
+  M_est2_both[rep] = ( N_0_est[rep] * N_1_est[rep] / 2 / sampled_child_number_0 ) * ( (HS_01[rep]+PO_01[rep]) / (2*sampled_child_number_1 + (sampled_father_number_1+sampled_mother_number_1)) )
   
   m_est1[rep] = pi_est_HS[rep] * (2*init_parent_pair_number_1) / 4
   m_est2[rep] = pi_est_PO[rep] * (2*init_parent_pair_number_1) / 2
@@ -113,8 +117,8 @@ cat("mean estimated migrant_rate: ",mean(m_est2), ", True migrant_rate: ", migra
 cat("mean estimated migrant_rate: ",mean(m_est3), ", True migrant_rate: ", migration_rate,", CV of estimated migrant_rate: ",(var(m_est3))^0.5/mean(m_est3), "\n")
 cat("mean estimated migrant_rate: ",mean(m_est4), ", True migrant_rate: ", migration_rate,", CV of estimated migrant_rate: ",(var(m_est4))^0.5/mean(m_est4), "\n")
 
-end.time = proc.time()
-(end.time-start.time)
+#end.time = proc.time()
+#(end.time-start.time)
 #save(list=ls(), file="out/res.Rdata")
 
 # 2: draw
@@ -166,6 +170,8 @@ if(0){
           legend.text = element_text(size=10))
   plot(gp)
 }
+end.time = proc.time()
+(end.time-start.time)
 #----------------------------------------------------------------------------------------------------
 # 
 

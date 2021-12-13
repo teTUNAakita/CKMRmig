@@ -117,16 +117,16 @@ for (p in 1:para_len) {
     
     M_est1[p,rep] = pi_est_HS[p,rep] * (2*init_parent_pair_number_0) * (2*init_parent_pair_number_1) / 4
     M_est2[p,rep] = pi_est_PO[p,rep] * (2*init_parent_pair_number_0) * (2*init_parent_pair_number_1) / 2
-    M_est3[p,rep] = ( (2*init_parent_pair_number_0) * (2*init_parent_pair_number_1) / 2 / sampled_child_number_0 ) * ( (HS_01[p,rep]+PO_01[p,rep]) / (2*sampled_child_number_0 + (sampled_father_number_1+sampled_mother_number_1)) )
+    M_est3[p,rep] = ( (2*init_parent_pair_number_0) * (2*init_parent_pair_number_1) / 2 / sampled_child_number_0 ) * ( (HS_01[p,rep]+PO_01[p,rep]) / (2*sampled_child_number_1 + (sampled_father_number_1+sampled_mother_number_1)) )
     #M_est_HS[rep] = pi_est_HS[rep] * N_0_est[rep] * N_1_est[rep] / 4
     #M_est_PO[rep] = pi_est_PO[rep] * N_0_est[rep] * N_1_est[rep] / 2
-    M_est4[p,rep] = ( N_0_est[p,rep] * (2*init_parent_pair_number_1) / 2 / sampled_child_number_0 ) * ( (HS_01[p,rep]+PO_01[p,rep]) / (2*sampled_child_number_0 + (sampled_father_number_1+sampled_mother_number_1)) )
-    M_est5[p,rep] = ( N_0_est[p,rep] * N_1_est[p,rep] / 2 / sampled_child_number_0 ) * ( (HS_01[p,rep]+PO_01[p,rep]) / (2*sampled_child_number_0 + (sampled_father_number_1+sampled_mother_number_1)) )
+    M_est4[p,rep] = ( N_0_est[p,rep] * (2*init_parent_pair_number_1) / 2 / sampled_child_number_0 ) * ( (HS_01[p,rep]+PO_01[p,rep]) / (2*sampled_child_number_1 + (sampled_father_number_1+sampled_mother_number_1)) )
+    M_est5[p,rep] = ( N_0_est[p,rep] * N_1_est[p,rep] / 2 / sampled_child_number_0 ) * ( (HS_01[p,rep]+PO_01[p,rep]) / (2*sampled_child_number_1 + (sampled_father_number_1+sampled_mother_number_1)) )
     
     m_est1[p,rep] = pi_est_HS[p,rep] * (2*init_parent_pair_number_1) / 4
     m_est2[p,rep] = pi_est_PO[p,rep] * (2*init_parent_pair_number_1) / 2
-    m_est3[p,rep] = ( (2*init_parent_pair_number_1) / 2 / sampled_child_number_0 ) * ( (HS_01[p,rep]+PO_01[p,rep]) / (2*sampled_child_number_0 + (sampled_father_number_1+sampled_mother_number_1)) )
-    m_est4[p,rep] = ( N_0_est[p,rep] / 2 / sampled_child_number_0 ) * ( (HS_01[p,rep]+PO_01[p,rep]) / (2*sampled_child_number_0 + (sampled_father_number_1+sampled_mother_number_1)) )
+    m_est3[p,rep] = ( (2*init_parent_pair_number_1) / 2 / sampled_child_number_0 ) * ( (HS_01[p,rep]+PO_01[p,rep]) / (2*sampled_child_number_1 + (sampled_father_number_1+sampled_mother_number_1)) )
+    m_est4[p,rep] = ( N_0_est[p,rep] / 2 / sampled_child_number_0 ) * ( (HS_01[p,rep]+PO_01[p,rep]) / (2*sampled_child_number_1 + (sampled_father_number_1+sampled_mother_number_1)) )
   }
   cat(p,"/",para_len,INLINE,"\n")
 }
