@@ -37,7 +37,8 @@ result_grid = tidyr::crossing(
                 | (N_0==100000 & N_1==10000 & nP_0==(4*nP_1) & nO_0==(4*nO_1))
   ) %>%
   dplyr::filter((nP_0==nO_0) & (nP_1==nO_1)) %>%
-  dplyr::filter(N_0>=N_1)
+  dplyr::filter(N_0 >= N_1) %>%
+  dplyr::filter(N_1>(m*N_0))
 para_len <- nrow(result_grid)
 REP = 1000
 system("g++ model_3.cpp -Wall -Wextra -o3 -std=c++17 -o model_3")
