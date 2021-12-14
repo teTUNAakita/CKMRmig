@@ -106,7 +106,7 @@ In this section, we present the theoretical foundation for estimating a migrant 
 
 Suppose that we have a set of two populations labelled 1 and 2 where random mating occurs within each population and that parents can move to the other population after the end of the reproductive season. Hereafter, without loss of generality, we consider the movement of parents in the direction from population 1 to population 2 and focus on the migration number or rate, and that is what we attempt to estimate. In this framework, we show that considering two reproductive seasons (hereafter, we call them "the first year" and "the second year") is enough to estimate it. {\bf Figure \ref{cartoon}} presents a schematic representation of the kinship relationships and movements of parents. 
 
-Suppose there are $N_1$ parents in the population 1 at the beginning of the first year. Each parent produces offspring in which the number is governed by the parent's reproductive potential, denoted by $\lambda_{i,1}$ ($i=1,2,\ldots,N_1$). After the reproductive season, part of the parents would start to moving towards the population 2; $M$ survived migrants arrive in the population 2 so that there are $N_2$ parents in the population 2 at the beginning of the second year ($M < N_2$). Similar to the population 1, $N_2$ parents produce offspring in which the number is governed by $\lambda_{j,2}$ ($j=1,2,\ldots,N_2$). The reproductive potential is determined by several factors and its details are summarized in {\bf Appendix}; theoretically speaking, the number of offspring for each parent is set as a random variable with mean $\lambda_{i,1}$ or $\lambda_{j,2}$. 
+Suppose there are $N_1$ parents in the population 1 at the beginning of the first year. Each parent produces offspring in which the number is governed by the parent's reproductive potential, denoted by $\lambda_{i,1}$ ($i=1,2,\ldots,N_1$). After the reproductive season, part of the parents would start to moving towards the population 2; $M$ survived migrants arrive in the population 2 so that there are $N_2$ parents in the population 2 at the beginning of the second year ($M \le N_1$ and $M \le N_2$). Similar to the population 1, $N_2$ parents produce offspring in which the number is governed by $\lambda_{j,2}$ ($j=1,2,\ldots,N_2$). The reproductive potential is determined by several factors and its details are summarized in {\bf Appendix}; theoretically speaking, the number of offspring for each parent is set as a random variable with mean $\lambda_{i,1}$ or $\lambda_{j,2}$. 
 
 %%%%%%%%%%%%%%
 \begin{center}
@@ -130,7 +130,7 @@ To assess these probabilities, recall there must be two parents of arbitral offs
 &= \frac{4M}{N_{1}N_{2}}.
 \label{HS-1}
 \end{align}
-This form also holds under a flexible setting for the reproductive potential, such as a situation with random variable of $\lambda_{i,1}$ and $\lambda_{j,2}$, as noted in {\bf Appendix}. 
+This form holds under a flexible setting for the reproductive potential, such as a situation with random variable of $\lambda_{i,1}$ and $\lambda_{j,2}$, as noted in {\bf Appendix}. If all $N_1$ parents safely move to the population 2 (i.e., $M = N_1$), $\pi_{\rm HS,bet}$ equals $4/N_2$; meanwhile, if the population 2 consists only of migrants (i.e., $M = N_2$), $\pi_{\rm HS,bet}$ equals $4/N_1$. These probabilities in the extreme cases are similar forms to HS probability that is randomly sampled from two different cohorts within a population \cite[]{bravington2016close}. 
 
 Let $H_{\rm HS,bet}$ be the number of HS pairs found in offspring samples of size $n_{\rm O, 1}$ and $n_{\rm O, 2}$. Assuming that the total number of HS pairs in the population is much higher than $H_{\rm HS,bet}$, the distribution is approximated by a binomial form (i.e., $H_{\rm HS,bet} \sim {\rm Binom}[\pi_{\rm HS,bet}, n_{\rm O, 1} n_{\rm O, 2}]$); thus, the theoretical expectation of $H_{\rm HS,bet}$ is
 
@@ -168,6 +168,7 @@ Next, we consider the probability that offspring sampled in the population 1 and
 &= \frac{2M}{N_{1}N_{2}}.
 \label{PO-1}
 \end{align}
+This form also holds under a flexible setting for the reproductive potential, as noted in {\bf Appendix}. If all $N_1$ parents safely move to the population 2 (i.e., $M = N_1$), $\pi_{\rm PO,bet}$ equals $2/N_2$; meanwhile, if the population 2 consists only of migrants (i.e., $M = N_2$), $\pi_{\rm PO,bet}$ equals $2/N_1$. These probabilities in the extreme cases are similar forms to PO probability that is randomly sampled within a population \cite[]{bravington2016close}. 
 
 Let $H_{\rm PO,bet}$ be the number of PO pairs found in offspring samples of size $n_{\rm O, 1}$ and parent samples of size $n_{\rm P, 2}$. Assuming that the total number of PO pairs in the two populations is much higher than $H_{\rm PO,bet}$, the distribution is approximated by a binomial form (i.e., $H_{\rm PO,bet} \sim {\rm Binom}[\pi_{\rm PO,bet}, n_{\rm O, 1} n_{\rm P, 2}]$); thus, the theoretical expectation of $H_{\rm PO,bet}$ is
 \begin{align}
