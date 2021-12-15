@@ -548,48 +548,38 @@ No datasets were generated or analyzed in this study.
 
 \clearpage
 
-\section*{APPENDIX X}
+\section*{APPENDIX 1}
 \setcounter{equation}{0}
-
+\renewcommand{\theequation}{A\arabic{equation}}
 
 \section*{Reproductive potential}
 
 \renewcommand{\theequation}{A\arabic{equation}}
-Here, we introduce the concept of the reproductive potential of parent $i$ in the population $m$, which is defined as the expected number of surviving offspring at sampling time, denoted by $\lambda_{i,m}$. The reproductive potential is determined by several factors, including the parent's age, weight, residence time on the spawning ground. It should be noted that the magnitude of this parameter ($\lambda_{i,m}$) includes information about the survival rate of the offspring, the number of days after egg hatching, and the egg number; this implies that the parameter reflects the sample timing. It should also be noted that the modeling framework does not depend on whether the reproductive potential is heritable or not.
+Here, we introduce the concept of the reproductive potential of parent $i$ and $j$ in the population 1 and 2, respectively, which are defined as the expected number of surviving offspring at sampling time, denoted by $\lambda_{i,1}$ and $\lambda_{j,2}$ ($i=(1, \ldots, N_1)$ and $j=(1, \ldots, N_2)$). The reproductive potential is determined by several factors, including the parent's age, weight, residence time on the spawning ground. It should be noted that the magnitude of this parameter includes information about the survival rate of the offspring, the number of days after egg hatching, and the egg number; this implies that the parameter reflects the sample timing. It should also be noted that the modeling framework does not depend on whether the reproductive potential is heritable or not.
 
+\section*{APPENDIX 2}
+\section*{Derivation of Equations~\ref{HS-1} and \ref{PO-1} when reproductive potential is variable among parents}
 
-
-
-
-\section*{Equation X holds under flexible assumptions for the distribution of surviving offspring number per parent}
-
-\renewcommand{\theequation}{B\arabic{equation}}
-
-これまでは，母親による産卵数の偏りや，父親による放精成功の偏りは考慮していなかった。しかしながら，多回繁殖する魚類の場合，体サイズによって繁殖成功度は大きく変化すること，および体サイズの分布には偏りが存在することから，上記のシステマチックな偏りを考慮する必要があるだろう。例えば，集団に１個体の巨大魚（メス）がいて，その産卵数が他の個体よりも圧倒的に大きい場合，サンプルされる子供の母親はかなりの確率でその巨大魚になるだろう。
-
-サブ集団１（２）にいる親$i(j)$が残す子供の数を$k_{1,i}(k_{2,j})$としよう。$k_{1,i}(k_{2,j})$は期待値$\lambda_{1,i}(\lambda_{2,j})$の分布（例えば負の二項分布など）に従うとしよう。体サイズによる重み付けを考慮したランダム交配を仮定すれば，ペアがMHSである確率は
+In the main text, we ignore the variation of reproductive potential among parents (i.e., both $\lambda_{i,1}$ and $\lambda_{j,2}$ are constant) to derive $\pi_{\rm HS,bet}$ and $\pi_{\rm PO,bet}$, which corresponds to the probability that two offspring sampled in the population 1 and 2 share an HS relationship and that offspring sampled in the population 1 and a parent sampled in the population 2 share an PO relationship, respectively. Let $k_{i,1}$ and $k_{j,2}$ be the number of surviving offspring of parent $i$ and $j$ at sampling in the population 1 and 2, respectively, and $k_{i,1}$ and $k_{j,2}$ is assumed to follow a kind of discrete distribution (e.g., negative binomial distribution) with mean $\lambda_{i,1}$ and $\lambda_{j,2}$. Without loss of generality, we set the index such that parents with $i=1$ to $M$ in the population 1 and $j=1$ to $M$ in the population 2 are identical migrants; for example, the parent with $i=1$ reproduce $k_{1,1}$ offspring (in the population 1) and then reproduce $k_{1,2}$ offspring (in the population 2) after migration. Giving $k_{i,1}$ and $k_{j,2}$, the conditional probability that two offspring sampled in the population 1 and 2 share an HS relationship is
 \begin{align}
-\pi | _{\boldsymbol{k_1, k_2}} &= \frac{ 2\sum_{i=1}^M k_{1,i} } { \sum_{i=1}^{N_1} k_{1,i} } \frac{ 2\sum_{j=1}^M k_{2,j} } { \sum_{j=1}^{N_2} k_{2,j} } \frac{1}{M} 
+\pi_{\rm HS,bet} | _{\boldsymbol{k_1, k_2}} &= \frac{ 2\sum_{i=1}^M k_{i,1} } { \sum_{i=1}^{N_1} k_{i,1} } \frac{ 2\sum_{j=1}^M k_{j,2} } { \sum_{j=1}^{N_2} k_{j,2} } \frac{1}{M}, 
 \end{align}
-と書くことができる。簡単のため，$\boldsymbol{k_1}=(k_{1,1}, \ldots, k_{1,M}, \ldots, k_{1,N_1})$および$\boldsymbol{k_2}=(k_{1,2}, \ldots, k_{1,M}, \ldots, k_{1,N_2})$と記載し，また親のidが$1$から$M$の個体が移動するとして，idを配置した。$k_{1,i}$は期待値$\lambda_{1,i}$に従う確率変数であることから，このMHSペア確率の平均をとると
+where $\boldsymbol{k_1}=(k_{1,1}, \ldots, k_{M,1}, \ldots, k_{N_1,1})$ and $\boldsymbol{k_2}=(k_{1,2}, \ldots, k_{M,2}, \ldots, k_{N_2,2})$. It should be noted that $k_{i,1}$ and $k_{j,1}$ is a random variable with mean $\lambda_{i,1}$ and $\lambda_{j,2}$, respectively. By taking the expectation over the distribution of offspring number, the conditional probability is given by
 \begin{align}
-\pi | _{\boldsymbol{\lambda_1, \lambda_2}} &= \mathbb{E}[\pi | _{\boldsymbol{k_1, k_2}}] \nonumber\\
-&= \frac{4}{M} \mathbb{E}\left[\frac{ \sum_{i=1}^M k_{1,i} } { \sum_{i=1}^{N_1} k_{1,i} } \frac{ \sum_{j=1}^M k_{2,j} } { \sum_{j=1}^{N_2} k_{2,j} } \right]   \nonumber\\
-&\approx \frac{4}{M} \frac{ \mathbb{E}\left[ \sum_{i=1}^M k_{1,i} \sum_{j=1}^M k_{2,j} \right] } {\mathbb{E}\left[ \sum_{i=1}^{N_1} k_{1,i} \sum_{j=1}^{N_2} k_{2,j}\right]} \nonumber\\
-&= \frac{4}{M} \frac{ \sum_{i=1}^M \lambda_{1,i} \sum_{j=1}^M \lambda_{2,j} } {\sum_{i=1}^{N_1} \lambda_{1,i} \sum_{j=1}^{N_2} \lambda_{2,j}} 
+\pi_{\rm HS,bet} | _{\boldsymbol{\lambda_1, \lambda_2}} &= \mathbb{E}[\pi | _{\boldsymbol{k_1, k_2}}] \nonumber\\
+&= \frac{4}{M} \mathbb{E}\left[\frac{ \sum_{i=1}^M k_{i,1} } { \sum_{i=1}^{N_1} k_{i,1} } \frac{ \sum_{j=1}^M k_{j,2} } { \sum_{j=1}^{N_2} k_{j,2} } \right]   \nonumber\\
+&\approx \frac{4}{M} \frac{ \mathbb{E}\left[ \sum_{i=1}^M k_{i,1} \sum_{j=1}^M k_{j,2} \right] } {\mathbb{E}\left[ \sum_{i=1}^{N_1} k_{i,1} \sum_{j=1}^{N_2} k_{j,2}\right]} \nonumber\\
+&= \frac{4}{M} \frac{ \sum_{i=1}^M \lambda_{i,1} \sum_{j=1}^M \lambda_{j,2} } {\sum_{i=1}^{N_1} \lambda_{i,1} \sum_{j=1}^{N_2} \lambda_{j,2}},
 \end{align}
-と近似することができる。留意すべき点として，移動前の産卵数と移動後の産卵数は独立と仮定しているため，式中に$k_i^2$の項が出現せず，結果は期待値$\lambda_i$(産卵ポテンシャルと呼ぶことにしよう)だけに依存する。最初に述べたように，この個体ごとの産卵ポテンシャルはある分布に従うとしよう。例えば，高齢個体ほど体サイズが大きい場合などが想定される。また，この分布はサブ集団１とサブ集団２で異なっていて良い。すなわち，$\lambda_{1,i}$および$\lambda_{2,j}$がそれぞれ独立な確率変数であると考えて，MHSペア確率についてさらに平均をとると
+where $\boldsymbol{\lambda_1}=(\lambda_{1,1}, \ldots, \lambda_{M,1}, \ldots, \lambda_{N_1,1})$ and $\boldsymbol{\lambda_2}=(\lambda_{1,2}, \ldots, \lambda_{M,2}, \ldots, \lambda_{N_2,2})$. From the second to the third line, we use the approximation that $\mathbb{E}[g1(k)/g2(k)] \approx \mathbb{E}[g_1(k)] / \mathbb{E}[g_2(k)]$. From the third to the forth line, we use the relationship that $\mathbb{E}[k_{i,1}k_{j,2} | _{\lambda_{i,1}, \lambda_{j,2}}] = \mathbb{E}[k_{i,1}|_{\lambda_{i,1}}]\mathbb{E}[k_{j,2}|_{\lambda_{j,2}}]$, implying statistical independence of offspring number before and after parental movement. In other words, the conditional probability does not affected by $\mathbb{V}[k|_\lambda]$. As noted above, we assume that $\lambda_{i,1}$ and $\lambda_{j,2}$ is also a random variable followed by an arbitral function with mean ${\bar \lambda_{1}}$ and ${\bar \lambda_{2}}$, respectively. By taking the expectation over $\lambda$ and applying a similar approximation, the unconditional probability is given by
 \begin{align}
-\pi &= \mathbb{E}[\pi | _{\boldsymbol{\lambda_1, \lambda_2}}] \nonumber\\ 
-&\approx \frac{4}{M} \frac{M^2 \mathbb{E}[\lambda_1 \lambda_2]}{N_1 N_2 \mathbb{E}[\lambda_1 \lambda_2]}\nonumber\\
-&= \frac{4M}{N_{1}N_{2}}
-\label{4-1}
+\pi_{\rm HS,bet} &= \mathbb{E}[\pi | _{\boldsymbol{\lambda_1, \lambda_2}}] \nonumber\\ 
+&= \frac{4}{M} \mathbb{E}\left[\frac{ \sum_{i=1}^M \lambda_{i,1} } { \sum_{i=1}^{N_1} \lambda_{i,1} } \frac{ \sum_{j=1}^M \lambda_{j,2} } { \sum_{j=1}^{N_2} \lambda_{j,2} } \right]   \nonumber\\
+&\approx \frac{4}{M} \frac{ \mathbb{E}\left[ \sum_{i=1}^M \lambda_{i,1} \sum_{j=1}^M \lambda_{j,2} \right] } {\mathbb{E}\left[ \sum_{i=1}^{N_1} \lambda_{i,1} \sum_{j=1}^{N_2} \lambda_{j,2}\right]} \nonumber\\
+&= \frac{4}{M} \frac{M^2 {\bar \lambda_1} {\bar \lambda_2}}{N_1 N_2 {\bar \lambda_1} {\bar \lambda_2}}\nonumber\\
+&= \frac{4M}{N_{1}N_{2}},
 \end{align}
-と近似される。結局，繁殖ポテンシャルの不均一性を考慮しない結果（式\ref{3-1}）と同様になる。なお，$\boldsymbol{\lambda_1}=(\lambda_{1,1}, \ldots, \lambda_{1,N_1})$および$\boldsymbol{\lambda_2}=(\lambda_{1,2}, \ldots, \lambda_{1,N_2})$。この近似は、独立に決まる確率変数$\lambda_1$と$\lambda_2$について、$\mathbb{E}[\lambda_1/\lambda_2]=\mathbb{E}[\lambda_1] \times \mathbb{E}[1/\lambda_2] \approx 1$となる場合に成立するので、集団中に$\lambda$が極端に低い個体が存在する場合は成立しない（サブ集団１とサブ集団２でセットにして相対的な繁殖ポテンシャルを考えれば良いので、問題ないだろう）。
-
-親子ペアから親の数を推定する場合も、繁殖ポテンシャルの不均一性は問題にならない。すなわち、ビッグマザーが存在していても、それをサンプルできるかどうかは運であり、期待値は推定値に漸近するからである。
-
-
+which provides the same formulation described in Eq.\ref{HS-1}. It should be noted that, from the third to the forth line, we assume statistical independence of reproductive potential before and after parental movement. In {\bf Appendix 3}, we consider the situation in which the statistical independence does not hold. 
 
 \section*{APPENDIX A}
 \setcounter{equation}{0}
