@@ -564,7 +564,7 @@ In the main text, we ignore the variation of reproductive potential among parent
 \begin{align}
 \pi_{\rm HS,bet} | _{\boldsymbol{k_1, k_2}} &= \frac{ 2\sum_{i=1}^M k_{i,1} } { \sum_{i=1}^{N_1} k_{i,1} } \frac{ 2\sum_{j=1}^M k_{j,2} } { \sum_{j=1}^{N_2} k_{j,2} } \frac{1}{M}, 
 \end{align}
-where $\boldsymbol{k_1}=(k_{1,1}, \ldots, k_{M,1}, \ldots, k_{N_1,1})$ and $\boldsymbol{k_2}=(k_{1,2}, \ldots, k_{M,2}, \ldots, k_{N_2,2})$. It should be noted that $k_{i,1}$ and $k_{j,1}$ is a random variable with mean $\lambda_{i,1}$ and $\lambda_{j,2}$, respectively. By taking the expectation over the distribution of offspring number, the conditional probability is given by
+where $\boldsymbol{k_1}=(k_{1,1}, \ldots, k_{M,1}, \ldots, k_{N_1,1})$ and $\boldsymbol{k_2}=(k_{1,2}, \ldots, k_{M,2}, \ldots, k_{N_2,2})$. It should be noted that $k_{i,1}$ and $k_{j,1}$ is a random variable with mean $\lambda_{i,1}$ and $\lambda_{j,2}$, respectively. By taking the expectation over the distribution of offspring number, the conditional probability is approximately given by
 \begin{align}
 \pi_{\rm HS,bet} | _{\boldsymbol{\lambda_1, \lambda_2}} &= \mathbb{E}[\pi | _{\boldsymbol{k_1, k_2}}] \nonumber\\
 &= \frac{4}{M} \mathbb{E}\left[\frac{ \sum_{i=1}^M k_{i,1} } { \sum_{i=1}^{N_1} k_{i,1} } \frac{ \sum_{j=1}^M k_{j,2} } { \sum_{j=1}^{N_2} k_{j,2} } \right]   \nonumber\\
@@ -585,7 +585,7 @@ Similar to the derivation of $\pi_{\rm HS,bet}$, the conditional probability tha
 \begin{align}
 \pi_{\rm PO,bet} | _{\boldsymbol{k_1, k_2}} &= \frac{ 2\sum_{i=1}^M k_{i,1} } { \sum_{i=1}^{N_1} k_{i,1} } \frac{ \sum_{j=1}^M k_{j,2} } { \sum_{j=1}^{N_2} k_{j,2} } \frac{1}{M}.
 \end{align}
-By taking the expectation over $k$ and $\lambda$, in the same manner as noted above, the unconditional probability is given by
+By taking the expectation over $k$ and $\lambda$, in the same manner as noted above, the unconditional probability is approximately given by
 \begin{align}
 \pi_{\rm PO,bet} &= \mathbb{E}[\mathbb{E}[\pi | _{\boldsymbol{k_1, k_2}}]] \nonumber\\ 
 &\approx  \frac{2M}{N_{1}N_{2}},
@@ -593,6 +593,22 @@ By taking the expectation over $k$ and $\lambda$, in the same manner as noted ab
 which provides the same formulation described in Eq.\ref{PO-1}.
 
 \section*{APPENDIX 3}
+
+\section*{Covariation between migration and reproductive potential}
+
+Here, we consider the situation in which migrants have a distinguishable distribution of reproductive potential from non-migrant parents. 
+
+上のモデルでは，サブ集団１とサブ集団２を構成する親魚の繁殖ポテンシャルの分布をそれぞれ考慮していたが，移動個体の繁殖ポテンシャルの不均一性については考慮していなかった。最後に，移動した親魚の繁殖ポテンシャルについてもある分布に従うと仮定しよう。すなわち，$\lambda_{1,i}, \lambda_{2,j}, \lambda_{M,l}$をそれぞれ独立な確率変数とみなして，MHSペア確率を計算すると，
+\begin{align}
+\pi | _{\boldsymbol{\lambda_1, \lambda_2, \lambda_M}} &\approx \frac{4}{M} \frac{ \sum_{i=1}^M \lambda_{M,i} \sum_{j=1}^M \lambda_{M,j} } {\left(\sum_{i=1}^{M} \lambda_{M,i} + \sum_{i=M+1}^{N_1} \lambda_{1,i}\right) \left(\sum_{j=1}^{M} \lambda_{M,j} + \sum_{j=M+1}^{N_2} \lambda_{2,j}\right) } 
+\end{align}
+のようになり，$N_1$, $N_2$が$M$より十分に大きいと仮定すると、この期待値は以下のようになる，
+\begin{align}
+\pi &\approx \frac{4M}{N_{1}N_{2}} \mathbb{E}\left[ \frac{ \lambda_M^2 }{\lambda_1\lambda_2} \right]
+\label{5-1}
+\end{align}
+すなわち，繁殖ポテンシャルの効果がMHSペア確率に影響するようになる。
+
 
 \section*{APPENDIX A}
 \setcounter{equation}{0}
