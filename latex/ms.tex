@@ -560,7 +560,7 @@ Here, we introduce the concept of the reproductive potential of parent $i$ and $
 \section*{APPENDIX 2}
 \section*{Derivation of Equations~\ref{HS-1} and \ref{PO-1} when reproductive potential is variable among parents}
 
-In the main text, we ignore the variation of reproductive potential among parents (i.e., both $\lambda_{i,1}$ and $\lambda_{j,2}$ are constant) to derive $\pi_{\rm HS,bet}$ and $\pi_{\rm PO,bet}$, which corresponds to the probability that two offspring sampled in the population 1 and 2 share an HS relationship and that offspring sampled in the population 1 and a parent sampled in the population 2 share an PO relationship, respectively. Let $k_{i,1}$ and $k_{j,2}$ be the number of surviving offspring of parent $i$ and $j$ at sampling in the population 1 and 2, respectively, and $k_{i,1}$ and $k_{j,2}$ is assumed to follow a kind of discrete distribution (e.g., negative binomial distribution) with mean $\lambda_{i,1}$ and $\lambda_{j,2}$. Without loss of generality, we set the index such that parents with $i=1$ to $M$ in the population 1 and $j=1$ to $M$ in the population 2 are identical migrants; for example, the parent with $i=1$ reproduce $k_{1,1}$ offspring (in the population 1) and then reproduce $k_{1,2}$ offspring (in the population 2) after migration. Giving $k_{i,1}$ and $k_{j,2}$, the conditional probability that two offspring sampled in the population 1 and 2 share an HS relationship is
+In the main text, we ignore the variation of reproductive potential among parents (i.e., both $\lambda_{i,1}$ and $\lambda_{j,2}$ are constant) to derive $\pi_{\rm HS,bet}$ and $\pi_{\rm PO,bet}$. Let $k_{i,1}$ and $k_{j,2}$ be the number of surviving offspring of parent $i$ and $j$ at sampling in the population 1 and 2, respectively, and $k_{i,1}$ and $k_{j,2}$ is assumed to follow a kind of discrete distribution (e.g., negative binomial distribution) with mean $\lambda_{i,1}$ and $\lambda_{j,2}$. Without loss of generality, we set the index such that parents with $i=1$ to $M$ in the population 1 and $j=1$ to $M$ in the population 2 are identical migrants; for example, the parent with $i=1$ reproduce $k_{1,1}$ offspring (in the population 1) and then reproduce $k_{1,2}$ offspring (in the population 2) after migration. Giving $k_{i,1}$ and $k_{j,2}$, the conditional probability that two offspring sampled in the population 1 and 2 share an HS relationship is
 \begin{align}
 \pi_{\rm HS,bet} | _{\boldsymbol{k_1, k_2}} &= \frac{ 2\sum_{i=1}^M k_{i,1} } { \sum_{i=1}^{N_1} k_{i,1} } \frac{ 2\sum_{j=1}^M k_{j,2} } { \sum_{j=1}^{N_2} k_{j,2} } \frac{1}{M}, 
 \end{align}
@@ -580,6 +580,19 @@ where $\boldsymbol{\lambda_1}=(\lambda_{1,1}, \ldots, \lambda_{M,1}, \ldots, \la
 &= \frac{4M}{N_{1}N_{2}},
 \end{align}
 which provides the same formulation described in Eq.\ref{HS-1}. It should be noted that, from the third to the forth line, we assume statistical independence of reproductive potential before and after parental movement. In {\bf Appendix 3}, we consider the situation in which the statistical independence does not hold. 
+
+Similar to the derivation of $\pi_{\rm HS,bet}$, the conditional probability that offspring sampled in the population 1 and a parent sampled in the population 2 share an PO relationship is
+\begin{align}
+\pi_{\rm PO,bet} | _{\boldsymbol{k_1, k_2}} &= \frac{ 2\sum_{i=1}^M k_{i,1} } { \sum_{i=1}^{N_1} k_{i,1} } \frac{ \sum_{j=1}^M k_{j,2} } { \sum_{j=1}^{N_2} k_{j,2} } \frac{1}{M}.
+\end{align}
+By taking the expectation over $k$ and $\lambda$, in the same manner as noted above, the unconditional probability is given by
+\begin{align}
+\pi_{\rm PO,bet} &= \mathbb{E}[\mathbb{E}[\pi | _{\boldsymbol{k_1, k_2}}]] \nonumber\\ 
+&\approx  \frac{2M}{N_{1}N_{2}},
+\end{align}
+which provides the same formulation described in Eq.\ref{PO-1}.
+
+\section*{APPENDIX 3}
 
 \section*{APPENDIX A}
 \setcounter{equation}{0}
