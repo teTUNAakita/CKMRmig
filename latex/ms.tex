@@ -94,7 +94,7 @@ Estimating the number of migrants among the populations is essential for underst
 応用例として，３年間にわたって２つのサブ集団からサンプルされた当歳魚から見出される半兄弟ペアをもとに，個体数・移動率・生存率を推定する枠組みを提示する。そこでは，同じサブ集団から年を跨いで見つかる半兄弟ペアに基づく関係式と，今回新たに開発した関係式を組み合わせて用いる。
 
 \section{Theory}\label{sec2}
-In this section, we present the theoretical foundation for estimating a migrant number and a migration rate of iteroparous species using HS or PO pairs, which are found between two populations with a different sample timing. While the estimators can hold under flexible assumptions for reproduction (see {\bf Appendix}), here we assume a relatively simple situation for explanation purposes. The main symbols used in the current paper are summarized in {\bf Table \ref{symbols}}. 
+In this section, we present the theoretical foundation for estimating a migrant number and a migration rate of iteroparous species using HS or PO pairs, which are found between two populations with a different sample timing. While the estimators can hold under flexible assumptions for reproduction (see {\bf Appendix 2}), here we assume a relatively simple situation for explanation purposes. The main symbols used in the current paper are summarized in {\bf Table \ref{symbols}}. 
 
 %%%%%%%%%%%%%%
 \begin{center}
@@ -104,9 +104,9 @@ In this section, we present the theoretical foundation for estimating a migrant 
 
 \subsection{Hypothetical population}
 
-Suppose that we have a set of two populations labelled 1 and 2 where random mating occurs within each population and that parents can move to the other population after the end of the reproductive season. Hereafter, without loss of generality, we consider the movement of parents in the direction from population 1 to population 2 and focus on the migration number or rate, and that is what we attempt to estimate. In this framework, we show that considering two reproductive seasons (hereafter, we call them "the first year" and "the second year") is enough to estimate it. {\bf Figure \ref{cartoon}} presents a schematic representation of the kinship relationships and movements of parents. 
+Suppose that we have a set of two populations labelled 1 and 2 where random mating occurs within each population and that parents can move to the other population after the end of the reproductive season. Hereafter, without loss of generality, we consider the movement of parents in the direction from population 1 to population 2 and focus on the migration number or rate, and that is what we attempt to estimate. In this framework, we show that considering two reproductive seasons (hereafter, we call them "the first year" and "the second year") is enough to estimate it. {\bf Figure \ref{cartoon}a} presents a schematic representation of the kinship relationships and movements of parents. 
 
-Suppose there are $N_1$ parents in the population 1 at the beginning of the first year. Each parent produces offspring in which the number is governed by the parent's reproductive potential, denoted by $\lambda_{i,1}$ ($i=1,2,\ldots,N_1$). After the reproductive season, part of the parents would start to moving towards the population 2; $M$ survived migrants arrive in the population 2 so that there are $N_2$ parents in the population 2 at the beginning of the second year ($M \le N_1$ and $M \le N_2$). Similar to the population 1, $N_2$ parents produce offspring in which the number is governed by $\lambda_{j,2}$ ($j=1,2,\ldots,N_2$). The reproductive potential is determined by several factors and its details are summarized in {\bf Appendix}; theoretically speaking, the number of offspring for each parent is set as a random variable with mean $\lambda_{i,1}$ or $\lambda_{j,2}$. 
+Suppose there are $N_1$ parents in the population 1 at the beginning of the first year. Each parent produces offspring in which the number is governed by the parent's reproductive potential, denoted by $\lambda_{i,1}$ ($i=1,2,\ldots,N_1$). After the reproductive season, part of the parents would start to moving towards the population 2; $M$ survived migrants arrive in the population 2 so that there are $N_2$ parents in the population 2 at the beginning of the second year ($M \le N_1$ and $M \le N_2$). Similar to the population 1, $N_2$ parents produce offspring in which the number is governed by $\lambda_{j,2}$ ($j=1,2,\ldots,N_2$). The reproductive potential is determined by several factors and its details are summarized in {\bf Appendix 1}; theoretically speaking, the number of offspring for each parent is set as a random variable with mean $\lambda_{i,1}$ or $\lambda_{j,2}$. 
 
 %%%%%%%%%%%%%%
 \begin{center}
@@ -116,13 +116,13 @@ Suppose there are $N_1$ parents in the population 1 at the beginning of the firs
 
 \subsection{Sampling}
 
-To estimate the migration number or rate, we utilize the number of HS and/or PO pairs observed in a sample. In the both populations, $n_{\rm O, 1}$ and $n_{\rm O, 2}$ offspring are randomly sampled in the first and second year, respectively, which are identified as young-of-year individuals without errors. Additionally, $n_{\rm P, 1}$ and $n_{\rm P, 2}$ parents are randomly sampled immediately after the end of the reproductive season in the first and second year, respectively. For mathematical tractability, parents have to survive during the reproductive season; therefore, both mother and father of a certain offspring have a potential to be sampled even in the same year. It should be noted that all the four kinds of a sample (i.e., $n_{\rm P, 1}$, $n_{\rm P, 2}$, $n_{\rm O, 1}$, and $n_{\rm O, 2}$) are not always required for estimating migration number or rate; what kinds of a sample are needed depends on the situation, as explained later. Up to the subsection 2.6, we only focus HS pairs and PO pairs found between the two populations. For the applicability of fishery management, we assume invasive sampling procedure, preventing the finding of a parent-offspring pair such that a parent and offspring is sampled in the population 1 and 2, respectively. {\bf Figure~\ref{cartoon}a} illustrates a timeline of sampling scheme for hypothetical populations. 
+To estimate the migration number or rate, we utilize the number of HS and/or PO pairs observed in a sample. In the both populations, $n_{\rm O, 1}$ and $n_{\rm O, 2}$ offspring are randomly sampled in the first and second year, respectively, which are identified as young-of-year individuals without errors. Additionally, $n_{\rm P, 1}$ and $n_{\rm P, 2}$ parents are randomly sampled immediately after the end of the reproductive season in the first and second year, respectively. For mathematical tractability, parents have to survive during the reproductive season; therefore, both mother and father of a certain offspring have a potential to be sampled even in the same year. It should be noted that all the four kinds of a sample (i.e., $n_{\rm P, 1}$, $n_{\rm P, 2}$, $n_{\rm O, 1}$, and $n_{\rm O, 2}$) are not always required for estimating migration number or rate; what kinds of a sample are needed depends on the situation, as explained later. Up to the subsection 2.6, we only focus HS pairs and PO pairs found between the two populations. For the applicability of fishery management, we assume invasive sampling procedure, preventing the finding of a parent-offspring pair such that a parent and offspring is sampled in the population 1 and 2, respectively. {\bf Figure~\ref{cartoon}b} illustrates a timeline of sampling scheme for hypothetical populations. 
 
-In the example depicted in {\bf Fig~\ref{cartoon}b}, five offspring and four parents are sampled in the population 1 and four offspring and six parents are sampled in the population 2, and two HS and one PO pairs found between the two populations are observed. In addition, there are several PO pairs observed within the same population, which are available to estimate parent numbers, as explained in the following section. In our modeling framework, if full-sibling (FS) relationship is found, we count it as two HS pairs. The numbers of HS and PO pairs found between the two populations are determined by pairwise comparison of all the sample individuals ($n_{\rm O,1}\times n_{\rm O,2}$ and $n_{\rm O,1}\times n_{\rm P,2}$ comparisons, respectively). 
+In the example depicted in {\bf Fig~\ref{cartoon}a}, five offspring and four parents are sampled in the population 1 and four offspring and six parents are sampled in the population 2, and two HS and one PO pairs found between the two populations are observed. In addition, there are several PO pairs observed within the same population, which are available to estimate parent numbers, as explained in the following section. In our modeling framework, if full-sibling (FS) relationship is found, we count it as two HS pairs. The numbers of HS and PO pairs found between the two populations are determined by pairwise comparison of all the sample individuals ($n_{\rm O,1}\times n_{\rm O,2}$ and $n_{\rm O,1}\times n_{\rm P,2}$ comparisons, respectively). 
 
 \subsection{HS pair-based model}
 
-Here, we consider the probability that two offspring sampled in the population 1 and 2 share an HS relationship with an arbitrary mother or father, denoted by $\pi_{\rm HS, bet}$. For the explanation purpose, we assume equal reproductive potential among parents up to the subsection 2.7, although this assumption can be relaxed for most of the case (see details in {\bf Appendix}). $\pi_{\rm HS, bet}$ can be partitioned into the three probabilities: (i) the probability that sampled offspring in the population 1 born to a parent that safely arrives in the population 2 (hereafter, called "migrant"); (ii) the probability that sampled offspring in the population 2 born to a migrant; and (iii) the probability that the migrant of a sampled offspring in the population 1 and the migrant of a sampled offspring in the population 2 are identical. 
+Here, we consider the probability that two offspring sampled in the population 1 and 2 share an HS relationship with an arbitrary mother or father, denoted by $\pi_{\rm HS, bet}$. For the explanation purpose, we assume equal reproductive potential among parents up to the subsection 2.7, although this assumption can be relaxed for most of the case (see details in {\bf Appendix 2}). $\pi_{\rm HS, bet}$ can be partitioned into the three probabilities: (i) the probability that sampled offspring in the population 1 born to a parent that safely arrives in the population 2 (hereafter, called "migrant"); (ii) the probability that sampled offspring in the population 2 born to a migrant; and (iii) the probability that the migrant of a sampled offspring in the population 1 and the migrant of a sampled offspring in the population 2 are identical. 
 
 To assess these probabilities, recall there must be two parents of arbitral offspring; the first probability is the sum of father-offspring and mother-offspring relationship, which can be written by $r_{\rm M}M/(r_{\rm S,1}N_{1}) + (1 - r_{\rm M})M/((1-r_{\rm S,1})N_{1})$, where $r_{\rm M}$ and $r_{\rm S,1}$ indicates sex ratio of parents in the migrants and in the whole of the population 1, respectively. Assuming $r_{\rm M} = r_{\rm S,1}$, the probability is simplified as $2M/N_{1}$. Similarly, the second probability is simplified as $2M/N_{2}$, implying the assumption of equal sex ratio in the migrants and the others. The third probability corresponds to the probability that randomly selected two migrants are identical, that is $1/M$. Taken together, we obtain
 \begin{align}
@@ -130,7 +130,7 @@ To assess these probabilities, recall there must be two parents of arbitral offs
 &= \frac{4M}{N_{1}N_{2}}.
 \label{HS-1}
 \end{align}
-This form holds under a flexible setting for the reproductive potential, such as a situation with random variable of $\lambda_{i,1}$ and $\lambda_{j,2}$, as noted in {\bf Appendix}. If all $N_1$ parents safely move to the population 2 (i.e., $M = N_1$), $\pi_{\rm HS,bet}$ equals $4/N_2$; meanwhile, if the population 2 consists only of migrants (i.e., $M = N_2$), $\pi_{\rm HS,bet}$ equals $4/N_1$. These probabilities in the extreme cases are similar forms to HS probability that is randomly sampled from two different cohorts within a population \cite[]{bravington2016close}. 
+This form holds under a flexible setting for the reproductive potential, such as a situation with random variable of $\lambda_{i,1}$ and $\lambda_{j,2}$, as noted in {\bf Appendix 2}. If all $N_1$ parents safely move to the population 2 (i.e., $M = N_1$), $\pi_{\rm HS,bet}$ equals $4/N_2$; meanwhile, if the population 2 consists only of migrants (i.e., $M = N_2$), $\pi_{\rm HS,bet}$ equals $4/N_1$. These probabilities in the extreme cases are similar forms to HS probability that is randomly sampled from two different cohorts within a population \cite[]{bravington2016close}. 
 
 Let $H_{\rm HS,bet}$ be the number of HS pairs found in offspring samples of size $n_{\rm O, 1}$ and $n_{\rm O, 2}$. Assuming that the total number of HS pairs in the population is much higher than $H_{\rm HS,bet}$, the distribution is approximated by a binomial form (i.e., $H_{\rm HS,bet} \sim {\rm Binom}[\pi_{\rm HS,bet}, n_{\rm O, 1} n_{\rm O, 2}]$); thus, the theoretical expectation of $H_{\rm HS,bet}$ is
 
@@ -237,7 +237,7 @@ and
 \widehat{m_4} &=  \frac{ \left(\widetilde{H}_{\rm HS,bet} + \widetilde{H}_{\rm PO,bet}\right) \left(2 n_{\rm O, 2} n_{\rm P, 2} + 1\right)} {2n_{\rm O, 1} \left(2 n_{\rm O, 2} + n_{\rm P, 2}\right) \left(\widetilde{H}_{\rm PO, 2} + 1\right)}.
 \label{AP-5}
 \end{align}
-While estimator of the migrate number (Eq.~\ref{AP-4}) requires the (unknown) parent number in the population 1 ($N_{1}$), estimator of the migration rate (Eq.~\ref{AP-5}) can be obtained only the observed kinship pairs. 
+While estimator of the migrate number (Equation~\ref{AP-4}) requires the (unknown) parent number in the population 1 ($N_{1}$), estimator of the migration rate (Equation~\ref{AP-5}) can be obtained only the observed kinship pairs. 
 
 Similar to estimating $N_2$, when PO pairs found in offspring samples and parent samples both from the population 1 in the first year are also available, we can obtain the estimator of $N_1$, written by
 \begin{align}
@@ -254,13 +254,13 @@ Table \ref{parameter} summarizes the conditions for estimators appeared in this 
 
 \subsection{Variation in reproductive potential among individuals and populations}
 
-The proposed estimators are derived under the assumption that reproductive potential is the same among individuals. As noted in {\bf Appendix}, this assumption can be relaxed and the estimators still hold, which is exemplified in iteroparous species that may show significant variation in reproductive potential among individuals. Furthermore, the estimators even hold for most of the case where mean reproductive potential are different between population 1 and 2, which is exemplified in the situation that the environmental condition for reproductive success varies between populations. The necessary condition is that the migration event does not depends on the degree of reproductive potential (see details in  {\bf Appendix}). 
+The proposed estimators are derived under the assumption that reproductive potential is the same among individuals. As noted in {\bf Appendix 2}, this assumption can be relaxed and the estimators still hold, which is exemplified in iteroparous species that may show significant variation in reproductive potential among individuals. Furthermore, the estimators even hold for most of the case where mean reproductive potential are different between population 1 and 2, which is exemplified in the situation that the environmental condition for reproductive success varies between populations. The necessary condition is that the migration event does not depends on the degree of reproductive potential (see details in  {\bf Appendix 3}). 
 
 \subsection{Individual-based model}
 
-We developed an individual-based model that tracks kinship relationships to evaluate the estimator's performance. The population structure was assumed to be identical to that in the development of the estimators. The population 1 and 2 comprised $N_1$ and $N_2$ parents with an equal sex ratio, and their offspring number was assumed to follow the geometric distribution with mean $\lambda_1$ and $\lambda_2$ (i.e., Poisson reproduction with mean $\lambda_{i,1}$ and $\lambda_{j,2}$ which follows the exponential distribution with mean $\lambda_1$ and $\lambda_2$), respectively. Migrant parents were randomly chosen from the population 1 at the end of the first year. Each offspring retained the parent's ID, making it possible to trace an HS and PO relationship.
+We developed an individual-based model that tracks kinship relationships to evaluate the estimator's performance. The population structure was assumed to be identical to that in the development of the estimators. The population 1 and 2 comprised $N_1$ and $N_2$ parents with an equal sex ratio, and their offspring number was assumed to follow the geometric distribution with mean ${\bar \lambda_1}$ and ${\bar \lambda_2}$ (i.e., Poisson reproduction with mean $\lambda_{i,1}$ and $\lambda_{j,2}$ which follows the exponential distribution with mean ${\bar \lambda_1}$ and ${\bar \lambda_2}$), respectively. Migrant parents were randomly chosen from the population 1 at the end of the first year. Each offspring retained the parent's ID, making it possible to trace an HS and PO relationship.
 
-Let a parameter set ($N_1$, $N_2$, $M$, $\lambda_1$, $\lambda_2$, $n_{\rm O,1}$, $n_{\rm O,2}$, $n_{\rm P,1}$, $n_{\rm P,2}$) be given. We simulated a population history and a sampling process, which generates proposed estimators; this process was repeated 1000 times, making it possible to construct the distribution of the estimators for each parameter set. All scripts and documentation for these analyses are available at \\https://github.com/teTUNAakita/CKMRmig.
+Let a parameter set ($N_1$, $N_2$, $M$, ${\bar \lambda_1}$, ${\bar \lambda_2}$, $n_{\rm O,1}$, $n_{\rm O,2}$, $n_{\rm P,1}$, $n_{\rm P,2}$) be given. We simulated a population history and a sampling process, which generates proposed estimators; this process was repeated 1000 times, making it possible to construct the distribution of the estimators for each parameter set. All scripts and documentation for these analyses are available at \\https://github.com/teTUNAakita/CKMRmig.
 
 \RED{kokomade!!!!!!!!!!!!!!!!!!!!}
 
@@ -462,7 +462,7 @@ No datasets were generated or analyzed in this study.
 					                			& \\
 	$\lambda_{i,1}, \lambda_{j,2}$			& Expected number of surviving offspring of parent $i$ and $j$ at sampling in the population 1 and 2\\
 		                						& \\
-	$\lambda_{i, M}$					& Expected number of surviving offspring of migrant $i$ at sampling\\
+	$\lambda_{M,l,1}, \lambda_{M,l,2}$		& Expected number of surviving offspring of migrant $l$ at sampling in the population 1 and 2\\
 		                						& \\
 	$k_{i,1}, k_{j,2}$					& Number of surviving offspring born to parent $i$ and $j$ in the population 1 and 2\\ 
 	                							& \\
@@ -518,9 +518,9 @@ No datasets were generated or analyzed in this study.
 
 \clearpage
 
-\newcommand{\figcapa}{(a) The phases of the events relevant to this study along the time line. (b) Hypothetical populations with $N_{1}=16$, $N_{2}=14$, and $M=6$. Upper and lower square indicates individuals belonging to the population 1 before migration (at sample timing in the first year) and individuals belonging to the population 2 after reproduction (at sample timing in the second year), respectively. The open circles on the left side, right side, and the center represent mothers, fathers, and their offspring, respectively. The thin line denotes parent-offspring relationship. The bold arrow denotes the migration and the symbol x denotes a failure to survive at sampling in the second year. Sampled individuals are labeled with an index number. The number of sampled individuals in this example: $n_{\rm P, 1}=4$, $n_{\rm O, 1}=5$, $n_{\rm P, 2}=6$, $n_{\rm O, 2}=4$; the numbers of kinship pairs: $H_{\rm PO, bet}=1$ (i.e., ``7-10'' pair), $H_{\rm HS, bet}=2$ (i.e., ``8-16'' and ``9-16'' pairs), $H_{\rm PO, 1}=3$ (i.e., ``1-6'', ``3-5'' and ``4-7'' pairs), and $H_{\rm PO, 2}=2$ (i.e., ``11-17'' and ``15-16'' pairs).}
+\newcommand{\figcapa}{(a) Hypothetical populations with $N_{1}=16$, $N_{2}=14$, and $M=6$. Upper and lower square indicates individuals belonging to the population 1 before migration (at sample timing in the first year) and individuals belonging to the population 2 after reproduction (at sample timing in the second year), respectively. The open circles on the left side, right side, and the center represent mothers, fathers, and their offspring, respectively. The thin line denotes parent-offspring relationship. The bold arrow denotes the migration and the symbol x denotes a failure to survive at sampling in the second year. Sampled individuals are labeled with an index number. The number of sampled individuals in this example: $n_{\rm P, 1}=4$, $n_{\rm O, 1}=5$, $n_{\rm P, 2}=6$, $n_{\rm O, 2}=4$; the numbers of kinship pairs: $H_{\rm PO, bet}=1$ (i.e., ``7-10'' pair), $H_{\rm HS, bet}=2$ (i.e., ``8-16'' and ``9-16'' pairs), $H_{\rm PO, 1}=3$ (i.e., ``1-6'', ``3-5'' and ``4-7'' pairs), and $H_{\rm PO, 2}=2$ (i.e., ``11-17'' and ``15-16'' pairs). (b) The phases of the events relevant to this study along the time line.}
 
-\newcommand{\figcapb}{Violin plots showing the distribution of relative bias in our estimator (Eq.~\ref{NeN_hat2}) for various values of $c$ and sample size. Filled circles represent the mean values. Sample sizes for mothers and offspring are identical (i.e., $n=n_{\rm M} = n_{\rm O}$) and indicated in the legend. For the demonstration purposes, the distribution is truncated, although the mean values are calculated including the truncated values. (a) $N_{\rm m}=1{,}000$, (b) $N_{\rm m}=10{,}000$.}
+\newcommand{\figcapb}{Violin plots showing the distribution of relative bias in our estimator of $M$ for various values sample sizes, parent numbers and migration rate. Filled circles represent the mean values. Sample sizes for parents and offspring are identical (i.e., $n=n_{\rm P,1}=n_{\rm P,2}=n_{\rm O,1}= n_{\rm O,2}$) and parent sizes in the two populations are also identical (i.e., $N=N_1=N_2$), which are indicated in the legend. Migration rate $m$ is specified by $N_1/M$. For the demonstration purposes, the distribution is truncated, although the mean values are calculated including the truncated values. }
 
 \newcommand{\figcapsg}{Violin plots showing the distribution of relative bias of $N_{\rm e}/N$ (denoted in Eq.~\ref{NeN_wang}) for various sample sizes. Filled circles represent the mean values. The sample numbers of parents and offspring are identical (i.e., $n=n_{\rm P} = n_{\rm O}$) and indicated in the legend. For demonstration purposes, the distribution is truncated, although the mean values are calculated including the truncated values. (a) $N=2{,}000$, (b) $N=20{,}000$.}
 
@@ -604,162 +604,6 @@ In the process of the derivation of $\pi_{\rm HS,bet}$ and $\pi_{\rm PO,bet}$ in
 \label{App3}
 \end{align}
 If ${\bar \lambda_{M,1}} = {\bar \lambda_{1}}$ and ${\bar \lambda_{M,2}} = {\bar \lambda_{2}}$, Eq.~\ref{App3} reduces to Eq.\ref{App2}. This formulation include reproductive potential terms, so that distinct reproductive potential between migrants and non-migrants vanishes the usefulness from proposed HS-based estimators (this is also applied to PO-based estimators proposed in this paper). 
-
-\section*{APPENDIX A}
-\setcounter{equation}{0}
-
-\section*{Distribution of the number of surviving offspring per mother and its variance}
-
-\renewcommand{\theequation}{A\arabic{equation}}
-
-Let $k_i$ denote the total number of surviving offspring from a mother  $i$ ($i= 1, 2, \dots, N_{\rm m}$) at time of sampling. Following \cite{Akita_2019} and giving the expected number of the surviving offspring per mother at time of sampling, $\lambda_i$ ($>0$), $k_i$ is assumed to follow a negative binomial distribution through a conventional parametrization:
-\begin{equation}
-{\rm Pr}[ k_i | \lambda_i ] = \frac{\Gamma[k_i+\phi]}{k_i! \Gamma[\phi]} \left( \frac{\lambda_i}{\phi+\lambda_i} \right)^{k_i} \left( \frac{\phi}{\phi+\lambda_i} \right)^{\phi}, 
-\label{NB}
-\end{equation}
-where $\phi$ ($>0$) denotes the overdispersion parameter describing the degree of nonparental variation. In the current work, $\phi$ is assumed to be constant across mothers, whereas the expected number of surviving offspring ($\lambda_i$) varies across mothers. The mean and variance of this distribution are denoted by $\lambda_i$ and $\lambda_i + \lambda_i^2/\phi$, respectively. In the limit of infinite $\phi$, this distribution becomes a Poisson distribution, which is given by ${\rm Pr}[ k_i | \lambda_i ]=\lambda_i^{k_i} \mathrm{e}^{-\lambda_i}/(k_i!)$. We assume $\lambda_i$ to be independent and identically distributed with the density function $f(\lambda)$, producing a parental variation. The shape of the density function is often complex, but may be described by information from the population, for example, the mother's weight composition in the population. The specific form of $f(\lambda)$ is given in {\bf Appendix B} and is used for running an individual-based model.  
-
-The variance of the offspring number can be given by 
-\begin{eqnarray}
-\mathbb{V}[k] &=& \mathbb{E}[ \mathbb{V}[k|\lambda] ] + \mathbb{V}[ \mathbb{E}[k|\lambda] ] \nonumber\\
-&=& \mathbb{E}[ \lambda + \lambda^2 / \phi ] + \mathbb{V}[ \lambda ].
-\label{V_k}
-\end{eqnarray}
-
-\section*{Appendix B}
-\setcounter{equation}{0}
-\section*{Probability density function and its moment of offspring number per mother}
-\renewcommand{\theequation}{B\arabic{equation}}
-
-As stated in the main text, our modeling framework does not require the specific form of the density function of offspring number per mother (denoted by $f(\lambda)$); it only requires the ratio of the second moment to the squared first moment ($\mathbb{E}[\lambda^2] / \mathbb{E}[\lambda]^2$) instead. However, the specific form is required for evaluating the theoretical results (i.e., calculating the moment or running the individual-based model). Herein, we model an age-structured fish population that serves as a representative example, demonstrating both parental and nonparental variations. The following contents are almost the same as those of \cite{Akita_2019} except for the parameter values that produce the setting $c=$ 20 and 100.
-
-Suppose that the mean fecundity of a mother depends on her age. Let $\lambda_a$ denote the mean fecundity, which is a function of age (denoted by $a$). The moment can be defined as $\mathbb{E}[\lambda^m] = \sum_{a=0}^{a_{\rm max}} \lambda_a^m h_{\rm mat}(a)$, where $h_{\rm mat}(a)$ is the frequency of mature mothers at a given age, and $a_{\rm max}$ denotes the maximum age. Thus, we can numerically obtain the moment by applying $\lambda_a$ and $h_{\rm mat}(a)$. 
-
-For marine species with a type-III survivorship curve, it is generally assumed that individual fecundity is proportional to weight. By utilizing the von Bertalanffy growth equation for body weight, $\lambda_a$ is explicitly defined as a function of age as follows:  
-\begin{equation}
-\lambda_a \propto ( 1-{\rm exp}[-\kappa(a-a_0)])^{\beta}, 
-\label{VB}
-\end{equation}
-where $\kappa$, $a_0$, and $\beta$ are conventionally used parameters in the von Bertalanffy equation, and they denote the growth rate, the adjuster of the equation for the initial size of the animal, and the allometric growth parameter, respectively. To obtain a specific value of $\lambda$, a coefficient value of 10 multiplied by the right-hand side of Eq.~\ref{VB} was used when running the individual-based model. 
-
-The frequency of mature mothers at a given age can be given as the following: 
-\begin{equation}
-h_{\rm mat}(a) \propto h(a)Q(a),
-\label{freq}
-\end{equation}
-satisfying $\sum_{a=0}^{a_{\rm max}}h_{\rm mat}(a)=1$, where $h(a)$ and $Q(a)$ denote the frequency and maturity at a given age, respectively. Although $f(a)$ is affected by historical population dynamics and age-dependent survival, for simplicity, the mortality rate is assumed to be constant (i.e., age independent):
-\begin{equation}
-	h(a)\propto
-	\left \{
-	\begin{array}{l}
-		S^{a}\\
-		0
-	\end{array}
-	\begin{array}{l}
-		{\rm if}\ a < a_{\rm max}\\
-		{\rm if}\ a = a_{\rm max}
-	\end{array}
-	\right.
-	,
-	\label{survival}
-\end{equation}
-where $S$ denotes a survival probability. The maturity at age ($Q(a)$) is assumed to be a knife-edge function, which is given by
-\begin{equation}
-	Q(a)=
-	\left \{
-	\begin{array}{l}
-		1\\
-		0
-	\end{array}
-	\begin{array}{l}
-		{\rm if}\ a\geq a_{\rm mat}\\
-		{\rm otherwise }
-	\end{array}
-	\right.
-	,
-	\label{Q}
-\end{equation}
-where $a_{\rm mat}$ denotes the mature age. 
-
-To calculate $\mathbb{E}[\lambda^2] / \mathbb{E}[\lambda]^2$, the required parameter set is $(a_{\rm max}, \kappa, a_0, \beta, S, a_{\rm mat})$. In this study, for the purpose of representation, we fixed the values of several parameters as follows: $a_{\rm max}=20$, $\kappa=0.3$, $a_0=0$, $S=0.5$ and $a_{\rm mat}=0$. In addition, we selected parameter value $c$ (defined in Eq.~\ref{c} in the main text) to be 1, 10, 20, and 100 for comparison with the results in the main text that are derived from the parameter set $(\phi, \beta)=(1000,0.0009)$, $(0.1302,0.9)$, $(0.06111,0.9)$, and $(0.01165,0.9)$, respectively. 
-
-Finally, we provide specific forms of $f(\lambda)$; thus, when $\lambda_a$ and $h_{\rm mat}(a)$ are obtained, $f(\lambda)$ is given by
-\begin{equation}
-	f(\lambda) =
-	\left \{
-	\begin{array}{l}
-		h_{\rm mat}(a)\\
-		0
-	\end{array}
-	\begin{array}{l}
-		{\rm if}\ \lambda = \lambda_a\\
-		{\rm otherwise }
-	\end{array}
-	\right.
-	.
-	\label{f_lambda}
-\end{equation}
-
-\section*{Appendix C}
-\setcounter{equation}{0}
-\section*{Combined effect of parental and nonparental variations}
-
-\renewcommand{\theequation}{C\arabic{equation}}
-
-Following \cite{Akita_2019}, combined effect of parental and nonparental variations can be partitioned into the two components, such as: 
-\begin{equation}
-c = (1+\phi^{-1}) \times \left(\frac{\mathbb{E}[\lambda^2]}{\mathbb{E}[\lambda]^2}\right). 
-\label{c}
-\end{equation}
-The first and second parentheses give the effect of nonparental variation and parental variation, respectively. When $\lambda$ is constant across mothers, $\mathbb{E}[\lambda^2]$ equals $\mathbb{E}[\lambda]^2$ and $c$ converges to $(1+\phi^{-1})$; meanwhile, $\phi \to \infty$, $c$ converges to $\mathbb{E}[\lambda^2]/\mathbb{E}[\lambda]^2$. Without either parental or nonparental variation, $c$ converges to 1 and $\pi_{\rm MS}$ converges to $1/N_{\rm m}$. In the main text, we refer to ``overdispersion'' as the skewed distribution of the offspring number resulting from this combined effect. 
-
-Using Eqs.~\ref{V_k} and \ref{c}, the variance of the offspring number can be expressed as  
-\begin{equation}
-\mathbb{V}[k] = \mathbb{E}[\lambda] + \mathbb{E}[\lambda]^2 (c-1),  
-\label{V_k2}
-\end{equation}
-suggesting that the variance substantially increases with $c$.
-
-\section*{Appendix D}
-\setcounter{equation}{0}
-\section*{Derivation of the bias of $\widehat{N_{\rm e,m}/N_{\rm m}}$}
-\renewcommand{\theequation}{D\arabic{equation}}
-
-For calculation of the bias of $\widehat{N_{\rm e,m}/N_{\rm m}}$, we require an expectation of the estimator given by
-
-\begin{equation}
-\mathbb{E}\left[\widehat{\left(\frac{N_{\rm e,m}}{N_{\rm m}}\right) }\right] = \mathbb{COV}\left[\widehat{\left(\frac{1}{N_{\rm m}}\right)}, \widehat{N_{\rm e,m}} \right] + \mathbb{E}\left[\widehat{\left(\frac{1}{N_{\rm m}}\right)}\right] \mathbb{E}\left[ \widehat{N_{\rm e,m}} \right].
-\label{E_NeN}
-\end{equation}
-As stated in the main text, both $\widehat{N_{\rm e,m}}$ and $\widehat{1/N_{\rm m}}$ are independent. Thus, the first term in the right-hand side of Eq.~\ref{E_NeN} can be ignored. The expectation of $\widehat{1/N_{\rm m}}$ is given by
-\begin{eqnarray}
- \mathbb{E}\left[\widehat{\left(\frac{1}{N_{\rm m}}\right)}\right] &=& \frac{\mathbb{E}\left[ H_{\rm MO}\right]}{n_{\rm M}n_{\rm O}}\nonumber\\
- &=& \frac{1}{N_{\rm m}}.
- \label{Ninv_bias_app}
-\end{eqnarray}
-From the first to the second line of Eq.~\ref{Ninv_bias_app} , we applied the relationship $\pi_{\rm MO} = \mathbb{E}[\pi_{\rm MO}] = \mathbb{E}[H_{\rm MO}]/(n_{\rm M}n_{\rm O})$ and Eq.~\ref{pi_MO}. Equation~\ref{Ninv_bias_app} indicates that $\widehat{1/N_{\rm m}}$ is the unbiased estimator. The expectation of $\widehat{N_{\rm e,m}}$ is given by
-\begin{equation}
-\mathbb{E}[\widehat{N_{\rm e,m}}] = N_{\rm e,m} - N_{\rm e,m}\left(1-\frac{1}{N_{\rm e,m}}\right)^{\binom{n_{\rm O}}{2}+1},
-\label{bias_Ne}
-\end{equation}
-which is illustrated in Appendix D of \cite{Akita_2019}. Together with these relationships, we can obtain the bias of $\widehat{N_{\rm e,m}/N_{\rm m}}$ described in Eq.~\ref{bias}.
- 
-\section*{Appendix E}
-\setcounter{equation}{0}
-\section*{Individual-based model with application of Wang's estimator}
-\renewcommand{\theequation}{E\arabic{equation}}
-
-Our modeling framework estimates the ratio of contemporary effective mother size to census size (denoted by $N_{\rm e,m}/N_{\rm m}$), as a proxy for the ratio of contemporary effective size to census size (denoted by $N_{\rm e}/N$). To compare the performance of our method with that of other methods for directly estimating $N_{\rm e}/N$, we propose the estimator of $N_{\rm e}/N$, given by 
-\begin{eqnarray}
-\widehat{\left(\frac{N_{\rm e}}{N}\right) } &=& \widehat{N_{\rm e}}\widehat{\left(\frac{1}{N}\right)}\nonumber\\
-&=& \frac{4\binom{n_{\rm O}}{2}}{H_{\rm HS}^{\rm obs}+H_{\rm FS}^{\rm obs}} \frac{H_{\rm PO}^{\rm obs} } {2n_{\rm P}n_{\rm O}}.
-\label{NeN_wang}
-\end{eqnarray}
-$n_{\rm P}$ and $n_{\rm O}$ indicate the sample numbers of parents and offspring, respectively, and $H_{\rm HS}^{\rm obs}$, $H_{\rm FS}^{\rm obs}$, and $H_{\rm PO}^{\rm obs}$ indicate the observed number of half-sibling, full-sibling, and parent-offspring pairs, respectively. $\widehat{N_{\rm e}}$ is based on \cite{wang2009new} assuming random mating and $\widehat{1/N}$ is defined in Eq.~\ref{N_inv_hat2} in the main text.  
-
-We evaluated the estimator's performance on data simulated by running an individual-based model under the Wright-Fisher process for a diploid population. In the current comparison, we did not consider the case of overdispersion (i.e., $N_{\rm e} = N$). Sex ratio was fixed to 0.5 in both whole and sampled populations. Each parent retained the ID of its offspring, making it possible to trace HS, FS, and PO relationships. Given a parameter set ($N$, $n_{\rm O}$, and $n_{\rm P}$), we backwardly simulated a population history in which  mother-offspring and father-offspring relationships were randomly specified from $n_{\rm O}$ offspring; this process was repeated 10{,}000 times, acquiring 10{,}000 data points that were used to construct the distribution of $\widehat{N_{\rm e}/N}$ for each parameter set. If neither HS nor FS pairs were found in a sample, we did not include that trial when constructing the distribution. For ease of comparison, we used the same sample size and population structure for both methods. 
-
-{\bf Figure.~E\ref{violin_wang}} illustrates the distribution of the relative bias of $\widehat{N_{\rm e}/N}$ for limiting cases where parent and offspring sample numbers are identical (i.e., $n_{\rm P} = n_{\rm O}$). Our results indicate that the estimator is upwardly biased, particularly when sample size is small. Alternatively, our estimator shows a broader region such that unbiasedness is approximately achieved. For example, when $n = 100$ and $150$ in $N = 2000$ (i.e., $N_{\rm m}=1000$), the bias of $\widehat{N_{\rm e}/N}$ is clearly observed ({\bf Fig.~E\ref{violin_wang}a}); meanwhile, $N_{\rm e,m}/N_{\rm m}$ does not produce a bias in these conditions ({\bf Fig.~\ref{violin}a}).
 
 \clearpage
 
