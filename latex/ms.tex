@@ -571,17 +571,18 @@ where $\boldsymbol{k_1}=(k_{1,1}, \ldots, k_{M,1}, \ldots, k_{N_1,1})$ and $\bol
 &\approx \frac{4}{M} \frac{ \mathbb{E}\left[ \sum_{i=1}^M k_{i,1} \sum_{j=1}^M k_{j,2} \right] } {\mathbb{E}\left[ \sum_{i=1}^{N_1} k_{i,1} \sum_{j=1}^{N_2} k_{j,2}\right]} \nonumber\\
 &= \frac{4}{M} \frac{ \sum_{i=1}^M \lambda_{i,1} \sum_{j=1}^M \lambda_{j,2} } {\sum_{i=1}^{N_1} \lambda_{i,1} \sum_{j=1}^{N_2} \lambda_{j,2}},
 \end{align}
-where $\boldsymbol{\lambda_1}=(\lambda_{1,1}, \ldots, \lambda_{M,1}, \ldots, \lambda_{N_1,1})$ and $\boldsymbol{\lambda_2}=(\lambda_{1,2}, \ldots, \lambda_{M,2}, \ldots, \lambda_{N_2,2})$. From the second to the third line, we use the approximation that $\mathbb{E}[g1(k)/g2(k)] \approx \mathbb{E}[g_1(k)] / \mathbb{E}[g_2(k)]$. From the third to the forth line, we use the relationship that $\mathbb{E}[k_{i,1}k_{j,2} | _{\lambda_{i,1}, \lambda_{j,2}}] = \mathbb{E}[k_{i,1}|_{\lambda_{i,1}}]\mathbb{E}[k_{j,2}|_{\lambda_{j,2}}]$, implying statistical independence of offspring number before and after parental movement. In other words, the conditional probability does not affected by $\mathbb{V}[k|_\lambda]$. As noted above, we assume that $\lambda_{i,1}$ and $\lambda_{j,2}$ is also a random variable followed by an arbitral function with mean ${\bar \lambda_{1}}$ and ${\bar \lambda_{2}}$, respectively. By taking the expectation over $\lambda$ and applying a similar approximation, the unconditional probability is given by
+where $\boldsymbol{\lambda_1}=(\lambda_{1,1}, \ldots, \lambda_{M,1}, \ldots, \lambda_{N_1,1})$ and $\boldsymbol{\lambda_2}=(\lambda_{1,2}, \ldots, \lambda_{M,2}, \ldots, \lambda_{N_2,2})$. From the second to the third line, we use the approximation that $\mathbb{E}[g1(k)/g2(k)] \approx \mathbb{E}[g_1(k)] / \mathbb{E}[g_2(k)]$. From the third to the forth line, we use the relationship that $\mathbb{E}[k_{i,1}k_{j,2} | _{\lambda_{i,1}, \lambda_{j,2}}] = \mathbb{E}[k_{i,1}|_{\lambda_{i,1}}]\mathbb{E}[k_{j,2}|_{\lambda_{j,2}}]$, implying statistical independence of offspring number before and after parental movement. In other words, the conditional probability does not affected by $\mathbb{V}[k|_\lambda]$. We assume that $\lambda_{i,1}$ and $\lambda_{j,2}$ is also a random variable followed by an arbitral function with mean ${\bar \lambda_{1}}$ and ${\bar \lambda_{2}}$, respectively. By taking the expectation over $\lambda$ and applying a similar approximation, the unconditional probability is given by
 \begin{align}
 \pi_{\rm HS,bet} &= \mathbb{E}[\pi | _{\boldsymbol{\lambda_1, \lambda_2}}] \nonumber\\ 
 &= \frac{4}{M} \mathbb{E}\left[\frac{ \sum_{i=1}^M \lambda_{i,1} } { \sum_{i=1}^{N_1} \lambda_{i,1} } \frac{ \sum_{j=1}^M \lambda_{j,2} } { \sum_{j=1}^{N_2} \lambda_{j,2} } \right]   \nonumber\\
 &\approx \frac{4}{M} \frac{ \mathbb{E}\left[ \sum_{i=1}^M \lambda_{i,1} \sum_{j=1}^M \lambda_{j,2} \right] } {\mathbb{E}\left[ \sum_{i=1}^{N_1} \lambda_{i,1} \sum_{j=1}^{N_2} \lambda_{j,2}\right]} \nonumber\\
 &= \frac{4}{M} \frac{M^2 {\bar \lambda_1} {\bar \lambda_2}}{N_1 N_2 {\bar \lambda_1} {\bar \lambda_2}}\nonumber\\
 &= \frac{4M}{N_{1}N_{2}},
+\label{App2}
 \end{align}
-which provides the same formulation described in Eq.\ref{HS-1}. It should be noted that, from the third to the forth line, we assume statistical independence of reproductive potential before and after parental movement. In {\bf Appendix 3}, we consider the situation in which the statistical independence does not hold. 
+which provides the same formulation described in Eq.\ref{HS-1}. It should be noted that, from the third to the forth line, we assume that $\lambda_{l,1}$ and $\lambda_{l,2}$ ($l = 1, \ldots, M$) are independent variables (i.e., $\mathbb{E}[\lambda_{l,1}\lambda_{l,2}] = {\bar \lambda_{1}}{\bar \lambda_{2}}$), implying variable reproductive potential of an identical parent before and after migration. 
 
-Similar to the derivation of $\pi_{\rm HS,bet}$, the conditional probability that offspring sampled in the population 1 and a parent sampled in the population 2 share an PO relationship is
+Next, we derive the probability that offspring sampled in the population 1 and a parent sampled in the population 2 share an PO relationship ($\pi_{\rm PO,bet}$) under the flexible settings of $\lambda$, which is similar to the derivation of $\pi_{\rm HS,bet}$. The conditional probability is given by
 \begin{align}
 \pi_{\rm PO,bet} | _{\boldsymbol{k_1, k_2}} &= \frac{ 2\sum_{i=1}^M k_{i,1} } { \sum_{i=1}^{N_1} k_{i,1} } \frac{ \sum_{j=1}^M k_{j,2} } { \sum_{j=1}^{N_2} k_{j,2} } \frac{1}{M}.
 \end{align}
@@ -594,21 +595,15 @@ which provides the same formulation described in Eq.\ref{PO-1}.
 
 \section*{APPENDIX 3}
 
-\section*{Covariation between migration and reproductive potential}
+\section*{Difference in reproductive potential between migrants and non-migrants}
 
-Here, we consider the situation in which migrants have a distinguishable distribution of reproductive potential from non-migrant parents. 
-
-上のモデルでは，サブ集団１とサブ集団２を構成する親魚の繁殖ポテンシャルの分布をそれぞれ考慮していたが，移動個体の繁殖ポテンシャルの不均一性については考慮していなかった。最後に，移動した親魚の繁殖ポテンシャルについてもある分布に従うと仮定しよう。すなわち，$\lambda_{1,i}, \lambda_{2,j}, \lambda_{M,l}$をそれぞれ独立な確率変数とみなして，MHSペア確率を計算すると，
+In the process of the derivation of $\pi_{\rm HS,bet}$ and $\pi_{\rm PO,bet}$ in {\bf APPENDIX 2}, we ignore covariation between migration and reproductive potential. Here, we consider the situation in which migrants have a distinguishable distribution of reproductive potential from non-migrant parents. Let $\lambda_{i,1}$, $\lambda_{j,2}$, $\lambda_{M,l,1}$ and $\lambda_{M,l,2}$ be a reproductive potential of non-migrant in the population 1 and 2 and migrants in the population 1 and 2 with mean ${\bar \lambda_{1}}$, ${\bar \lambda_{2}}$, ${\bar \lambda_{M,1}}$ and ${\bar \lambda_{M,2}}$, respectively. Under this setting, $\pi_{\rm HS,bet}$ can be written by
 \begin{align}
-\pi | _{\boldsymbol{\lambda_1, \lambda_2, \lambda_M}} &\approx \frac{4}{M} \frac{ \sum_{i=1}^M \lambda_{M,i} \sum_{j=1}^M \lambda_{M,j} } {\left(\sum_{i=1}^{M} \lambda_{M,i} + \sum_{i=M+1}^{N_1} \lambda_{1,i}\right) \left(\sum_{j=1}^{M} \lambda_{M,j} + \sum_{j=M+1}^{N_2} \lambda_{2,j}\right) } 
+\pi_{\rm HS,bet} &\approx \frac{4}{M}  \frac{ \mathbb{E}\left[ \sum_{l=1}^M \lambda_{M,l,1} \sum_{l=1}^M \lambda_{M,l,2} \right]} {\mathbb{E}\left[ \left(\sum_{l=1}^{M} \lambda_{M,l,1} + \sum_{i=M+1}^{N_1} \lambda_{i,1}\right) \left(\sum_{l=1}^{M} \lambda_{M,l,2} + \sum_{j=M+1}^{N_2} \lambda_{j,2}\right) \right] }\nonumber\\ 
+&= \frac{4}{M} \frac{ M^2 {\bar \lambda_{M,1}} {\bar \lambda_{M,2}} } { M {\bar \lambda_{M,1}} + (N_1 - M) {\bar \lambda_1} + M {\bar \lambda_{M,2}} + (N_2 - M) {\bar \lambda_2} }.
+\label{App3}
 \end{align}
-のようになり，$N_1$, $N_2$が$M$より十分に大きいと仮定すると、この期待値は以下のようになる，
-\begin{align}
-\pi &\approx \frac{4M}{N_{1}N_{2}} \mathbb{E}\left[ \frac{ \lambda_M^2 }{\lambda_1\lambda_2} \right]
-\label{5-1}
-\end{align}
-すなわち，繁殖ポテンシャルの効果がMHSペア確率に影響するようになる。
-
+If ${\bar \lambda_{M,1}} = {\bar \lambda_{1}}$ and ${\bar \lambda_{M,2}} = {\bar \lambda_{2}}$, Eq.~\ref{App3} reduces to Eq.\ref{App2}. This formulation include reproductive potential terms, so that distinct reproductive potential between migrants and non-migrants vanishes the usefulness from proposed HS-based estimators (this is also applied to PO-based estimators proposed in this paper). 
 
 \section*{APPENDIX A}
 \setcounter{equation}{0}
