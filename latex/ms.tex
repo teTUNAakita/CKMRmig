@@ -268,7 +268,7 @@ Let a parameter set ($N_1$, $N_2$, $M$, ${\bar \lambda_1}$, ${\bar \lambda_2}$, 
 
 \section{Results}\label{sec3}
 
-We numerically evaluated the performance of ${\hat M}$ or ${\hat m}$ for the case in which variable reproductive potential among parents. Scaled statistical properties of ${\hat m_1}$,  ${\hat m_2}$,  ${\hat m_3}$ and ${\hat m_4}$ are completely the same to ${\hat M_1}$, ${\hat M_2}$, ${\hat M_3}$ and ${\hat M_4}$, hereafter, we only demonstrate the results of ${\hat M_1}$-${\hat M_5}$. {\bf Figure~\ref{violins}} illustrates the distribution of the relative bias of ${\hat M}$ for limiting cases where parent and offspring sample numbers are identical (i.e., $n=n_{\rm P,1}=n_{\rm P,2}=n_{\rm O,1}= n_{\rm O,2}$) and parent numbers in the two populations are also identical (i.e., $N=N_1=N_2$). Relative bias is calculated by applying outputs of the individual-based model, which is defined as follows: ``averaged estimator - true value/true value.'' Full list of parameter sets to evaluate the performance (relative bias and CV of ${\hat M}$) is summarized in {\bf Table S1} in {\bf Supporting Information}. 
+We numerically evaluated the performance of ${\hat M}$ or ${\hat m}$ for the case in which variable reproductive potential among parents. Scaled statistical properties of ${\hat m_1}$,  ${\hat m_2}$,  ${\hat m_3}$ and ${\hat m_4}$ are completely the same to ${\hat M_1}$, ${\hat M_2}$, ${\hat M_3}$ and ${\hat M_4}$, hereafter, we only demonstrate the results of ${\hat M_1}$-${\hat M_5}$. {\bf Figure~\ref{violins}} illustrates the distribution of the relative bias of ${\hat M}$ for limiting cases where parent and offspring sample numbers are identical (i.e., $n=n_{\rm P,1}=n_{\rm P,2}=n_{\rm O,1}= n_{\rm O,2}$) and parent numbers in the two populations are also identical (i.e., $N=N_1=N_2$). Relative bias is calculated by applying outputs of the individual-based model, which is defined as follows: ``averaged estimator - true value/true value.'' Full list of parameter sets to evaluate the performance (relative bias and CV of ${\hat M}$s) is summarized in {\bf Table S1} in {\bf Supporting Information}. 
  
 %%%%%%%%%%%%%%
 \begin{center}
@@ -276,163 +276,23 @@ We numerically evaluated the performance of ${\hat M}$ or ${\hat m}$ for the cas
 \end{center}
 %%%%%%%%%%%%%%
 
-\subsection{Properties of ${\hat M}$}
+First, we evaluated the accuracy of ${\hat M}$s based on their relative bias. As expected, for most of the investigated parameter sets, we observed that their relative bias is less than 5\%, as demonstrated in {\bf Table S1} in {\bf Supporting Information}. Thus, when the assumption that kinships are detected without any error is satisfied, it is reasonable to call ${\hat M}$s (nearly) unbiased estimators. 
 
-%property of M_i (all are unbiased estimators (accuracy), M_3 shows the best performance (precision))
+Next, we evaluated the precision of ${\hat M}$s based on their CV. {\bf Table S1} in {\bf Supporting Information} demonstrated the value of the CV; meanwhile, the violin plot ({\bf Figure~\ref{violins}}) visually provides the degree of precision. For each estimator ${\hat M}$, the precision increases with increasing of sample size. It should be noted that total sample size depends on the estimator. For example, $n=50$ in Fig.~\ref{violins}, the total sample size of ${\hat M_1}$, ${\hat M_2}$, ${\hat M_3}$, ${\hat M_4}$ and ${\hat M_5}$ is 100 ($=n_{\rm O,1}+n_{\rm O,2}$), 100 ($=n_{\rm O,1}+n_{\rm P,2}$), 150 ($=n_{\rm O,1}+n_{\rm O,2}+n_{\rm P,2}$), 150 ($=n_{\rm O,1}+n_{\rm O,2}+n_{\rm P,2}$) and 200 ($=n_{\rm O,1}+n_{\rm O,2}+n_{\rm P,1}+n_{\rm P,2}$), respectively. 
 
-\subsection{Required sample size}
+As sample size or migrants increase, the precision increases and the shape of the distribution asymptotically becomes symmetric ({\bf Figure~\ref{violins}}). This is because increasing of a sample size or migrants increases of the probability that randomly selected two individuals share kinship between the two populations and thus decreases the CV. 
+
+\subsection{Case of $N_1 \neq N_2$}
 
 \subsection{Invasive sampling}
 
-\subsection{Case of $N_1 \neq N_2$}
+
 
 
 
 
 \section{Discussion}\label{sec4}
 
-
-
-
-
-\begin{comment}
-
-The estimation of the ratio of the contemporary effective population size to the census size ($N_{\rm e}/N$) has attracted much research attention for providing information about a current population, especially in the context of conservation biology and wildlife management \cite[]{Palstra_2012,FRANKHAM201456}. Small $N_{\rm e}/N$ demonstrates large variance in reproductive success \cite[]{Wang:2016aa, JFB:JFB13143, Akita_2019}, resulting from the variance of reproductive potential \cite[e.g., the big old fat fecund female fish hypothesis;][]{Hixon_2014} or from the situation in which only some families successfully reproduce \cite[referred to as the ``Sweepstakes reproductive success'' hypothesis,][]{hedgecock2011sweepstakes}. Moreover, if $N_{\rm e}/N$ is invariant across years, then $N_{\rm e}$ may behave like an index of $N$, and vice versa \cite[]{luikart2010estimation}. However, if $N_{\rm e}/N$ fluctuates across years, the trends can clarify the interpretation of environmental and/or anthropological factors, causing the variance of reproductive potential, family-correlated survivorship, or fluctuating population dynamics. Besides, low precision and/or large bias for estimating $N_{\rm e}/N$ may lead to a wrong interpretation of the population \cite[]{Tallmon:2012aa}.
-
-The estimation of $N_{\rm e}/N$ has been performed by utilizing the estimated values of contemporary effective population size ($N_{\rm e}$) and census size ($N$), unless complete pedigree data and/or full census data are available. Additionally, there are numerous methods for estimating $N_{\rm e}$ from genetic markers \cite[][and the references contained therein]{Wang:2016aa}. There are also numerous methods for estimating $N$, such as a mark-recapture method or population dynamics modeling with survey data \cite[e.g.,][]{seber1982estimation,quinn1999quantitative,kery2011bayesian,methot2013stock}. It is known that there are large variations in both estimators; thus, their combination (i.e., the estimator of $N_{\rm e}/N$) also shows large variation \cite[]{Palstra_2012,Marandel_2018}. There is currently a little theoretical foundation for the estimator of $N_{\rm e}/N$, indicating no guidance for a sample size to ensure the required accuracy and precision. 
-
-Close-kin mark-recapture (CKMR) is a recently developed method for estimating $N$ that utilizes the information about kinship in a sample. This was possible owing to the recent advances in genetic methods for kinship determination \cite[]{Bravington_2016,bravington2016close,skaug2017parent,Hillary_2018} although similar methods have been proposed in the beginning of the 21st century \cite[]{nielsen2001statistical, pearse2001genetic, julius2001allele}. Besides, the rationale is that the presence of a kinship pair in the sample is analogous to the recapture of a marked individual in mark-recapture. Kinship pairs in the sample are less likely to be observed in larger populations; thus, the number of kinship pairs may reflect $N$. While the original CKMR is designed to estimate adult abundance (i.e., $N$), the monitoring data for CKMR also produce the estimator of $N_{\rm e}$ by detecting half-sibling (HS) pairs within the same cohort \cite[]{Akita_2019}. This kinship-oriented estimation of $N_{\rm e}$ was presented in the context of the sibship assignment method \cite[]{wang2009new} and is expected to provide a much more accurate estimator as kinship determination becomes more accurate. 
-
-In this study, we propose a new method for estimating the ratio of contemporary effective mother size to the census size ($N_{\rm e,m}/N_{\rm m}$) in a population, as a proxy of $N_{\rm e}/N$. Assuming that kinships are genetically detected without any error, this method is based on the numbers of maternal-sibling (MS) and mother--offspring (MO) pairs in a sample. Sampling is completed at a single breeding time; sampling offspring within the same cohort and mothers probably shares MO relationship with sampled offspring. Our model provides a nearly unbiased estimator of $N_{\rm e,m}/N_{\rm m}$ that explicitly incorporates two types of overdispersed reproduction \cite[i.e., parental and nonparental variations;][]{Akita_2019}, making it possible to target a species that shows iteroparity (i.e., multiple reproductive cycles during the lifetime) and/or sweepstakes reproductive success. This estimator applying an iteroparous species corresponds to the estimator of the ratio of contemporary effective breeding mother size to the census size, $N_{\rm b,m}/N_{\rm m}$. First, we explain the modeling assumption and sampling scheme. Then, we analytically determine (nearly) the unbiased estimators of $N_{\rm e,m}$, $ 1/N_{\rm m}$, and $N_{\rm e,m}/N_{\rm m}$, which are based on the numbers of MS and/or MO pairs. Finally, by running an individual-based model, we investigate the performance of the estimator and provide a guide for a sample size. It is noteworthy that our modeling framework can be applied to diverse animal species. However, the description of the model focuses on fish species, which are presently the best candidate target of our proposed method. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{THEORY}\label{theory}
-
-In this section, we present the theoretical foundation for estimating $N_{\rm e,m}/N_{\rm m}$. The estimator is based on previous studies that provides the estimator of $N_{\rm e,m}$ \cite[]{Akita_2019} and $1/N_{\rm m}$ \cite[]{Akita2018}. The main contribution of this paper is formulation of the estimator of $N_{\rm e,m}/N_{\rm m}$, presented in Eq.~\ref{NeN_hat2}. The main symbols used in the current paper are summarized in {\bf Table \ref{symbols}}. 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Hypothetical population}
-
-We suppose that there is a hypothetical population comprising $N_{\rm m}$ mothers and there is also no population subdivision or spatial structure. In this study, a mature female is called a mother even if she does not produce offspring. For mathematical tractability, we assume that only one spawning ground exists in which the mothers remain for the entire spawning season. Following \cite{Akita_2019}, our modeling framework employs two types of overdispersed reproduction: parental and nonparental variations. Thus, the former indicates a variation caused by the mother's covariates, such as age, weight, and residence time on the spawning ground, while the latter indicates a variation caused by nonrandom stochastic events during a series of reproductive episodes, which are independent of the mother's covariates, such as family-correlated survivorship or the mating behavior effects (e.g., competition for males/females and correlation between mating opportunities of the mother and the number of her offspring). {\bf Figure~1} illustrates a schematic diagram of the effects of parental and nonparental variations exemplified by age-dependent reproduction and family-correlated survival on kinship relationships in a population. Detailed definitions of parental and nonparental variations are stated in \cite{Akita_2019}. {\bf Appendix A} provides the theoretical foundation of both parental and nonparental variations in reproduction.  
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Sampling}
-
-To obtain the estimator of $N_{\rm e,m}/N_{\rm m}$, we utilize the number of MS and MO pairs observed in a sample. For the mathematical tractability, only one reproductive season is targeted for sampling. Thus, the sampling method does not affect our modeling framework whether it is invasive or noninvasive. In the population, $n_{\rm M}$ mothers are randomly sampled immediately after the end of the reproductive season. Additionally, in the population, $n_{\rm O}$ offspring are also randomly sampled. The numbers of MS and MO pairs are determined by pairwise comparison of all the sample individuals (${}_{n_{\rm O}}\mathrm{C}_2$ and $n_{\rm M}n_{\rm O}$ comparisons, respectively). As depicted in {\bf Fig~\ref{example}}, six offspring and three mothers are sampled and two MS and three MO pairs are observed. In our modeling framework, if an MS pair also shares a paternal-sibling (PS) relationship, we count it as an MS pair and ignore the existing full-sibling (FS) relationship. 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Linking $N_{\rm e,m}/N_{\rm m}$ to kinship relationships}
-
-In this subsection, we provide the theoretical foundation for understanding how $N_{\rm e,m}/N_{\rm m}$ is associated with kinship relationships in a population, based on work presented in previous studies. The rationale is that the observed number of MS and MO pairs have information about $N_{\rm e,m}$ and $N_{\rm m}$, respectively, as noted below. 
-
-First, we consider the relationship between the number of MS pairs and $N_{\rm e,m}$. \cite{Akita_2019} defined the contemporary effective mother size as follows: 
-\begin{equation}
-N_{\rm e,m} = \frac{1}{\pi_{\rm MS}},
-\label{Ne}
-\end{equation}
-where $\pi_{\rm MS}$ denotes the probability that two offspring share an MS relationship with an arbitrary mother. This definition is related to the inbreeding effective population size \cite[]{nordborg2002separation,wang2009new}. When sampling from a single cohort in a population with overlapping generations, the effective mother size in our definition corresponds to the effective breeding mother size per breeding-time unit (e.g., year), which produces the single cohort and is denoted by $N_{\rm b,m}$ \cite[]{waples1991genetic}. Hereafter, the description of the model focuses on species with discrete generations; thus, we use $N_{\rm e,m}$ to denote the contemporary effective mother size, although $N_{\rm b,m}$ is the appropriate notation in the left-hand side of Eq.~\ref{Ne} when the target species is iteroparous with overlapping generations, as exemplified in {\bf Appendix B}. 
-
-Given the total mother number and the degree of overdisepered reproduction in the population, \cite{Akita_2019} derived $\pi_{\rm MS}$, which is approximately given by
-\begin{equation}
-\pi_{\rm MS} \approx \frac{c}{N_{\rm m}+c-1},
-\label{pi_MS}
-\end{equation}
-where $c$ indicates combined effect of both parental and nonparental variations and satisfies $\ge1$. Without either parental or nonparental variation (i.e., $c\to1$, see details in {\bf Appendix C}), $\pi_{\rm MS}$ converges to $1/N_{\rm m}$, corresponding to the Poisson variance in reproduction for all mothers. The mathematical description of $c$ is briefly summarized in {\bf Appendix C}.
-
-Next, we consider the relationship between the number of MO pairs and $N_{\rm m}$. It is natural to consider that the probability of a randomly sampled mother and her offspring sharing an MO relationship (denoted by $\pi_{\rm MO}$) can be associated with the total mother number, given by
-\begin{equation}
-\pi_{\rm MO} = \frac{1}{N_{\rm m}}.
-\label{pi_MO}
-\end{equation} 
-It is noteworthy that $\pi_{\rm MO}$ is independent of the distribution of the offspring number \cite[]{Akita2018}.
-
-Together with Eqs.~\ref{Ne} and \ref{pi_MO}, we finally obtain the ratio of the effective mother size to census size as follows: 
-\begin{equation}
-\frac{N_{\rm e,m}}{N_{\rm m}} = \frac{\pi_{\rm MO}}{\pi_{\rm MS}},
-\label{NeN}
-\end{equation}
-indicating that $N_{\rm e,m}/N_{\rm m}$ is associated with kinship relationships (i.e., MS and MO) in a population. In other words, when $1/\pi_{\rm MS}$ and $\pi_{\rm MO}$ is estimated from observed MS and MO pairs, respectively, the ratio can also be estimated. Meanwhile, \cite{Akita_2019} obtained an alternative formulation of the ratio using Eqs.~\ref{Ne} and \ref{pi_MS}: 
-\begin{eqnarray}
-\frac{N_{\rm e,m}}{N_{\rm m}} &=& \frac{1}{\pi_{\rm MS}} \frac{1}{N_{\rm m}} \nonumber\\
-&\approx& \frac{1}{c},  
-\label{NeN}
-\end{eqnarray}
-where $N_{\rm m} \gg 1$ is assumed for approximation. This theoretical connection indicates that estimating $N_{\rm e,m}/N_{\rm m}$ corresponds to estimating $1/c$. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Estimator of $N_{\rm e,m}/N_{\rm m}$}
-
-This subsection proposes the estimator of $N_{\rm e,m}/N_{\rm m}$  as follows:
-\begin{equation}
-\widehat{\left(\frac{N_{\rm e,m}}{N_{\rm m}}\right) } = \widehat{N_{\rm e,m}}\widehat{\left(\frac{1}{N_{\rm m}}\right)}.
-\label{NeN_hat1}
-\end{equation}
-A ``hat'' denotes the estimator of a variable in this study. The requisite condition that satisfies Eq.~\ref{NeN_hat1} is independent of $\widehat{N_{\rm e,m}}$ and $\widehat{1/N_{\rm m}}$. This property will be shown later in this subsection. \cite{Akita_2019} derived the nearly unbiased estimator of $N_{\rm e,m}$, which is given by 
-\begin{eqnarray}
-\widehat{N_{\rm e,m}} &=& \widehat{\left(\frac{1}{\pi_{\rm MS}}\right)}\nonumber\\
- &=& \frac{\binom{n_{\rm O}}{2}+1}{H_{\rm MS}^{\rm obs}+1},
-\label{Ne_hat}
-\end{eqnarray}
-where $H_{\rm MS}^{\rm obs}$ denotes the observed number of MS pairs in a sample. This estimator works well unless $n_{\rm O}$ is very small, which is based on the idea that the observation of $1/(H_{\rm MS} + 1)$ approximately provides a linear estimator of $N_{\rm e,m}$.
-
-Next, we consider to estimate $1/N_{\rm m}$ by estimating $\pi_{\rm MO}$. By definition of $\pi_{\rm MO}$, we can set its estimator by $H_{\rm MO}^{\rm obs}/(n_{\rm M}n_{\rm O})$, where $H_{\rm MO}^{\rm obs}$ denotes the observed number of MO pairs in a sample. Thus, using Eq.~\ref{pi_MO}, the estimator can be determined as follows:  
-\begin{eqnarray}
-\widehat{\left(\frac{1}{N_{\rm m}}\right)} &=& \widehat{\pi_{\rm MS}}\nonumber\\
- &=& \frac{H_{\rm MO}^{\rm obs} } {n_{\rm M}n_{\rm O}}.
-\label{N_inv_hat}
-\end{eqnarray}
-Equation~\ref{N_inv_hat} provides a linear estimator of $1/N_{\rm m}$, thus this estimator also works well. Meanwhile, the inverse of the right-hand side in Eq.~\ref{N_inv_hat} is a standard (moment) estimator of $N_{\rm m}$ in the context of CKMR \cite[]{bravington2016close}. 
-
-Finally, substituting $\widehat{N_{\rm e,m}}$ (Eq.~\ref{Ne_hat}) and $\widehat{1/N_{\rm m}}$ (Eq.~\ref{N_inv_hat}) into Eq.~\ref{NeN_hat1}, we obtain the estimator of $N_{\rm e,m}/N_{\rm m}$ as follows:
-\begin{equation}
-\widehat{\left(\frac{N_{\rm e,m}}{N_{\rm m}}\right) } = \frac{\binom{n_{\rm O}}{2}+1}{H_{\rm MS}^{\rm obs}+1} \frac{H_{\rm MO}^{\rm obs} } {n_{\rm M}n_{\rm O}}.
-\label{NeN_hat2}
-\end{equation}
-Let both $n_{\rm M}$ and $n_{\rm O}$ be given. We numerically confirmed that there is no correlation between $H_{\rm MO}^{\rm obs}$ and $H_{\rm MS}^{\rm obs}$ (results are not shown). To intuitively explain this independency, we consider three mothers ($i=1, 2, 3$) and their offspring, and assume that $(k_1, k_2, k_3)=(3, 1, 1)$ and $(n_{\rm M}, n_{\rm O})=(1,3)$. When the three offspring born to the first mother are sampled (i.e., $H_{\rm MS}^{\rm obs}=3$), the expected number of MO relationship is one ($=1/3\times3 + 1/3\times0 + 1/3\times0$). Meanwhile, when an offspring is sampled from each mother's offspring (i.e., $H_{\rm MS}^{\rm obs}=0$), the expected number of MO relationship is also one ($=1/3\times1 + 1/3\times1 + 1/3\times1$). Therefore, we conclude that both $\widehat{N_{\rm e,m}}$ and $\widehat{1/N_{\rm m}}$ are independent, and $\widehat{N_{\rm e,m}/N_{\rm m}}$ is expected to work well (see details in the {\bf RESULTS} section).  
-
-The bias of $\widehat{N_{\rm e,m}/N_{\rm m} }$ is defined by $b$, which is approximately given by (see {\bf Appendix D} for the derivation)
-\begin{eqnarray}
-b &=& \mathbb{E}\left[ \widehat{\left(\frac{N_{\rm e,m}}{N_{\rm m}}\right) } \right] - \left(\frac{N_{\rm e,m}}{N_{\rm m}}\right)\nonumber\\
-&\approx& -\left(\frac{N_{\rm e,m}}{N_{\rm m}}\right) \left(1-\frac{1}{N_{\rm e,m}}\right)^{\binom{n_{\rm O}}{2}+1}.
-\label{bias}
-\end{eqnarray}
-It is noteworthy that $\widehat{N_{\rm e,m}/N_{\rm m}}$ is downwardly biased, especially when $n_{\rm O}$ is very small. However, this bias may be ignored for a wide range of parameters (see details in the {\bf RESULTS} section). Theoretically, $b$ asymptotically converges to zero as $n_{\rm O}$ increases, making $\widehat{N_{\rm e,m}/N_{\rm m}}$ a nearly unbiased estimator. Moreover, as demonstrated in the {\bf RESULTS} section, it is observed that an extremely skewed reproduction breaks down the unbiasedness (e.g., in the case that $c=$ 20 and 100 in the results). 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Individual-based model}
-
-We developed an individual-based model that tracks kinship relationships to evaluate the estimator's performance (e.g., $\widehat{N_{\rm e,m}/N_{\rm m}}$). The population structure was assumed to be identical to that in the development of the estimators. In addition, the population comprised mothers and their offspring, and it was assumed to follow a Poisson or negative binomial reproduction (the degree of skewness due to the nonparental variation is controlled by a parameter $\phi$; see {\bf Appendix B} for detalis). The expected number of the surviving offspring of a mother (denoted by $\lambda$) followed the density distribution $f(\lambda)$ (which is involved to the parental variation; see {\bf Appendix B} for details). We calculated overdispersion parameter ($c$) from $\phi$ and $f(\lambda)$, as well as confirmed numerically that the value of $c$ gives the same statistics of the estimators even if the combination of $\phi$ and $f(\lambda)$ differs (results are not shown). Therefore, each offspring retained the mother's ID, making it possible to trace an MS and MO relationship.
-
-Let a parameter set ($n_{\rm O}$, $n_{\rm M}$, $N_{\rm m}$, $\phi$, and parameters that determine $f(\lambda)$) be given. We simulated a population history in which $N_{\rm m}$ mothers generated offspring; this process was repeated 100 times. The sampling process for each history was repeated 10{,}000 times, acquiring 1{,}000{,}000 data points that were utilized to construct the distribution of the estimators for each parameter set. Furthermore, true value of $N_{\rm e,m}$ was calculated from $N_{\rm m}$ and $c$ (Eqs.~\ref{Ne} and \ref{pi_MS}).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{RESULTS}
-
-We numerically evaluated the performance of $\widehat{N_{\rm e,m}/N_{\rm m}}$ for the case in which the number of mothers, $N_{\rm m}$, and the combined effect of deviation from the Poisson, $c$, were unknown. We changed the parameter values for $N_{\rm m}$ ($10^3$ and $10^4$) and $c$ (1, 10, 20, and 100). In addition, based on a given parameter set ($N_{\rm m}$ and $c$), we mainly addressed the number of samples ($n_{\rm M}$ and $n_{\rm O}$) required to obtain adequate accuracy and precision. In this study, we evaluated the performance of $\widehat{N_{\rm e,m}/N_{\rm m}}$ for specific ranges of the sample sizes (50-200 when $N_{\rm m}=10^3$, and 200-1000 when $N_{\rm m}=10^4$). Meanwhile, other estimators (i.e., $\widehat{N_{\rm e,m}}$ and $\widehat{1/N_{\rm m}}$) are also evaluated and provided in {\bf Supporting Information}. 
-
-First, we evaluated the accuracy of estimators based on their relative bias calculated by applying the individual-based model, which is defined as follows: ``averaged estimator $-$ true value/true value.'' For a given combination of $N_{\rm m}$ and $c$, the value of the relative bias of $\widehat{N_{\rm e,m}/N_{\rm m}}$ is represented on a violin plot for limiting cases where the sample number of mothers and offspring is same (i.e., $n_{\rm M} = n_{\rm O}$), as depicted in {\bf Fig.~\ref{violin}}. Meanwhile, detailed results of the relative bias are represented on a heatmap as a function of $n_{\rm M}$ and $n_{\rm O}$ (see {\bf Fig.~\NeNbias{}} in {\bf Supporting Information}). For most of the investigated parameter sets, we observed that their relative bias is less than 10\%. As expected, the relative bias is not affected by $n_{\rm M}$ since $\widehat{1/N_{\rm m}}$ is exactly an unbiased estimator of $1/N_{\rm m}$ (see Eq.~\ref{Ninv_bias_app} in {\bf Appendix D} and also {\bf Fig.~\Ninvbias{}} in {\bf Supporting Information}). Meanwhile, $\widehat{N_{\rm e,m}}$ is downwardly biased when $n_{\rm O}$ is relatively small to true $N_{\rm e,m}$ (e.g., see {\bf Fig.~\Nebias{}} for $c=1$ in {\bf Supporting Information}), as presented in \cite{Akita_2019}; thus, $\widehat{N_{\rm e,m}/N_{\rm m}}$ is downwardly biased. Contrary to the theoretical prediction for the direction of the bias (Eq.~\ref{bias}), relatively strong overdispersion results in an upwardly bias for $\widehat{N_{\rm e,m}/N_{\rm m}}$ when $N_m$ is relatively small and $c$ is relatively large (e.g., $c=20$ and $100$ in {\bf Fig.~\ref{violin}a}). This inconsistency may be caused by the breakdown of the approximation for deriving $\widehat{N_{\rm e,m}}$ \cite[Eq.~S14 in][]{Akita_2019}. Thus, as described in Eq.~\ref{V_k2}, extremely large $c$ results in a large variance of offspring number, generating a situation in which the behavior of random variable $H_{\rm MS}$ far deviates from the binomial distribution. 
-
-Next, we evaluated the precision of estimators based on their coefficient of variation. As demonstrated in {\bf Fig.~\NeNcv{}} in {\bf Supporting Information}, the value of the coefficient of variation of $\widehat{N_{\rm e,m}/N_{\rm m}}$ is also represented on a heatmap as a function of $n_{\rm M}$ and $n_{\rm O}$; meanwhile, the violin plot ({\bf Fig.~\ref{violin}}) visually provides the degree of precision. For the investigated parameter sets, the degree of the coefficient of variation strongly depends on the sample sizes. As shown in {\bf Figs.~\Necv{} and \Ninvcv{}} in {\bf Supporting Information}, the dependency results from the combined effects of variation of both $\widehat{1/N_{\rm m}}$ and $\widehat{N_{\rm e,m}}$. As $c$ increases, it is noteworthy that the parameter space of sample sizes demonstrating large variation of $\widehat{1/N_{\rm m}}$ (e.g., $CV>30\%$) expands; however, when $c$ is small (e.g., $c=1$), relatively small $n_{\rm O}$ results in large variation of $\widehat{N_{\rm e,m}}$ because of a relatively large $N_{\rm e,m}$. 
- 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{DISCUSSION}
-
-We theoretically developed a nearly unbiased estimator of the ratio of contemporary effective mother size to the census size ($N_{\rm e,m}/N_{\rm m}$) in a population (Eq.~\ref{NeN_hat2}). The proposed estimator is based on known MO relationship and MS relationships observed within the same cohort, in which sampled individuals in the cohort probably share MO relationships with sampled mothers ({\bf Fig~\ref{example}}). The performance of the estimator (accuracy and precision) was quantitatively evaluated by running an individual-based model ({\bf Fig.~\ref{violin}}; see also {\bf Figs.~\NeNbias{}--~\Ninvcv{}}). Meanwhile, the bias is analytically provided (Eq.~\ref{bias}). Our modeling framework utilizes two types of reproductive variations \cite[]{Akita_2019}: variance of the average offspring number per mother (parental variation, denoted by $f(\lambda)$), and variance of the offspring number across mothers with the same reproductive potential (nonparental variation, denoted by $\phi$). Additionally, these two effects result in a skewed distribution of offspring number and are summarized into one parameter ($c$) in the framework. Thus, our estimator can be calculated from sample sizes of mother and offspring ($n_{\rm M}$ and $n_{\rm O}$, respectively) and the observed numbers of MS and MO pairs ($H_{\rm MS}^{\rm obs}$ and $H_{\rm MO}^{\rm obs}$, respectively), and it does not require other parameters. The rationale for this is the following: i) the frequency of MS and MO pairs contains information about $N_{\rm e,m}$ and $N_{\rm m}$, respectively; ii) the estimators of $N_{\rm e,m}$ and $1/N_{\rm m}$ are independently determined based on a pedigree structure in the population and sample sizes, generating the estimator of $N_{\rm e,m}/N_{\rm m}$ by multiplying both estimators ($\widehat{N_{\rm e,m}}$ and $\widehat{1/N_{\rm m}}$). In this study, although $\widehat{N_{\rm e,m}/N_{\rm m}}$ is considered as a proxy of $\widehat{N_{\rm e}/N}$, our theoretical results can easily be extended to the estimator of the ratio of contemporary effective father size to the census size if fathers are also sampled. The comparison of both ratios could clarify the underlying processes that differentiate between the sexes in the context of reproductive ecology.  
-
-The novelty of this study is that $\widehat{N_{\rm e,m}/N_{\rm m}}$ can be obtained only from the genetic data, and there are numerous advantages in using the proposed estimator instead of separately estimating $N_{\rm e}$ (via genetical method) and $N$ (via non-genetical method). First, sampling and analyzing designs have become substantially simplified. Requirements for the proposed estimator are sampling of mothers and (potentially) their offspring in an appropriate time, and the extraction of their DNA that satisfies an adequate number of markers for kinship detection. In addition, both MO and MS pairs can be detected by a applying unified framework of genetic analyzes (there are many algorithms to detect kinship pairs from single nucleotide polymorphisms (SNPs) or short tandem repeats (STRs)), although an MS pair involves many more DNA markers (e.g., several thousands of SNPs are required for detection) than an MO pair (e.g., several hundreds of SNPs are required for detection). Second, our theoretical results guide sample sizes ($n_{\rm M}$ and $n_{\rm O}$) to ensure the required accuracy and precision, especially if the order of the number of effective mothers is approximately known. This is due to the simple formulation of the estimator determined only by the observed values (Eq.~\ref{NeN_hat2}). Third, the proposed estimator directly reflects the amounts of $N_{\rm e,m}$ and $N_{\rm m}$ at the same timing (i.e., immediately after the end of the reproductive season), leading to a clear interpretation of the results, especially for genetic monitoring. For example, when the strong cohort is added to the spawning population in the beginning of the year, the estimator of $N_{\rm e}$ without reflecting this addition may results in an inappropriate estimation of $N_{\rm e}/N$ \cite[details of the temporal scale relevant to estimated $N_{\rm e}$ for each method were discussed in][]{Wang:2016aa}. 
-
-Our modeling framework is presented by combining the context of the sibship assignment method (for estimating $N_{\rm e,m}$) and the CKMR method (for estimating $1/N_{\rm m}$), which defines a kinship-oriented estimation of effective/census population size. Improvements to these methods directly contribute to the estimation of $N_{\rm e,m}/N_{\rm m}$. Furthermore, the original theory of the sibship assignment method requires HS and FS pairs but does not require a distinction between the MS and PS pairs \cite[]{wang2009new}. This is a significant advantage due to the difficulty of the distinction from genetic data. However, the limitation of using MS or PS pair enables us to employ a nearly unbiased estimator of $N_{\rm e}$ for particular sex \cite[]{Akita_2019}, which greatly improves the accuracy of the estimation of the $N_{\rm e,m}$ in this study and thus that of $N_{\rm e,m}/N_{\rm m}$ (see {\bf Fig.~E\ref{violin_wang}} in {\bf Appendix E}). It is noteworthy that the estimator of $1/N$ is given by 
-\begin{equation}
-\widehat{\left(\frac{1}{N}\right)} = \frac{H_{\rm PO}^{\rm obs} } {2n_{\rm P}n_{\rm O}},
-\label{N_inv_hat2}
-\end{equation}
-where $n_{\rm P}$ and $H_{\rm PO}^{\rm obs}$ denotes the sample size of the parent and the observed number of parent--offspring (PO) pairs in a sample, respectively \cite[]{bravington2016close}. The development of the unbiased estimator of $N_{\rm e}$ without a distinction between MS and PS pairs that could provide an unbiased estimator of $N_{\rm e}/N$ coupled with Eq.~\ref{N_inv_hat2}, is a study for the future. Furthermore, using cross-cohort HS pairs, the CKMR method also provides the estimator of $N$ \cite[]{bravington2016close} that does not require the sampling of the parent, which probably provides the estimator of $N_{\rm e}/N$ only from unmatured samples. This perspective of the study will also be conducted in the future.
-
-Finally, we note the advantage of partitioning variance in reproductive success into two components. As denoted in Eq.~\ref{c} in {\bf Appendix C}, the combined effect of parental and nonparental variations is given by 
-\begin{equation}
-c = ({\rm effect\ of\ nonparental\ variation}) \times ({\rm effect\ of\ parental\ variation}).
-\label{partition}
-\end{equation}
-Meanwhile, as denoted in Eq.~\ref{NeN}, the estimator of $N_{\rm e,m}/N_{\rm m}$ provides the information for the lefthand-side of Eq.~\ref{partition}. Thus, when we obtain parental variation information from the life-history table or from other species, the estimator of $N_{\rm e,m}/N_{\rm m}$ can also estimate the degree of nonparental variation. This procedure provides an insight into sweepstake reproduction or family-correlated sampling of offspring (i.e., nonrandom sampling), although the theoretical formulation and its evaluation remain a task for future research. Alternatively, Waples et al. (2018) developed a genetical method for estimating $N_{\rm e}/N$ and $N_{\rm b}/N$ via estimating the degree of nonparental variation from fecundity data in southern bluefin tuna. 
-
-\end{comment}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{ACKNOWLEDGMENTS}
@@ -541,9 +401,7 @@ No datasets were generated or analyzed in this study.
 
 \newcommand{\figcapa}{(a) Hypothetical populations with $N_{1}=16$, $N_{2}=14$, and $M=6$. Upper and lower square indicates individuals belonging to the population 1 before migration (at sample timing in the first year) and individuals belonging to the population 2 after reproduction (at sample timing in the second year), respectively. The open circles on the left side, right side, and the center represent mothers, fathers, and their offspring, respectively. The thin line denotes parent-offspring relationship. The bold arrow denotes the migration and the symbol x denotes a failure to survive at sampling in the second year. Sampled individuals are labeled with an index number. The number of sampled individuals in this example: $n_{\rm P, 1}=4$, $n_{\rm O, 1}=5$, $n_{\rm P, 2}=6$, $n_{\rm O, 2}=4$; the numbers of kinship pairs: $H_{\rm PO, bet}=1$ (i.e., ``7-10'' pair), $H_{\rm HS, bet}=2$ (i.e., ``8-16'' and ``9-16'' pairs), $H_{\rm PO, 1}=3$ (i.e., ``1-6'', ``3-5'' and ``4-7'' pairs), and $H_{\rm PO, 2}=2$ (i.e., ``11-17'' and ``15-16'' pairs). (b) The phases of the events relevant to this study along the time line.}
 
-\newcommand{\figcapb}{Violin plots showing the distribution of relative bias in our estimator of $M$ for various values sample sizes, parent numbers and migration rate. Filled circles represent the mean values. Sample sizes for parents and offspring are identical (i.e., $n=n_{\rm P,1}=n_{\rm P,2}=n_{\rm O,1}= n_{\rm O,2}$) and parent sizes in the two populations are also identical (i.e., $N=N_1=N_2$), which are indicated in the legend. Migration rate $m$ is specified by $N_1/M$. For the demonstration purposes, the distribution is truncated, although the mean values are calculated including the truncated values. }
-
-\newcommand{\figcapsg}{Violin plots showing the distribution of relative bias of $N_{\rm e}/N$ (denoted in Eq.~\ref{NeN_wang}) for various sample sizes. Filled circles represent the mean values. The sample numbers of parents and offspring are identical (i.e., $n=n_{\rm P} = n_{\rm O}$) and indicated in the legend. For demonstration purposes, the distribution is truncated, although the mean values are calculated including the truncated values. (a) $N=2{,}000$, (b) $N=20{,}000$.}
+\newcommand{\figcapb}{Violin plots showing the distribution of relative bias in our estimator of $M$ for various values sample sizes, parent numbers and migration rate. Filled circles represent the mean values. Sample sizes for parents and offspring are identical (i.e., $n=n_{\rm P,1}=n_{\rm P,2}=n_{\rm O,1}= n_{\rm O,2}$) and parent sizes in the two populations are also identical (i.e., $N=N_1=N_2$), which are indicated in the legend. Migration rate $m$ is specified by $N_1/M$. For the demonstration purposes, the upper side of the distribution is truncated, although the mean values are calculated including the truncated values. }
 
 %%%FIGURE 1%%%
 \begin{figure}[!h]
