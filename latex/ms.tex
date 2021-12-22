@@ -264,11 +264,9 @@ We developed an individual-based model that tracks kinship relationships to eval
 
 Let a parameter set ($N_1$, $N_2$, $M$, ${\bar \lambda_1}$, ${\bar \lambda_2}$, $n_{\rm O,1}$, $n_{\rm O,2}$, $n_{\rm P,1}$, $n_{\rm P,2}$) be given. We simulated a population history and a sampling process, which generates proposed estimators; this process was repeated 1000 times, making it possible to construct the distribution of the estimators for each parameter set. All scripts and documentation for these analyses are available at \\https://github.com/teTUNAakita/CKMRmig.
 
-\RED{kokomade!!!!!!!!!!!!!!!!!!!!}
-
 \section{Results}\label{sec3}
 
-We numerically evaluated the performance of ${\hat M}$ or ${\hat m}$ for the case in which variable reproductive potential among parents. Scaled statistical properties of ${\hat m_1}$,  ${\hat m_2}$,  ${\hat m_3}$ and ${\hat m_4}$ are completely the same to ${\hat M_1}$, ${\hat M_2}$, ${\hat M_3}$ and ${\hat M_4}$, hereafter, we only demonstrate the results of ${\hat M_1}$-${\hat M_5}$. {\bf Figure~\ref{violins}} illustrates the distribution of the relative bias of ${\hat M}$ for limiting cases where parent and offspring sample numbers are identical (i.e., $n=n_{\rm P,1}=n_{\rm P,2}=n_{\rm O,1}= n_{\rm O,2}$) and parent numbers in the two populations are also identical (i.e., $N=N_1=N_2$). Relative bias is calculated by applying outputs of the individual-based model, which is defined as follows: ``averaged estimator - true value/true value.'' Full list of parameter sets to evaluate the performance (relative bias and CV of ${\hat M}$s) is summarized in {\bf Table S1} in {\bf Supporting Information}. 
+We numerically evaluated the performance of ${\hat M}$s or ${\hat m}$s for the case in which variable reproductive potential among parents. Scaled statistical properties of ${\hat m_1}$,  ${\hat m_2}$,  ${\hat m_3}$ and ${\hat m_4}$ are completely the same to ${\hat M_1}$, ${\hat M_2}$, ${\hat M_3}$ and ${\hat M_4}$, hereafter, we only demonstrate the results of ${\hat M_1}$-${\hat M_5}$. {\bf Figure~\ref{violins}} illustrates the distribution of the relative bias of ${\hat M}$ for limiting cases where parent and offspring sample numbers are identical (i.e., $n=n_{\rm P,1}=n_{\rm P,2}=n_{\rm O,1}= n_{\rm O,2}$) and parent numbers in the two populations are also identical (i.e., $N=N_1=N_2$). Relative bias is calculated by applying outputs of the individual-based model, which is defined as follows: ``averaged estimator - true value/true value.'' Full list of parameter sets to evaluate the performance (relative bias and CV of ${\hat M}$s) is summarized in {\bf Table S1} in {\bf Supporting Information}. 
  
 %%%%%%%%%%%%%%
 \begin{center}
@@ -280,11 +278,15 @@ First, we evaluated the accuracy of ${\hat M}$s based on their relative bias. As
 
 Next, we evaluated the precision of ${\hat M}$s based on their CV. {\bf Table S1} in {\bf Supporting Information} demonstrated the value of the CV; meanwhile, the violin plot ({\bf Figure~\ref{violins}}) visually provides the degree of precision. For each estimator ${\hat M}$, the precision increases with increasing of sample size. It should be noted that total sample size depends on the estimator. For example, $n=50$ in Fig.~\ref{violins}, the total sample size of ${\hat M_1}$, ${\hat M_2}$, ${\hat M_3}$, ${\hat M_4}$ and ${\hat M_5}$ is 100 ($=n_{\rm O,1}+n_{\rm O,2}$), 100 ($=n_{\rm O,1}+n_{\rm P,2}$), 150 ($=n_{\rm O,1}+n_{\rm O,2}+n_{\rm P,2}$), 150 ($=n_{\rm O,1}+n_{\rm O,2}+n_{\rm P,2}$) and 200 ($=n_{\rm O,1}+n_{\rm O,2}+n_{\rm P,1}+n_{\rm P,2}$), respectively. 
 
-As sample size or migrants increase, the precision increases and the shape of the distribution asymptotically becomes symmetric ({\bf Figure~\ref{violins}}). This is because increasing of a sample size or migrants increases of the probability that randomly selected two individuals share kinship between the two populations and thus decreases the CV. 
+As sample size or migrants increase, the precision increases and the shape of the distribution asymptotically becomes symmetric ({\bf Figure~\ref{violins}}). This is because an increasing of sample size or migrants is likely to increase the observed number of kinship pairs found between two populations ($\widetilde{H}_{\rm HS,bet}$ or $\widetilde{H}_{\rm PO,bet}$) and decreases the variance of those kinship pair numbers. In addition, the number of PO pair within a population ($\widetilde{H}_{\rm PO,1}$ or $\widetilde{H}_{\rm PO,2}$) also contributes the precision for estimating $N_1$ or $N_1$, respectively, providing ${\hat M_4}$ and ${\hat M_5}$ with a higher precision. 
+
+Our simulator can handle the situation with or without invasive sampling. Invasive sampling potentially affect the $m$ since sampled parents in the population 1 have no chance to move to the population 2 and thus those parents cannot be sampled. In this case, $m$ should be defined by $M/(N_1-n_{P,1})$ not by $M/N_1$, although it does not affect the estimator ${\hat M}$s, as demonstrated in {\bf Table S1} ({\bf Supporting Information}). 
+
+\RED{kokomade!!!!!!!!!!!!!!!!!!!!}
+\subsection{Invasive sampling}
 
 \subsection{Case of $N_1 \neq N_2$}
 
-\subsection{Invasive sampling}
 
 
 
