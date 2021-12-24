@@ -284,10 +284,20 @@ Our simulator can handle the situation with or without invasive sampling. Invasi
 
 Finally, we investigated the situation in which the parental number in the population 1 is much more than in the population 2 (i.e., $N_1 \gg N_2$) and thus migrants are large proportion of $N_2$. In such a setting, e.g., $(N_1,N_2,M)=(10^4,10^3,500)$, we confirmed the same property of ${\hat M}$s to the situation $N_1 = N_2$, as demonstrated in {\bf Table S1} ({\bf Supporting Information}), suggesting the robustness of ${\hat M}$s in heterogeneous population sizes.   
 
-\RED{kokomade!!!!!!!!!!!!!!!!!!!!}
-
 \section{Discussion}\label{sec4}
 
+We theoretically developed unbiased estimators of the contemporary migration number (${\hat M_1}$--${\hat M_5}$) and migration rate (${\hat m_1}$--${\hat m_4}$) between two populations in iteroparous species. The proposed estimators are based on known PO relationship and HS relationships observed between and within two populations without any error of kinship assignment. Users can choose the estimator developed for the situation as to whether the parental number of population 1 ($N_1$) and/or that of population 2 ($N_2$) is known ({\bf Table~\ref{parameter}}). The performance of the estimator (accuracy and precision) was quantitatively evaluated by running an individual-based model ({\bf Figure~\ref{violins}}; see also {\bf Table S1} in {\bf Supporting Information}). Our modeling framework utilizes several types of reproductive variations (survived offspring number per parent), including variance of reproductive potential between and within populations, taking account of several situations, including a body-size structure or environmental heterogeneity for reproductive success.
+
+To estimate the contemporary migration number or migration rate, our simulation-based results provide guidance for a sample size to ensure the required accuracy and precision, especially if the order of the number of migrant parents and parental sizes are approximately known ({\bf Table S1} in {\bf Supporting Information}). Even if there is no information about these numbers, $1/\sqrt{H_{\rm HS, bet}}$ (or $1/\sqrt{H_{\rm PO, bet}}$) provides an approximate lower bound on the CV, which can be used as an indicator of the precision of ${\hat M}$ or ${\hat m}$. Furthermore, the condition that $n>\sqrt{N_2}$ is also used as rule of thumb especially when planning a research project (see also Equations~\ref{RS-1} and \ref{RS-2}). 
+
+%Novelty: reproductive potential does not affect for estimating migration number
+
+
+%Scope of applications
+%Case of small migration rate
+%Contemporary / historical migration rate
+
+\RED{kokomade!!!!!!!!!!!!!!!!!!!!}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{ACKNOWLEDGMENTS}
