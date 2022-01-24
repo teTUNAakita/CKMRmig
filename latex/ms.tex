@@ -93,7 +93,14 @@ Tetsuya Akita$^{a}$\thanks{
 
 %移動には２種類ある。子の移動と親の移動である。前者は花粉やラーバなど。connectivityは前者が大事かもで、どこまで遠く行くのかも重要。移動する生物の場合、後者も重要。
 
-Estimating the number of migrants among the populations is essential for understanding population structure and dynamics, which is a fundamental process for implementing conservation and wildlife management. Especially in fisheries management, migration rate is a critical component for delineating a synchrony among the population, providing appropriate management units. There are essentially two approaches for estimating the migrant number. The first is to use the mark-recapture method estimate it directly from the population dynamics modeling with survey data. The second is to ...
+Estimating the number of migrants among the populations is essential for understanding population structure and dynamics. 
+
+, which is a fundamental process for implementing conservation and wildlife management. Especially in fisheries management, migration rate is a critical component for delineating a synchrony among the population, providing appropriate management units. 
+
+% 近年の移動率の推定には大きく２種類に分類される。１つ目は遺伝マーカーに基づく集団遺伝学的な解析。２つ目は標識採捕の枠組みの解析。
+
+
+There are essentially two approaches for estimating the migrant number. The first is to use the mark-recapture method estimate it directly from the population dynamics modeling with survey data. The second is to ...
 
 移動率の推定は，対象生物の理解に重要なだけでなく，外来種管理・希少種保全・資源の持続的利用にとっても重要である。　特に、水産資源管理にとっては、管理単位を決めるための指標として、移動率はクリティカルな指標の一つである。既存の方法論としては，大きく２種類に大別される。１つ目は標識再捕法であり，２つ目は集団遺伝学的な方法である。前者については，サンプル対象を再捕獲が見込める親個体に限定せざるを得ない，非侵襲的な方法でのラベリングが困難であること，推定精度に見合うサンプルサイズが現実的でないこと，報告率が大きくばらつく等が問題となっている。後者については，近年(すなわち$N_{\rm e}$よりも短い世代数)の集団構造については解像度がないこと，移動個体数が大きいと遺伝的には同一の集団とみなされること等が問題となっている。
 
@@ -304,6 +311,7 @@ There may be several cases where it is desirable to apply the proposed estimator
 
 Finally, we note some caveats in applying proposed method. Our theory for developing estimators assumes that kinships are detected without any error. There are many algorithms to detect kinship pairs from single nucleotide polymorphisms (SNPs) or short tandem repeats (STRs) \cite[e.g., ][]{Wang_2009Genetics, Huisman_2017}, although a HS pair requires many more DNA markers than a PO pair. In addition, iteroprous species potentially has several kinship types such as halfsib-uncle/nephew or halfsib-cousin, which are expected to appear frequently and should be correctly distinguished from HS pairs. It is desirable to estimate in advance how many markers are needed for kinship detections in target populations associated with simulation of a pedigree reconstruction including distant kinships (e.g., \cite{Anderson_2020}). Our proposed estimators are limited to detect one-time parental movements on a period between breeding seasons in given populations. Thus, the estimation of fine-scale spatial-temporal movements, which is available to integrate multiple type of data \cite[]{Thorson_2021}, goes beyond the scope of this paper, although population dynamics models with a coarser spatial resolution than the spatial scale for environmental layers are often used in the assessment models, which is the target of application of the proposed method. In addition, the current theory behind the estimators does not assume desynchronized reproduction within a population (e.g., skip spawning) and correlation between mobility and fertility. Our proposed estimators require the pre-specification of a population structure. Kinship relationships with information of a sample location potentially provide the chance to explore a plausible population structure via estimating migration number or rate between hypothetical populations, which contributes the determination of a management unit \cite[]{Hastings_1993, Waples_2006_MolEcol, PALSBOLL200711}. This perspective of the study will be conducted in the future.
 
+%PRE-DEFINED population !
 %Caveat: selectivity, family correlated migration、skip spawning, 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
