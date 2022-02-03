@@ -1,12 +1,45 @@
 %% This BibTeX bibliography file was created using BibDesk.
 %% https://bibdesk.sourceforge.io/
 
-%% Created for Tetsuya Akita at 2022-02-02 19:01:25 +0900 
+%% Created for Tetsuya Akita at 2022-02-03 16:44:55 +0900 
 
 
 %% Saved with string encoding Unicode (UTF-8) 
 
 
+
+@article{https://doi.org/10.1111/faf.12615,
+	abstract = {Abstract The last two decades have witnessed rapid developments and increasing interest in use of: (1) genetic methods to estimate effective population size (Ne) and (2) close-kin mark--recapture (CKMR) methods to estimate abundance based on the incidence of close relatives. Whereas Ne estimation methods have been applied to a wide range of taxa, all CKMR applications to date have been for aquatic species. These two fields of inquiry have developed largely independently, and this is unfortunate because deeper insights can be gained by joint evaluation of eco-evolutionary processes. In this synthesis, we use simple analytical models and simulated pedigree data to illustrate how various factors (life-history traits; patterns of variation in individual reproductive success; experimental design; stochasticity; marker type) can affect the performance of the estimators. We show that the Ne/N ratio and the probability of a close-kin match both depend on a vector of parental weights that specify relative probabilities that different individuals will produce offspring. Although age-specific vital rates are central to both methodologies, for CKMR they can potentially bias abundance estimates unless properly accounted for, whereas they represent the signals of genetic drift that Ne estimation methods depend upon. Coordinating Ne and CKMR estimation methods using the same or overlapping datasets would facilitate joint evaluation of both the ecological and evolutionary consequences of abundance.},
+	author = {Waples, Robin S. and Feutry, Pierre},
+	date-added = {2022-02-03 16:36:28 +0900},
+	date-modified = {2022-02-03 16:44:54 +0900},
+	doi = {https://doi.org/10.1111/faf.12615},
+	eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1111/faf.12615},
+	journal = {Fish and Fisheries},
+	keywords = {abundance, genetics, mark--recapture, parentage analysis, reproductive skew, siblings},
+	title = {Close-kin methods to estimate census size and effective population size},
+	url = {https://onlinelibrary.wiley.com/doi/abs/10.1111/faf.12615},
+	year = {in press},
+	bdsk-url-1 = {https://onlinelibrary.wiley.com/doi/abs/10.1111/faf.12615},
+	bdsk-url-2 = {https://doi.org/10.1111/faf.12615}}
+
+@article{https://doi.org/10.1111/mec.12806,
+	abstract = {Abstract Coupled with rapid developments of efficient genetic markers, powerful population genetic methods were proposed to estimate migration rates (m) in natural populations in much broader spatial and temporal scales than the traditional mark-release-recapture (MRR) methods. Highly polymorphic (e.g. microsatellites) and genomic-wide (e.g. SNPs) markers provide sufficient information to assign individuals to their populations or parents of origin and thereby to estimate directly m in a way similar to MRR. Such direct estimates of current migration rates are particularly useful in understanding the ecology and microevolution of wild populations and in managing the populations in the future. In this study, I proposed and implemented, in the software MigEst, a likelihood method to use marker-based parentage assignments in jointly estimating m and candidate parent sampling proportions (x) in a subset of populations, investigated its power and accuracy using data simulated in various scenarios of population properties (e.g. the actual m, number, size and differentiation of populations) and sampling properties (e.g. the numbers of sampled parent candidates, offspring and markers), compared it with the population assignment approach implemented in the software BayesAss and demonstrated its usefulness by analysing a microsatellite data set from three natural populations of Brazilian bats. Simulations showed that MigEst provides unbiased and accurate estimates of m and performs better than BayesAss except when populations are highly differentiated with very small and ecologically insignificant migration rates. A valuable property of MigEst is that in the presence of unsampled populations, it gives good estimates of the rate of migration among sampled populations as well as of the rate of migration into each sampled population from the pooled unsampled populations.},
+	author = {Wang, Jinliang},
+	date-added = {2022-02-03 10:42:35 +0900},
+	date-modified = {2022-02-03 10:42:35 +0900},
+	doi = {https://doi.org/10.1111/mec.12806},
+	eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1111/mec.12806},
+	journal = {Molecular Ecology},
+	keywords = {genetic markers, maximum likelihood, migration, parentage, simulations},
+	number = {13},
+	pages = {3191-3213},
+	title = {Estimation of migration rates from marker-based parentage analysis},
+	url = {https://onlinelibrary.wiley.com/doi/abs/10.1111/mec.12806},
+	volume = {23},
+	year = {2014},
+	bdsk-url-1 = {https://onlinelibrary.wiley.com/doi/abs/10.1111/mec.12806},
+	bdsk-url-2 = {https://doi.org/10.1111/mec.12806}}
 
 @article{Wilson_2003,
 	abstract = {{A new Bayesian method that uses individual multilocus genotypes to estimate rates of recent immigration (over the last several generations) among populations is presented. The method also estimates the posterior probability distributions of individual immigrant ancestries, population allele frequencies, population inbreeding coefficients, and other parameters of potential interest. The method is implemented in a computer program that relies on Markov chain Monte Carlo techniques to carry out the estimation of posterior probabilities. The program can be used with allozyme, microsatellite, RFLP, SNP, and other kinds of genotype data. We relax several assumptions of early methods for detecting recent immigrants, using genotype data; most significantly, we allow genotype frequencies to deviate from Hardy-Weinberg equilibrium proportions within populations. The program is demonstrated by applying it to two recently published microsatellite data sets for populations of the plant species Centaurea corymbosa and the gray wolf species Canis lupus. A computer simulation study suggests that the program can provide highly accurate estimates of migration rates and individual migrant ancestries, given sufficient genetic differentiation among populations and sufficient numbers of marker loci.}},
@@ -179,9 +212,9 @@
 
 @article{https://doi.org/10.1111/j.1365-294X.2007.03218.x,
 	abstract = {Abstract Bayesian methods have become extremely popular in molecular ecology studies because they allow us to estimate demographic parameters of complex demographic scenarios using genetic data. Articles presenting new methods generally include sensitivity studies that evaluate their performance, but they tend to be limited and need to be followed by a more thorough evaluation. Here we evaluate the performance of a recent method, bayesass, which allows the estimation of recent migration rates among populations, as well as the inbreeding coefficient of each local population. We expand the simulation study of the original publication by considering multi-allelic markers and scenarios with varying number of populations. We also investigate the effect of varying migration rates and FST more thoroughly in order to identify the region of parameter space where the method is and is not able to provide accurate estimates of migration rate. Results indicate that if the demographic history of the species being studied fits the assumptions of the inference model, and if genetic differentiation is not too low (FST ≥ 0.05), then the method can give fairly accurate estimates of migration rates even when they are fairly high (about 0.1). However, when the assumptions of the inference model are violated, accurate estimates are obtained only if migration rates are very low (m = 0.01) and genetic differentiation is high (FST ≥ 0.10). Our results also show that using posterior assignment probabilities as an indication of how much confidence we can place on the assignments is problematical since the posterior probability of assignment can be very high even when the individual assignments are very inaccurate.},
-	author = {FAUBET, PIERRE and WAPLES, ROBIN S. and GAGGIOTTI, OSCAR E.},
+	author = {Faubet, Pierre and Waples, Robin S. and Gaggiotti, Oscar E.},
 	date-added = {2021-09-27 17:32:31 +0900},
-	date-modified = {2021-09-27 17:32:31 +0900},
+	date-modified = {2022-02-03 10:51:06 +0900},
 	doi = {https://doi.org/10.1111/j.1365-294X.2007.03218.x},
 	eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1365-294X.2007.03218.x},
 	journal = {Molecular Ecology},
