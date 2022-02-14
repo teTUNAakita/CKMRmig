@@ -241,30 +241,30 @@ So far, we provide the formulation of the estimators, presented in Equations \re
 When PO pairs found in offspring samples and parent samples both from the population 2 in the second year are available, standard estimator of parental number can be obtained \cite[]{bravington2016close}, given by
 
 \begin{align}
-\widehat{N_2} &= \frac{ 2 n_{\rm O, 2} n_{\rm P, 2} + 1 }{\widetilde{H}_{\rm PO, 2} + 1} ,
+\widehat{N_2} &= \frac{ 2 n_{\rm O, 2} n_{\rm P, 2}  }{\widetilde{H}_{\rm PO, 2} + 1} ,
 \label{AP-3}
 \end{align}
 where $\widetilde{H}_{\rm PO, 2}$ is the observed number of PO pairs found in offspring samples of size $n_{\rm O, 2}$ and parent samples of size $n_{\rm P, 2}$. The term ``$+1$'' reduces the bias especially when $\widetilde{H}_{\rm PO, 2}$ is small \cite[e.g.,][]{ecolevol2021p}, where a similar derivation of this bias correction is provided in \cite{Akita_2019}. By replacing $N_2$ by $\widehat{N_2}$ in Eqs.~\ref{AP-1} and \ref{AP-2}, we can obtain the following estimators: 
 
 \begin{align}
-\widehat{M_4} &=  \frac{ N_{1} \left(\widetilde{H}_{\rm HS,bet} + \widetilde{H}_{\rm PO,bet}\right) \left(2 n_{\rm O, 2} n_{\rm P, 2} + 1\right)} {2n_{\rm O, 1} \left(2 n_{\rm O, 2} + n_{\rm P, 2}\right) \left(\widetilde{H}_{\rm PO, 2} + 1\right)},
+\widehat{M_4} &=  \frac{ n_{\rm O, 2} n_{\rm P, 2} N_{1} \left(\widetilde{H}_{\rm HS,bet} + \widetilde{H}_{\rm PO,bet}\right) } {n_{\rm O, 1} \left(2 n_{\rm O, 2} + n_{\rm P, 2}\right) \left(\widetilde{H}_{\rm PO, 2} + 1\right)},
 \label{AP-4}
 \end{align}
 and
 \begin{align}
-\widehat{m_4} &=  \frac{ \left(\widetilde{H}_{\rm HS,bet} + \widetilde{H}_{\rm PO,bet}\right) \left(2 n_{\rm O, 2} n_{\rm P, 2} + 1\right)} {2n_{\rm O, 1} \left(2 n_{\rm O, 2} + n_{\rm P, 2}\right) \left(\widetilde{H}_{\rm PO, 2} + 1\right)}.
+\widehat{m_4} &=  \frac{ n_{\rm O, 2} n_{\rm P, 2}\left(\widetilde{H}_{\rm HS,bet} + \widetilde{H}_{\rm PO,bet}\right)} {n_{\rm O, 1} \left(2 n_{\rm O, 2} + n_{\rm P, 2}\right) \left(\widetilde{H}_{\rm PO, 2} + 1\right)}.
 \label{AP-5}
 \end{align}
 While estimator of the migrate number (Equation~\ref{AP-4}) requires the (unknown) parent number in the population 1 ($N_{1}$), estimator of the migration rate (Equation~\ref{AP-5}) can be obtained only the observed kinship pairs. 
 
 Similar to estimating $N_2$, when PO pairs found in offspring samples and parent samples both from the population 1 in the first year are also available, we can obtain the estimator of $N_1$, written by
 \begin{align}
-\widehat{N_1} &= \frac{ 2 n_{\rm O, 1} n_{\rm P, 1} + 1 }{\widetilde{H}_{\rm PO, 1} + 1},
+\widehat{N_1} &= \frac{ 2 n_{\rm O, 1} n_{\rm P, 1} }{\widetilde{H}_{\rm PO, 1} +1},
 \label{AP-6}
 \end{align}
 where $\widetilde{H}_{\rm PO, 1}$ is the observed number of PO pairs found in offspring samples of size $n_{\rm O, 1}$ and parent samples of size $n_{\rm P, 1}$. By replacing $N_1$ by $\widehat{N_1}$ in Eq.~\ref{AP-4}, we can obtain the estimator of migration number that can be calculated only from genetic data, given by
 \begin{align}
-\widehat{M_5} &=  \frac{ \left(\widetilde{H}_{\rm HS,bet} + \widetilde{H}_{\rm PO,bet}\right) \left(2 n_{\rm O, 1} n_{\rm P, 1} + 1\right) \left(2 n_{\rm O, 2} n_{\rm P, 2} + 1\right)} {2n_{\rm O, 1} \left(2 n_{\rm O, 2} + n_{\rm P, 2}\right) \left(\widetilde{H}_{\rm PO, 1} + 1\right) \left(\widetilde{H}_{\rm PO, 2} + 1\right)}.
+\widehat{M_5} &=  \frac{ 2 n_{\rm O, 1} n_{\rm P, 1} n_{\rm O, 2} n_{\rm P, 2} \left(\widetilde{H}_{\rm HS,bet} + \widetilde{H}_{\rm PO,bet}\right)} {n_{\rm O, 1} \left(2 n_{\rm O, 2} + n_{\rm P, 2}\right) \left(\widetilde{H}_{\rm PO, 1} + 1\right) \left(\widetilde{H}_{\rm PO, 2} + 1\right)}.
 \label{AP-7}
 \end{align}
 
@@ -306,19 +306,15 @@ We theoretically developed estimators of the contemporary migration number (${\h
 
 We presented mainly three novel points in this paper. First, we formulated probabilities of kinship pairs randomly chosen between two populations ($\pi_{\rm HS,bet}$ and $\pi_{\rm PO,bet}$), which provide estimators of the migration number or rate. While similar derivations may be found in (nongenetical) the MR method, these are limited to the situation such that sampling can be non-invasive and adult individuals are sampled. Our proposed method can avoid these limitations, where such an advantages is characterized by CKMR method for estimating population sizes. Second, we revealed that the probabilities of kinship pairs are approximately independent of reproductive potential and thus information about it is not needed for the estimation, provided that migration assumes to occur independently of the reproductive potential. This is a useful property of the estimators because it is natural that heterogeneity of reproductive potential within and between populations exits in iteroprous species but its observation is generally difficult except a body size. Third, we demonstrated applicability that the estimation can be obtained only from the genetic data (i.e., ${\hat M_5}$ and ${\hat m_4}$). There are several advantages in using the proposed estimator instead of separately estimating $\pi_{\rm HS,bet}$ (and/or $\pi_{\rm PO,bet}$) (via genetic method) and $N_1$ (and/or $N_2$) (via nongenetical method), including simplified sampling and analyzing designs and availability of unified framework of genetic analyzes for detecting HS and PO pairs (similar discussion is found for estimating the ratio of effective breeding size to the census size, $N_{\rm b}/N$, in \cite{Akita_2020}). 
 
-To estimate the contemporary migration number or migration rate, our simulation-based results provide guidance for a sample size to ensure the required accuracy and precision, especially if the order of the number of migrant parents and parental sizes are approximately known ({\bf Table S1} in {\bf Supporting Information}). For example, when $m=0.1$ and $N_1=N_2=10^3$, sampling 10\% and 20\% parents and an equal number of offspring in two populations leads 70\% and 39\% CV of ${\hat M_5}$, respectively (case of invasive sampling). Even if there is no information about these numbers, $1/\sqrt{H_{\rm HS, bet}}$ (or $1/\sqrt{H_{\rm PO, bet}}$) provides an approximate lower bound on the CV, which can be used as an indicator of the precision of ${\hat M}$ or ${\hat m}$. Furthermore, the condition that $n>\sqrt{N_2}$ is also used as rule of thumb especially when planning a research project ($n = n_{\rm O, 1}=n_{\rm O, 2}=n_{\rm P, 2}$, see also Equations~\ref{RS-1} and \ref{RS-2}). 
+To estimate the contemporary migration number or migration rate, our simulation-based results provide guidance for a sample size to ensure the required accuracy and precision, especially if the order of the number of migrant parents and parental sizes are approximately known ({\bf Table S1} in {\bf Supporting Information}). For example, when $m=0.1$ and $N_1=N_2=10^3$, sampling 10\% and 20\% parents and an equal number of offspring in two populations leads 70\% and 39\% CV of ${\hat M_5}$, respectively (case of invasive sampling). Even if there is no information about these numbers, $1/\sqrt{H_{\rm HS, bet}}$ (or $1/\sqrt{H_{\rm PO, bet}}$) provides an approximate lower bound on the CV, which can be used as an indicator of the precision of ${\hat M}$ or ${\hat m}$. Furthermore, the condition that $n>\sqrt{N_2}$ is also used as rule of thumb especially when planning a research project ($n = n_{\rm O, 1}=n_{\rm O, 2}=n_{\rm P, 2}$, see also Equations~\ref{RS-1} and \ref{RS-2}). It should be noted that the guidance is to estimate the information about one-way migration between two populations; thus, estimating two-way migrations among two and three populations requires twice and three times the number of samples, respectively, compared to our guidance for a sample size. 
 
 There may be several cases where it is desirable to apply the proposed estimator. The first case is where there is a large number of migrants between populations, e.g., $M>100$, which vanishes the population differentiation and thus hampers the detection of $M$ population genetics method if $M$ is interpreted as effective migration number. Information on movement between populations is essential for assessing population dynamics in the context of conservation and management, even if the migrant number is so large that it cannot be genetically assigned to two populations. The second is the case of the application to genetic monitoring conducted every reproductive timing (e.g., annually). This is because proposed estimators have information about contemporary migration that is explicitly specified the timing (e.g., year), thus the time series data for migration may reflect environmental changes, which provides insights into the underlying ecological processes. In addition, HS pairs found within the genetic population provides $N_{\rm b}$ \cite[]{wang2009new,WAPLES_2011}, which is also used for assessing a genetic health. The third is the case is to develop integrated models that combines several sources of data into a single analysis \cite[]{MAUNDER201361}. One example of this direction is to provide additional information about migration to ongoing CKMR projects for stock assessment in fisheries, which utilizes kinship pairs for simultaneous estimation of population parameters \cite[e.g.,][]{Bravington_2016,Hillary_2018,https://doi.org/10.1002/ece3.6296,ecolevol2021p,10.1093/icesjms/fsac002}. If population structure is hypothetically defined, accumulated data in these projects are readily connected to our theory via likelihood methods. The forth case is where sampling adults is difficult due to conservation purpose or other reasons instead sampling offspring is relatively easy. In this case, although $N_2$ (and $N_1$) need to be given externally for the usage of $\hat m_1$ (and $\hat M_1$), there is presently no other method for estimating adult movement especially when two populations cannot be genetically distinct, indicating that proposed method has the potential to greatly widen the scope of population monitoring. 
 
-Finally, we note some caveats in applying proposed method. Our theory for developing estimators assumes that kinships are detected without any error. There are many algorithms to detect kinship pairs from single nucleotide polymorphisms (SNPs) or short tandem repeats (STRs) \cite[e.g., ][]{Wang_2009Genetics, Huisman_2017}, although a HS pair requires many more DNA markers than a PO pair. In addition, iteroprous species potentially has several kinship types such as halfsib-uncle/nephew or halfsib-cousin, which are expected to appear frequently and should be correctly distinguished from HS pairs. It is desirable to estimate in advance how many markers are needed for kinship detections in target populations associated with simulation of a pedigree reconstruction including distant kinships (e.g., \cite{Anderson_2020}). Our proposed estimators are limited to detect parental movements on a period between breeding seasons in given populations. Thus, the estimation of fine-scale spatial-temporal movements, which is available to integrate multiple type of data \cite[]{Thorson_2021}, goes beyond the scope of this paper, although population dynamics models with a coarser spatial resolution than the spatial scale for environmental layers are often used in the assessment models, which is the target of application of the proposed method. In addition, the current theory behind the estimators does not assume desynchronized reproduction within a population (e.g., skip spawning, see also \cite{https://doi.org/10.1111/faf.12615}) and correlation between mobility and fertility. Our proposed estimators require the pre-specification of a population structure. Kinship relationships with information of a sample location potentially provide the chance to explore a plausible population structure via estimating migration number or rate between hypothetical populations, which contributes the determination of a management unit. This perspective of the study will be conducted in the future.
-
-%  (e.g., \cite{Hastings_1993} numerically demonstrates that two populations become demographically independent when migration rate $< 0.1$)
-% withinのデータはどう使う？？withinとbetweenを比較して、betweenが優位に少ないかどうかなどが構造発見につながるかもconn et al 2020 EcolEvolもチェック
-%% 今回提案した方法は、ゴーストポップがあっても大丈夫
+Finally, we note some caveats in applying proposed method. Our theory for developing estimators assumes that kinships are detected without any error. There are many algorithms to detect kinship pairs from single nucleotide polymorphisms (SNPs) or short tandem repeats (STRs) \cite[e.g., ][]{Wang_2009Genetics, Huisman_2017}, although a HS pair requires many more DNA markers than a PO pair. In addition, iteroprous species potentially has several kinship types such as halfsib-uncle/nephew or halfsib-cousin, which are expected to appear frequently and should be correctly distinguished from HS pairs. It is desirable to estimate in advance how many markers are needed for kinship detections in target populations associated with simulation of a pedigree reconstruction including distant kinships (e.g., \cite{Anderson_2020}). Our proposed estimators are limited to detect parental movements on a period between breeding seasons in given populations. Thus, the estimation of fine-scale spatial-temporal movements, which is available to integrate multiple type of data \cite[]{Thorson_2021}, goes beyond the scope of this paper, although population dynamics models with a coarser spatial resolution than the spatial scale for environmental layers are often used in the assessment models, which is the target of application of the proposed method. Our proposed estimators require the pre-specification of a population structure. Kinship relationships with information of a sample location potentially provide the chance to explore a plausible population structure via estimating migration number or rate between hypothetical populations, which contributes the determination of a management unit. In addition, the current theory behind the estimators does not assume desynchronized reproduction within a population (e.g., skip spawning, see also \cite{https://doi.org/10.1111/faf.12615}), correlation between individual mobility and fertility and non-random sampling of parents (e.g., mothers with a large number of offspring are likely to be sampled). These perspectives of the study will be conducted in the future.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{ACKNOWLEDGMENTS}
-The author thanks Y. Tsukahara and N. Suzuki for fruitful discussions. This work was supported by JSPS KAKENHI Grant Number 19K06862 and 20H03012.
+The author thanks N. Shinohara, N. Suzuki and Y. Tsukahara for fruitful discussions. This work was supported by JSPS KAKENHI Grant Number 19K06862 and 20H03012.
 
 \section*{CONFLICT OF INTEREST}
 The author declares no conflict of interest.
@@ -386,7 +382,7 @@ No datasets were generated or analyzed in this study.
 
 \renewcommand{\arraystretch}{0.6}
 \begin{table}[tb]
-\begin{center}
+\begin{flushleft}
    \caption[]{Table 2: Summary of proposed estimators for required parameters and kinship types}
     \textbf {}\\[-0mm]
     \begin{tabular}{ccccccccc} \hline
@@ -414,8 +410,9 @@ No datasets were generated or analyzed in this study.
 		                						& \\
 	\hline
     \end{tabular}
+    \\HSP and POP indicates half-sibling pair and parent-offspring pair, respectively. 
     \label{parameter} 
-\end{center} 
+\end{flushleft} 
 \end{table}
 \renewcommand{\arraystretch}{1}
 
