@@ -35,9 +35,12 @@
 \usepackage{color}
 \def\RED#1{\textcolor{red}{#1}} %% 
 \def\BLUE#1{\textcolor{blue}{#1}} %% 
+
+% https://onlinelibrary.wiley.com/page/journal/17550998/homepage/forauthors.html
+
 \begin{document}
 
-\title{Estimating contemporary migration numbers of adults for iteroparous species using kinship pairs found between populations}
+\title{Estimating contemporary migration numbers of adults for iteroparous species based on kinship relationships found between populations}
 \author{
 Tetsuya Akita$^{a}$\thanks{
 \emph{Corresponding author}:
@@ -46,15 +49,17 @@ Tetsuya Akita$^{a}$\thanks{
    \small $^{a}$Fisheries Resources Institute, Fisheries Research and Education Agency, \\
    \small Kanagawa, 236-8648, Japan.
    }
-\date{Manuscript Intended for \emph{Methods in Ecology and Evolution}, \today}
+\date{Manuscript Intended for \emph{Molecular Ecology and Resources}, \today}
 \maketitle
 
 \begin{abstract}
-本ノートでは，多回繁殖(iteroparity)する種を対象として，半兄弟ペア数から親魚による２つのサブ集団間の移動率を推定する理論($\hat{M}=N_1N_2H_{\rm obs}/(4n_1n_2)$)を紹介する。この推定式は、親をサンプルする通常の標識放流と同じである。もし、繁殖ポテンシャルの分布が集団間で異なっていても上記の式で問題ないことを示した。一方，サンプル数としては$\sqrt {N}$以上のオーダーが求められる。
+This study develops estimators of the contemporary migration number and rate of adults for iteroparous species between two populations. The proposed estimators are based on both known half-sibling (HS) and/or parent-offspring (PO) relationships observed between the populations across the breeding seasons. The rationale is that such HS and PO pairs have information as to how often parental movements during the breeding interval are realized. Our method allows for variance of the average number of offspring per parent within and between populations. In addition, coupled with PO pairs found within population, the estimators can be obtained only from genetic data. Roughly speaking, a sample size of square root of population size is required for obtaining meaningful information on migration. We also evaluate the detailed performance of the estimators by running an individual-based model, providing a guidance for sample sizes to ensure the required accuracy and precision. Furthermore, in the face of the current situation where there is little effective method for estimating adult movement especially when populations cannot be genetically distinct, we discuss the usefulness of this proposed sibship assignment method in terms of conservation biology and wildlife management.  
 \\
 \end{abstract}
-\textbf{Key words:} effective population size; sibship assignment; overdispersed reproduction; close-kin mark-recapture\\
-\textbf{Running head:} Estimating migration rates using kinship pairs\\
+
+\textbf{Key words:} dispersion; sibship assignment; reproductive potential; close-kin mark-recapture\\
+\textbf{Running head:} Estimating migration numbers using kinship pairs\\
+\textbf{Subject Area:} Molecular and Statistical Advances\\
 
 \pagebreak
 \begin{spacing}{1.9}
@@ -103,14 +108,14 @@ Parental assignments, which is based on genetic markers and often used as a comp
 
 % 5: CKMR can cover the range that Mark recapture can handle with more realistic situations
 
-Close-kin mark-recapture (CKMR) is a recently developed method for estimating adult population size along with life-history parameters that utilizes the known kinship information in a sample \cite[reviewed in][]{https://doi.org/10.1111/faf.12615}. The rationale is that the presence of a kinship pair in the sample is analogous to the recapture of a marked individual in the MR method. Kinship pairs in the sample are less likely to be observed in larger populations; thus, the number of kinship pairs may reflect an adult number in the population \cite[]{bravington2016close}. While recent studies of CKMR argued that availability of kinship information in estimating the migration rate \cite[]{https://doi.org/10.1002/ece3.6296, 10.1093/icesjms/fsac002}, the CKMR-based migration estimation has not been well developed and rigorously examined in a simulation study. 
+Close-kin mark-recapture (CKMR) is a recently developed method for estimating adult population size along with life-history parameters that utilizes the known kinship information in a sample \cite[][and references therein]{https://doi.org/10.1111/faf.12615}. The rationale is that the presence of a kinship pair in the sample is analogous to the recapture of a marked individual in the MR method. Kinship pairs in the sample are less likely to be observed in larger populations; thus, the number of kinship pairs may reflect an adult number in the population \cite[]{bravington2016close}. While recent studies of CKMR argued that availability of kinship information in estimating the migration rate \cite[]{https://doi.org/10.1002/ece3.6296, 10.1093/icesjms/fsac002}, the CKMR-based migration estimation has not been well developed and rigorously examined in a simulation study. 
 
 % 6: In this paper, ~
 
-In this study, we propose a new method for estimating the contemporary migration number or rate of adults between two pre-defined populations in iteroparous species, where the migration direction is specified. Assuming that kinships are genetically detected without any error, this method is based on the numbers of half-sibling (HS) and parent-offspring (PO) pairs in a sample. Sampling can be invasive or non-invasive and is completed at two breeding seasons; sampling offspring (young-of-year individuals) and parents probably shares PO relationship with sampled offspring in the one population at the first breeding season and in the another population at the second breeding season. The rationale is that the number of PO and HS pairs found between populations have information as to how often parental movements during the breeding interval are realized. Our model explicitly incorporates reproductive variation within and between populations, making it possible to target a species whose fertility is affected by environmental differences between populations. First, we explain the modeling assumption and sampling scheme. Then, we analytically determine the estimators of the contemporary migration number or rate of adults, which are based on the numbers of HS and/or PO pairs. Finally, by running an individual-based model, we investigate the performance of the estimator and provide a guide for a sample size. It is noteworthy that our modeling framework can be applied to diverse animal species. However, the description of the model focuses on fish species, which are presently the best candidate target of our proposed method.
+In this study, we propose a new method for estimating the contemporary migration number or rate of adults between two pre-defined populations in iteroparous species, where the migration direction is specified. Assuming that kinships are genetically detected without any error, this method is based on the numbers of half-sibling (HS) and parent-offspring (PO) pairs in a sample. Sampling can be invasive or non-invasive and is completed at two breeding seasons; sampling offspring (young-of-year individuals) and parents probably shares PO relationship with sampled offspring in the one population at the first breeding season and in the another population at the second breeding season. The rationale is that the number of HS and PO pairs found between populations have information as to how often parental movements during the breeding interval are realized. Our model explicitly incorporates reproductive variation within and between populations, making it possible to target a species whose fertility is affected by environmental differences between populations. First, we explain the modeling assumption and sampling scheme. Then, we analytically determine the estimators of the contemporary migration number or rate of adults, which are based on the numbers of HS and/or PO pairs. Finally, by running an individual-based model, we investigate the performance of the estimator and provide a guide for a sample size. It is noteworthy that our modeling framework can be applied to diverse animal species. However, the description of the model focuses on fish species, which are presently the best candidate target of our proposed method.
 
 \section{Theory}\label{sec2}
-In this section, we present the theoretical foundation for estimating a migrant number and a migration rate of iteroparous species using HS or PO pairs, which are found between two populations with a different sample timing. While the estimators can hold under flexible assumptions for reproduction (see {\bf Appendix 2}), here we assume a relatively simple situation for explanation purposes. The main symbols used in the current paper are summarized in {\bf Table \ref{symbols}}. 
+In this section, we present the theoretical foundation for estimating a migrant number and migration rate of iteroparous species using HS or PO pairs, which are found between two populations with a different sample timing. While the estimators can hold under flexible assumptions for reproduction (see {\bf Appendix 2}), here we assume a relatively simple situation for explanation purposes. The main symbols used in the current paper are summarized in {\bf Table \ref{symbols}}. 
 
 %%%%%%%%%%%%%%
 \begin{center}
@@ -120,7 +125,7 @@ In this section, we present the theoretical foundation for estimating a migrant 
 
 \subsection{Hypothetical population}
 
-Suppose that we have a set of two populations labelled 1 and 2 where random mating occurs within each population and that parents can move to the other population after the end of the reproductive season. Hereafter, without loss of generality, we consider the movement of parents in the direction from population 1 to population 2 and focus on the migration number or rate, and that is what we attempt to estimate. In this framework, we show that considering two reproductive seasons (hereafter, we call them "the first year" and "the second year") is enough to estimate it. {\bf Figure \ref{cartoon}a} presents a schematic representation of the kinship relationships and movements of parents. 
+Suppose that we have a set of two populations labelled 1 and 2 where random mating occurs within each population and that parents can move to the other population after the end of the reproductive season. Hereafter, without loss of generality, we consider the movement of parents in the direction from the population 1 to the population 2 and focus on the migration number or rate, and that is what we attempt to estimate. In this framework, we show that considering two reproductive seasons (hereafter, we call them "the first year" and "the second year") is enough to estimate it. {\bf Figure \ref{cartoon}a} presents a schematic representation of the kinship relationships and movements of parents. 
 
 Suppose there are $N_1$ parents in the population 1 at the beginning of the first year. Each parent produces offspring in which the number is governed by the parent's reproductive potential, denoted by $\lambda_{i,1}$ ($i=1,2,\ldots,N_1$). After the reproductive season, part of the parents would start to moving towards the population 2; $M$ survived migrants arrive in the population 2 so that there are $N_2$ parents in the population 2 at the beginning of the second year ($M \le N_1$ and $M \le N_2$). Similar to the population 1, $N_2$ parents produce offspring in which the number is governed by $\lambda_{j,2}$ ($j=1,2,\ldots,N_2$). The reproductive potential is determined by several factors and its details are summarized in {\bf Appendix 1}; theoretically speaking, the number of offspring for each parent is set as a random variable with mean $\lambda_{i,1}$ or $\lambda_{j,2}$. 
 
@@ -178,7 +183,7 @@ Subscription of these estimators indicates the numbering of proposed estimators 
 
 \subsection{PO pair-based model}
 
-Next, we consider the probability that offspring sampled in the population 1 and a parent sampled in the population 2 share an PO relationship, denoted by $\pi_{\rm PO, bet}$. $\pi_{\rm PO, bet}$ can be partitioned into the three probabilities: (i) the probability that sampled offspring in the population 1 born to a migrant; (ii) the probability that a migrant is sampled; and (iii) the probability that the migrant of a sampled offspring in the population 1 and the migrant sampled in the population 2 are identical. The first and second probabilities are the same as the one introduced in the previous subsection, that is, $2M/N_{1}$ and $1/M$. The second probability is $M/N_{2}$ by definition. Taken together, we obtain
+Next, we consider the probability that offspring sampled in the population 1 and a parent sampled in the population 2 share an PO relationship, denoted by $\pi_{\rm PO, bet}$. $\pi_{\rm PO, bet}$ can be partitioned into the three probabilities: (i) the probability that sampled offspring in the population 1 born to a migrant; (ii) the probability that a migrant is sampled; and (iii) the probability that the migrant of a sampled offspring in the population 1 and the migrant sampled in the population 2 are identical. The first and third probabilities are the same as the one introduced in the previous subsection, that is, $2M/N_{1}$ and $1/M$. The second probability is $M/N_{2}$ by definition. Taken together, we obtain
 \begin{align}
 \pi_{\rm PO,bet} &= \frac{2M}{N_{1}} \frac{M}{N_{2}} \frac{1}{M} \nonumber\\
 &= \frac{2M}{N_{1}N_{2}}.
@@ -216,7 +221,7 @@ and
 n_{\rm O, 1} n_{\rm P, 2} &> \frac{ N_{2} } { 2m }.
 \label{RS-2}
 \end{align}
-Roughly speaking, required sample size to ensure above conditions is that $n>\sqrt{N_2}$, where $n = n_{\rm O, 1}=n_{\rm O, 2}=n_{\rm P, 2}$. It should be noted that very tiny $m$, which dramatically increases the required sample size, produces significant genetic differences between two populations. In such a case, there are several methods to estimate migration rate by population genetics technique; alternatively, we focus the situation of moderate/large migration rate, which leads little genetic differences between two populations (see details in {\bf Discussion} section). 
+Roughly speaking, required sample size to ensure above conditions is that $n>\sqrt{N_2}$, where $n = n_{\rm O, 1}=n_{\rm O, 2}=n_{\rm P, 2}$. It should be noted that very tiny $m$, which dramatically increases the required sample size, produces significant genetic differences between two populations. In such a case, there are several methods to estimate migration rate by population genetics technique; alternatively, we focus the situation of moderate/large migration rate, which leads little genetic differences between two populations. 
 
 Other guidance for the required sample size is obtained by an approximate lower bound on the CV (coefficient of variation) of $M_1$ or $m_1$, defined by $1/\sqrt{H_{\rm HS, bet}}$, which is applied in the context of a classic mark-recapture \cite[]{seber1982estimation} or close-kin mark-recapture \cite[]{bravington2016close}. For example, to achieve a 30\% CV, the target of $H_{\rm HS, bet}$ is more than 10, providing the required sample size when population parameters are given (e.g., $N_1$, $N_2$ and $M$). Similarly, the CV of $M_2$ or $m_2$, defined by $1/\sqrt{H_{\rm PO, bet}}$, provides the required sample size for estimating $M_2$ or $m_2$. 
 
@@ -282,7 +287,7 @@ Let a parameter set ($N_1$, $N_2$, $M$, ${\bar \lambda_1}$, ${\bar \lambda_2}$, 
 
 \section{Results}\label{sec3}
 
-We numerically evaluated the performance of ${\hat M}$s or ${\hat m}$s for the case in which variable reproductive potential among parents. Scaled statistical properties of ${\hat m_1}$,  ${\hat m_2}$,  ${\hat m_3}$ and ${\hat m_4}$ are completely the same to ${\hat M_1}$, ${\hat M_2}$, ${\hat M_3}$ and ${\hat M_4}$, hereafter, we only demonstrate the results of ${\hat M_1}$-${\hat M_5}$. {\bf Figure~\ref{violins}} illustrates the distribution of the relative bias of ${\hat M}$ for limiting cases where parent and offspring sample numbers are identical (i.e., $n=n_{\rm P,1}=n_{\rm P,2}=n_{\rm O,1}= n_{\rm O,2}$) and parent numbers in the two populations are also identical (i.e., $N=N_1=N_2$). Relative bias is calculated by applying outputs of the individual-based model, which is defined as follows: ``averaged estimator - true value/true value.'' Full list of parameter sets to evaluate the performance (relative bias and CV of ${\hat M}$s) is summarized in {\bf Table S1} in {\bf Supporting Information}. 
+We numerically evaluated the performance of ${\hat M}$s or ${\hat m}$s for the case in which variable reproductive potential among parents. Scaled statistical properties of ${\hat m_1}$,  ${\hat m_2}$,  ${\hat m_3}$ and ${\hat m_4}$ are completely the same to ${\hat M_1}$, ${\hat M_2}$, ${\hat M_3}$ and ${\hat M_4}$, hereafter, we only demonstrate the results of ${\hat M_1}$-${\hat M_5}$. {\bf Figure~\ref{violins}} illustrates the distribution of the relative bias of ${\hat M}$ for limiting cases where parent and offspring sample numbers are identical (i.e., $n=n_{\rm P,1}=n_{\rm P,2}=n_{\rm O,1}= n_{\rm O,2}$) and parent numbers in the two populations are also identical (i.e., $N=N_1=N_2$). Relative bias is calculated by applying outputs of the individual-based model, which is defined as follows: ``(averaged estimator - true value)/true value.'' Full list of parameter sets to evaluate the performance (relative bias and CV of ${\hat M}$s) is summarized in {\bf Table S1} in {\bf Supporting Information}. 
  
 %%%%%%%%%%%%%%
 \begin{center}
@@ -296,9 +301,9 @@ Next, we evaluated the precision of ${\hat M}$s based on their CV. {\bf Table S1
 
 As sample size or migrants increase, the precision increases and the shape of the distribution asymptotically becomes symmetric ({\bf Figure~\ref{violins}}). This is because an increasing of sample size or migrants is likely to increase the observed number of kinship pairs found between two populations ($\widetilde{H}_{\rm HS,bet}$ or $\widetilde{H}_{\rm PO,bet}$) and decreases the variance of those kinship pair numbers. In addition, the number of PO pair within a population ($\widetilde{H}_{\rm PO,1}$ or $\widetilde{H}_{\rm PO,2}$) also contributes the precision for estimating $N_1$ or $N_1$, respectively, providing ${\hat M_4}$ and ${\hat M_5}$ with a higher precision. 
 
-Our simulator can handle the situation with or without invasive sampling. Invasive sampling potentially affects the degree of $m$ since sampled parents in the population 1 have no chance to move to the population 2 and thus those parents cannot be sampled. In this case, $m$ should be defined by $M/(N_1-n_{P,1})$ not by $M/N_1$, although it does not affect the estimator ${\hat M}$s, as demonstrated in {\bf Table S1} ({\bf Supporting Information}). 
+Our simulator can handle the situation with or without invasive sampling. Invasive sampling potentially affects the level of $m$ since sampled parents in the population 1 have no chance to move to the population 2 and thus those parents cannot be sampled. In this case, $m$ should be defined by $M/(N_1-n_{P,1})$ not by $M/N_1$, although it does not affect the estimator ${\hat M}$s, as demonstrated in {\bf Table S1} ({\bf Supporting Information}). 
 
-Finally, we investigated the situation in which the parental number in the population 1 is much more than in the population 2 (i.e., $N_1 \gg N_2$) and thus migrants are large proportion of $N_2$. In such a setting, e.g., $(N_1,N_2,M)=(10^4,10^3,500)$, we confirmed the same property of ${\hat M}$s to the situation $N_1 = N_2$, as demonstrated in {\bf Table S1} ({\bf Supporting Information}), suggesting the robustness of ${\hat M}$s in heterogeneous population sizes.   
+Finally, we investigated the situation in which the parental number in the population 1 is much more than in the population 2 (i.e., $N_1 \gg N_2$) and thus migrants are large proportion of $N_2$. In such a setting, e.g., $(N_1,N_2,M)=(10^4,10^3,500)$, we confirmed the similar property of ${\hat M}$s to the situation $N_1 = N_2$, as demonstrated in {\bf Table S1} ({\bf Supporting Information}), suggesting the robustness of ${\hat M}$s in heterogeneous population sizes.   
 
 \section{Discussion}\label{sec4}
 
@@ -453,7 +458,7 @@ No datasets were generated or analyzed in this study.
 \section*{Reproductive potential}
 
 \renewcommand{\theequation}{A\arabic{equation}}
-Here, we introduce the concept of the reproductive potential of parent $i$ and $j$ in the population 1 and 2, respectively, which are defined as the expected number of surviving offspring at sampling time, denoted by $\lambda_{i,1}$ and $\lambda_{j,2}$ ($i=(1, \ldots, N_1)$ and $j=(1, \ldots, N_2)$). The reproductive potential is determined by several factors, including the parent's age, weight, residence time on the spawning ground. It should be noted that the magnitude of this parameter includes information about the survival rate of the offspring, the number of days after egg hatching, and the egg number; this implies that the parameter reflects the sample timing. It should also be noted that the modeling framework does not depend on whether the reproductive potential is heritable or not.
+Here, we introduce the concept of the reproductive potential of parent $i$ and $j$ in the population 1 and 2, respectively, which are defined as the expected number of surviving offspring at sampling time, denoted by $\lambda_{i,1}$ and $\lambda_{j,2}$ ($i=1, \ldots, N_1$ and $j=1, \ldots, N_2$). The reproductive potential is determined by several factors, including the parent's age, weight, residence time on the spawning ground. It should be noted that the magnitude of this parameter includes information about the survival rate of the offspring, the number of days after egg hatching, and the egg number; this implies that the parameter reflects the sample timing. It should also be noted that the modeling framework does not depend on whether the reproductive potential is heritable or not.
 
 \section*{APPENDIX 2}
 \section*{Derivation of Equations~\ref{HS-1} and \ref{PO-1} when reproductive potential is variable among parents}
@@ -498,7 +503,7 @@ which provides the same formulation described in Eq.\ref{PO-1}.
 In the process of the derivation of $\pi_{\rm HS,bet}$ and $\pi_{\rm PO,bet}$ in {\bf APPENDIX 2}, we ignore covariation between migration and reproductive potential. Here, we consider the situation in which migrants have a distinguishable distribution of reproductive potential from non-migrant parents. Let $\lambda_{i,1}$, $\lambda_{j,2}$, $\lambda_{M,l,1}$ and $\lambda_{M,l,2}$ be a reproductive potential of non-migrant in the population 1 and 2 and migrants in the population 1 and 2 with mean ${\bar \lambda_{1}}$, ${\bar \lambda_{2}}$, ${\bar \lambda_{M,1}}$ and ${\bar \lambda_{M,2}}$, respectively. Under this setting, $\pi_{\rm HS,bet}$ can be written by
 \begin{align}
 \pi_{\rm HS,bet} &\approx \frac{4}{M}  \frac{ \mathbb{E}\left[ \sum_{l=1}^M \lambda_{M,l,1} \sum_{l=1}^M \lambda_{M,l,2} \right]} {\mathbb{E}\left[ \left(\sum_{l=1}^{M} \lambda_{M,l,1} + \sum_{i=M+1}^{N_1} \lambda_{i,1}\right) \left(\sum_{l=1}^{M} \lambda_{M,l,2} + \sum_{j=M+1}^{N_2} \lambda_{j,2}\right) \right] }\nonumber\\ 
-&= \frac{4}{M} \frac{ M^2 {\bar \lambda_{M,1}} {\bar \lambda_{M,2}} } { M {\bar \lambda_{M,1}} + (N_1 - M) {\bar \lambda_1} + M {\bar \lambda_{M,2}} + (N_2 - M) {\bar \lambda_2} }.
+&= \frac{4}{M} \frac{ M^2 {\bar \lambda_{M,1}} {\bar \lambda_{M,2}} } { \left( M {\bar \lambda_{M,1}} + (N_1 - M) {\bar \lambda_1} \right) + \left( M {\bar \lambda_{M,2}} + (N_2 - M) {\bar \lambda_2} \right)}.
 \label{App3}
 \end{align}
 If ${\bar \lambda_{M,1}} = {\bar \lambda_{1}}$ and ${\bar \lambda_{M,2}} = {\bar \lambda_{2}}$, Eq.~\ref{App3} reduces to Eq.\ref{App2}. This formulation include reproductive potential terms, so that distinct reproductive potential between migrants and non-migrants vanishes the usefulness from proposed HS-based estimators (this is also applied to PO-based estimators proposed in this paper). 
