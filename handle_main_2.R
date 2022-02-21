@@ -1,10 +1,10 @@
 # ---
 # one test-run and drawing result
-# 1: simulation 6 estimators with fixed parameters
+# 1: simulation 5 estimators with fixed parameters
 # 2: draw
 # ---
 
-# 1: simulation 6 estimators with fixed parameters
+# 1: simulation 5 estimators with fixed parameters
 
 setwd("~/git/CKMRmig/")
 rm(list=ls())
@@ -87,8 +87,8 @@ for (rep in 1:REP) {
   
   pi_est_HS[rep] = (HS_01[rep]) / (sampled_child_number_0 * sampled_child_number_1) 
   pi_est_PO[rep] = (PO_01[rep]) / (sampled_child_number_0 * (sampled_father_number_1+sampled_mother_number_1))  
-  N_0_est[rep] = (2*sampled_child_number_0 * (sampled_father_number_0+sampled_mother_number_0) + 1) / (PO_0[rep] + 1)
-  N_1_est[rep] = (2*sampled_child_number_1 * (sampled_father_number_1+sampled_mother_number_1) + 1) / (PO_1[rep] + 1)
+  N_0_est[rep] = (2*sampled_child_number_0 * (sampled_father_number_0+sampled_mother_number_0) ) / (PO_0[rep] + 1)
+  N_1_est[rep] = (2*sampled_child_number_1 * (sampled_father_number_1+sampled_mother_number_1) ) / (PO_1[rep] + 1)
   M_est0_HS[rep] = pi_est_HS[rep] * (2*init_parent_pair_number_0) * (2*init_parent_pair_number_1) / 4
   M_est0_PO[rep] = pi_est_PO[rep] * (2*init_parent_pair_number_0) * (2*init_parent_pair_number_1) / 2
   M_est0_both[rep] = ( (2*init_parent_pair_number_0) * (2*init_parent_pair_number_1) / 2 / sampled_child_number_0 ) * ( (HS_01[rep]+PO_01[rep]) / (2*sampled_child_number_1 + (sampled_father_number_1+sampled_mother_number_1)) )

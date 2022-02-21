@@ -27,7 +27,7 @@
 \usepackage{bm}
 \usepackage{relsize}
 \usepackage[normalem]{ulem} %%
-\linenumbers
+%\linenumbers
 \usepackage{bm}
 \setlength{\parindent}{20pt}
 \usepackage[labelformat=empty,labelsep=none]{caption}
@@ -49,15 +49,14 @@ Tetsuya Akita$^{a}$\thanks{
    \small $^{a}$Fisheries Resources Institute, Fisheries Research and Education Agency, \\
    \small Kanagawa, 236-8648, Japan.
    }
-\date{Manuscript Intended for \emph{Molecular Ecology and Resources}, \today}
+\date{Manuscript Intended for \emph{Molecular Ecology Resources}, \today}% Manuscript Intended for \emph{Molecular Ecology and Resources}
 \maketitle
 
 \begin{abstract}
-This study develops estimators of the contemporary migration number and rate of adults for iteroparous species between two populations. The proposed estimators are based on both known half-sibling (HS) and/or parent-offspring (PO) relationships observed between the populations across the breeding seasons. The rationale is that such HS and PO pairs have information as to how often parental movements during the breeding interval are realized. Our method allows for variance of the average number of offspring per parent within and between populations. In addition, coupled with PO pairs found within population, the estimators can be obtained only from genetic data. Roughly speaking, a sample size of square root of population size is required for obtaining meaningful information on migration. We also evaluate the detailed performance of the estimators by running an individual-based model, providing a guidance for sample sizes to ensure the required accuracy and precision. Furthermore, in the face of the current situation where there is little effective method for estimating adult movement especially when populations cannot be genetically distinct, we discuss the usefulness of this proposed sibship assignment method in terms of conservation biology and wildlife management.  
+This study develops estimators of the contemporary migration number and rate of adults for iteroparous species between two populations. The proposed estimators are based on both known half-sibling (HS) and/or parent-offspring (PO) relationships observed between the populations across the breeding seasons. The rationale is that such HS and PO pairs have information as to how often parental movements during the breeding interval are realized. Our method allows for variance of the average number of offspring per parent within and between populations. In addition, coupled with PO pairs found within population, the estimators can be obtained only from genetic data. Roughly speaking, a sample size of square root of population size is required for obtaining meaningful information on migration. We also evaluate the detailed performance of the estimators by running an individual-based model, providing a guidance for sample sizes to ensure the required accuracy and precision. Furthermore, in the face of the current situation where there is little effective method for estimating adult movement especially when populations cannot be genetically distinct, we discuss the usefulness of this proposed kinship assignment method in terms of conservation biology and wildlife management.  
 \\
 \end{abstract}
-
-\textbf{Key words:} dispersion; sibship assignment; reproductive potential; close-kin mark-recapture\\
+\textbf{Key words:} dispersion; kinship assignment; reproductive potential; close-kin mark-recapture\\
 \textbf{Running head:} Estimating migration numbers using kinship pairs\\
 \textbf{Subject Area:} Molecular and Statistical Advances\\
 
@@ -319,7 +318,7 @@ Finally, we note some caveats in applying proposed method. Our theory for develo
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{ACKNOWLEDGMENTS}
-The author thanks N. Shinohara, N. Suzuki and Y. Tsukahara for fruitful discussions. This work was supported by JSPS KAKENHI Grant Number 19K06862 and 20H03012.
+The author thanks N. Shinohara, N. Suzuki and Y. Tsukahara for fruitful discussions. The author also thanks W.M. Iwasaki for helping me in coding C{++}. This work was supported by JSPS KAKENHI Grant Number 19K06862 and 20H03012.
 
 \section*{CONFLICT OF INTEREST}
 The author declares no conflict of interest.
@@ -503,7 +502,7 @@ which provides the same formulation described in Eq.\ref{PO-1}.
 In the process of the derivation of $\pi_{\rm HS,bet}$ and $\pi_{\rm PO,bet}$ in {\bf APPENDIX 2}, we ignore covariation between migration and reproductive potential. Here, we consider the situation in which migrants have a distinguishable distribution of reproductive potential from non-migrant parents. Let $\lambda_{i,1}$, $\lambda_{j,2}$, $\lambda_{M,l,1}$ and $\lambda_{M,l,2}$ be a reproductive potential of non-migrant in the population 1 and 2 and migrants in the population 1 and 2 with mean ${\bar \lambda_{1}}$, ${\bar \lambda_{2}}$, ${\bar \lambda_{M,1}}$ and ${\bar \lambda_{M,2}}$, respectively. Under this setting, $\pi_{\rm HS,bet}$ can be written by
 \begin{align}
 \pi_{\rm HS,bet} &\approx \frac{4}{M}  \frac{ \mathbb{E}\left[ \sum_{l=1}^M \lambda_{M,l,1} \sum_{l=1}^M \lambda_{M,l,2} \right]} {\mathbb{E}\left[ \left(\sum_{l=1}^{M} \lambda_{M,l,1} + \sum_{i=M+1}^{N_1} \lambda_{i,1}\right) \left(\sum_{l=1}^{M} \lambda_{M,l,2} + \sum_{j=M+1}^{N_2} \lambda_{j,2}\right) \right] }\nonumber\\ 
-&= \frac{4}{M} \frac{ M^2 {\bar \lambda_{M,1}} {\bar \lambda_{M,2}} } { \left( M {\bar \lambda_{M,1}} + (N_1 - M) {\bar \lambda_1} \right) + \left( M {\bar \lambda_{M,2}} + (N_2 - M) {\bar \lambda_2} \right)}.
+&= \frac{4}{M} \frac{ M^2 {\bar \lambda_{M,1}} {\bar \lambda_{M,2}} } { \left( M {\bar \lambda_{M,1}} + (N_1 - M) {\bar \lambda_1} \right) \left( M {\bar \lambda_{M,2}} + (N_2 - M) {\bar \lambda_2} \right)}.
 \label{App3}
 \end{align}
 If ${\bar \lambda_{M,1}} = {\bar \lambda_{1}}$ and ${\bar \lambda_{M,2}} = {\bar \lambda_{2}}$, Eq.~\ref{App3} reduces to Eq.\ref{App2}. This formulation include reproductive potential terms, so that distinct reproductive potential between migrants and non-migrants vanishes the usefulness from proposed HS-based estimators (this is also applied to PO-based estimators proposed in this paper). 
